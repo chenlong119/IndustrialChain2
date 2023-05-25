@@ -59,6 +59,7 @@ export const constantRoutes = [
   },
   {
     path: '',
+    name: 'layout',
     component: Layout,
     redirect: '/index',
     children: [
@@ -171,5 +172,4 @@ const router = createRouter({
     }
   },
 });
-
 export default router;

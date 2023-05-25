@@ -6,6 +6,13 @@ import ElementPlus from 'element-plus'
 import locale from 'element-plus/lib/locale/lang/zh-cn' // 中文语言
 
 import '@/assets/styles/index.scss' // global css
+import '@/assets/icon/iconfont.css' // iconfont
+import '@/assets/styles/tailwindcss.css' // tailwindcss
+
+import DataVVue3 from '@kjgl77/datav-vue3'
+import axios from "axios";
+import * as echarts from 'echarts';
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 import App from './App'
 import store from './store'
@@ -54,6 +61,8 @@ app.config.globalProperties.handleTree = handleTree
 app.config.globalProperties.addDateRange = addDateRange
 app.config.globalProperties.selectDictLabel = selectDictLabel
 app.config.globalProperties.selectDictLabels = selectDictLabels
+app.config.globalProperties.$axios = axios
+app.config.globalProperties.$echarts = echarts
 
 // 全局组件挂载
 app.component('DictTag', DictTag)
@@ -69,8 +78,12 @@ app.use(router)
 app.use(store)
 app.use(plugins)
 app.use(elementIcons)
+app.use(DataVVue3)
 app.component('svg-icon', SvgIcon)
 
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
 directive(app)
 
 // 使用element-plus 并且设置全局的大小
