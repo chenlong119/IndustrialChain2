@@ -1,28 +1,16 @@
 <script setup>
-import {useRouter} from "vue-router";
-import {useDispatchStore} from "@/store/modules/dispatch";
-
-const dispatchStore = useDispatchStore();
-const router = useRouter();
-router.addRoute('Scheduling',{
-  path:'',
-  name:'table',
-  component:()=>import('./components/Table.vue')
-});
-router.addRoute('Scheduling',{
-  path:'/allocation/scheduling/flowchart',
-  name:'flowchart',
-  component:()=>import('./components/Flowchart.vue')
-});
-router.addRoute('Scheduling',{
-  path:'/allocation/scheduling/operator',
-  name:'operator',
-  component:()=>import('./components/Operator.vue')
-});
-if(!dispatchStore.flag){
-  router.push({name:'table'});
-  dispatchStore.setFlag(true);
-}
+import {onMounted, onUnmounted} from "vue";
+import {onBeforeRouteUpdate} from "vue-router";
+onMounted(()=>{
+  console.log('dispatch mounted');
+})
+onUnmounted(()=>{
+  console.log('dispatch unmount');
+})
+onBeforeRouteUpdate((to, from, next) => {
+  console.log('dispatch route update');
+  next();
+})
 </script>
 
 <template>

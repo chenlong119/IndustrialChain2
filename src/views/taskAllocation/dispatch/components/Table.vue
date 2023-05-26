@@ -475,7 +475,14 @@ const single = ref(true);
 const multiple = ref(true);
 const total = ref(0);
 const title = ref("");
-
+const router = useRouter();
+onMounted(() => {
+  console.log("onMounted Table");
+  console.log(router.currentRoute.value);
+});
+onUnmounted(()=>{
+  console.log("onUnmounted Table");
+})
 const data = reactive({
   form: {},
   queryParams: {
@@ -632,6 +639,8 @@ function handleExport() {
 getList();
 
 import { listShow, getShow, delShow, addShow, updateShow } from "@/api/wtask/show";
+import {onMounted, onUnmounted} from "vue";
+import {onBeforeRouteUpdate} from "vue-router";
 
 
 const showList = ref([]);

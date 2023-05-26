@@ -1,4 +1,4 @@
-import { createWebHistory, createRouter } from 'vue-router'
+import {createWebHistory, createRouter} from 'vue-router'
 /* Layout */
 import Layout from '@/layout'
 
@@ -172,4 +172,27 @@ const router = createRouter({
     }
   },
 });
+router.beforeEach((to,from,next)=>{
+  if(to.name==='Scheduling')
+  {
+    router.addRoute('Scheduling',{
+      path:'',
+      name:'table',
+      component:()=>import('@/views/taskAllocation/dispatch/components/Table.vue')
+    });
+    router.addRoute('Scheduling',{
+      path:'flowchart',
+      name:'flowchart',
+      component:()=>import('@/views/taskAllocation/dispatch/components/Flowchart.vue')
+    });
+    router.addRoute('Scheduling',{
+      path:'operator',
+      name:'operator',
+      component:()=>import('@/views/taskAllocation/dispatch/components/Operator.vue')
+    });
+    console.log(router.getRoutes());
+    next({name:'table'});
+  }
+ else next();
+})
 export default router;
