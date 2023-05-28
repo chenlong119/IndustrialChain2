@@ -31,40 +31,40 @@
             />
           </el-select>
         </el-form-item>
-        <el-form-item label="任务截止日期" prop="ddl">
-          <el-date-picker clearable
-                          v-model="queryParams.ddl"
-                          type="date"
-                          value-format="YYYY-MM-DD"
-                          placeholder="请选择任务截止日期">
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="任务持续时长" prop="duration">
-          <el-input
-              v-model="queryParams.duration"
-              placeholder="请输入任务持续时长"
-              clearable
-              @keyup.enter="handleQuery"
-          />
-        </el-form-item>
-        <el-form-item label="任务价值" prop="value">
-          <el-input
-              v-model="queryParams.value"
-              placeholder="请输入任务价值"
-              clearable
-              @keyup.enter="handleQuery"
-          />
-        </el-form-item>
-        <el-form-item label="任务优先级 " prop="priority">
-          <el-select v-model="queryParams.priority" placeholder="请选择任务优先级 " clearable>
-            <el-option
-                v-for="dict in task_priority"
-                :key="dict.value"
-                :label="dict.label"
-                :value="dict.value"
-            />
-          </el-select>
-        </el-form-item>
+<!--        <el-form-item label="任务截止日期" prop="ddl">-->
+<!--          <el-date-picker clearable-->
+<!--                          v-model="queryParams.ddl"-->
+<!--                          type="date"-->
+<!--                          value-format="YYYY-MM-DD"-->
+<!--                          placeholder="请选择任务截止日期">-->
+<!--          </el-date-picker>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="任务持续时长" prop="duration">-->
+<!--          <el-input-->
+<!--              v-model="queryParams.duration"-->
+<!--              placeholder="请输入任务持续时长"-->
+<!--              clearable-->
+<!--              @keyup.enter="handleQuery"-->
+<!--          />-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="任务价值" prop="value">-->
+<!--          <el-input-->
+<!--              v-model="queryParams.value"-->
+<!--              placeholder="请输入任务价值"-->
+<!--              clearable-->
+<!--              @keyup.enter="handleQuery"-->
+<!--          />-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="任务优先级 " prop="priority">-->
+<!--          <el-select v-model="queryParams.priority" placeholder="请选择任务优先级 " clearable>-->
+<!--            <el-option-->
+<!--                v-for="dict in task_priority"-->
+<!--                :key="dict.value"-->
+<!--                :label="dict.label"-->
+<!--                :value="dict.value"-->
+<!--            />-->
+<!--          </el-select>-->
+<!--        </el-form-item>-->
         <el-form-item label="任务剩余时长" prop="remaining">
           <el-input
               v-model="queryParams.remaining"
@@ -256,22 +256,22 @@
             />
           </el-select>
         </el-form-item>
-        <el-form-item label="任务截止日期" prop="ddl">
-          <el-date-picker clearable
-                          v-model="queryParams2.ddl"
-                          type="date"
-                          value-format="YYYY-MM-DD"
-                          placeholder="请选择任务截止日期">
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="任务到达时间" prop="arrival">
-          <el-date-picker clearable
-                          v-model="queryParams2.arrival"
-                          type="date"
-                          value-format="YYYY-MM-DD"
-                          placeholder="请选择任务到达时间">
-          </el-date-picker>
-        </el-form-item>
+<!--        <el-form-item label="任务截止日期" prop="ddl">-->
+<!--          <el-date-picker clearable-->
+<!--                          v-model="queryParams2.ddl"-->
+<!--                          type="date"-->
+<!--                          value-format="YYYY-MM-DD"-->
+<!--                          placeholder="请选择任务截止日期">-->
+<!--          </el-date-picker>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="任务到达时间" prop="arrival">-->
+<!--          <el-date-picker clearable-->
+<!--                          v-model="queryParams2.arrival"-->
+<!--                          type="date"-->
+<!--                          value-format="YYYY-MM-DD"-->
+<!--                          placeholder="请选择任务到达时间">-->
+<!--          </el-date-picker>-->
+<!--        </el-form-item>-->
         <el-form-item label="任务持续时长" prop="duration">
           <el-input
               v-model="queryParams2.duration"
@@ -288,16 +288,16 @@
               @keyup.enter="handleQuery2"
           />
         </el-form-item>
-        <el-form-item label="任务优先级 " prop="priority">
-          <el-select v-model="queryParams2.priority" placeholder="请选择任务优先级 " clearable>
-            <el-option
-                v-for="dict in task_priority"
-                :key="dict.value"
-                :label="dict.label"
-                :value="dict.value"
-            />
-          </el-select>
-        </el-form-item>
+<!--        <el-form-item label="任务优先级 " prop="priority">-->
+<!--          <el-select v-model="queryParams2.priority" placeholder="请选择任务优先级 " clearable>-->
+<!--            <el-option-->
+<!--                v-for="dict in task_priority"-->
+<!--                :key="dict.value"-->
+<!--                :label="dict.label"-->
+<!--                :value="dict.value"-->
+<!--            />-->
+<!--          </el-select>-->
+<!--        </el-form-item>-->
         <el-form-item label="任务等待时长" prop="waiting">
           <el-input
               v-model="queryParams2.waiting"
