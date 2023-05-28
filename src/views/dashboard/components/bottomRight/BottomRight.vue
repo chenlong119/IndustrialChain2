@@ -206,12 +206,14 @@ const createPieChart = () => {
                 color: '#fff',
                 fontSize: 10,
               },
+          left:'10%',
         },
         series: [
           {
             type: 'pie',
             left: 'center',
-            radius: '80%',
+            bottom:0,
+            radius: '100%',
             data: [
               {value: 5, name: '不跨企业'},
               {value: 10, name: '跨企业'},
