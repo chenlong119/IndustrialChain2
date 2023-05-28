@@ -512,7 +512,7 @@ var option3 = {
           color: '#e6ccff',
           },
           tooltip: {
-      formatter: '节点信息：任务 1---橡胶'
+      formatter: '节点信息：任务 1---橡胶 \n 企业群：山东矿业'
     }
  // 红色
         },
@@ -524,7 +524,7 @@ var option3 = {
           color: '#e6ccff',
           },
           tooltip: {
-          formatter: '节点信息：任务 2---塑料'
+          formatter: '节点信息：任务 2---塑料 \n 企业群：山东矿业'
           }
  // 红色
         },
@@ -536,7 +536,7 @@ var option3 = {
           color: '#e6ccff',
           },
           tooltip: {
-          formatter: '节点信息：任务 3---轮胎'
+          formatter: '节点信息：任务 3---轮胎 \n 企业群：山东矿业'
           }
  // 红色
         },
@@ -548,7 +548,7 @@ var option3 = {
           color: '#e6ccff',
           },
           tooltip: {
-          formatter: '节点信息：任务 4---密封'
+          formatter: '节点信息：任务 4---密封 \n 企业群：山东矿业'
           }
  // 红色
         },
@@ -560,7 +560,7 @@ var option3 = {
           color: '#e6ccff',
           },
           tooltip: {
-          formatter: '节点信息：任务 5---螺丝'
+          formatter: '节点信息：任务 5---螺丝 \n 企业群：山东矿业'
           }
  // 红色
         },
@@ -572,7 +572,7 @@ var option3 = {
           color: '#ccffcc',
           },
           tooltip: {
-          formatter: '节点信息：任务 6---螺母'
+          formatter: '节点信息：任务 6---螺母 \n 企业群：江苏金融'
           }
  // 绿色
         },
@@ -584,7 +584,7 @@ var option3 = {
           color: '#ccffcc',
           },
           tooltip: {
-          formatter: '节点信息：任务 7---链条'
+          formatter: '节点信息：任务 7---链条 \n 企业群：江苏金融'
           }
  // 绿色
         },
@@ -596,7 +596,7 @@ var option3 = {
           color: '#ccffcc',
           },
           tooltip: {
-          formatter: '节点信息：任务 8---铰链'
+          formatter: '节点信息：任务 8---铰链 \n 企业群：江苏金融'
           }
  // 绿色
         },
@@ -608,7 +608,7 @@ var option3 = {
           color: '#ccffcc',
           },
           tooltip: {
-          formatter: '节点信息：任务 9---中控台'
+          formatter: '节点信息：任务 9---中控台 \n 企业群：江苏金融'
           }
  // 绿色
         },
@@ -620,7 +620,7 @@ var option3 = {
           color: '#ccffcc',
           },
           tooltip: {
-          formatter: '节点信息：任务 10---垫片'
+          formatter: '节点信息：任务 10---垫片 \n 企业群：江苏金融'
           }
  // 绿色
         },
@@ -632,7 +632,7 @@ var option3 = {
           color: '#ffffcc',
           },
           tooltip: {
-          formatter: '节点信息：任务 11---固化剂'
+          formatter: '节点信息：任务 11---固化剂 \n 企业群：河北工业'
           }
  // 黄色
         },
@@ -644,7 +644,7 @@ var option3 = {
           color: '#ffffcc',
           },
           tooltip: {
-          formatter: '节点信息：任务 12---封蜡'
+          formatter: '节点信息：任务 12---封蜡 \n 企业群：河北工业'
           }
  // 黄色
         },
@@ -656,7 +656,7 @@ var option3 = {
           color: '#ffffcc',
           },
           tooltip: {
-          formatter: '节点信息：任务 13---毛毡'
+          formatter: '节点信息：任务 13---毛毡 \n 企业群：河北工业'
           }
  // 黄色
         },
@@ -668,7 +668,7 @@ var option3 = {
           color: '#ffffcc',
           },
           tooltip: {
-          formatter: '节点信息：任务 14---皮革'
+          formatter: '节点信息：任务 14---皮革 \n 企业群：河北工业'
           }
  // 黄色
         },
@@ -680,7 +680,7 @@ var option3 = {
           color: '#ffffcc',
           },
           tooltip: {
-          formatter: '节点信息：任务 15---油漆'
+          formatter: '节点信息：任务 15---油漆 \n 企业群：河北工业'
           }
  // 黄色
         },
@@ -692,7 +692,7 @@ var option3 = {
           color: '#ccf5ff',
           },
           tooltip: {
-          formatter: '节点信息：任务 16---热固胶'
+          formatter: '节点信息：任务 16---热固胶 \n 企业群：浙江加工'
           }
         },
         {
@@ -703,7 +703,7 @@ var option3 = {
           color: '#ccf5ff',
           },
           tooltip: {
-          formatter: '节点信息：任务 17---支架'
+          formatter: '节点信息：任务 17---支架 \n 企业群：浙江加工'
           }
         },
         {
@@ -714,7 +714,7 @@ var option3 = {
           color: '#ccf5ff',
           },
           tooltip: {
-          formatter: '节点信息：任务 18---箱盖'
+          formatter: '节点信息：任务 18---箱盖 \n 企业群：浙江加工'
           }
         },
         {
@@ -725,7 +725,7 @@ var option3 = {
           color: '#ccf5ff',
           },
           tooltip: {
-          formatter: '节点信息：任务 19---纺布'
+          formatter: '节点信息：任务 19---纺布 \n 企业群：浙江加工'
           }
         },
 
@@ -742,7 +742,7 @@ var option3 = {
             color: 'red'
           },
           tooltip: {
-      formatter: '连线信息：任务 2 -> 任务 1'
+      formatter: '连线信息：任务 2 -> 任务 1 \n 跨企业跨链跨群'
     }
         },
         {
@@ -753,7 +753,7 @@ var option3 = {
             color: 'green'
           },
           tooltip: {
-      formatter: '连线信息：任务 2 -> 任务 1'
+      formatter: '连线信息：任务 2 -> 任务 1 \n 跨企业跨链'
     }
         },
         {
@@ -764,7 +764,7 @@ var option3 = {
             color: 'blue'
           },
           tooltip: {
-      formatter: '连线信息：任务 3 -> 任务 1'
+      formatter: '连线信息：任务 3 -> 任务 1 \n 跨企业跨群'
     }
         },
         {
@@ -775,7 +775,7 @@ var option3 = {
             color: 'gray'
           },
           tooltip: {
-      formatter: '连线信息：任务 2 -> 任务 3'
+      formatter: '连线信息：任务 2 -> 任务 3 \n 跨链跨群'
     }
         },
         {
@@ -786,7 +786,7 @@ var option3 = {
             color: 'yellow'
           },
           tooltip: {
-      formatter: '连线信息：任务 2 -> 任务 4'
+      formatter: '连线信息：任务 2 -> 任务 4  \n 跨企业'
     }
 
         },
@@ -798,7 +798,7 @@ var option3 = {
             color: 'purple'
           },
           tooltip: {
-      formatter: '连线信息：任务 1 -> 任务 4'
+      formatter: '连线信息：任务 1 -> 任务 4 \n 跨链'
     }
 
         },
@@ -810,7 +810,7 @@ var option3 = {
             color: 'orange'
           },
           tooltip: {
-      formatter: '连线信息：任务 3 -> 任务 5 '
+      formatter: '连线信息：任务 3 -> 任务 5  \n 跨群'
     }
 
         },
@@ -822,7 +822,7 @@ var option3 = {
             color: 'orange'
           },
           tooltip: {
-      formatter: '连线信息：任务 6 -> 任务 4'
+      formatter: '连线信息：任务 6 -> 任务 4 \n 跨群'
     }
 
         },
@@ -834,7 +834,7 @@ var option3 = {
             color: 'purple'
           },
           tooltip: {
-      formatter: '连线信息：任务 5 -> 任务 10'
+      formatter: '连线信息：任务 5 -> 任务 10  \n 跨链'
     }
 
         },
@@ -846,7 +846,7 @@ var option3 = {
             color: 'yellow'
           },
           tooltip: {
-      formatter: '连线信息：任务 8 -> 任务 10'
+      formatter: '连线信息：任务 8 -> 任务 10  \n 跨企业'
     }
 
         },
@@ -858,7 +858,7 @@ var option3 = {
             color: 'gray'
           },
           tooltip: {
-      formatter: '连线信息：任务 12 -> 任务 14'
+      formatter: '连线信息：任务 12 -> 任务 14  \n 跨链跨群'
     }
 
         },
@@ -870,7 +870,7 @@ var option3 = {
             color: 'blue'
           },
           tooltip: {
-      formatter: '连线信息：任务 11 -> 任务 15'
+      formatter: '连线信息：任务 11 -> 任务 15 \n 跨企业跨群'
     }
 
         },
@@ -882,7 +882,7 @@ var option3 = {
             color: 'green'
           },
           tooltip: {
-      formatter: '连线信息：任务 13 -> 任务 17'
+      formatter: '连线信息：任务 13 -> 任务 17 \n 跨企业跨链'
     }
 
         },
@@ -894,7 +894,7 @@ var option3 = {
             color: 'red'
           },
           tooltip: {
-      formatter: '连线信息：任务 18 -> 任务 16'
+      formatter: '连线信息：任务 18 -> 任务 16 \n 跨企业跨链跨群'
     }
 
         },
@@ -906,7 +906,7 @@ var option3 = {
             color: 'red'
           },
           tooltip: {
-      formatter: '连线信息：任务 16 -> 任务 19'
+      formatter: '连线信息：任务 16 -> 任务 19 \n 跨企业跨链跨群'
     }
 
         },
@@ -918,7 +918,7 @@ var option3 = {
             color: 'green'
           },
           tooltip: {
-      formatter: '连线信息：任务 7 -> 任务 16'
+      formatter: '连线信息：任务 7 -> 任务 16 \n 跨企业跨链'
     }
 
         },
