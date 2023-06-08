@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="inputFormRef" :model="inputForm" :rules="rules" label-width="200px" class="demo-ruleForm" size="default"
+  <el-form ref="inputFormRef" :model="inputForm" :rules="rules" label-width="200px" class="demo-ruleForm" :size="formSize"
     status-icon>
     <el-form-item label="评估企业id：" prop="nodeId">
       <span style="font-weight: bold;">{{ nodeId }}</span>
@@ -82,6 +82,7 @@ import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { watch, nextTick, computed } from 'vue'
 import isEqual from 'lodash/isEqual';
+import { ElMessage, ElMessageBox } from 'element-plus'
 
 const emits = defineEmits(['onFormInput']);  //定义组件的自定义事件
 
@@ -126,33 +127,34 @@ watch(
   { deep: true, immediate: true, flush: 'sync' }
 );
 
-// 实时更新关联企业数据（每次更新只计算1遍）
-let isComputed = false
+// 实时更新关联企业数据
 watch(
   () => props.relatedNodesWithoutGlobal,
   (newVal) => {
     nextTick(() => {
       if (newVal) {
         Object.assign(nodes, newVal);
-        if (!isComputed) {
-          isComputed = true
-          Calculate(nodes)
-        }
+        Calculate(nodes)
       }
     });
   },
-  {
-    deep: true,
-    flush: 'sync'
-  }
-);
+  { deep: true, immediate: true, flush: 'sync' }
+)
 
 const totalNum = ref(0)
 const supplyNum = ref(0)
 const cooperationNum = ref(0)
 const competitiveNum = ref(0)
+
 function Calculate(nodes) {
   const nodesArray = nodes.value  //将ref对象转换为数组
+  // 重新计算前，先将数据清零
+  totalNum.value = 0;
+  supplyNum.value = 0;
+  cooperationNum.value = 0;
+  competitiveNum.value = 0;
+
+  // console.log("nodeArray",nodesArray)
   for (const node of nodesArray) {
     if (!node.deleted) {
       totalNum.value++
@@ -169,6 +171,70 @@ function Calculate(nodes) {
 
   }
 }
+
+
+
+// const calculatedValues = computed(() => {
+//   const nodesArray = nodes.value
+//   console.log("nodesArray", nodesArray)
+//   let result = {
+//     totalNum: 0,
+//     supplyNum: 0,
+//     cooperationNum: 0,
+//     competitiveNum: 0
+//   }
+
+//   for (const node of nodesArray) {
+//     if (!node.deleted) {
+//       result.totalNum++
+//     }
+//     if (!node.deleted && node.relation.includes('供应关系')) {
+//       result.supplyNum++
+//     }
+//     if (!node.deleted && node.relation.includes('合作关系')) {
+//       result.cooperationNum++
+//     }
+//     if (!node.deleted && node.relation.includes('竞争关系')) {
+//       result.competitiveNum++
+//     }
+//   }
+//   console.log("result", result)
+//   return result
+// })
+
+// const totalNum = computed(() => {
+//   return calculatedValues.value.totalNum
+// })
+
+// const supplyNum = computed(() => {
+//   return calculatedValues.value.supplyNum
+// })
+
+// const cooperationNum = computed(() => {
+//   return calculatedValues.value.cooperationNum
+// })
+
+// const competitiveNum = computed(() => {
+//   return calculatedValues.value.competitiveNum
+// })
+
+
+// // 实时更新关联企业数据
+// watch(
+//   () => props.relatedNodesWithoutGlobal,
+//   (newVal) => {
+//     if (newVal) {
+//       Object.assign(nodes, newVal);
+//       calculatedValues.value  //重新计算 
+//     }
+//   },
+//   {
+//     deep: true,
+//     immediate: true,
+//     flush: 'sync'
+//   }
+// );
+
 
 //表单输入数据
 const formSize = ref('default')
@@ -206,43 +272,69 @@ const rules = reactive<FormRules>({
 })
 
 // 记录上次提交的表单参数
-let lastInputForm=ref({});
+let lastInputForm = ref({
+  time: '-9999',
+  preference: '-9999',
+  strategy: [],
+  remark: '-9999'
+});
 // 提交表单
 const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   // 检查表单参数是否更改
-  if (inputForm && lastInputForm && isEqual(inputForm, lastInputForm)) {
-    alert('表单参数没有更改，请勿重复提交');
+  if (
+    lastInputForm.value.time === inputForm.time &&
+    lastInputForm.value.preference === inputForm.preference &&
+    isEqual(lastInputForm.value.strategy, inputForm.strategy) &&
+    lastInputForm.value.remark === inputForm.remark
+  ) {
+    ElMessage({
+        type: 'warning',
+        message: '参数未更改，请勿重复提交',
+        duration: 1500
+      })
     return;
   }
   await formEl.validate((valid, fields) => {
     if (valid) {
-      alert('参数已提交');
+      ElMessage({
+        type: 'success',
+        message: '参数提交成功',
+        duration: 1500
+      })
       // 将表单数据传递给父组件
       emits('onFormInput', inputForm);
-      lastInputForm.value = { ...inputForm }; // 更新上次提交的表单参数
-      console.log('提交成功!', inputForm);
+      // 更新上次提交的表单参数
+      lastInputForm.value = {
+        ...inputForm,
+        strategy: Array.from(inputForm.strategy)
+      };
     } else {
-      console.log('提交失败!', fields);
+      ElMessage({
+        type: 'error',
+        message: '参数提交失败',
+        duration: 1500
+      })
     }
   });
 };
 
 // 重置表单数据
 const resetForm = () => {
-  // 清除表单项的校验状态
-  inputFormRef.value?.resetFields();
-  // 重置表单数据
-  Object.keys(inputForm).forEach(key => {
-    if (Array.isArray(inputForm[key])) {
-      inputForm[key] = []; // 重置数组类型的属性
-    } else {
-      inputForm[key] = ''; // 重置其他类型的属性
-    }
-  });
-  // lastInputForm.value = { ...inputForm }; // 更新上次提交的表单参数
-  Object.assign(lastInputForm.value,inputForm);
-  console.log('重置表单数据', inputForm);
+  // 重置表单输入数据为初始状态
+  inputForm.time = '';
+  inputForm.preference = '';
+  inputForm.strategy = [];
+  inputForm.remark = '';
+  //重置指定表单项的校验状态
+  inputFormRef.value?.resetFields(['time', 'preference', 'strategy', 'remark']);
+  //重置上次提交的表单参数为初始状态
+  lastInputForm.value = {
+    time: '-9999',
+    preference: '-9999',
+    strategy: [],
+    remark: '-9999'
+  };
   emits('onFormInput', inputForm);
 }
 

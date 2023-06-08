@@ -69,7 +69,7 @@
   
 <script setup>
 import { ref, reactive, computed, watch, onMounted, nextTick } from 'vue'
-import jsonData from "@/assets/income/networkRelation.json"
+import jsonData from "../../../assets/income/networkRelation.json"
 import * as echarts from 'echarts'  //引入echarts
 
 //定义组件的自定义事件

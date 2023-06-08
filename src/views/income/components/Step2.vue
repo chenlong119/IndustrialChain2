@@ -10,8 +10,8 @@
       <el-button @click="clearSearch">清空搜索</el-button>
     </div>
     <div class="add-container">
-      <el-button class="add-btn" type="primary" @click="addNode">新增节点</el-button>
-      <el-button class="add-btn" type="primary" @click="recoverAllNodes">重置关联关系</el-button>
+      <el-button class="add-btn" type="primary" @click="addDialogVisible = true">新增企业</el-button>
+      <el-button class="add-btn" type="primary" @click="recoverallRelatedNodes">重置关联关系</el-button>
     </div>
   </div>
 
@@ -48,6 +48,9 @@
     </el-table-column>
   </el-table>
 
+  <el-pagination v-model="currentPage" :page-size="pageSize" :pager-count="8" layout="prev, pager, next"
+    :total="relatedNodes.length" @current-change="handleCurrentChange" @size-change="handleSizeChange"
+    style="float: right; margin: 20px;"/>
   <br />
   <el-form-item>
     <el-button type="primary" @click="submitModify">
@@ -55,11 +58,7 @@
     </el-button>
   </el-form-item>
 
-  <el-pagination v-model="currentPage" :page-size="pageSize" :pager-count="11" layout="prev, pager, next"
-    :total="relatedNodes.length" @current-change="handleCurrentChange" @size-change="handleSizeChange"
-    style="float: right; margin: 20px;" :hide-on-single-page="value" />
-
-  <el-dialog v-model="editDialogVisible" title="修改关联关系" align-center>
+  <el-dialog v-model="editDialogVisible" title="修改关联企业" align-center>
     <el-form :model="nodeGlobal">
       <el-form-item label="" :label-width="formLabelWidth">
         企业id：{{ nodeGlobal.id }}
@@ -82,25 +81,28 @@
     </template>
   </el-dialog>
 
-  <el-dialog v-model="addDialogVisible" title="新增节点" align-center>
+  <el-dialog v-model="addDialogVisible" title="新增企业" align-center>
     <el-form :model="nodeGlobal">
       <el-form-item label="" :label-width="formLabelWidth">
         企业id：{{ nodeGlobal.id }}
       </el-form-item>
       <el-form-item label="" :label-width="formLabelWidth">
-        企业名称：{{ nodeGlobal.name }}
+        企业名称：
+        <el-select v-model="nodeGlobal.name" @change="getSelectedId" placeholder="请选择企业">
+          <el-option v-for="(option, index) in unrelatedNodes" :key="index" :label="option.name" :value="option.id" />
+        </el-select>
       </el-form-item>
       <el-form-item label="" :label-width="formLabelWidth">
         连接关系：
-        <el-checkbox label="供应关系" @change="handleRelationChange"></el-checkbox>
-        <el-checkbox label="合作关系" @change="handleRelationChange"></el-checkbox>
-        <el-checkbox label="竞争关系" @change="handleRelationChange"></el-checkbox>
+        <el-checkbox label="供应关系" v-model="nodeGlobal.relation" :true-value="'供应关系'" :false-value="''"></el-checkbox>
+        <el-checkbox label="合作关系" v-model="nodeGlobal.relation" :true-value="'合作关系'" :false-value="''"></el-checkbox>
+        <el-checkbox label="竞争关系" v-model="nodeGlobal.relation" :true-value="'竞争关系'" :false-value="''"></el-checkbox>
       </el-form-item>
     </el-form>
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="addDialogVisible = false">取消</el-button>
-        <el-button type="primary" @click="addDialogVisible = false">确认新增</el-button>
+        <el-button type="primary" @click="addNode">确认新增</el-button>
       </span>
     </template>
   </el-dialog>
@@ -114,12 +116,13 @@ import {
   Edit,
   Delete
 } from '@element-plus/icons-vue'
+import jsonData from "../../../assets/income/networkRelation.json"
 import { ref } from 'vue'
 import { watch, nextTick, computed } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
+
+
 const emits = defineEmits(['onRelationModify']);  //定义组件的自定义事件
-
-
 //接收数据
 const props = defineProps({
   relatedNodesWithGlobal: Object,
@@ -131,9 +134,12 @@ const nodeFiled = ref('')
 const nodeCategory = ref('')
 const nodeNetwork = ref([])
 //表格信息
-const relatedNodes = ref<Node[]>([])
-const allNodes = ref<Node[]>([])
-const initialNodes = ref<Node[]>([])
+const relatedNodes = ref<Node[]>([]) //用于展示的关联节点（包括分页和搜索之后的展示）
+const allRelatedNodes = ref<Node[]>([])//Step2中最新最全的节点（新增、修改、删除等操作之后的所有关联信息）
+const initialRelatedNodes = ref<Node[]>([]) //初始节点(json文件中保存的企业关联关系)
+const allNodes = ref<Node[]>([])   //json文件中所有节点
+const unrelatedNodes = ref<Node[]>([])  //无关联节点（新增关联企业时用）
+const initialUnrelatedNodes = ref<Node[]>([])  //无关联节点
 interface Node {
   id: string,
   name: string,
@@ -171,10 +177,7 @@ watch(
         nodeFiled.value = newVal.nodes[0].filed;
         nodeCategory.value = newVal.nodes[0].category;
         nodeNetwork.value = newVal.nodes[0].network;
-        relatedNodes.value = newVal.nodes.slice(1);//用于展示的关联节点
-        allNodes.value = newVal.nodes.slice(1);//最新最全的节点
-        initialNodes.value = newVal.nodes.slice(1);//初始节点
-        //将数组中的relation属性转换为字符串数组
+        //获取关联企业（将数组中的relation属性转换为字符串数组）
         relatedNodes.value = newVal.nodes.slice(1).map(node => {
           return {
             ...node,
@@ -182,14 +185,14 @@ watch(
             relation: [node.relation]
           }
         })
-        allNodes.value = newVal.nodes.slice(1).map(node => {
+        allRelatedNodes.value = newVal.nodes.slice(1).map(node => {
           return {
             ...node,
             deleted: false,
             relation: [node.relation]
           }
         })
-        initialNodes.value = newVal.nodes.slice(1).map(node => {
+        initialRelatedNodes.value = newVal.nodes.slice(1).map(node => {
           return {
             ...node,
             deleted: false,
@@ -197,6 +200,21 @@ watch(
           }
         })
 
+        //获取未关联的节点
+        allNodes.value = jsonData.nodes.map(node => {
+          return {
+            ...node,
+            index: -1,
+            relation: [] as string[],
+            deleted: false
+          } as Node;
+        });
+        unrelatedNodes.value = allNodes.value.filter(node => {
+          return !newVal.nodes.some(node2 => node2.id === node.id);
+        });
+        initialUnrelatedNodes.value = allNodes.value.filter(node => {
+          return !newVal.nodes.some(node2 => node2.id === node.id);
+        });
 
       }
 
@@ -221,7 +239,6 @@ const getRelationTagType = (rel: string): string => {
 //数据分页和连接关系筛选
 const currentPage = ref(1)         //当前页
 const pageSize = ref(8)            //每页显示的数据条数
-const value = ref(true)            //是否隐藏分页器
 function handleSizeChange(size) {
   pageSize.value = size;
   currentPage.value = 1;
@@ -231,7 +248,7 @@ function handleCurrentChange(newPage) {
 }
 // 过滤已删除的节点
 const filteredNodes = computed(() => {
-  return relatedNodes.value.filter(node => !node.deleted)
+  return relatedNodes.value.filter(node => node.deleted === false)
 })
 //分页后的数据
 const pagedRelatedNodes = computed(() => {
@@ -246,7 +263,7 @@ const indexMethod = (index) => {
 };
 
 
-// “搜索”功能
+//1.“搜索”功能
 const searchParam = ref<string>('')
 const handleSearch = () => {
   if (searchParam.value === '') {
@@ -256,7 +273,7 @@ const handleSearch = () => {
     })
     return
   }
-  const searchResult = relatedNodes.value.filter(node => {
+  const searchResult = allRelatedNodes.value.filter(node => {
     return node.name.includes(searchParam.value as string) || (Array.isArray(node.relation) && node.relation.some(relation => relation === searchParam.value))
   })
   if (searchResult.length === 0) {
@@ -272,52 +289,11 @@ const handleSearch = () => {
 //清空搜索
 function clearSearch() {
   searchParam.value = ''
-  relatedNodes.value = allNodes.value
+  relatedNodes.value = allRelatedNodes.value
   currentPage.value = 1
 }
 
-
-//“删除关联企业”功能
-const deleteNode = (row) => {
-  ElMessageBox.confirm(
-    '是否要删除该关联企业?',
-    '删除确认',
-    {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'info',
-    }
-  )
-    .then(() => {
-      ElMessage({
-        type: 'success',
-        message: '关联企业已删除',
-      })
-      //删除该节点(逻辑删除)
-      allNodes.value = allNodes.value.map(node => {
-        if (node.id === row.id) {
-          return {
-            ...node,
-            deleted: true
-          }
-        } else {
-          return node
-        }
-      })
-      //更新搜索结果列表
-      relatedNodes.value = allNodes.value.filter(node => {
-        return node.name.includes(searchParam.value)
-      })
-    })
-    .catch(() => {
-      ElMessage({
-        type: 'info',
-        message: '取消删除',
-      })
-    })
-}
-
-//“修改关联关系”功能
+//2.“修改关联关系”功能
 const editDialogVisible = ref(false)
 const formLabelWidth = '140px'
 const editNode = (row: Node) => {
@@ -343,22 +319,13 @@ const editNode = (row: Node) => {
   }
   nodeGlobal.value = { ...nodeTemp } //赋值给全局变量node
 }
-// 处理关联关系改变事件（获取多选框事件）
-function handleRelationChange(relation: string) {
-  const exists = JSON.stringify(nodeGlobal.value.relation).includes(JSON.stringify(relation));
-  if (!exists) {
-    nodeGlobal.value.relation.push(relation);
-  } else {
-    nodeGlobal.value.relation.splice(nodeGlobal.value.relation.indexOf(relation), 1);
-  }
-}
 //保存修改
 function saveEdit() {
   if (nodeGlobal.value.relation.length === 0) {
     alert('请选择至少一个连接关系!');
   } else {
     //更新节点信息
-    allNodes.value = allNodes.value.map(node => {
+    allRelatedNodes.value = allRelatedNodes.value.map(node => {
       if (node.id === nodeGlobal.value.id) {
         return {
           ...node,
@@ -369,7 +336,7 @@ function saveEdit() {
       }
     })
     //更新搜索结果列表
-    relatedNodes.value = allNodes.value.filter(node => {
+    relatedNodes.value = allRelatedNodes.value.filter(node => {
       return node.name.includes(searchParam.value)
     })
     //清空全局变量nodeGlobal
@@ -389,34 +356,153 @@ function saveEdit() {
   }
 }
 
-
-
-//“新增节点”功能(TODO)
-const addDialogVisible = ref(false)
-const addNode = () => {
-  addDialogVisible.value = true
+//3.“删除关联企业”功能
+const deleteNode = (row) => {
+  ElMessageBox.confirm(
+    '是否要删除该关联企业?',
+    '删除确认',
+    {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'info',
+    }
+  )
+    .then(() => {
+      ElMessage({
+        type: 'success',
+        message: '关联企业已删除',
+      })
+      //删除该节点(逻辑删除)
+      allRelatedNodes.value = allRelatedNodes.value.map(node => {
+        if (node.id === row.id) {
+          return {
+            ...node,
+            deleted: true
+          }
+        } else {
+          return node
+        }
+      })
+      console.log("删除之后的allRelatedNodes.value",allRelatedNodes.value)
+      //更新搜索结果列表
+      relatedNodes.value = allRelatedNodes.value.filter(node => {
+        return node.name.includes(searchParam.value)
+      })
+    })
+    .catch(() => {
+      ElMessage({
+        type: 'info',
+        message: '取消删除',
+      })
+    })
 }
 
-
-
-// 初始化（重置）企业关联列表
-const recoverAllNodes = () => {
-  Object.assign(allNodes.value,initialNodes.value)
+//4.“新增节点”功能
+const addDialogVisible = ref(false)
+// 在选择新节点时，更新nodeGlobal变量的值
+const getSelectedId = () => {
+  const selectedNode = unrelatedNodes.value.find(node => node.id === nodeGlobal.value.name);
+  if (selectedNode) {
+    nodeGlobal.value.id = selectedNode.id;
+  }
+};
+// 新增节点
+const addNode = () => {
+  if (!nodeGlobal.value.id) {
+    ElMessage({
+      type: 'error',
+      message: '请选择一个关联企业',
+    })
+    return
+  }
+  if (nodeGlobal.value.relation.length === 0) {
+    ElMessage({
+      type: 'error',
+      message: '请至少选择一个关联关系',
+    })
+    return
+  }
+  // 更新nodeGlobal的值
+  const foundNode = unrelatedNodes.value.find(node => node.id === nodeGlobal.value.id)
+  if (foundNode) {
+    Object.assign(nodeGlobal.value, {
+      name: foundNode.name,
+      filed: foundNode.filed,
+      category: foundNode.category,
+      network: foundNode.network,
+      x: foundNode.x,
+      y: foundNode.y,
+    })
+  }
+  const index = allRelatedNodes.value.length + 1
+  nodeGlobal.value.index = index
+  //将新增节点添加到关联企业列表中，并按照 id 的顺序排序
+  allRelatedNodes.value.push({ ...nodeGlobal.value })
+  allRelatedNodes.value.sort((a, b) => {
+    return parseInt(a.id) - parseInt(b.id);
+  });
+  //更新未关联企业列表（深拷贝），并按照 id 的顺序排序
+  Object.assign(unrelatedNodes.value, unrelatedNodes.value.filter(node => {
+    return node.id !== nodeGlobal.value.id
+  }))
   //更新搜索结果列表
-  relatedNodes.value = allNodes.value.filter(node => {
+  relatedNodes.value = allRelatedNodes.value.filter(node => {
     return node.name.includes(searchParam.value)
+  })
+  //清空全局变量nodeGlobal（清空对话框属性）
+  Object.assign(nodeGlobal.value, {
+    id: '',
+    name: '',
+    index: -1,
+    filed: '',
+    category: '',
+    network: [] as string[],
+    relation: [] as string[],
+    x: -1,
+    y: -1,
+    deleted: false
+  })
+  //关闭弹窗
+  ElMessage({
+    type: 'success',
+    message: '关联企业新增成功',
+  })
+  addDialogVisible.value = false
+}
+
+// 5.初始化（重置）企业关联列表
+const recoverallRelatedNodes = () => {
+  allRelatedNodes.value = [...initialRelatedNodes.value];
+  unrelatedNodes.value=[...initialUnrelatedNodes.value];
+
+  //更新搜索结果列表
+  relatedNodes.value = allRelatedNodes.value.filter(node => {
+    return node.name.includes(searchParam.value)
+  })
+  ElMessage({
+    type: 'success',
+    message: '关联企业关系已重置',
+    duration: 1500
   })
 }
 
-//提交修改后的关联关系
+//6.提交关联关系
 let previousSubmission = ref();
 const submitModify = () => {
-  if (previousSubmission && JSON.stringify(previousSubmission) === JSON.stringify(allNodes)) {
-    alert('关联关系没有更改，请勿重复提交');
+  if (previousSubmission && JSON.stringify(previousSubmission) === JSON.stringify(allRelatedNodes)) {
+    ElMessage({
+      type: 'warning',
+      message: '关联关系未更改，请勿重复提交',
+      duration: 1500
+    })
   } else {
-    previousSubmission = JSON.parse(JSON.stringify(allNodes));
-    emits('onRelationModify', allNodes);
-    alert('关联关系提交成功');
+    previousSubmission = JSON.parse(JSON.stringify(allRelatedNodes));
+    emits('onRelationModify', allRelatedNodes);
+    ElMessage({
+      type: 'success',
+      message: '关联关系提交成功',
+      duration: 1500
+    })
   }
 }
 
