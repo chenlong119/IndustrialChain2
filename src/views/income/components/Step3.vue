@@ -150,7 +150,6 @@ const competitiveNum = ref(0)
 function Calculate(nodes) {
   const nodesArray = nodes.value  //将ref对象转换为数组
   // 重新计算前，先将数据清零
-  console.log("nodesArray", nodesArray)
   totalNum.value = 0;
   supplyNum.value = 0;
   cooperationNum.value = 0;

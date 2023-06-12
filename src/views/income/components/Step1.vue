@@ -20,7 +20,7 @@
                         :header-cell-style="{
                             // textAlign: 'center',
                             height: '60px',
-                        }" :row-style="{textAlign: 'center',height: '54px',}" class="my-table">
+                        }" :row-style="{ textAlign: 'center', height: '54px', }" class="my-table">
                         <el-table-column fixed type="index" :index="indexMethod" label="序号" width="100" />
                         <el-table-column prop="id" label="企业id" width="100" />
                         <el-table-column prop="name" label="企业名称" width="150" />
@@ -48,8 +48,8 @@
                         </el-table-column>
 
                         <el-table-column prop="infomation" label="企业信息" width="120">
-                            <template #default>
-                                <el-button link type="primary" @click="handleClick">查看详情</el-button>
+                            <template #default="scope">
+                                <el-button link type="primary" @click="handleInfo(scope.row)">查看详情</el-button>
                             </template>
                         </el-table-column>
                     </el-table>
@@ -57,6 +57,26 @@
                     <el-pagination v-model="currentPage" :page-size="pageSize" :pager-count="11" layout="prev, pager, next"
                         :total="relatedNodesWithout.length" @current-change="handleCurrentChange"
                         @size-change="handleSizeChange" />
+
+                    <el-dialog v-model="infoDialogVisible" title="企业详情" align-center>
+                        <el-form :model="info">
+                            <el-form-item label="" :label-width="formLabelWidth">
+                                企业id：{{ info.id }}
+                            </el-form-item>
+                            <el-form-item label="" :label-width="formLabelWidth">
+                                企业名称：{{ info.name }}
+                            </el-form-item>
+                            <el-form-item label="" :label-width="formLabelWidth">
+                                企业所处领域：{{ info.filed }}
+                            </el-form-item>
+                            <el-form-item label="" :label-width="formLabelWidth">
+                                企业所处产业链：{{ info.category }}
+                            </el-form-item>
+                            <el-form-item label="" :label-width="formLabelWidth">
+                                关联关系：{{ info.relation }}
+                            </el-form-item>
+                        </el-form>
+                    </el-dialog>
 
                 </el-main>
             </el-container>
@@ -290,28 +310,6 @@ const indexMethod = (index) => {
 
 
 
-// //筛选器
-// function filterTag(value, row, relatedNodesWithout) {
-//     // 记录当前筛选值
-//     const filterValues = Array.isArray(value) ? value : [value];
-//     console.log("filterValues",filterValues)
-//     if (filterValues.length!==0) {
-//         filteredNodes.value= relatedNodesWithout.value.some(node => filterValues.some(filterValue => node.linkData.relation.includes(filterValue)));
-//     }else{
-//         console.log("不是空的")
-//         console.log("filteredNodes",filteredNodes.value)
-//     }
-// }
-
-// function filterTag(value) {
-//     console.log("value",value)
-//     const filterValues = Array.isArray(value) ? value : [value]; //将筛选的关系转换为数组
-//     return relatedNodesWithout.value.some(node => filterValues.some(filterValue => node.relation.includes(filterValue)));
-// }
-
-
-
-
 // 筛选器
 function filterTag(value, row) {
     const filterValues = Array.isArray(value) ? value : [value];
@@ -329,9 +327,6 @@ const filteredNodes = computed(() => {
     });
     return nodes;
 });
-
-
-
 //分页后的数据
 const pagedFilteredNodes = computed(() => {
     const start = (currentPage.value - 1) * pageSize.value;
@@ -339,6 +334,27 @@ const pagedFilteredNodes = computed(() => {
     if (!Array.isArray(filteredNodes.value) || filteredNodes.value.length === 0) { return []; }
     return filteredNodes.value.slice(start, end);
 });
+
+
+//"查看详情"功能
+const infoDialogVisible = ref(false)
+const formLabelWidth = '140px'
+let info = ref({
+    id: '',
+    name: '',
+    index: -1,
+    filed: '',
+    category: '',
+    network: [],
+    relation: [],
+    x: -1,
+    y: -1,
+    deleted: false
+});
+const handleInfo = (row) => {
+    infoDialogVisible.value = true
+    info.value = row
+}
 
 
 </script>
@@ -359,6 +375,7 @@ const pagedFilteredNodes = computed(() => {
     margin-right: 10px;
     font-weight: bold
 }
+
 .content-text {
     margin-right: 10px;
     margin-bottom: 10px;
