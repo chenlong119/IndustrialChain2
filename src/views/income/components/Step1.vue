@@ -20,10 +20,7 @@
                         :header-cell-style="{
                             // textAlign: 'center',
                             height: '60px',
-                        }" :row-style="{
-                            textAlign: 'center',
-                            height: '50px',
-                        }" class="my-table">
+                        }" :row-style="{textAlign: 'center',height: '50px',}" class="my-table">
                         <el-table-column fixed type="index" :index="indexMethod" label="序号" width="100" />
                         <el-table-column prop="id" label="企业id" width="100" />
                         <el-table-column prop="name" label="企业名称" width="150" />
@@ -34,7 +31,8 @@
                             { text: '供应关系', value: '供应关系' },
                             { text: '合作关系', value: '合作关系' },
                             { text: '竞争关系', value: '竞争关系' },
-                        ]" :filter-method="filterTag" filter-placement="bottom-end">
+                        ]" :filter-method="(value, row) => filterTag(value, row, relatedNodesWithout)"
+                            filter-placement="bottom-end">
                             <template #default="scope">
                                 <el-dropdown trigger="click" placement="bottom-end">
                                     <span class="el-dropdown-link">
@@ -107,24 +105,24 @@ for (const link of jsonData.links) {
 const selectedNode = ref(""); //用户选择的节点
 const relatedNodesWithout = ref([]); //没有加上选中节点（用于表格）
 const relatedNodesWith = ref([]); //加上了选中节点（用于画图）
-const selectedTag = ref('');
 const relatedNodeIds = new Set();
+// const filteredNodes = ref([]); //筛选后的节点
 //获取关系图信息（存入graph）
 const graph = {
     id: '',
     name: '',
-    filed:'',
-    category:'',
-    network:'',
+    filed: '',
+    category: '',
+    network: '',
     nodes: [],
     links: [],
 };
 //获取表格信息（存入relate）
-const relate={
-    nodes:[],
+const relate = {
+    nodes: [],
 }
 //监听用户选择的节点
-watch([selectedNode, selectedTag], () => {
+watch([selectedNode], () => {
     if (!selectedNode.value) {
         relatedNodes.value = [];
         return;
@@ -161,12 +159,9 @@ watch([selectedNode, selectedTag], () => {
             .join(",");
         node.index = index + 1;
     });
-    // // 筛选类型
-    // if (selectedTag.value) {
-    //     tempRelatedNodes = tempRelatedNodes.filter(node => node.relation.includes(selectedTag.value));
-    // }
     relatedNodesWithout.value = tempRelatedNodes1;
     relatedNodesWith.value = tempRelatedNodes2;
+    // filteredNodes.value = tempRelatedNodes1;   //筛选节点
 
 
     //清空relate
@@ -185,14 +180,14 @@ watch([selectedNode, selectedTag], () => {
     // 存数据(传给后续步骤)
     const selectedNodeInfo = computed(() => {
         const node = nodeData.find((node) => node.id === selectedNode.value);
-        return node ? { id: node.id, name: node.name, filed:node.filed, category:node.category, network:node.network} 
-            : { id: '', name: '', filed:'', category:'', network:'' };
+        return node ? { id: node.id, name: node.name, filed: node.filed, category: node.category, network: node.network }
+            : { id: '', name: '', filed: '', category: '', network: '' };
     });
     //选中节点的信息
-    graph.id = selectedNodeInfo.value.id 
-    graph.name = selectedNodeInfo.value.name 
-    graph.filed = selectedNodeInfo.value.filed 
-    graph.category = selectedNodeInfo.value.category 
+    graph.id = selectedNodeInfo.value.id
+    graph.name = selectedNodeInfo.value.name
+    graph.filed = selectedNodeInfo.value.filed
+    graph.category = selectedNodeInfo.value.category
     graph.network = selectedNodeInfo.value.network
     //关联节点和连接信息
     for (const node of relatedNodesWith.value) {
@@ -295,14 +290,29 @@ const indexMethod = (index) => {
 
 
 
-// function filterTag(value) {
-//     const newFilterValue = Array.isArray(value) ? value : [value];  //将筛选的关系转换为数组
-//     if (JSON.stringify(newFilterValue) !== JSON.stringify(filterValue.value)) {
-//         filterValue.value = newFilterValue;
-//         currentPage.value = 1;
+// //筛选器
+// function filterTag(value, row, relatedNodesWithout) {
+//     // 记录当前筛选值
+//     const filterValues = Array.isArray(value) ? value : [value];
+//     console.log("filterValues",filterValues)
+//     if (filterValues.length!==0) {
+//         filteredNodes.value= relatedNodesWithout.value.some(node => filterValues.some(filterValue => node.linkData.relation.includes(filterValue)));
+//     }else{
+//         console.log("不是空的")
+//         console.log("filteredNodes",filteredNodes.value)
 //     }
 // }
-//筛选器
+
+// function filterTag(value) {
+//     console.log("value",value)
+//     const filterValues = Array.isArray(value) ? value : [value]; //将筛选的关系转换为数组
+//     return relatedNodesWithout.value.some(node => filterValues.some(filterValue => node.relation.includes(filterValue)));
+// }
+
+
+
+
+// 筛选器
 function filterTag(value, row) {
     const filterValues = Array.isArray(value) ? value : [value];
     return filterValues.some(filterValue => row.relation.includes(filterValue));
@@ -319,6 +329,9 @@ const filteredNodes = computed(() => {
     });
     return nodes;
 });
+
+
+
 //分页后的数据
 const pagedFilteredNodes = computed(() => {
     const start = (currentPage.value - 1) * pageSize.value;

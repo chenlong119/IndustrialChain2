@@ -80,7 +80,7 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
-import { watch, nextTick, computed } from 'vue'
+import { watch, nextTick, watchEffect } from 'vue'
 import isEqual from 'lodash/isEqual';
 import { ElMessage, ElMessageBox } from 'element-plus'
 
@@ -138,8 +138,9 @@ watch(
       }
     });
   },
-  { deep: true, immediate: true, flush: 'sync' }
+  { deep: true, immediate: true, flush: 'sync'}
 )
+
 
 const totalNum = ref(0)
 const supplyNum = ref(0)
@@ -149,12 +150,11 @@ const competitiveNum = ref(0)
 function Calculate(nodes) {
   const nodesArray = nodes.value  //将ref对象转换为数组
   // 重新计算前，先将数据清零
+  console.log("nodesArray", nodesArray)
   totalNum.value = 0;
   supplyNum.value = 0;
   cooperationNum.value = 0;
   competitiveNum.value = 0;
-
-  // console.log("nodeArray",nodesArray)
   for (const node of nodesArray) {
     if (!node.deleted) {
       totalNum.value++
@@ -168,72 +168,8 @@ function Calculate(nodes) {
     if (!node.deleted && node.relation.includes('竞争关系')) {
       competitiveNum.value++
     }
-
   }
 }
-
-
-
-// const calculatedValues = computed(() => {
-//   const nodesArray = nodes.value
-//   console.log("nodesArray", nodesArray)
-//   let result = {
-//     totalNum: 0,
-//     supplyNum: 0,
-//     cooperationNum: 0,
-//     competitiveNum: 0
-//   }
-
-//   for (const node of nodesArray) {
-//     if (!node.deleted) {
-//       result.totalNum++
-//     }
-//     if (!node.deleted && node.relation.includes('供应关系')) {
-//       result.supplyNum++
-//     }
-//     if (!node.deleted && node.relation.includes('合作关系')) {
-//       result.cooperationNum++
-//     }
-//     if (!node.deleted && node.relation.includes('竞争关系')) {
-//       result.competitiveNum++
-//     }
-//   }
-//   console.log("result", result)
-//   return result
-// })
-
-// const totalNum = computed(() => {
-//   return calculatedValues.value.totalNum
-// })
-
-// const supplyNum = computed(() => {
-//   return calculatedValues.value.supplyNum
-// })
-
-// const cooperationNum = computed(() => {
-//   return calculatedValues.value.cooperationNum
-// })
-
-// const competitiveNum = computed(() => {
-//   return calculatedValues.value.competitiveNum
-// })
-
-
-// // 实时更新关联企业数据
-// watch(
-//   () => props.relatedNodesWithoutGlobal,
-//   (newVal) => {
-//     if (newVal) {
-//       Object.assign(nodes, newVal);
-//       calculatedValues.value  //重新计算 
-//     }
-//   },
-//   {
-//     deep: true,
-//     immediate: true,
-//     flush: 'sync'
-//   }
-// );
 
 
 //表单输入数据
@@ -289,10 +225,10 @@ const submitForm = async (formEl: FormInstance | undefined) => {
     lastInputForm.value.remark === inputForm.remark
   ) {
     ElMessage({
-        type: 'warning',
-        message: '参数未更改，请勿重复提交',
-        duration: 1500
-      })
+      type: 'warning',
+      message: '参数未更改，请勿重复提交',
+      duration: 1500
+    })
     return;
   }
   await formEl.validate((valid, fields) => {

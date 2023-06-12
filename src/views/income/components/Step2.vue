@@ -50,7 +50,7 @@
 
   <el-pagination v-model="currentPage" :page-size="pageSize" :pager-count="8" layout="prev, pager, next"
     :total="relatedNodes.length" @current-change="handleCurrentChange" @size-change="handleSizeChange"
-    style="float: right; margin: 20px;"/>
+    style="float: right; margin: 20px;" />
   <br />
   <el-form-item>
     <el-button type="primary" @click="submitModify">
@@ -122,7 +122,9 @@ import { watch, nextTick, computed } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 
 
-const emits = defineEmits(['onRelationModify']);  //定义组件的自定义事件
+const emits = defineEmits(['onRelationSubmit', 'onRelationModify']);  //自定义事件
+
+
 //接收数据
 const props = defineProps({
   relatedNodesWithGlobal: Object,
@@ -354,6 +356,7 @@ function saveEdit() {
     })
     editDialogVisible.value = false //关闭弹窗
   }
+  emits('onRelationModify', allRelatedNodes);
 }
 
 //3.“删除关联企业”功能
@@ -383,7 +386,6 @@ const deleteNode = (row) => {
           return node
         }
       })
-      console.log("删除之后的allRelatedNodes.value",allRelatedNodes.value)
       //更新搜索结果列表
       relatedNodes.value = allRelatedNodes.value.filter(node => {
         return node.name.includes(searchParam.value)
@@ -395,6 +397,7 @@ const deleteNode = (row) => {
         message: '取消删除',
       })
     })
+  emits('onRelationModify', allRelatedNodes);
 }
 
 //4.“新增节点”功能
@@ -468,22 +471,33 @@ const addNode = () => {
     message: '关联企业新增成功',
   })
   addDialogVisible.value = false
+  emits('onRelationModify', allRelatedNodes);
 }
 
 // 5.初始化（重置）企业关联列表
 const recoverallRelatedNodes = () => {
-  allRelatedNodes.value = [...initialRelatedNodes.value];
-  unrelatedNodes.value=[...initialUnrelatedNodes.value];
+  //比较初始和企业关联列表的值 
+  if (JSON.stringify(allRelatedNodes.value) === JSON.stringify(initialRelatedNodes.value)) {
+    ElMessage({
+      type: 'warning',
+      message: '关联企业关系未更改，无需重置',
+      duration: 1500
+    })
+  } else {
+    allRelatedNodes.value = [...initialRelatedNodes.value];
+    unrelatedNodes.value = [...initialUnrelatedNodes.value];
+    //更新搜索结果列表
+    relatedNodes.value = allRelatedNodes.value.filter(node => {
+      return node.name.includes(searchParam.value)
+    })
+    ElMessage({
+      type: 'success',
+      message: '关联企业关系已重置',
+      duration: 1500
+    })
+    emits('onRelationModify', allRelatedNodes);
+  }
 
-  //更新搜索结果列表
-  relatedNodes.value = allRelatedNodes.value.filter(node => {
-    return node.name.includes(searchParam.value)
-  })
-  ElMessage({
-    type: 'success',
-    message: '关联企业关系已重置',
-    duration: 1500
-  })
 }
 
 //6.提交关联关系
@@ -497,7 +511,7 @@ const submitModify = () => {
     })
   } else {
     previousSubmission = JSON.parse(JSON.stringify(allRelatedNodes));
-    emits('onRelationModify', allRelatedNodes);
+    emits('onRelationSubmit', allRelatedNodes);
     ElMessage({
       type: 'success',
       message: '关联关系提交成功',

@@ -13,13 +13,15 @@
       <Step1 @onGraph="handleGraph" @onRelatedNodesWith="handleRelatedNodesWith"></Step1>
     </div>
     <div v-show="active === 1">
-      <Step2 @onRelationModify="handleRelatedNodesWithout" :relatedNodesWithGlobal="relatedNodesWithGlobal"></Step2>
+      <Step2 @onRelationSubmit="handleRelatedNodesWithout" @onRelationModify="handleRelationModify"
+        :relatedNodesWithGlobal="relatedNodesWithGlobal"></Step2>
     </div>
     <div v-show="active === 2">
-      <Step3 @onFormInput="onFormInput" :graphGlobal="graphGlobal" :relatedNodesWithoutGlobal="relatedNodesWithoutGlobal"></Step3>
+      <Step3 @onFormInput="onFormInput" :graphGlobal="graphGlobal" :relatedNodesWithoutGlobal="relatedNodesWithoutGlobal">
+      </Step3>
     </div>
     <div v-show="active === 3">
-      <Step4 :step3Param="step3Param"></Step4>
+      <Step4 :formGlobal="formGlobal" :relatedNodesWithoutGlobal="relatedNodesWithoutGlobal" :relatedNodesWithoutGlobalRefs="relatedNodesWithoutGlobalRefs"></Step4>
     </div>
   </el-card>
   <div class="button-container">
@@ -36,7 +38,7 @@
 
 <script setup>
 import { OfficeBuilding, Switch, Edit, TrendCharts, ArrowLeft, ArrowRight } from '@element-plus/icons-vue'
-import { ref, toRaw, reactive, computed, nextTick, watch } from 'vue'
+import { ref, toRef, toRaw, reactive, computed, nextTick, watch } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import Step1 from './components/Step1.vue'
 import Step2 from './components/Step2.vue'
@@ -50,43 +52,55 @@ const relatedNodesWithGlobal = reactive({})
 const graphGlobal = reactive({})
 //关联节点和连接信息（不含节点自身）——Step2获得
 const relatedNodesWithoutGlobal = reactive({})
+const relatedNodesWithoutGlobalRefs = ref({})
+// const relatedNodesWithoutGlobal = ref({})
+const relatedNodesWithoutModify = reactive({})
 //用户输入的参数信息——Step3获得
 const formGlobal = reactive({})
 
+//判断是否提交关联关系（true需要在Step2中进行提交）
+const isSubmitRelation = ref(false)
+const isModifyRelation = ref(false)  //是否在提交之后又修改了关联关系
 
 //获取Step1的关联节点、关系图信息
 const handleRelatedNodesWith = (value) => {
-  // console.log(value)
   nextTick(() => {
     Object.assign(relatedNodesWithGlobal, value);
+    isSubmitRelation.value = true
   });
+
   // 将响应式对象转换为普通的对象数组
   // console.log("转换前的对象数组：", relatedNodesWithGlobal);
   // const objArray = toRaw(nodeGlobal);
   // console.log("转换后的对象数组：", objArray);
 };
 const handleGraph = (value) => {
-  // console.log(value)
   nextTick(() => {
     Object.assign(graphGlobal, value);
   });
 };
 
+
 //获取Step2的参数信息
 const handleRelatedNodesWithout = (value) => {
   nextTick(() => {
     Object.assign(relatedNodesWithoutGlobal, value);
+    relatedNodesWithoutGlobalRefs.value = toRef(relatedNodesWithoutGlobal); //将响应式对象转换为普通的对象数组
+
+    isSubmitRelation.value = false
+    isModifyRelation.value = false
   });
-  // console.log("step2提交的参数：", relatedNodesWithoutGlobal);
-  // // 将响应式对象转换为普通的对象数组
-  // console.log("step3提交的参数：", formGlobal);
-  // const objArray = toRaw(step2Param);
-  // console.log("转换后的对象数组：", objArray);
+};
+const handleRelationModify = (value) => {
+  nextTick(() => {
+    Object.assign(relatedNodesWithoutModify, value);
+    isModifyRelation.value = true
+  });
 };
 
 //获取Step3的参数信息
 const onFormInput = (value) => {
-    Object.assign(formGlobal, value);
+  Object.assign(formGlobal, value);
 };
 
 
@@ -95,24 +109,20 @@ const onFormInput = (value) => {
 const isEmptyNode = computed(() => {
   return Object.keys(relatedNodesWithGlobal).length === 0;
 });
-//计算用户是否修改了连接关系（Step2）
-const isModifyRelation = computed(() => {
-  return (
-    Object.keys(relatedNodesWithoutGlobal).length === 0 ||
-    Object.values(relatedNodesWithoutGlobal).every(item => !item)  
-  );
-});
+
 //计算用户是否输入了参数（Step3）
 const isEmptyForm = computed(() => {
   const values = Object.values(formGlobal);
   return values.every(value => {
     if (Array.isArray(value)) {
-      return value.length === 0;  
+      return value.length === 0;
     } else {
       return value === '';
-    }   
-  }); 
+    }
+  });
 });
+
+
 
 //步骤条
 const active = ref(0)
@@ -132,12 +142,18 @@ const next = () => {
     }
   }
   else if (active.value === 1) {
-    if (!isModifyRelation.value) {
+    if (!isSubmitRelation.value && !isModifyRelation.value) {
       active.value = 2;
-    } else {
+    } else if (isSubmitRelation.value) {
       ElMessage({
         type: 'error',
         message: '请先提交关联关系！',
+        duration: 3000
+      })
+    } else if (isModifyRelation.value) {
+      ElMessage({
+        type: 'error',
+        message: '关联关系已修改，请重新提交！',
         duration: 3000
       })
     }
