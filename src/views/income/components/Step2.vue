@@ -1,31 +1,32 @@
 <template>
-  <span style="font-weight: bold;">当前评估企业：{{ nodeName }}</span><br />
-  <span style="font-weight: bold;">关联企业列表：</span>
+  <div style="margin-left:20px;margin-top: 10px;"><span>当前评估企业：</span><span style="font-weight: bold;font-size: large;">{{ nodeName }}</span></div>
 
   <div class="search-box">
     <div class="search-container">
-      <span style="font-weight: bold;">搜索：</span>
-      <el-input v-model.trim="searchParam" placeholder="请输入企业名/连接关系" />
+      <span>搜索：</span>
+      <el-input v-model.trim="searchParam" placeholder="关联企业名称/关联关系" />
       <el-button :icon="Search" class="search-btn" @click="handleSearch"></el-button>
       <el-button @click="clearSearch">清空搜索</el-button>
     </div>
     <div class="add-container">
-      <el-button class="add-btn" type="primary" @click="addDialogVisible = true">新增企业</el-button>
+      <el-button class="add-btn" type="primary" @click="addDialogVisible = true">新增关联企业</el-button>
       <el-button class="add-btn" type="primary" @click="recoverallRelatedNodes">重置关联关系</el-button>
     </div>
   </div>
 
+  <!-- <div style="margin-bottom: 10px;"> <span>关联企业：</span></div> -->
+
+
   <el-table :data="pagedRelatedNodes" style="width: 100%;height:480px" highlight-current-row :header-cell-style="{
-    // textAlign: 'center',
     height: '60px',
-  }" :row-style="{ height: '50px' }" class="my-table">
+  }" :row-style="{ height: '54px' }" class="my-table" >
 
     <el-table-column fixed type="index" :index="indexMethod" align="center" label="序号" width="100" />
     <el-table-column prop="id" label="企业id" align="center" width="100" />
-    <el-table-column prop="name" label="企业名称" align="center" width="250" />
-    <el-table-column prop="filed" label="所处领域" align="center" width="250" />
-    <el-table-column prop="category" label="所处产业链" align="center" width="250" />
-    <el-table-column label="连接关系" align="center" width="250">
+    <el-table-column prop="name" label="企业名称" align="center" width="240" />
+    <el-table-column prop="filed" label="所处领域" align="center" width="240" />
+    <el-table-column prop="category" label="所处产业链" align="center" width="240" />
+    <el-table-column label="连接关系" align="center" width="240">
       <template #default="scope">
         <span class="el-dropdown-link">
           <template v-for="(rel) in scope.row.relation">
@@ -40,9 +41,6 @@
     <el-table-column prop="tool" label="操作" align="center" width="400">
       <template #default="scope">
         <el-button type="primary" :icon="Edit" circle @click="editNode(scope.row)" />
-
-
-
         <el-button type="danger" :icon="Delete" circle @click="deleteNode(scope.row)" />
       </template>
     </el-table-column>
@@ -81,7 +79,7 @@
     </template>
   </el-dialog>
 
-  <el-dialog v-model="addDialogVisible" title="新增企业" align-center>
+  <el-dialog v-model="addDialogVisible" title="新增关联企业" align-center>
     <el-form :model="nodeGlobal">
       <el-form-item label="" :label-width="formLabelWidth">
         企业id：{{ nodeGlobal.id }}
@@ -276,7 +274,7 @@ const handleSearch = () => {
     return
   }
   const searchResult = allRelatedNodes.value.filter(node => {
-    return node.name.includes(searchParam.value as string) || (Array.isArray(node.relation) && node.relation.some(relation => relation === searchParam.value))
+    return node.name.includes(searchParam.value as string) || (Array.isArray(node.relation) && node.relation.some(relation => relation.includes(searchParam.value)))
   })
   if (searchResult.length === 0) {
     ElMessage({
@@ -534,6 +532,8 @@ const submitModify = () => {
   overflow: hidden;
   padding: 0 15px;
   background-color: #fff;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .search-container {

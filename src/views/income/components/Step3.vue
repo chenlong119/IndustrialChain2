@@ -1,6 +1,6 @@
 <template>
-  <el-form ref="inputFormRef" :model="inputForm" :rules="rules" label-width="200px" class="demo-ruleForm" :size="formSize"
-    status-icon>
+  <br />
+  <el-form ref="inputFormRef" :model="inputForm" :rules="rules" label-width="200px" :size="formSize" status-icon>
     <el-form-item label="评估企业id：" prop="nodeId">
       <span style="font-weight: bold;">{{ nodeId }}</span>
     </el-form-item>
@@ -275,3 +275,13 @@ const resetForm = () => {
 }
 
 </script>
+
+<style>
+.el-form-item__label {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .el-form-item__content {
+    font-size: 17px;
+  }
+</style>

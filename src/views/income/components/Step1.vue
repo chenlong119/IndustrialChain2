@@ -11,16 +11,16 @@
             </el-header>
             <el-container>
                 <el-main>
-                    <span class="header-text">企业关系图：</span>
+                    <span class="content-text">企业关系图：</span>
                     <div ref="relationGraph" style="height:550px;width:700px"></div>
                 </el-main>
                 <el-main>
-                    <span class="header-text">关联企业：</span>
+                    <div style="margin-bottom: 15px;"><span class="content-text">关联企业：</span></div>
                     <el-table :data="pagedFilteredNodes" style="width: 100%;height:480px" highlight-current-row
                         :header-cell-style="{
                             // textAlign: 'center',
                             height: '60px',
-                        }" :row-style="{textAlign: 'center',height: '50px',}" class="my-table">
+                        }" :row-style="{textAlign: 'center',height: '54px',}" class="my-table">
                         <el-table-column fixed type="index" :index="indexMethod" label="序号" width="100" />
                         <el-table-column prop="id" label="企业id" width="100" />
                         <el-table-column prop="name" label="企业名称" width="150" />
@@ -359,6 +359,12 @@ const pagedFilteredNodes = computed(() => {
     margin-right: 10px;
     font-weight: bold
 }
+.content-text {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-weight: bold
+}
+
 
 .my-table {
     border: 1px solid #ebeef5;
