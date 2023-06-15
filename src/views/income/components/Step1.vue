@@ -12,11 +12,11 @@
             <el-container>
                 <el-main>
                     <span class="content-text">企业关系图：</span>
-                    <div ref="relationGraph" style="height:550px;width:700px"></div>
+                    <div ref="relationGraph" style="height:550px;width:500px"></div>
                 </el-main>
                 <el-main>
                     <div style="margin-bottom: 15px;"><span class="content-text">关联企业：</span></div>
-                    <el-table :data="pagedFilteredNodes" style="width: 100%;height:480px" highlight-current-row
+                    <el-table :data="pagedFilteredNodes" style="width: 800px;height:500px" highlight-current-row
                         :header-cell-style="{
                             // textAlign: 'center',
                             height: '60px',

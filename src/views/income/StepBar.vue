@@ -188,7 +188,8 @@ const next = () => {
   margin-top: 12px;
   margin-left: 12px;
   margin-right: 12px;
-  height: 650px;
+  /* height: 650px; */
+  height: auto;
   background-color: (255, 255, 255, 0.1);
 }
 
