@@ -1,10 +1,32 @@
 <template>
-  <!-- <p>评估时间：{{ time }}</p> -->
-  <p>收益评估部分</p>
-  <p>评估时间：{{ formData.time }}</p>
-  <p>风险选择：{{ formData.preference }}</p>
-  <p>合作策略：{{ formData.strategy }}</p>
-  <p>{{ relatedNodesData }}</p>
+  <el-button type="success" plain @click="formulaVisible = true" style="margin-bottom: 10px;">计算公式</el-button>
+
+<el-dialog v-model="formulaVisible" title="多重产业链收益评估算法">
+  <el-form>
+    <el-form-item label="计算公式：" :label-width="formLabelWidth">
+      <span>收益率=(总收益 - 总成本) / 总成本</span>
+    </el-form-item>
+    <el-form-item label="参数1：" :label-width="formLabelWidth">
+      <span>企业关联关系（权重0.95）</span>
+    </el-form-item>
+    <el-form-item label="参数2：" :label-width="formLabelWidth">
+      <span>风险选择（权重0.71）</span>
+    </el-form-item>
+    <el-form-item label="参数3：" :label-width="formLabelWidth">
+      <span>合作策略（权重0.87）</span>
+    </el-form-item>
+    <el-form-item label="参数4：" :label-width="formLabelWidth">
+      <span>企业地位（权重0.66）</span>
+    </el-form-item>
+  </el-form>
+</el-dialog>
+
+<div class="container">
+  <LineChart></LineChart>
+</div>
+<div class="container">
+  <CombinedChart></CombinedChart>
+</div>
 </template>
   
   
@@ -12,6 +34,11 @@
 import { colProps } from 'element-plus';
 import { reactive, ref, toRefs, toRaw } from 'vue'
 import { watch, watchEffect, nextTick } from 'vue'
+import LineChart from './chart/LineChart.vue'
+import CombinedChart from './chart/CombinedChart.vue'
+const formulaVisible = ref(false)
+const formLabelWidth = '140px'
+
 
 //接收数据
 const props = defineProps({
@@ -84,3 +111,13 @@ watchEffect(() => {
 
 
 </script>
+
+<style lang="scss" scoped>
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+</style>
