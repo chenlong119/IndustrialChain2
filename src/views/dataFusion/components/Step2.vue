@@ -1,31 +1,47 @@
+<template>
+    <div class="common-layout">
+      <div id="main2" ref="chartContainer"
+           style="width: 1000px;height:400px;margin-left:100px;background-color: rgba(250,247,247,0.5)"></div>
+    </div>
+</template>
+  
+  
 <script setup>
-import {onMounted} from "vue";
-import * as echarts from 'echarts/core';
-import axios from 'axios';
+import { ref, reactive, computed, watch, onMounted, nextTick } from 'vue'
+import * as echarts from 'echarts'
+import axios from "axios";  //引入echarts
+
+//定义组件的自定义事件
+//const graph = ref(null);
+const chartContainer = ref(null);
 let myChart = null;
 onMounted(async () => {
-  const chartDom = document.getElementById('main');
-  myChart = echarts.init(chartDom);
+  // const chartDom = document.getElementById('main2');
+  // myChart = echarts.init(chartDom);
+  const chartDom = chartContainer.value;
+  const myChart = echarts.init(chartDom);
   const response = await axios.get('/src/assets/dataFusion/task.json');
   const graph = response.data;
-  //console.log(graph)
-  const containerWidth = document.getElementById('main').clientWidth;// 图形容器的宽度
-  const containerHeight = document.getElementById('main').clientHeight;// 图形容器的高度
+  console.log(graph)
+  // const containerWidth = document.getElementById('main2').clientWidth;// 图形容器的宽度
+  // const containerHeight = document.getElementById('main2').clientHeight;// 图形容器的高度
 
-  //计算polygon的相对坐标点
+  const containerWidth = chartContainer.value.clientWidth;
+  const containerHeight = chartContainer.value.clientHeight;
+//计算polygon的相对坐标点
   function calculatePoints(points) {
     const widthRatio = containerWidth / 800; // 宽度比例
     const heightRatio = containerHeight / 500; // 高度比例
     return points.map(point => [point[0] * widthRatio, point[1] * heightRatio]);
   }
 
-  // 计算节点的相对位置
+// 计算节点的相对位置
   graph.nodes.forEach(node => {
     node.x = node.x / 800 * containerWidth;
     node.y = node.y / 500 * containerHeight;
   });
 
-  //绘制ECharts关系图
+//绘制ECharts关系图
   myChart.setOption({
     graphic: [
       {
@@ -53,6 +69,33 @@ onMounted(async () => {
             position: [-50, 70], // 相对于 group 左上角位置的偏移量
             style: {
               text: '汽车产业链', // 你要显示的文字
+              fill: 'black', // 文字颜色
+              fontSize: 14 // 文字大小
+            }
+          }
+        ]
+      },
+      {
+        type: 'group',
+        position: [100, 190], // 左上角位置，根据需要进行调整
+        children: [
+          {
+            type: 'polygon',
+            shape: {
+              points: calculatePoints([[-10, -40], [650, -40], [615, 50], [-50, 50]])  // 左上、右上、右下、左下
+            },
+            style: {
+              fill: '#eee',
+              stroke: 'black',
+              lineWidth: 3,
+              opacity: 0.3,
+            }
+          },
+          {
+            type: 'text',
+            position: [-50, 25], // 相对于 group 左上角位置的偏移量
+            style: {
+              text: '虚拟共有层', // 你要显示的文字
               fill: 'black', // 文字颜色
               fontSize: 14 // 文字大小
             }
@@ -93,10 +136,10 @@ onMounted(async () => {
     ],
 
     title: {
-      // text: '多重产业链网络图',
+      text: '多重产业链任务聚类划分模型',
       // subtext: '这是一个副标题',
       top: 'bottom',
-      left: 'right'
+      left: 'center'
     },
 
 
@@ -106,12 +149,7 @@ onMounted(async () => {
       formatter: function (params) {
         // console.log(params)
         if (params.dataType === 'node') {
-          // var id = params.data.id;
-          // var name = params.name;
-          // var filed = params.data.filed;
-          // var category = params.data.category;
-          // var network = params.data.network;
-          // return "id: " + id + '<br/>' + "企业：" + name + '<br/>' + "所处领域：" + filed + '<br/>' + '所处产业链: ' + category + '<br/>' + '所处网络: ' + network;
+
           var id = params.data.id;
           var name = params.data.name;
           var requirements = params.data.requirements;
@@ -122,12 +160,7 @@ onMounted(async () => {
           var lists = params.data.lists;
           return "id: " + id + '<br/>' + "任务名称：" + name + '<br/>' + "资源需求：" + requirements + '<br/>' + "预期产量：" + products + '<br/>' + "截止时间：" + deadline + '<br/>' + "预估耗时：" + lastTime + '<br/>' + "参与企业数量：" + numbers + '<br/>' + "参与企业名单：" + lists;
         }
-        else if (params.dataType === 'edge') {
-            var source = params.data.source;
-            var target = params.data.target;
-            var label = params.data.label.formatter;
-            return "源任务: " + source + '<br/>' + "目标任务：" + target + '<br/>' + "任务转移可能性：" + label;
-        }
+
       }
     },
     legend: [
@@ -155,14 +188,6 @@ onMounted(async () => {
       },
       edgeSymbol: ['none', 'arrow'],
       edgeSymbolSize: [4, 6],
-      edgeLabel: {
-        show: true,
-        formatter: function (x) {
-          return x.data.label.formatter;
-        },
-        fontSize: 12,
-        color: '#000000'
-      },
       lineStyle: {
         color: 'source',
         curveness: 0.2,
@@ -278,61 +303,31 @@ onMounted(async () => {
       myChart.on('mouseup', mouseupHandler);
     }
   });
-
-
 });
 
+
+
 </script>
-<template>
-  <div>
-  <div class="topicText">
-    <h2>任务关联分析</h2>
-  </div>
-    <div id="main" style="width: 1000px;height:400px;margin-left:150px;background-color: rgba(250,247,247,0.5);display: flex; justify-content: center; align-items: center;"></div>
 
+<style>
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-<!--    <el-form :inline="true">-->
-<!--      <el-form-item label="源任务：">-->
-<!--        <el-input v-model="formPredict.sourceId" placeholder="金属采购"></el-input>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="任务概率阈值：">-->
-<!--        <el-input v-model="formPredict.thresholdP" placeholder="0.4"></el-input>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item>-->
-<!--        <el-button type="primary" >预测</el-button>-->
-<!--      </el-form-item>-->
-<!--    </el-form>-->
+.flex-container {
+    display: flex;
+    align-items: center;
+}
 
-<!--    <el-table-->
-<!--        :data="resultPredict"-->
-<!--        stripe-->
-<!--        style="width: 100%">-->
-<!--      <el-table-column-->
-<!--          prop="target"-->
-<!--          label="目标任务"-->
-<!--          sortable>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column-->
-<!--          prop="delay_time"-->
-<!--          label="发生时延"-->
-<!--          sortable>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column-->
-<!--          prop="probability"-->
-<!--          label="发生概率"-->
-<!--          sortable>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column-->
-<!--          prop="path"-->
-<!--          label="关联路径">-->
-<!--      </el-table-column>-->
-<!--    </el-table>-->
-  </div>
-</template>
+.header-text {
+    margin-right: 10px;
+    font-weight: bold
+}
 
-<style scoped>
-.topicText {
-  text-align: center;
-  font-family: BlinkMacSystemFont;
+.my-table {
+    border: 1px solid #ebeef5;
+    border-radius: 4px;
 }
 </style>

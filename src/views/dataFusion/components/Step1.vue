@@ -1,7 +1,148 @@
+<template>
+    <div class="common-layout">
+      <div id="main"
+           style="width: 1000px;height:400px;margin-left:100px;background-color: rgba(250,247,247,0.5)"></div>
+      <div style="display: flex; justify-content: flex-end;">
+        <el-button
+            type="primary"
+            plain
+            icon="Plus"
+            @click="handleAdd"
+            v-hasPermi="['task:taskAllocation:add']"
+        >新任务输入</el-button>
+      </div>
+      <el-dialog :title="title" v-model="open" width="500px" append-to-body>
+        <el-form ref="taskAllocationRef" :model="form" :rules="rules" label-width="150px">
+          <el-form-item label="任务名称" prop="name">
+            <el-input v-model="form.name" placeholder="请输入任务名称" />
+          </el-form-item>
+          <el-form-item label="任务资源需求" prop="requirements">
+            <el-input v-model="form.requirements" placeholder="请输入任务资源需求" />
+          </el-form-item>
+          <el-form-item label="任务预估产量" prop="products">
+            <el-input v-model="form.products" placeholder="请输入任务预估产量" />
+          </el-form-item>
+          <el-form-item label="任务截止天数" prop="ddl">
+            <el-input v-model="form.ddl" placeholder="请输入任务截止天数" />
+          </el-form-item>
+          <el-form-item label="任务持续时长" prop="duration">
+            <el-input v-model="form.duration" placeholder="请输入任务持续天数"/>
+          </el-form-item>
+          <el-form-item label="任务参与企业数量" prop="number">
+            <el-input v-model="form.number" placeholder="任务参与企业数量"/>
+          </el-form-item>
+          <el-form-item label="任务参与企业名单" prop="lists">
+            <el-input v-model="form.lists" placeholder="任务参与企业名单"/>
+          </el-form-item>
+        </el-form>
+        <template #footer>
+          <div class="dialog-footer">
+            <el-button type="primary" @click="submitForm">确 定</el-button>
+            <el-button @click="cancel">取 消</el-button>
+          </div>
+        </template>
+      </el-dialog>
+    </div>
+</template>
+  
+  
 <script setup>
-import {onMounted} from "vue";
-import * as echarts from 'echarts/core';
-import axios from 'axios';
+import { ref, reactive, computed, watch, onMounted, nextTick } from 'vue'
+import jsonData from "@/assets/income/networkRelation.json"
+import * as echarts from 'echarts'
+import axios from "axios";  //引入echarts
+const open = ref(false);
+const title = ref("");
+const { proxy } = getCurrentInstance();
+const data = reactive({
+  form: {},
+  queryParams: {
+    pageNum: 1,
+    pageSize: 10,
+    name: null,
+    requirements: null,
+    products: null,
+    ddl: null,
+    duration: null,
+    number: null,
+    lists:null
+  },
+  rules: {
+    name: [
+      { required: true, message: "任务名称不能为空", trigger: "blur" }
+    ],
+    requirements: [
+      { required: true, message: "任务资源需求不能为空", trigger: "change" }
+    ],
+    products: [
+      { required: true, message: "任务预估产量不能为空", trigger: "change" }
+    ],
+    ddl: [
+      { required: true, message: "任务截止时间不能为空", trigger: "blur" }
+    ],
+    duration: [
+      { required: true, message: "任务持续时长不能为空", trigger: "blur" }
+    ],
+    number: [
+      { required: true, message: "任务参与企业数量不能为空", trigger: "blur" }
+    ],
+    lists: [
+      { required: true, message: "任务参与企业名单不能为空", trigger: "change" }
+    ]
+  }
+});
+const { queryParams, form, rules } = toRefs(data);
+function handleAdd() {
+  reset();
+  open.value = true;
+  title.value = "添加任务表 ";
+}
+
+function reset() {
+  form.value = {
+    id: null,
+    name: null,
+    requirements:null,
+    products:null,
+    ddl: null,
+    duration: null,
+    number: null,
+    lists: null,
+  };
+  proxy.resetForm("taskAllocationRef");
+}
+
+function submitForm() {
+  // proxy.$refs["taskAllocationRef"].validate(valid => {
+  //   if (valid) {
+  //     if (form.value.id != null) {
+  //       updateTaskAllocation(form.value).then(response => {
+  //         proxy.$modal.msgSuccess("修改成功");
+  //         open.value = false;
+  //         getList();
+  //       });
+  //     } else {
+  //       addTaskAllocation(form.value).then(response => {
+  //         proxy.$modal.msgSuccess("新增成功");
+  //         open.value = false;
+  //         getList();
+  //       });
+  //     }
+  //   }
+  // });
+  proxy.$refs["taskAllocationRef"].validate(valid => {
+    if(valid){
+      proxy.$modal.msgSuccess("新增成功");
+      open.value=false;
+    }
+  });
+}
+
+function cancel() {
+  open.value = false;
+  reset();
+}
+//定义组件的自定义事件
 let myChart = null;
 onMounted(async () => {
   const chartDom = document.getElementById('main');
@@ -59,6 +200,35 @@ onMounted(async () => {
           }
         ]
       },
+
+      {
+        type: 'group',
+        position: [100, 190], // 左上角位置，根据需要进行调整
+        children: [
+          {
+            type: 'polygon',
+            shape: {
+              points: calculatePoints([[-10, -40], [650, -40], [615, 50], [-50, 50]])  // 左上、右上、右下、左下
+            },
+            style: {
+              fill: '#eee',
+              stroke: 'black',
+              lineWidth: 3,
+              opacity: 0.3,
+            }
+          },
+          {
+            type: 'text',
+            position: [-50, 25], // 相对于 group 左上角位置的偏移量
+            style: {
+              text: '虚拟共有层', // 你要显示的文字
+              fill: 'black', // 文字颜色
+              fontSize: 14 // 文字大小
+            }
+          }
+        ]
+      },
+
       {
         type: 'group',
         position: [50, 310], // 左上角位置
@@ -66,7 +236,7 @@ onMounted(async () => {
           {
             type: 'polygon',
             shape: {
-              points: calculatePoints([[0, 30], [650, 30], [700, -100], [50, -100]])  // 左下、右下、右上、左上
+              points: calculatePoints([[0, 30], [650, 30], [700, -100], [55, -100]])  // 左下、右下、右上、左上
             },
             style: {
               fill: '#eee',
@@ -93,10 +263,10 @@ onMounted(async () => {
     ],
 
     title: {
-      // text: '多重产业链网络图',
+      text: '多重产业链任务结构模型',
       // subtext: '这是一个副标题',
       top: 'bottom',
-      left: 'right'
+      left: 'center'
     },
 
 
@@ -106,12 +276,7 @@ onMounted(async () => {
       formatter: function (params) {
         // console.log(params)
         if (params.dataType === 'node') {
-          // var id = params.data.id;
-          // var name = params.name;
-          // var filed = params.data.filed;
-          // var category = params.data.category;
-          // var network = params.data.network;
-          // return "id: " + id + '<br/>' + "企业：" + name + '<br/>' + "所处领域：" + filed + '<br/>' + '所处产业链: ' + category + '<br/>' + '所处网络: ' + network;
+
           var id = params.data.id;
           var name = params.data.name;
           var requirements = params.data.requirements;
@@ -122,21 +287,9 @@ onMounted(async () => {
           var lists = params.data.lists;
           return "id: " + id + '<br/>' + "任务名称：" + name + '<br/>' + "资源需求：" + requirements + '<br/>' + "预期产量：" + products + '<br/>' + "截止时间：" + deadline + '<br/>' + "预估耗时：" + lastTime + '<br/>' + "参与企业数量：" + numbers + '<br/>' + "参与企业名单：" + lists;
         }
-        else if (params.dataType === 'edge') {
-            var source = params.data.source;
-            var target = params.data.target;
-            var label = params.data.label.formatter;
-            return "源任务: " + source + '<br/>' + "目标任务：" + target + '<br/>' + "任务转移可能性：" + label;
-        }
+
       }
     },
-    legend: [
-      {
-        data: graph.categories.map(function (a) {
-          return a.name;
-        })
-      }
-    ],
     animationDuration: 1500, //初始动画的时长
     animationEasingUpdate: 'quinticInOut', //节点和边的动画方式（缓动函数）
     series: [{
@@ -144,9 +297,21 @@ onMounted(async () => {
       layout: 'none',
       data: graph.nodes,
       links: graph.links,
-      categories: graph.categories,
+      //categories: graph.categories,
       //network: graph.network,
       roam: true,     //开启鼠标缩放和平移漫游
+
+      // 设置节点样式
+      itemStyle: {
+        // 指定节点的默认样式
+        normal: {
+          color: '#61a0a8',  // 节点的默认颜色
+        },
+        // 指定节点的高亮样式
+        emphasis: {
+          color: '#c23531',  // 节点的高亮颜色
+        },
+      },
 
       label: {
         show: false,     //是否显示节点标签
@@ -155,14 +320,6 @@ onMounted(async () => {
       },
       edgeSymbol: ['none', 'arrow'],
       edgeSymbolSize: [4, 6],
-      edgeLabel: {
-        show: true,
-        formatter: function (x) {
-          return x.data.label.formatter;
-        },
-        fontSize: 12,
-        color: '#000000'
-      },
       lineStyle: {
         color: 'source',
         curveness: 0.2,
@@ -182,7 +339,6 @@ onMounted(async () => {
         lineStyle: {    //边的设置
           width: 10,
           type: "dotted",
-          // shadowBlur:0.5,
           opacity: 0.7,
         }
       },
@@ -281,58 +437,30 @@ onMounted(async () => {
 
 
 });
+// 初始化ECharts实例
+
 
 </script>
-<template>
-  <div>
-  <div class="topicText">
-    <h2>任务关联分析</h2>
-  </div>
-    <div id="main" style="width: 1000px;height:400px;margin-left:150px;background-color: rgba(250,247,247,0.5);display: flex; justify-content: center; align-items: center;"></div>
 
+<style>
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-<!--    <el-form :inline="true">-->
-<!--      <el-form-item label="源任务：">-->
-<!--        <el-input v-model="formPredict.sourceId" placeholder="金属采购"></el-input>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="任务概率阈值：">-->
-<!--        <el-input v-model="formPredict.thresholdP" placeholder="0.4"></el-input>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item>-->
-<!--        <el-button type="primary" >预测</el-button>-->
-<!--      </el-form-item>-->
-<!--    </el-form>-->
+.flex-container {
+    display: flex;
+    align-items: center;
+}
 
-<!--    <el-table-->
-<!--        :data="resultPredict"-->
-<!--        stripe-->
-<!--        style="width: 100%">-->
-<!--      <el-table-column-->
-<!--          prop="target"-->
-<!--          label="目标任务"-->
-<!--          sortable>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column-->
-<!--          prop="delay_time"-->
-<!--          label="发生时延"-->
-<!--          sortable>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column-->
-<!--          prop="probability"-->
-<!--          label="发生概率"-->
-<!--          sortable>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column-->
-<!--          prop="path"-->
-<!--          label="关联路径">-->
-<!--      </el-table-column>-->
-<!--    </el-table>-->
-  </div>
-</template>
+.header-text {
+    margin-right: 10px;
+    font-weight: bold
+}
 
-<style scoped>
-.topicText {
-  text-align: center;
-  font-family: BlinkMacSystemFont;
+.my-table {
+    border: 1px solid #ebeef5;
+    border-radius: 4px;
 }
 </style>

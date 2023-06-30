@@ -1,13 +1,13 @@
 <template>
   <div>
-    <el-card class="step-card">
-      <el-steps :active="active" align-center>
-        <el-step title="选择企业" :icon="OfficeBuilding" description="Step 1" finish-status="success"/>
-        <el-step title="修改连接关系" :icon="Switch" description="Step 2"/>
-        <el-step title="确定参数" :icon="Edit" description="Step 3"/>
-        <el-step title="收益评估" :icon="TrendCharts" description="Step 4"/>
-      </el-steps>
-    </el-card>
+<!--    <el-card class="step-card">-->
+<!--      <el-steps :active="active" align-center>-->
+<!--        <el-step title="选择企业" :icon="OfficeBuilding" description="Step 1" finish-status="success"/>-->
+<!--        <el-step title="修改连接关系" :icon="Switch" description="Step 2"/>-->
+<!--        <el-step title="确定参数" :icon="Edit" description="Step 3"/>-->
+<!--        <el-step title="收益评估" :icon="TrendCharts" description="Step 4"/>-->
+<!--      </el-steps>-->
+<!--    </el-card>-->
 
     <el-card class="content-card">
       <div v-show="active === 0">
