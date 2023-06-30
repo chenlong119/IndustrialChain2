@@ -34,17 +34,17 @@ onMounted(async () => {
       padding: [5, 10]
     },
     yAxis: {
-      name: '收益值（万）',
+      name: '预估收益（万）',
       axisLabel: {
         show: true,
         formatter: '{value}' // 这里可以自定义y轴标签的显示格式
       }
     },
     legend: {
-      data: ['个体收益', '群体收益']
+      data: ['评估企业收益', '关联企业群收益']
     },
     series: [{
-      name: '个体收益', itemStyle: {
+      name: '评估企业收益', itemStyle: {
         normal: {
           color: '#FF005A',
           lineStyle: {
@@ -60,7 +60,7 @@ onMounted(async () => {
       animationEasing: 'cubicInOut'
     },
     {
-      name: '群体收益',
+      name: '关联企业群收益',
       smooth: true,
       type: 'line',
       itemStyle: {

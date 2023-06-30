@@ -27,7 +27,7 @@ onMounted(async () => {
     },
     radar: {
       radius: '66%',
-      center: ['50%', '42%'],
+      center: ['50%', '45%'],
       splitNumber: 8,
       splitArea: {
         areaStyle: {
@@ -40,16 +40,27 @@ onMounted(async () => {
         }
       },
       indicator: [
-        { name: '企业关联关系', max: 1 },
-        { name: '风险选择', max: 1 },
-        { name: '合作策略', max: 1 },
-        { name: '企业地位', max: 1 },
-      ]
+        { name: '企业关联关系', max: 1, textStyle: { color: '#000' } },
+        { name: '风险选择', max: 1, textStyle: { color: '#000' } },
+        { name: '合作策略', max: 1, textStyle: { color: '#000' } },
+        { name: '企业地位', max: 1, textStyle: { color: '#000' } },
+      ],
+      // center: ['75%', '50%'],
+      // radius: 120,
+      axisName: {
+        color: '#fff',
+        backgroundColor: '#666',
+        borderRadius: 3,
+        padding: [3, 5]
+      },
     },
     legend: {
       left: 'center',
       bottom: '1',
-      data: ['参数权重']
+      data: ['参数权重'],
+      textStyle: {
+        color: '#000' //修改字体颜色为黑色
+      }
     },
     series: [{
       type: 'radar',
@@ -80,12 +91,23 @@ onMounted(async () => {
   myChart2 = echarts.init(chartDom2);
 
   var option2 = {
+    title: {
+      text: '企业群关联关系统计图', // 设置标题文本
+      textStyle: { // 设置标题样式
+        color: '#333',
+        fontSize: 15,
+        fontWeight: 'bold'
+      },
+      left: 'center', // 设置标题水平居中
+      // top: 10 // 设置标题距离顶部的距离
+    },
     tooltip: {
       trigger: 'item'
     },
     legend: {
       orient: 'horizontal',
-      left: 'center'
+      left: 'center',
+      top: 'bottom' // 将图例放置在图表底部
     },
     series: [
       {
@@ -118,6 +140,16 @@ onMounted(async () => {
     '2022-07', '2022-08', '2022-09', '2022-10', '2022-11', '2022-12'];
 
   var option3 = {
+    title: {
+      text: '汽车/家电产业链企业盈利数/率', // 设置标题文本
+      textStyle: { // 设置标题样式
+        color: '#333',
+        fontSize: 15,
+        fontWeight: 'bold'
+      },
+      left: 'center', // 设置标题水平居中
+      // top: 10 // 设置标题距离顶部的距离
+    },
     tooltip: {
       trigger: 'axis',
       axisPointer: {

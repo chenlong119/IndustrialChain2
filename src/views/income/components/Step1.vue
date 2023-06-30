@@ -27,7 +27,7 @@
                         <el-table-column prop="filed" label="所处领域" width="150" />
                         <el-table-column prop="category" label="所处产业链" width="150" />
                         <!-- <el-table-column prop="network" label="所处网络" width="100" /> -->
-                        <el-table-column prop="relation" label="连接关系" width="150" :filters="[
+                        <el-table-column prop="relation" label="关联关系" width="150" :filters="[
                             { text: '供应关系', value: '供应关系' },
                             { text: '合作关系', value: '合作关系' },
                             { text: '竞争关系', value: '竞争关系' },

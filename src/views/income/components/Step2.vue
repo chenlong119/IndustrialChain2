@@ -26,7 +26,7 @@
     <el-table-column prop="name" label="企业名称" align="center" width="240" />
     <el-table-column prop="filed" label="所处领域" align="center" width="240" />
     <el-table-column prop="category" label="所处产业链" align="center" width="240" />
-    <el-table-column label="连接关系" align="center" width="240">
+    <el-table-column label="关联关系" align="center" width="240">
       <template #default="scope">
         <span class="el-dropdown-link">
           <template v-for="(rel) in scope.row.relation">
@@ -360,7 +360,7 @@ function saveEdit() {
 //3.“删除关联企业”功能
 const deleteNode = (row) => {
   ElMessageBox.confirm(
-    '是否要删除该关联企业?',
+    '是否要删除该关联企业及所有关联关系?',
     '删除确认',
     {
       confirmButtonText: '确定',

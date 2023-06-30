@@ -46,7 +46,20 @@
       </el-select>
     </el-form-item>
 
-    <el-form-item label="风险选择：" prop="preference">
+    <el-form-item prop="preference">
+      <template #label>
+        <div style="display: flex; align-items: center;">
+          <span>风险重要性</span>
+          <el-tooltip placement="top">
+            <template #content> 算法参数之一<br />风险越大，收益越高 </template>
+            <el-icon>
+              <QuestionFilled />
+            </el-icon>
+          </el-tooltip>
+
+          <span>：</span>
+        </div>
+      </template>
       <el-radio-group v-model="inputForm.preference">
         <el-radio label="偏好" />
         <el-radio label="中立" />
@@ -54,7 +67,7 @@
       </el-radio-group>
     </el-form-item>
 
-    <el-form-item label="合作策略：" prop="strategy">
+    <el-form-item label="关系策略：" prop="strategy">
       <el-checkbox-group v-model="inputForm.strategy">
         <el-checkbox label="合作优先" name="1" />
         <el-checkbox label="竞争优先" name="2" />
@@ -63,10 +76,10 @@
       </el-checkbox-group>
     </el-form-item>
 
-    <el-form-item label="备注：" prop="remark">
+    <!-- <el-form-item label="备注：" prop="remark">
       <el-input v-model="inputForm.remark" maxlength="10" placeholder="请输入备注" show-word-limit type="text"
         :style="{ width: '600px' }" />
-    </el-form-item>
+    </el-form-item> -->
 
     <el-form-item>
       <el-button type="primary" @click="submitForm(inputFormRef)">
@@ -83,6 +96,7 @@ import type { FormInstance, FormRules } from 'element-plus'
 import { watch, nextTick, watchEffect } from 'vue'
 import isEqual from 'lodash/isEqual';
 import { ElMessage, ElMessageBox } from 'element-plus'
+import { QuestionFilled } from '@element-plus/icons-vue'
 
 const emits = defineEmits(['onFormInput']);  //定义组件的自定义事件
 
@@ -138,7 +152,7 @@ watch(
       }
     });
   },
-  { deep: true, immediate: true, flush: 'sync'}
+  { deep: true, immediate: true, flush: 'sync' }
 )
 
 
@@ -277,10 +291,11 @@ const resetForm = () => {
 
 <style>
 .el-form-item__label {
-    font-size: 15px;
-    font-weight: bold;
-  }
-  .el-form-item__content {
-    font-size: 17px;
-  }
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.el-form-item__content {
+  font-size: 17px;
+}
 </style>
