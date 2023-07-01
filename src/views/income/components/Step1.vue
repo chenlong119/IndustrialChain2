@@ -11,30 +11,28 @@
             </el-header>
             <el-container>
                 <el-main>
-                    <span class="header-text">企业关系图：</span>
-                    <div ref="relationGraph" style="height:550px;width:700px"></div>
+                    <span class="content-text">企业关系图：</span>
+                    <div ref="relationGraph" style="height:550px;width:500px"></div>
                 </el-main>
                 <el-main>
-                    <span class="header-text">关联企业：</span>
-                    <el-table :data="pagedFilteredNodes" style="width: 100%;height:480px" highlight-current-row
+                    <div style="margin-bottom: 15px;"><span class="content-text">关联企业：</span></div>
+                    <el-table :data="pagedFilteredNodes" style="width: 800px;height:500px" highlight-current-row
                         :header-cell-style="{
                             // textAlign: 'center',
                             height: '60px',
-                        }" :row-style="{
-                            textAlign: 'center',
-                            height: '50px',
-                        }" class="my-table">
+                        }" :row-style="{ textAlign: 'center', height: '54px', }" class="my-table">
                         <el-table-column fixed type="index" :index="indexMethod" label="序号" width="100" />
                         <el-table-column prop="id" label="企业id" width="100" />
                         <el-table-column prop="name" label="企业名称" width="150" />
                         <el-table-column prop="filed" label="所处领域" width="150" />
                         <el-table-column prop="category" label="所处产业链" width="150" />
                         <!-- <el-table-column prop="network" label="所处网络" width="100" /> -->
-                        <el-table-column prop="relation" label="连接关系" width="150" :filters="[
+                        <el-table-column prop="relation" label="关联关系" width="150" :filters="[
                             { text: '供应关系', value: '供应关系' },
                             { text: '合作关系', value: '合作关系' },
                             { text: '竞争关系', value: '竞争关系' },
-                        ]" :filter-method="filterTag" filter-placement="bottom-end">
+                        ]" :filter-method="(value, row) => filterTag(value, row, relatedNodesWithout)"
+                            filter-placement="bottom-end">
                             <template #default="scope">
                                 <el-dropdown trigger="click" placement="bottom-end">
                                     <span class="el-dropdown-link">
@@ -50,8 +48,8 @@
                         </el-table-column>
 
                         <el-table-column prop="infomation" label="企业信息" width="120">
-                            <template #default>
-                                <el-button link type="primary" @click="handleClick">查看详情</el-button>
+                            <template #default="scope">
+                                <el-button link type="primary" @click="handleInfo(scope.row)">查看详情</el-button>
                             </template>
                         </el-table-column>
                     </el-table>
@@ -59,6 +57,26 @@
                     <el-pagination v-model="currentPage" :page-size="pageSize" :pager-count="11" layout="prev, pager, next"
                         :total="relatedNodesWithout.length" @current-change="handleCurrentChange"
                         @size-change="handleSizeChange" />
+
+                    <el-dialog v-model="infoDialogVisible" title="企业详情" align-center>
+                        <el-form :model="info">
+                            <el-form-item label="" :label-width="formLabelWidth">
+                                企业id：{{ info.id }}
+                            </el-form-item>
+                            <el-form-item label="" :label-width="formLabelWidth">
+                                企业名称：{{ info.name }}
+                            </el-form-item>
+                            <el-form-item label="" :label-width="formLabelWidth">
+                                企业所处领域：{{ info.filed }}
+                            </el-form-item>
+                            <el-form-item label="" :label-width="formLabelWidth">
+                                企业所处产业链：{{ info.category }}
+                            </el-form-item>
+                            <el-form-item label="" :label-width="formLabelWidth">
+                                关联关系：{{ info.relation }}
+                            </el-form-item>
+                        </el-form>
+                    </el-dialog>
 
                 </el-main>
             </el-container>
@@ -69,7 +87,7 @@
   
 <script setup>
 import { ref, reactive, computed, watch, onMounted, nextTick } from 'vue'
-import jsonData from "@/assets/income/networkRelation.json"
+import jsonData from "../../../assets/income/networkRelation.json"
 import * as echarts from 'echarts'  //引入echarts
 
 //定义组件的自定义事件
@@ -107,24 +125,24 @@ for (const link of jsonData.links) {
 const selectedNode = ref(""); //用户选择的节点
 const relatedNodesWithout = ref([]); //没有加上选中节点（用于表格）
 const relatedNodesWith = ref([]); //加上了选中节点（用于画图）
-const selectedTag = ref('');
 const relatedNodeIds = new Set();
+// const filteredNodes = ref([]); //筛选后的节点
 //获取关系图信息（存入graph）
 const graph = {
     id: '',
     name: '',
-    filed:'',
-    category:'',
-    network:'',
+    filed: '',
+    category: '',
+    network: '',
     nodes: [],
     links: [],
 };
 //获取表格信息（存入relate）
-const relate={
-    nodes:[],
+const relate = {
+    nodes: [],
 }
 //监听用户选择的节点
-watch([selectedNode, selectedTag], () => {
+watch([selectedNode], () => {
     if (!selectedNode.value) {
         relatedNodes.value = [];
         return;
@@ -161,12 +179,9 @@ watch([selectedNode, selectedTag], () => {
             .join(",");
         node.index = index + 1;
     });
-    // // 筛选类型
-    // if (selectedTag.value) {
-    //     tempRelatedNodes = tempRelatedNodes.filter(node => node.relation.includes(selectedTag.value));
-    // }
     relatedNodesWithout.value = tempRelatedNodes1;
     relatedNodesWith.value = tempRelatedNodes2;
+    // filteredNodes.value = tempRelatedNodes1;   //筛选节点
 
 
     //清空relate
@@ -185,14 +200,14 @@ watch([selectedNode, selectedTag], () => {
     // 存数据(传给后续步骤)
     const selectedNodeInfo = computed(() => {
         const node = nodeData.find((node) => node.id === selectedNode.value);
-        return node ? { id: node.id, name: node.name, filed:node.filed, category:node.category, network:node.network} 
-            : { id: '', name: '', filed:'', category:'', network:'' };
+        return node ? { id: node.id, name: node.name, filed: node.filed, category: node.category, network: node.network }
+            : { id: '', name: '', filed: '', category: '', network: '' };
     });
     //选中节点的信息
-    graph.id = selectedNodeInfo.value.id 
-    graph.name = selectedNodeInfo.value.name 
-    graph.filed = selectedNodeInfo.value.filed 
-    graph.category = selectedNodeInfo.value.category 
+    graph.id = selectedNodeInfo.value.id
+    graph.name = selectedNodeInfo.value.name
+    graph.filed = selectedNodeInfo.value.filed
+    graph.category = selectedNodeInfo.value.category
     graph.network = selectedNodeInfo.value.network
     //关联节点和连接信息
     for (const node of relatedNodesWith.value) {
@@ -295,14 +310,7 @@ const indexMethod = (index) => {
 
 
 
-// function filterTag(value) {
-//     const newFilterValue = Array.isArray(value) ? value : [value];  //将筛选的关系转换为数组
-//     if (JSON.stringify(newFilterValue) !== JSON.stringify(filterValue.value)) {
-//         filterValue.value = newFilterValue;
-//         currentPage.value = 1;
-//     }
-// }
-//筛选器
+// 筛选器
 function filterTag(value, row) {
     const filterValues = Array.isArray(value) ? value : [value];
     return filterValues.some(filterValue => row.relation.includes(filterValue));
@@ -328,6 +336,27 @@ const pagedFilteredNodes = computed(() => {
 });
 
 
+//"查看详情"功能
+const infoDialogVisible = ref(false)
+const formLabelWidth = '140px'
+let info = ref({
+    id: '',
+    name: '',
+    index: -1,
+    filed: '',
+    category: '',
+    network: [],
+    relation: [],
+    x: -1,
+    y: -1,
+    deleted: false
+});
+const handleInfo = (row) => {
+    infoDialogVisible.value = true
+    info.value = row
+}
+
+
 </script>
 
 <style>
@@ -346,6 +375,13 @@ const pagedFilteredNodes = computed(() => {
     margin-right: 10px;
     font-weight: bold
 }
+
+.content-text {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-weight: bold
+}
+
 
 .my-table {
     border: 1px solid #ebeef5;
