@@ -17,16 +17,12 @@
                 <el-main>
                     <div style="margin-bottom: 15px;"><span class="content-text">关联企业：</span></div>
                     <el-table :data="pagedFilteredNodes" style="width: 800px;height:500px" highlight-current-row
-                        :header-cell-style="{
-                            // textAlign: 'center',
-                            height: '60px',
-                        }" :row-style="{ textAlign: 'center', height: '54px', }" class="my-table">
+                        :header-cell-style="{height: '60px',}" :row-style="{ textAlign: 'center', height: '54px', }" class="my-table">
                         <el-table-column fixed type="index" :index="indexMethod" label="序号" width="100" />
                         <el-table-column prop="id" label="企业id" width="100" />
                         <el-table-column prop="name" label="企业名称" width="150" />
                         <el-table-column prop="filed" label="所处领域" width="150" />
                         <el-table-column prop="category" label="所处产业链" width="150" />
-                        <!-- <el-table-column prop="network" label="所处网络" width="100" /> -->
                         <el-table-column prop="relation" label="关联关系" width="150" :filters="[
                             { text: '供应关系', value: '供应关系' },
                             { text: '合作关系', value: '合作关系' },

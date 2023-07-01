@@ -104,8 +104,6 @@ const onFormInput = (value) => {
   Object.assign(formGlobal, value);
 };
 
-
-
 //计算用户是否选择了节点(Step1)
 const isEmptyNode = computed(() => {
   return Object.keys(relatedNodesWithGlobal).length === 0;
@@ -122,7 +120,6 @@ const isEmptyForm = computed(() => {
     }
   });
 });
-
 
 
 //步骤条
@@ -172,10 +169,6 @@ const next = () => {
   }
 }
 </script>
-
-
-
-
 <style>
 .step-card {
   margin-top: 12px;
