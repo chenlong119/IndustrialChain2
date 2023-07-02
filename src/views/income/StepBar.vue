@@ -1,42 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div>
-<!--    <el-card class="step-card">-->
-<!--      <el-steps :active="active" align-center>-->
-<!--        <el-step title="选择企业" :icon="OfficeBuilding" description="Step 1" finish-status="success"/>-->
-<!--        <el-step title="修改连接关系" :icon="Switch" description="Step 2"/>-->
-<!--        <el-step title="确定参数" :icon="Edit" description="Step 3"/>-->
-<!--        <el-step title="收益评估" :icon="TrendCharts" description="Step 4"/>-->
-<!--      </el-steps>-->
-<!--    </el-card>-->
-
-    <el-card class="content-card">
-      <div v-show="active === 0">
-        <Step1 @onGraph="handleGraph" @onRelatedNodesWith="handleRelatedNodesWith"></Step1>
-      </div>
-      <div v-show="active === 1">
-        <Step2 @onRelationModify="handleRelatedNodesWithout" :relatedNodesWithGlobal="relatedNodesWithGlobal"></Step2>
-      </div>
-      <div v-show="active === 2">
-        <Step3 @onFormInput="onFormInput" :graphGlobal="graphGlobal"
-               :relatedNodesWithoutGlobal="relatedNodesWithoutGlobal"></Step3>
-      </div>
-      <div v-show="active === 3">
-        <Step4 :step3Param="step3Param"></Step4>
-      </div>
-    </el-card>
-    <div class="button-container">
-      <el-button :icon="ArrowLeft" type="primary" plain style="margin-top: 12px" @click="back"
-                 v-show="active !== 0">上一步
-      </el-button>
-      <div class="right-button-container">
-        <el-button type="primary" plain style="margin-top: 12px" @click="next" v-show="active !== 3">下一步
-          <el-icon>
-            <ArrowRight/>
-          </el-icon>
-        </el-button>
-      </div>
-=======
   <el-card class="step-card">
     <el-steps :active="active" align-center>
       <el-step title="选择企业" :icon="OfficeBuilding" description="Step 1" finish-status="success" />
@@ -70,7 +32,6 @@
       <el-button type="primary" plain style="margin-top: 12px" @click="next" v-show="active !== 3">下一步<el-icon>
           <ArrowRight />
         </el-icon></el-button>
->>>>>>> 714bb107be4fbfe734d75ab6da67bc55d5f60bab
     </div>
   </div>
 </template>
