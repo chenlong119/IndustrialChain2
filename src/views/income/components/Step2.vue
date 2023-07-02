@@ -14,9 +14,6 @@
     </div>
   </div>
 
-  <!-- <div style="margin-bottom: 10px;"> <span>关联企业：</span></div> -->
-
-
   <el-table :data="pagedRelatedNodes" style="width: 100%;height:480px" highlight-current-row :header-cell-style="{
     height: '60px',
   }" :row-style="{ height: '54px' }" class="my-table" >
@@ -106,8 +103,6 @@
   </el-dialog>
 </template>
 
-
-
 <script lang="ts" setup>
 import {
   Search,
@@ -119,9 +114,7 @@ import { ref } from 'vue'
 import { watch, nextTick, computed } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 
-
 const emits = defineEmits(['onRelationSubmit', 'onRelationModify']);  //自定义事件
-
 
 //接收数据
 const props = defineProps({
@@ -322,7 +315,10 @@ const editNode = (row: Node) => {
 //保存修改
 function saveEdit() {
   if (nodeGlobal.value.relation.length === 0) {
-    alert('请选择至少一个连接关系!');
+    ElMessage({
+      type: 'error',
+      message: ' 请至少选择一个关联关系',
+    })
   } else {
     //更新节点信息
     allRelatedNodes.value = allRelatedNodes.value.map(node => {
@@ -520,7 +516,6 @@ const submitModify = () => {
 
 
 </script>
-
 <style>
 .search-box {
   display: flex;

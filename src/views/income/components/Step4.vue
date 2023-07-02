@@ -1,6 +1,4 @@
 <template>
-  <!-- <div style="margin-left:20px;margin-top: 10px;"><span>当前评估企业：</span><span style="font-weight: bold;font-size: large;">{{nodeName }}</span></div> -->
-  <!-- <div style="margin-left:20px;margin-top: 10px;"><span>当前评估企业：</span><span style="font-weight: bold;font-size: large;">111</span></div> -->
   <div style="width: 100%; margin: 10px auto; text-align: center;">
     <span>当前评估企业：</span>
     <span style="font-weight: bold; font-size: large;">{{nodeName }}</span>
@@ -44,7 +42,6 @@ import LineChart from './chart/LineChart.vue'
 import CombinedChart from './chart/CombinedChart.vue'
 const formulaVisible = ref(false)
 const formLabelWidth = '140px'
-
 
 //接收数据
 const props = defineProps({

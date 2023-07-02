@@ -215,8 +215,6 @@ onMounted(async () => {
 })
 
 </script>
-  
-  
 <style>
 .charts-container {
   display: flex;

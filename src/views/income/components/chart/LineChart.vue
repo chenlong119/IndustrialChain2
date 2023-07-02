@@ -11,7 +11,6 @@ onMounted(async () => {
   const chartDom = document.getElementById('main');
   myChart = echarts.init(chartDom);
 
-
   //绘制ECharts关系图
   myChart.setOption({
     xAxis: {
@@ -79,10 +78,7 @@ onMounted(async () => {
       animationDuration: 2800,
       animationEasing: 'quadraticOut'
     }]
-
   });
-
-
 
 });
 
