@@ -734,48 +734,48 @@ var option3 = {
       links: [
 
         {
-          source: '任务 2',
-          target: '任务 1',
+          source: '任务 17',
+          target: '任务 13',
 
           lineStyle: {
             curveness: 0.2,
             color: 'red'
           },
           tooltip: {
-      formatter: '连线信息：任务 2 -> 任务 1 \n 跨企业跨链跨群'
+      formatter: '连线信息：任务 17 -> 任务 13 \n 跨企业跨链跨群'
     }
         },
         {
-          source: '任务 3',
-          target: '任务 4',
+          source: '任务 19',
+          target: '任务 17',
           lineStyle: {
             curveness: 0.2,
             color: 'green'
           },
           tooltip: {
-      formatter: '连线信息：任务 2 -> 任务 1 \n 跨企业跨链'
+      formatter: '连线信息：任务 19 -> 任务 17 \n 跨企业跨链'
     }
         },
         {
-          source: '任务 1',
-          target: '任务 3',
+          source: '任务 4',
+          target: '任务 9',
           lineStyle: {
             curveness: 0.2,
             color: 'blue'
           },
           tooltip: {
-      formatter: '连线信息：任务 3 -> 任务 1 \n 跨企业跨群'
+      formatter: '连线信息：任务 4 -> 任务 9 \n 跨企业跨群'
     }
         },
         {
-          source: '任务 2',
-          target: '任务 3',
+          source: '任务 4',
+          target: '任务 5',
           lineStyle: {
             curveness: 0.2,
             color: 'gray'
           },
           tooltip: {
-      formatter: '连线信息：任务 2 -> 任务 3 \n 跨链跨群'
+      formatter: '连线信息：任务 4 -> 任务 5 \n 跨链跨群'
     }
         },
         {
@@ -792,37 +792,37 @@ var option3 = {
         },
         {
           source: '任务 1',
-          target: '任务 4',
+          target: '任务 2',
           lineStyle: {
             curveness: 0.2,
             color: 'purple'
           },
           tooltip: {
-      formatter: '连线信息：任务 1 -> 任务 4 \n 跨链'
+      formatter: '连线信息：任务 1 -> 任务 2 \n 跨链'
     }
 
         },
         {
           source: '任务 3',
-          target: '任务 5',
+          target: '任务 2',
           lineStyle: {
             curveness: 0.2,
             color: 'orange'
           },
           tooltip: {
-      formatter: '连线信息：任务 3 -> 任务 5  \n 跨群'
+      formatter: '连线信息：任务 3 -> 任务 2  \n 跨群'
     }
 
         },
         {
           source: '任务 6',
-          target: '任务 4',
+          target: '任务 8',
           lineStyle: {
             curveness: 0.2,
             color: 'orange'
           },
           tooltip: {
-      formatter: '连线信息：任务 6 -> 任务 4 \n 跨群'
+      formatter: '连线信息：任务 6 -> 任务 8 \n 跨群'
     }
 
         },
@@ -840,13 +840,13 @@ var option3 = {
         },
         {
           source: '任务 8',
-          target: '任务 10',
+          target: '任务 12',
           lineStyle: {
             curveness: 0.2,
             color: 'yellow'
           },
           tooltip: {
-      formatter: '连线信息：任务 8 -> 任务 10  \n 跨企业'
+      formatter: '连线信息：任务 8 -> 任务 12  \n 跨企业'
     }
 
         },
@@ -875,38 +875,38 @@ var option3 = {
 
         },
         {
-          source: '任务 13',
-          target: '任务 17',
+          source: '任务 10',
+          target: '任务 13',
           lineStyle: {
             curveness: 0.2,
             color: 'green'
           },
           tooltip: {
-      formatter: '连线信息：任务 13 -> 任务 17 \n 跨企业跨链'
+      formatter: '连线信息：任务 10 -> 任务 13 \n 跨企业跨链'
     }
 
         },
         {
           source: '任务 18',
-          target: '任务 16',
+          target: '任务 12',
           lineStyle: {
             curveness: 0.2,
             color: 'red'
           },
           tooltip: {
-      formatter: '连线信息：任务 18 -> 任务 16 \n 跨企业跨链跨群'
+      formatter: '连线信息：任务 18 -> 任务 12 \n 跨企业跨链跨群'
     }
 
         },
         {
           source: '任务 16',
-          target: '任务 19',
+          target: '任务 5',
           lineStyle: {
             curveness: 0.2,
             color: 'red'
           },
           tooltip: {
-      formatter: '连线信息：任务 16 -> 任务 19 \n 跨企业跨链跨群'
+      formatter: '连线信息：任务 16 -> 任务 5 \n 跨企业跨链跨群'
     }
 
         },
@@ -931,12 +931,6 @@ var option3 = {
     }
   ]
 };
-// nextTick(() => {
-// //getCache().then(() => {
-//   taskLinkageInfoIntance = echarts.init(taskLinkageInfo.value, "macarons");
-//   taskLinkageInfoIntance.setOption(option2);
-// });
-
 onMounted(() => {
   taskLinkageInfoIntance = echarts.init(taskLinkageInfo.value, "macarons");
   taskLinkageInfoIntance.setOption(option2);
