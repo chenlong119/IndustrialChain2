@@ -16,12 +16,13 @@
                 </el-main>
                 <el-main>
                     <div style="margin-bottom: 15px;"><span class="content-text">关联企业：</span></div>
-                    <el-table :data="pagedFilteredNodes" style="width: 800px;height:500px" highlight-current-row
-                        :header-cell-style="{height: '60px',}" :row-style="{ textAlign: 'center', height: '54px', }" class="my-table">
-                        <el-table-column fixed type="index" :index="indexMethod" label="序号" width="100" />
+                    <el-table :data="pagedFilteredNodes" style="width: 1000px;height:500px" highlight-current-row
+                        :header-cell-style="{ height: '60px', }" :row-style="{ textAlign: 'center', height: '54px', }"
+                        class="my-table">
+                        <el-table-column fixed type="index" :index="indexMethod" label="序号" width="80" />
                         <el-table-column prop="id" label="企业id" width="100" />
                         <el-table-column prop="name" label="企业名称" width="150" />
-                        <el-table-column prop="filed" label="所处领域" width="150" />
+                        <el-table-column prop="filed" label="所处领域" width="130" />
                         <el-table-column prop="category" label="所处产业链" width="150" />
                         <el-table-column prop="relation" label="关联关系" width="150" :filters="[
                             { text: '供应关系', value: '供应关系' },
@@ -43,6 +44,7 @@
                             </template>
                         </el-table-column>
 
+                        <el-table-column prop="strength" label="关联强度" align="center" width="110" />
                         <el-table-column prop="infomation" label="企业信息" width="120">
                             <template #default="scope">
                                 <el-button link type="primary" @click="handleInfo(scope.row)">查看详情</el-button>
@@ -114,6 +116,7 @@ for (const link of jsonData.links) {
         source: link.source,
         target: link.target,
         relation: link.label.formatter,
+        strength: link.strength
     });
 }
 
@@ -166,12 +169,20 @@ watch([selectedNode], () => {
             .filter((link) => link.source === node.id || link.target === node.id)
             .map((link) => link.relation)
             .join(",");
+        node.strength = relatedLinks
+            .filter((link) => link.source === node.id || link.target === node.id)
+            .map((link) => link.strength)
+            .join(",");
         node.index = index + 1;
     });
     tempRelatedNodes2.forEach((node, index) => {
         node.relation = relatedLinks
             .filter((link) => link.source === node.id || link.target === node.id)
             .map((link) => link.relation)
+            .join(",");
+        node.strength = relatedLinks
+            .filter((link) => link.source === node.id || link.target === node.id)
+            .map((link) => link.strength)
             .join(",");
         node.index = index + 1;
     });
@@ -231,10 +242,10 @@ watch([selectedNode], () => {
                     show: true,
                     formatter: link.relation, // 可以设置连接的标签
                 },
+                strength: link.strength
             });
         }
     }
-
     //绘制关系图
     const option = {
         animationDuration: 1000, //初始动画的时长

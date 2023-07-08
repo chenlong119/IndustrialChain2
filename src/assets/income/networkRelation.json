@@ -901,3213 +901,3663 @@
       "label": {
         "formatter": "供应关系"
       },
-      "arrow": {
-        "show": true,
-        "type": "arrow"
-      }
+      "strength": 0.53
     },
     {
       "source": "0",
       "target": "4",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.54
     },
     {
       "source": "0",
       "target": "5",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.78
     },
     {
       "source": "1",
       "target": "3",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.82
     },
     {
       "source": "1",
       "target": "4",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.84
     },
     {
       "source": "1",
       "target": "5",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.45
     },
     {
       "source": "2",
       "target": "3",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.27
     },
     {
       "source": "2",
       "target": "4",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.15
     },
     {
       "source": "2",
       "target": "5",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.95
     },
     {
       "source": "3",
       "target": "6",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.96
     },
     {
       "source": "3",
       "target": "7",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.73
     },
     {
       "source": "3",
       "target": "8",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.84
     },
     {
       "source": "4",
       "target": "6",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.72
     },
     {
       "source": "4",
       "target": "7",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.82
     },
     {
       "source": "4",
       "target": "8",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.27
     },
     {
       "source": "5",
       "target": "6",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.84
     },
     {
       "source": "5",
       "target": "7",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.58
     },
     {
       "source": "5",
       "target": "8",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.59
     },
     {
       "source": "12",
       "target": "15",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.89
     },
     {
       "source": "12",
       "target": "16",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.38
     },
     {
       "source": "12",
       "target": "17",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.95
     },
     {
       "source": "13",
       "target": "15",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.23
     },
     {
       "source": "13",
       "target": "16",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.56
     },
     {
       "source": "13",
       "target": "17",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.26
     },
     {
       "source": "14",
       "target": "15",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.85
     },
     {
       "source": "14",
       "target": "16",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.84
     },
     {
       "source": "14",
       "target": "17",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.47
     },
     {
       "source": "21",
       "target": "24",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.48
     },
     {
       "source": "21",
       "target": "25",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.48
     },
     {
       "source": "21",
       "target": "26",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.53
     },
     {
       "source": "22",
       "target": "24",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.94
     },
     {
       "source": "22",
       "target": "25",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.29
     },
     {
       "source": "22",
       "target": "26",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.18
     },
     {
       "source": "23",
       "target": "24",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.39
     },
     {
       "source": "23",
       "target": "25",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.45
     },
     {
       "source": "23",
       "target": "26",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.23
     },
     {
       "source": "30",
       "target": "33",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.22
     },
     {
       "source": "30",
       "target": "34",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.98
     },
     {
       "source": "30",
       "target": "35",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.98
     },
     {
       "source": "31",
       "target": "33",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.28
     },
     {
       "source": "31",
       "target": "34",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.29
     },
     {
       "source": "31",
       "target": "35",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.57
     },
     {
       "source": "32",
       "target": "33",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.38
     },
     {
       "source": "32",
       "target": "34",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.29
     },
     {
       "source": "32",
       "target": "35",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.98
     },
     {
       "source": "42",
       "target": "45",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.54
     },
     {
       "source": "42",
       "target": "46",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "42",
       "target": "47",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "43",
       "target": "45",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "43",
       "target": "46",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "43",
       "target": "47",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "44",
       "target": "45",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "44",
       "target": "46",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "44",
       "target": "47",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "6",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "6",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "6",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "7",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "7",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "7",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "8",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "8",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "8",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "15",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "15",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "15",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "16",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "16",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "16",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "17",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "17",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "17",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "24",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "24",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "24",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "25",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "25",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "25",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "26",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "26",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "26",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "33",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "33",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "33",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "34",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "34",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "34",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "35",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "35",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "35",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "45",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "45",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "45",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "46",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "46",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "46",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "47",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "47",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "47",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "54",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "54",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "54",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "55",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "55",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "55",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "56",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "56",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "56",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "57",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "57",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "57",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "58",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "58",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "58",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "59",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "59",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "59",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "60",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "60",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "60",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "61",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "61",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "61",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "62",
       "target": "63",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "62",
       "target": "64",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "62",
       "target": "65",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "63",
       "target": "66",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "63",
       "target": "67",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "63",
       "target": "68",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "64",
       "target": "66",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "65",
       "target": "66",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "64",
       "target": "67",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "65",
       "target": "67",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "65",
       "target": "68",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "66",
       "target": "69",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "66",
       "target": "70",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "67",
       "target": "69",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "67",
       "target": "70",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "68",
       "target": "69",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "68",
       "target": "70",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "69",
       "target": "71",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "69",
       "target": "72",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "69",
       "target": "73",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "70",
       "target": "71",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "70",
       "target": "72",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "70",
       "target": "73",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "71",
       "target": "9",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "71",
       "target": "10",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "71",
       "target": "11",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "72",
       "target": "9",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "72",
       "target": "10",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "72",
       "target": "11",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "73",
       "target": "9",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "73",
       "target": "10",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "73",
       "target": "11",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "71",
       "target": "18",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "71",
       "target": "19",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "71",
       "target": "20",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "72",
       "target": "18",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "72",
       "target": "19",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "72",
       "target": "20",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "73",
       "target": "18",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "73",
       "target": "19",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "73",
       "target": "20",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "71",
       "target": "27",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "71",
       "target": "28",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "71",
       "target": "29",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "72",
       "target": "27",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "72",
       "target": "28",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "72",
       "target": "29",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "73",
       "target": "27",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "73",
       "target": "28",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "73",
       "target": "29",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "71",
       "target": "36",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "71",
       "target": "37",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "71",
       "target": "38",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "72",
       "target": "36",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "72",
       "target": "37",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "72",
       "target": "38",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "73",
       "target": "36",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "73",
       "target": "37",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "73",
       "target": "38",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "71",
       "target": "39",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "71",
       "target": "40",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "71",
       "target": "41",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "72",
       "target": "39",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "72",
       "target": "40",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "72",
       "target": "41",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "73",
       "target": "39",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "73",
       "target": "40",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "73",
       "target": "41",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "69",
       "target": "48",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "69",
       "target": "49",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "69",
       "target": "50",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "70",
       "target": "48",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "70",
       "target": "49",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "70",
       "target": "50",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "48",
       "target": "51",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "48",
       "target": "52",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "48",
       "target": "53",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "49",
       "target": "51",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "49",
       "target": "52",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "49",
       "target": "53",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "50",
       "target": "51",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "50",
       "target": "52",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "50",
       "target": "53",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "0",
       "target": "1",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "0",
       "target": "2",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "3",
       "target": "4",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "3",
       "target": "5",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "6",
       "target": "7",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "6",
       "target": "8",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "12",
       "target": "13",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "12",
       "target": "14",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "15",
       "target": "16",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "15",
       "target": "17",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "21",
       "target": "22",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "21",
       "target": "23",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "22",
       "target": "23",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "24",
       "target": "25",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "24",
       "target": "25",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "24",
       "target": "26",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "30",
       "target": "31",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "30",
       "target": "32",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "31",
       "target": "32",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "33",
       "target": "34",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "33",
       "target": "35",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "34",
       "target": "35",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "42",
       "target": "43",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "42",
       "target": "44",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "43",
       "target": "44",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "45",
       "target": "46",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "45",
       "target": "47",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "46",
       "target": "47",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "54",
       "target": "55",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "54",
       "target": "56",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "55",
       "target": "56",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "57",
       "target": "58",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "57",
       "target": "59",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "58",
       "target": "59",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "63",
       "target": "64",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "63",
       "target": "65",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "64",
       "target": "65",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "66",
       "target": "67",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "66",
       "target": "68",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "67",
       "target": "68",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "69",
       "target": "70",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "71",
       "target": "72",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "71",
       "target": "73",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "72",
       "target": "73",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "9",
       "target": "10",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "9",
       "target": "11",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "10",
       "target": "11",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "18",
       "target": "19",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "18",
       "target": "20",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "19",
       "target": "20",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "27",
       "target": "28",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "27",
       "target": "29",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "28",
       "target": "29",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "36",
       "target": "37",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "36",
       "target": "38",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "37",
       "target": "38",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "39",
       "target": "40",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "39",
       "target": "41",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "40",
       "target": "41",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "48",
       "target": "49",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "48",
       "target": "50",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "49",
       "target": "50",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "51",
       "target": "52",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "51",
       "target": "53",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "52",
       "target": "53",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "0",
       "target": "6",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "0",
       "target": "7",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "0",
       "target": "8",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "1",
       "target": "6",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "1",
       "target": "7",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "1",
       "target": "8",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "2",
       "target": "6",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "2",
       "target": "7",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "2",
       "target": "8",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "33",
       "target": "66",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "33",
       "target": "67",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "33",
       "target": "68",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "34",
       "target": "66",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "34",
       "target": "67",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "34",
       "target": "68",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "35",
       "target": "66",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "35",
       "target": "67",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "35",
       "target": "68",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "45",
       "target": "66",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "45",
       "target": "67",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "45",
       "target": "68",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "46",
       "target": "66",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "46",
       "target": "67",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "46",
       "target": "68",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "47",
       "target": "66",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "47",
       "target": "67",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "47",
       "target": "68",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "57",
       "target": "66",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "57",
       "target": "67",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "57",
       "target": "68",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "58",
       "target": "66",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "58",
       "target": "67",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "58",
       "target": "68",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "59",
       "target": "66",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "59",
       "target": "67",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "59",
       "target": "68",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
-
-
-
-
     {
       "source": "74",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "74",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "74",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "75",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "75",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "75",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "76",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "76",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "76",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "77",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "77",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "77",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "78",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "78",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "78",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "79",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "79",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "79",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "6",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "6",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "6",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "7",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "7",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "7",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "8",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "8",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "8",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "15",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "15",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "15",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "16",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "16",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "16",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "17",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "17",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "17",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "24",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "24",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "24",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "25",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "25",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "25",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "26",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "26",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "26",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "54",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "54",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "54",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "55",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "55",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "55",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "56",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "56",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "56",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "57",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "57",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "57",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "58",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "58",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "58",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "59",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "59",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "59",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "60",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "60",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "60",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "61",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "61",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "61",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "62",
       "target": "80",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "62",
       "target": "81",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "62",
       "target": "82",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "80",
       "target": "83",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "80",
       "target": "84",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "80",
       "target": "85",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "81",
       "target": "83",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "81",
       "target": "84",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "81",
       "target": "85",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "82",
       "target": "83",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "82",
       "target": "84",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "82",
       "target": "85",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "83",
       "target": "86",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "83",
       "target": "87",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "83",
       "target": "88",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "84",
       "target": "86",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "84",
       "target": "87",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "84",
       "target": "88",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "85",
       "target": "86",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "85",
       "target": "87",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "85",
       "target": "88",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "86",
       "target": "9",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "86",
       "target": "10",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "86",
       "target": "11",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "87",
       "target": "9",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "87",
       "target": "10",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "87",
       "target": "11",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "88",
       "target": "9",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "88",
       "target": "10",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "88",
       "target": "11",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "86",
       "target": "18",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "86",
       "target": "19",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "86",
       "target": "20",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "87",
       "target": "18",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "87",
       "target": "19",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "87",
       "target": "20",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "88",
       "target": "18",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "88",
       "target": "19",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "88",
       "target": "20",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "86",
       "target": "27",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "86",
       "target": "28",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "86",
       "target": "29",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "87",
       "target": "27",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "87",
       "target": "28",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "87",
       "target": "29",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "88",
       "target": "27",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "88",
       "target": "28",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "88",
       "target": "29",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "86",
       "target": "39",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "86",
       "target": "40",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "86",
       "target": "41",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "87",
       "target": "39",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "87",
       "target": "40",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "87",
       "target": "41",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "88",
       "target": "39",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "88",
       "target": "40",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "88",
       "target": "41",
       "label": {
         "formatter": "供应关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "74",
       "target": "75",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "77",
       "target": "78",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "80",
       "target": "81",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "83",
       "target": "84",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "86",
       "target": "87",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "86",
       "target": "88",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "87",
       "target": "88",
       "label": {
         "formatter": "竞争关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "74",
       "target": "83",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "74",
       "target": "84",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "74",
       "target": "85",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "75",
       "target": "83",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "75",
       "target": "84",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "75",
       "target": "85",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "76",
       "target": "83",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "76",
       "target": "84",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "76",
       "target": "85",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "77",
       "target": "83",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "77",
       "target": "84",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "77",
       "target": "85",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "78",
       "target": "83",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "78",
       "target": "84",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "78",
       "target": "85",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "79",
       "target": "83",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "79",
       "target": "84",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     },
     {
       "source": "79",
       "target": "85",
       "label": {
         "formatter": "合作关系"
-      }
+      },
+      "strength": 0.66
     }
   ],
   "categories": [
