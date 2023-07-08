@@ -276,7 +276,7 @@ watch([selectedNode], () => {
                     normal: {
                         color: 'slateblue',    //边的颜色是由源节点决定的
                         curveness: 0.2  //边的曲度，支持从 0 到 1 的值，值越大曲度越大。
-                    }
+                    },
                 },
                 emphasis: {
                     focus: 'adjacency', //当鼠标移动到节点上，突出显示节点以及节点的边和邻接节点，'adjacency' 表示只突出显示节点以及节点的边
@@ -284,7 +284,7 @@ watch([selectedNode], () => {
                         width: 10,
                         type: "dotted",
                         opacity: 0.7
-                    }
+                    },
                 },
             },
         ],
@@ -292,7 +292,6 @@ watch([selectedNode], () => {
     nextTick(() => {
         myChart.value.setOption(option)
     })
-
     // 将节点信息和连接信息直接同步传递给父组件
     emits('onGraph', graph)
     emits('onRelatedNodesWith', relate)
@@ -314,8 +313,6 @@ function handleCurrentChange(newPage) {
 const indexMethod = (index) => {
     return (currentPage.value - 1) * pageSize.value + index + 1;
 };
-
-
 
 // 筛选器
 function filterTag(value, row) {
