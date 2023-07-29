@@ -247,9 +247,65 @@ watch([selectedNode], () => {
         }
     }
     //绘制关系图
+    //计算polygon的相对坐标点
+    function calculatePoints(points) {
+        const widthRatio = 500 / 800; // 宽度比例
+        const heightRatio = 550 / 500; // 高度比例
+        return points.map(point => [point[0] * widthRatio, point[1] * heightRatio]);
+    }
     const option = {
         animationDuration: 1000, //初始动画的时长
         animationEasingUpdate: 'quinticInOut', //节点和边的动画方式（缓动函数）
+        graphic: [
+            {
+                type: 'polygon',
+                shape: {
+                    points: calculatePoints([[100, 50], [750, 50], [700, 180], [50, 180]])  //左上、右上、右下、左下
+                },
+                style: {
+                    fill: '#eee',
+                    stroke: 'red',
+                    lineWidth: 3,
+                    opacity: 0.3, //透明度
+                    shadowBlur: 10, //边框阴影模糊程度
+                    shadowColor: 'black', //边框阴影颜色
+                    shadowOffsetX: 5, //边框阴影水平偏移量
+                    shadowOffsetY: 5 //边框阴影垂直偏移量
+                }
+            },
+            {
+                type: 'polygon',
+                shape: {
+                    points: calculatePoints([[50, 330], [700, 330], [750, 200], [100, 200]])  //左下、右下、右上、左上
+                },
+                style: {
+                    fill: '#eee',
+                    stroke: 'blue',
+                    lineWidth: 3,
+                    opacity: 0.3,
+                    shadowBlur: 10,
+                    shadowColor: 'black',
+                    shadowOffsetX: 5,
+                    shadowOffsetY: 5
+                }
+            },
+            {
+                type: 'polygon',
+                shape: {
+                    points: calculatePoints([[50, 480], [700, 480], [750, 350], [100, 350]])  //左下、右下、右上、左上
+                },
+                style: {
+                    fill: '#eee',
+                    stroke: 'green',
+                    lineWidth: 3,
+                    opacity: 0.2,
+                    shadowBlur: 10,
+                    shadowColor: 'black',
+                    shadowOffsetX: 5,
+                    shadowOffsetY: 5
+                }
+            }
+        ],
         series: [
             {
                 type: 'graph',

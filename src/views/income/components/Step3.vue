@@ -51,7 +51,7 @@
         <div style="display: flex; align-items: center;">
           <span>风险重要性</span>
           <el-tooltip placement="top">
-            <template #content> 算法参数之一<br />风险越大，收益越高 </template>
+            <template #content> 算法参数之一<br />风险越大，收益可能越高 </template>
             <el-icon>
               <QuestionFilled />
             </el-icon>
