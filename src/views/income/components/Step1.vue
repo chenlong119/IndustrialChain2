@@ -12,12 +12,27 @@
             <el-container>
                 <el-main>
                     <span class="content-text">企业关系图：</span>
+                    <div id="legend" class="legend">
+                        <div class="legend-item">
+                            <div class="color-box" style="background-color: grey;"></div>
+                            竞争关系
+                        </div>
+                        <div class="legend-item">
+                            <div class="color-box" style="background-color: orange;"></div>
+                            供应关系
+                        </div>
+                        <div class="legend-item">
+                            <div class="color-box" style="background-color: lightgreen;"></div>
+                            合作关系
+                        </div>
+                    </div>
                     <div ref="relationGraph" style="height:550px;width:500px"></div>
                 </el-main>
+
                 <el-main>
-                    <div style="margin-bottom: 15px;"><span class="content-text">关联企业：</span></div>
-                    <el-table :data="pagedFilteredNodes" style="width: 1000px;height:500px" highlight-current-row
-                        :header-cell-style="{ height: '60px', }" :row-style="{ textAlign: 'center', height: '54px', }"
+                    <div style="margin-bottom: 35px;"><span class="content-text">关联企业：</span></div>
+                    <el-table :data="pagedFilteredNodes" style="width: 1000px;height:550px" highlight-current-row
+                        :header-cell-style="{ height: '60px', }" :row-style="{ textAlign: 'center', height: '60px', }"
                         class="my-table">
                         <el-table-column fixed type="index" :index="indexMethod" label="序号" width="80" />
                         <el-table-column prop="id" label="企业id" width="100" />
@@ -235,14 +250,25 @@ watch([selectedNode], () => {
     }
     for (const link of linkData) {
         if (relatedNodeIds.has(link.source) && relatedNodeIds.has(link.target)) {
+
+            let color = 'slateblue'; // 默认颜色
+            if (link.relation === "竞争关系") color = 'grey';
+            else if (link.relation === "合作关系") color = 'lightgreen';
+            else if (link.relation === "供应关系") color = 'orange';
+
             graph.links.push({
                 source: link.source,
                 target: link.target,
                 label: {
-                    show: true,
+                    // show: true,
                     formatter: link.relation, // 可以设置连接的标签
                 },
-                strength: link.strength
+                strength: link.strength,
+                lineStyle: {
+                    normal: {
+                        color: color // 设置连线颜色
+                    }
+                }
             });
         }
     }
@@ -330,8 +356,8 @@ watch([selectedNode], () => {
                 },
                 lineStyle: {
                     normal: {
-                        color: 'slateblue',    //边的颜色是由源节点决定的
-                        curveness: 0.2  //边的曲度，支持从 0 到 1 的值，值越大曲度越大。
+                        curveness: 0.2,
+                        width: 2 // 设置线条粗细
                     },
                 },
                 emphasis: {
@@ -342,6 +368,7 @@ watch([selectedNode], () => {
                         opacity: 0.7
                     },
                 },
+
             },
         ],
     };
@@ -446,5 +473,35 @@ const handleInfo = (row) => {
 .my-table {
     border: 1px solid #ebeef5;
     border-radius: 4px;
+}
+
+.legend {
+    /* position: absolute; */
+
+    padding-left: 100px;
+    padding-top: 10px;
+    /* border: 1px solid #ccc; */
+    background-color: white;
+    /* padding: 10px */
+    /* border-radius: 5px; */
+    display: flex;
+    /* 将图例项横向排列 */
+    flex-direction: row;
+    /* 将图例项水平排列 */
+    align-items: center;
+    /* 垂直居中 */
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    /* 添加一些间距 */
+}
+
+.color-box {
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
 }
 </style>
