@@ -1,59 +1,60 @@
 <template>
-    <div class="common-layout">
-      <div id="main"
-           style="width: 1000px;height:400px;margin-left:100px;background-color: rgba(250,247,247,0.5)"></div>
-      <div style="display: flex; justify-content: flex-end;">
-        <el-button
-            type="primary"
-            plain
-            icon="Plus"
-            @click="handleAdd"
-            v-hasPermi="['task:taskAllocation:add']"
-        >新任务输入</el-button>
-      </div>
-      <el-dialog :title="title" v-model="open" width="500px" append-to-body>
-        <el-form ref="taskAllocationRef" :model="form" :rules="rules" label-width="150px">
-          <el-form-item label="任务名称" prop="name">
-            <el-input v-model="form.name" placeholder="请输入任务名称" />
-          </el-form-item>
-          <el-form-item label="任务资源需求" prop="requirements">
-            <el-input v-model="form.requirements" placeholder="请输入任务资源需求" />
-          </el-form-item>
-          <el-form-item label="任务预估产量" prop="products">
-            <el-input v-model="form.products" placeholder="请输入任务预估产量" />
-          </el-form-item>
-          <el-form-item label="任务截止天数" prop="ddl">
-            <el-input v-model="form.ddl" placeholder="请输入任务截止天数" />
-          </el-form-item>
-          <el-form-item label="任务持续时长" prop="duration">
-            <el-input v-model="form.duration" placeholder="请输入任务持续天数"/>
-          </el-form-item>
-          <el-form-item label="任务参与企业数量" prop="number">
-            <el-input v-model="form.number" placeholder="任务参与企业数量"/>
-          </el-form-item>
-          <el-form-item label="任务参与企业名单" prop="lists">
-            <el-input v-model="form.lists" placeholder="任务参与企业名单"/>
-          </el-form-item>
-        </el-form>
-        <template #footer>
-          <div class="dialog-footer">
-            <el-button type="primary" @click="submitForm">确 定</el-button>
-            <el-button @click="cancel">取 消</el-button>
-          </div>
-        </template>
-      </el-dialog>
+  <div class="common-layout">
+    <div id="main"
+         style="width: 1000px;height:400px;margin-left:100px;background-color: rgba(250,247,247,0.5)"></div>
+    <div style="display: flex; justify-content: flex-end;">
+      <el-button
+          type="primary"
+          plain
+          icon="Plus"
+          @click="handleAdd"
+          v-hasPermi="['task:taskAllocation:add']"
+      >新任务输入
+      </el-button>
     </div>
+    <el-dialog :title="title" v-model="open" width="500px" append-to-body>
+      <el-form ref="taskAllocationRef" :model="form" :rules="rules" label-width="150px">
+        <el-form-item label="任务名称" prop="name">
+          <el-input v-model="form.name" placeholder="请输入任务名称"/>
+        </el-form-item>
+        <el-form-item label="任务资源需求" prop="requirements">
+          <el-input v-model="form.requirements" placeholder="请输入任务资源需求"/>
+        </el-form-item>
+        <el-form-item label="任务预估产量" prop="products">
+          <el-input v-model="form.products" placeholder="请输入任务预估产量"/>
+        </el-form-item>
+        <el-form-item label="任务截止天数" prop="ddl">
+          <el-input v-model="form.ddl" placeholder="请输入任务截止天数"/>
+        </el-form-item>
+        <el-form-item label="任务持续时长" prop="duration">
+          <el-input v-model="form.duration" placeholder="请输入任务持续天数"/>
+        </el-form-item>
+        <el-form-item label="任务参与企业数量" prop="number">
+          <el-input v-model="form.number" placeholder="任务参与企业数量"/>
+        </el-form-item>
+        <el-form-item label="任务参与企业名单" prop="lists">
+          <el-input v-model="form.lists" placeholder="任务参与企业名单"/>
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <div class="dialog-footer">
+          <el-button type="primary" @click="submitForm">确 定</el-button>
+          <el-button @click="cancel">取 消</el-button>
+        </div>
+      </template>
+    </el-dialog>
+  </div>
 </template>
-  
-  
+
+
 <script setup>
-import { ref, reactive, computed, watch, onMounted, nextTick } from 'vue'
+import {ref, reactive, computed, watch, onMounted, nextTick} from 'vue'
 import jsonData from "@/assets/income/networkRelation.json"
 import * as echarts from 'echarts'
 import axios from "axios";  //引入echarts
 const open = ref(false);
 const title = ref("");
-const { proxy } = getCurrentInstance();
+const {proxy} = getCurrentInstance();
 const data = reactive({
   form: {},
   queryParams: {
@@ -65,33 +66,34 @@ const data = reactive({
     ddl: null,
     duration: null,
     number: null,
-    lists:null
+    lists: null
   },
   rules: {
     name: [
-      { required: true, message: "任务名称不能为空", trigger: "blur" }
+      {required: true, message: "任务名称不能为空", trigger: "blur"}
     ],
     requirements: [
-      { required: true, message: "任务资源需求不能为空", trigger: "change" }
+      {required: true, message: "任务资源需求不能为空", trigger: "change"}
     ],
     products: [
-      { required: true, message: "任务预估产量不能为空", trigger: "change" }
+      {required: true, message: "任务预估产量不能为空", trigger: "change"}
     ],
     ddl: [
-      { required: true, message: "任务截止时间不能为空", trigger: "blur" }
+      {required: true, message: "任务截止时间不能为空", trigger: "blur"}
     ],
     duration: [
-      { required: true, message: "任务持续时长不能为空", trigger: "blur" }
+      {required: true, message: "任务持续时长不能为空", trigger: "blur"}
     ],
     number: [
-      { required: true, message: "任务参与企业数量不能为空", trigger: "blur" }
+      {required: true, message: "任务参与企业数量不能为空", trigger: "blur"}
     ],
     lists: [
-      { required: true, message: "任务参与企业名单不能为空", trigger: "change" }
+      {required: true, message: "任务参与企业名单不能为空", trigger: "change"}
     ]
   }
 });
-const { queryParams, form, rules } = toRefs(data);
+const {queryParams, form, rules} = toRefs(data);
+
 function handleAdd() {
   reset();
   open.value = true;
@@ -102,8 +104,8 @@ function reset() {
   form.value = {
     id: null,
     name: null,
-    requirements:null,
-    products:null,
+    requirements: null,
+    products: null,
     ddl: null,
     duration: null,
     number: null,
@@ -131,9 +133,9 @@ function submitForm() {
   //   }
   // });
   proxy.$refs["taskAllocationRef"].validate(valid => {
-    if(valid){
+    if (valid) {
       proxy.$modal.msgSuccess("新增成功");
-      open.value=false;
+      open.value = false;
     }
   });
 }
@@ -142,6 +144,7 @@ function cancel() {
   open.value = false;
   reset();
 }
+
 //定义组件的自定义事件
 let myChart = null;
 onMounted(async () => {
@@ -444,23 +447,23 @@ onMounted(async () => {
 
 <style>
 .header-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .flex-container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .header-text {
-    margin-right: 10px;
-    font-weight: bold
+  margin-right: 10px;
+  font-weight: bold
 }
 
 .my-table {
-    border: 1px solid #ebeef5;
-    border-radius: 4px;
+  border: 1px solid #ebeef5;
+  border-radius: 4px;
 }
 </style>

@@ -1,7 +1,77 @@
 <template>
-  <div className="common-layout">
-    <div id="main2" ref="chartContainer"
+  <el-button type="success" plain @click="formulaVisible = true" style="margin-bottom: 10px;">模型解读</el-button>
+  <el-dialog v-model="formulaVisible" title="多重产业链企业分布模型解读">
+    <el-form>
+      <el-form-item label="节点含义：" :label-width="formLabelWidth">
+        <span>多重产业链上的企业</span>
+      </el-form-item>
+      <el-form-item label="边含义：" :label-width="formLabelWidth">
+        <span>多重产业链上的企业之间的关联程度</span>
+      </el-form-item>
+      <el-form-item label="虚拟共有层含义：" :label-width="formLabelWidth">
+        <span>该平面上包含两层产业链上存在的共同企业</span>
+      </el-form-item>
+    </el-form>
+  </el-dialog>
+  <div class="common-layout">
+    <div id="main"
          style="width: 1000px;height:400px;margin-left:100px;background-color: rgba(250,247,247,0.5)"></div>
+    <div style="display: flex; justify-content: flex-end;">
+      <el-button
+          type="primary"
+          plain
+          icon="Plus"
+          @click="handleAdd"
+          v-hasPermi="['task:taskAllocation:add']"
+      >新企业加入
+      </el-button>
+    </div>
+    <el-dialog :title="title" v-model="open" width="500px" append-to-body>
+      <el-form ref="taskAllocationRef" :model="form" :rules="rules" label-width="150px">
+        <el-form-item label="企业名称" prop="name">
+          <el-input v-model="form.name" placeholder="请输入企业名称"/>
+        </el-form-item>
+        <el-form-item label="企业任务" prop="requirements">
+          <el-input v-model="form.products" placeholder="请输入企业经营目的"/>
+        </el-form-item>
+        <el-form-item label="企业市场份额" prop="products">
+          <el-input v-model="form.products" placeholder="请输入企业市场份额"/>
+        </el-form-item>
+        <el-form-item label="企业资源需求" prop="aa">
+          <el-input v-model="form.requirements" placeholder="请输入企业资源需求"/>
+        </el-form-item>
+        <el-form-item label="企业预估产量" prop="bb">
+          <el-input v-model="form.products" placeholder="请输入企业预估产量"/>
+        </el-form-item>
+        <el-form-item label="企业性质" prop="property">
+          <el-radio-group v-model="form.property">
+            <el-radio label="供应商" />
+            <el-radio label="制造商" />
+            <el-radio label="分销商" />
+            <el-radio label="服务商" />
+            <el-radio label="环保公司" />
+          </el-radio-group>
+        </el-form-item>
+        <!--        <el-form-item label="企业截止天数" prop="ddl">-->
+        <!--          <el-input v-model="form.ddl" placeholder="请输入企业截止天数"/>-->
+        <!--        </el-form-item>-->
+        <!--        <el-form-item label="企业持续时长" prop="duration">-->
+        <!--          <el-input v-model="form.duration" placeholder="请输入企业持续天数"/>-->
+        <!--        </el-form-item>-->
+        <!--        <el-form-item label="企业参与企业数量" prop="number">-->
+        <!--          <el-input v-model="form.number" placeholder="企业参与企业数量"/>-->
+        <!--        </el-form-item>-->
+        <!--        <el-form-item label="企业名单" prop="lists">-->
+        <!--          <el-input v-model="form.lists" placeholder="企业参与企业名单"/>-->
+        <!--        </el-form-item>-->
+      </el-form>
+      <template #footer>
+        <div class="dialog-footer">
+          <el-button type="primary" @click="submitForm">确 定</el-button>
+          <el-button @click="cancel">取 消</el-button>
+        </div>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -10,39 +80,113 @@
 import {ref, reactive, computed, watch, onMounted, nextTick} from 'vue'
 import * as echarts from 'echarts'
 import axios from "axios";  //引入echarts
+const formulaVisible = ref(false)
+const open = ref(false);
+const title = ref("");
+const {proxy} = getCurrentInstance();
+const data = reactive({
+  form: {},
+  queryParams: {
+    pageNum: 1,
+    pageSize: 10,
+    name: null,
+    requirements: null,
+    products: null,
+    ddl: null,
+    duration: null,
+    number: null,
+    lists: null
+  },
+  rules: {
+    name: [
+      {required: true, message: "企业名称不能为空", trigger: "blur"}
+    ],
+    requirements: [
+      {required: true, message: "企业资源需求不能为空", trigger: "change"}
+    ],
+    products: [
+      {required: true, message: "企业预估产量不能为空", trigger: "change"}
+    ]
+  }
+});
+const {queryParams, form, rules} = toRefs(data);
+
+function handleAdd() {
+  reset();
+  open.value = true;
+  title.value = "添加企业表 ";
+}
+
+function reset() {
+  form.value = {
+    id: null,
+    name: null,
+    requirements: null,
+    products: null,
+    ddl: null,
+    duration: null,
+    number: null,
+    lists: null,
+  };
+  proxy.resetForm("taskAllocationRef");
+}
+
+function submitForm() {
+  // proxy.$refs["taskAllocationRef"].validate(valid => {
+  //   if (valid) {
+  //     if (form.value.id != null) {
+  //       updateTaskAllocation(form.value).then(response => {
+  //         proxy.$modal.msgSuccess("修改成功");
+  //         open.value = false;
+  //         getList();
+  //       });
+  //     } else {
+  //       addTaskAllocation(form.value).then(response => {
+  //         proxy.$modal.msgSuccess("新增成功");
+  //         open.value = false;
+  //         getList();
+  //       });
+  //     }
+  //   }
+  // });
+  proxy.$refs["taskAllocationRef"].validate(valid => {
+    if (valid) {
+      proxy.$modal.msgSuccess("新增成功");
+      open.value = false;
+    }
+  });
+}
+
+function cancel() {
+  open.value = false;
+  reset();
+}
 
 //定义组件的自定义事件
-//const graph = ref(null);
-const chartContainer = ref(null);
 let myChart = null;
 onMounted(async () => {
-  // const chartDom = document.getElementById('main2');
-  // myChart = echarts.init(chartDom);
-  const chartDom = chartContainer.value;
-  const myChart = echarts.init(chartDom);
-  const response = await axios.get('/src/assets/dataFusion/task.json');
+  const chartDom = document.getElementById('main');
+  myChart = echarts.init(chartDom);
+  const response = await axios.get('/src/assets/dataFusion/company.json');
   const graph = response.data;
-  console.log(graph)
-  // const containerWidth = document.getElementById('main2').clientWidth;// 图形容器的宽度
-  // const containerHeight = document.getElementById('main2').clientHeight;// 图形容器的高度
+  //console.log(graph)
+  const containerWidth = document.getElementById('main').clientWidth;// 图形容器的宽度
+  const containerHeight = document.getElementById('main').clientHeight;// 图形容器的高度
 
-  const containerWidth = chartContainer.value.clientWidth;
-  const containerHeight = chartContainer.value.clientHeight;
-
-//计算polygon的相对坐标点
+  //计算polygon的相对坐标点
   function calculatePoints(points) {
     const widthRatio = containerWidth / 800; // 宽度比例
     const heightRatio = containerHeight / 500; // 高度比例
     return points.map(point => [point[0] * widthRatio, point[1] * heightRatio]);
   }
 
-// 计算节点的相对位置
+  // 计算节点的相对位置
   graph.nodes.forEach(node => {
     node.x = node.x / 800 * containerWidth;
     node.y = node.y / 500 * containerHeight;
   });
 
-//绘制ECharts关系图
+  //绘制ECharts关系图
   myChart.setOption({
     graphic: [
       {
@@ -76,6 +220,7 @@ onMounted(async () => {
           }
         ]
       },
+
       {
         type: 'group',
         position: [100, 190], // 左上角位置，根据需要进行调整
@@ -83,7 +228,7 @@ onMounted(async () => {
           {
             type: 'polygon',
             shape: {
-              points: calculatePoints([[-10, -40], [650, -40], [615, 50], [-50, 50]])  // 左上、右上、右下、左下
+              points: calculatePoints([[-10, -40], [650, -40], [615, 70], [-50, 70]])  // 左上、右上、右下、左下
             },
             style: {
               fill: '#eee',
@@ -103,6 +248,7 @@ onMounted(async () => {
           }
         ]
       },
+
       {
         type: 'group',
         position: [50, 310], // 左上角位置
@@ -110,7 +256,7 @@ onMounted(async () => {
           {
             type: 'polygon',
             shape: {
-              points: calculatePoints([[0, 30], [650, 30], [700, -100], [50, -100]])  // 左下、右下、右上、左上
+              points: calculatePoints([[0, 30], [660, 30], [700, -80], [45, -80]])  // 左下、右下、右上、左上
             },
             style: {
               fill: '#eee',
@@ -137,7 +283,7 @@ onMounted(async () => {
     ],
 
     title: {
-      text: '多重产业链任务关联分析模型',
+      text: '多重产业链企业分布模型',
       // subtext: '这是一个副标题',
       top: 'bottom',
       left: 'center'
@@ -150,62 +296,47 @@ onMounted(async () => {
       formatter: function (params) {
         // console.log(params)
         if (params.dataType === 'node') {
-          // var id = params.data.id;
-          // var name = params.name;
-          // var filed = params.data.filed;
-          // var category = params.data.category;
-          // var network = params.data.network;
-          // return "id: " + id + '<br/>' + "企业：" + name + '<br/>' + "所处领域：" + filed + '<br/>' + '所处产业链: ' + category + '<br/>' + '所处网络: ' + network;
+
           var id = params.data.id;
           var name = params.data.name;
           var requirements = params.data.requirements;
           var products = params.data.products;
-          var deadline = params.data.deadline;
-          var lastTime = params.data.lastTime;
-          var numbers = params.data.numbers;
-          var lists = params.data.lists;
-          return "id: " + id + '<br/>' + "任务名称：" + name + '<br/>' + "资源需求：" + requirements + '<br/>' + "预期产量：" + products + '<br/>' + "截止时间：" + deadline + '<br/>' + "预估耗时：" + lastTime + '<br/>' + "参与企业数量：" + numbers + '<br/>' + "参与企业名单：" + lists;
-        } else if (params.dataType === 'edge') {
-          var source = params.data.source;
-          var target = params.data.target;
-          var label = params.data.label.formatter;
-          return "源任务: " + source + '<br/>' + "目标任务：" + target + '<br/>' + "任务转移可能性：" + label;
+          var field = params.data.field;
+          return "id: " + id + '<br/>' + "企业名称：" + name + '<br/>' + "企业经营目的：" + requirements + '<br/>' + "企业性质：" + field + '<br/>' + "市场份额：" + products;
         }
+
       }
     },
-    legend: [
-      {
-        data: graph.categories.map(function (a) {
-          return a.name;
-        })
-      }
-    ],
-    animationDuration: 1500, //初始动画的时长
+    animationDuration: 1000, //初始动画的时长
     animationEasingUpdate: 'quinticInOut', //节点和边的动画方式（缓动函数）
     series: [{
       type: 'graph',
       layout: 'none',
       data: graph.nodes,
-      links: graph.links,
-      categories: graph.categories,
+      //links: graph.links,
+      //categories: graph.categories,
       //network: graph.network,
       roam: true,     //开启鼠标缩放和平移漫游
 
+      // 设置节点样式
+      itemStyle: {
+        // 指定节点的默认样式
+        normal: {
+          color: '#61a0a8',  // 节点的默认颜色
+        },
+        // 指定节点的高亮样式
+        emphasis: {
+          color: '#c23531',  // 节点的高亮颜色
+        },
+      },
+
       label: {
-        show: false,     //是否显示节点标签
+        show: true,     //是否显示节点标签
         // position: 'right',  //节点标签的位置
         formatter: '{b}'  //节点标签的内容格式器，a 代表系列名，b 代表数据名，c 代表数据值。
       },
       edgeSymbol: ['none', 'arrow'],
       edgeSymbolSize: [4, 6],
-      edgeLabel: {
-        show: true,
-        formatter: function (x) {
-          return x.data.label.formatter;
-        },
-        fontSize: 12,
-        color: '#000000'
-      },
       lineStyle: {
         color: 'source',
         curveness: 0.2,
@@ -225,7 +356,6 @@ onMounted(async () => {
         lineStyle: {    //边的设置
           width: 10,
           type: "dotted",
-          // shadowBlur:0.5,
           opacity: 0.7,
         }
       },
@@ -321,7 +451,10 @@ onMounted(async () => {
       myChart.on('mouseup', mouseupHandler);
     }
   });
+
+
 });
+// 初始化ECharts实例
 
 
 </script>

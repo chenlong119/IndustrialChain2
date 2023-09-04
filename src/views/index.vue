@@ -25,7 +25,7 @@
       <div class="lineTwo">
         <div class="leftBox">
           <div class="box1 skew bg">
-            <div class="rSkew bg">
+            <div class="rSkew bg" @click="$router.push('/dataFusion/fusion')">
               <span>数据融合</span>
             </div>
           </div>

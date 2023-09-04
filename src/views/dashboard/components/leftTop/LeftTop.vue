@@ -32,19 +32,19 @@ import Body from "@/views/dashboard/components/main/component/Body.vue";
 // 下层数据
 const dataArr = [
   {
-    number: 150,
-    text: '今日构建总量'
+    number: 10,
+    text: '今日完成总量'
   },
   {
-    number: 144,
+    number: 44,
     text: '总共完成数量'
   },
   {
-    number: 361,
-    text: '正在编译数量'
+    number: 36,
+    text: '正在执行数量'
   },
   {
-    number: 571,
+    number: 7,
     text: '未通过数量'
   }
 ]
