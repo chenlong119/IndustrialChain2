@@ -3,6 +3,62 @@
     <div id="main2" ref="chartContainer"
          style="width: 1000px;height:400px;margin-left:100px;background-color: rgba(250,247,247,0.5)"></div>
   </div>
+  <br>
+  <div>
+    <div>
+      <span style="font-size: 14px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif">目标关联企业:</span>
+      <el-select v-model="selectedNode" class="m-2" placeholder="请选择企业" size="large" filterable>
+        <el-option v-for="item in nodeData" :key="item.id" :label="item.name" :value="item.id" />
+      </el-select>
+    </div>
+    <el-main>
+      <div style="margin-bottom: 15px;"><span style="font-size: 14px">耦合关系展现：</span></div>
+      <el-table :data="relatedNodesWithout.value" style="width: 900px;height:260px" highlight-current-row
+                :header-cell-style="{height: '60px',}" :row-style="{ textAlign: 'center', height: '54px', }" class="my-table">
+        <el-table-column fixed type="index" :index="indexMethod" label="序号" width="100" />
+        <el-table-column prop="id" label="企业id" width="100" />
+        <el-table-column prop="name" label="企业名称" width="150" />
+        <el-table-column prop="category" label="所属团体" width="150" />
+        <el-table-column prop="relation" label="合作强度" width="150" />
+        <el-table-column prop="analysis" label="关联分析" width="150">
+        </el-table-column>
+
+        <el-table-column prop="infomation" label="企业信息" width="120">
+          <template #default="scope">
+            <el-button link type="primary" @click="handleInfo(scope.row)">查看详情</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+
+      <el-pagination v-model="currentPage" :page-size="pageSize" :pager-count="11" layout="prev, pager, next"
+                     :total="relatedNodesWithout.length" @current-change="handleCurrentChange"
+                     @size-change="handleSizeChange" />
+
+      <el-dialog v-model="infoDialogVisible" title="企业详情" align-center>
+        <el-form :model="info">
+          <el-form-item label="" :label-width="formLabelWidth">
+            企业id：{{ info.id }}
+          </el-form-item>
+          <el-form-item label="" :label-width="formLabelWidth">
+            企业名称：{{ info.name }}
+          </el-form-item>
+          <el-form-item label="" :label-width="formLabelWidth">
+            企业经营目的：{{ info.requirements }}
+          </el-form-item>
+          <el-form-item label="" :label-width="formLabelWidth">
+            企业性质：{{ info.field }}
+          </el-form-item>
+          <el-form-item label="" :label-width="formLabelWidth">
+            企业市场份额：{{ info.products }}
+          </el-form-item>
+          <el-form-item label="" :label-width="formLabelWidth">
+            子企业数量：{{ info.numbers }}
+          </el-form-item>
+        </el-form>
+      </el-dialog>
+
+    </el-main>
+  </div>
 </template>
 
 
@@ -10,17 +66,115 @@
 import {ref, reactive, computed, watch, onMounted, nextTick} from 'vue'
 import * as echarts from 'echarts'
 import axios from "axios";  //引入echarts
-
+import jsonData from "../../../assets/dataFusion/company.json"
 //定义组件的自定义事件
 //const graph = ref(null);
 const chartContainer = ref(null);
 let myChart = null;
+// 读取json数据并将其存储到nodeData数组和linkData数组中
+const nodeData = reactive([]);
+const linkData = reactive([]);
+const emits = defineEmits(['onNodeSelected']);
+for (const node of jsonData.nodes) {
+  nodeData.push({
+    id: node.id,
+    name: node.name,
+    requirements: node.requirements,
+    products: node.products,
+    field: node.field,
+    numbers: node.numbers,
+    lists: node.lists,
+    category: node.category,
+    x: node.x,
+    y: node.y
+  });
+}
+for (const link of jsonData.links) {
+  linkData.push({
+    source: link.source,
+    target: link.target,
+    relation: link.label.formatter,
+    analysis: link.label.analysis
+  });
+}
+//分页展示，每页展示8个企业
+const pageSize = 5
+//当前页
+let currentPage = ref(1);
+// 计算与所选节点相关的所有节点信息和连接信息
+const selectedNode = ref(""); //用户选择的节点
+const relatedNodesWithout = reactive([]);
+const relatedNodeIds = new Set();
+const handleCurrentChange = (val) => {
+  currentPage.value = val
+}
+function handleSizeChange(val) {
+  // 改变每页显示的条数
+  this.PageSize = val
+  // 注意：在改变每页显示的条数时，要将页码显示到第一页
+  this.state.currentPage = 1
+}
+watch([selectedNode], () => {
+  if (!selectedNode.value) {
+    relatedNodes.value = [];
+    return;
+  }
+  // 获取与所选节点相关的所有连接
+  const relatedLinks = linkData.filter(
+      (link) => link.source === selectedNode.value || link.target === selectedNode.value
+  );
+  relatedNodeIds.clear();
+  for (const link of relatedLinks) {
+    relatedNodeIds.add(link.source);
+    relatedNodeIds.add(link.target);
+  }
+  let tempRelatedNodes1 = nodeData.filter((node) => relatedNodeIds.has(node.id) && node.id !== selectedNode.value); //没有加上选中节点
+  // 将相关连接信息添加到相关节点信息中，并添加序号
+  tempRelatedNodes1.forEach((node, index) => {
+    node.relation = relatedLinks
+        .filter((link) => link.source === node.id || link.target === node.id)
+        .map((link) => link.relation)
+        .join(",");
+    node.analysis = relatedLinks
+        .filter((link) => link.source === node.id || link.target === node.id)
+        .map((link) => link.analysis)
+        .join(",");
+    node.index = index + 1;
+  });
+  relatedNodesWithout.value = tempRelatedNodes1;
+  console.log(relatedNodesWithout.value);
+
+}, { deep: true });
+//"查看详情"功能
+const infoDialogVisible = ref(false)
+const formLabelWidth = '140px'
+let info = ref({
+  id: '',
+  name: '',
+  index: -1,
+  requirements: '',
+  products:'',
+  field:'',
+  numbers:'',
+  lists:'',
+  category: '',
+  relation: [],
+  analysis: [],
+  x: -1,
+  y: -1,
+  deleted: false
+});
+const handleInfo = (row) => {
+  infoDialogVisible.value = true
+  info.value = row
+}
+
 onMounted(async () => {
   // const chartDom = document.getElementById('main2');
   // myChart = echarts.init(chartDom);
   const chartDom = chartContainer.value;
   const myChart = echarts.init(chartDom);
-  const response = await axios.get('/src/assets/dataFusion/task.json');
+  const response = await axios.get('/src/assets/dataFusion/company.json');
   const graph = response.data;
   console.log(graph)
   // const containerWidth = document.getElementById('main2').clientWidth;// 图形容器的宽度
@@ -137,7 +291,7 @@ onMounted(async () => {
     ],
 
     title: {
-      text: '多重产业链任务关联分析模型',
+      text: '多重产业链企业关联分析模型',
       // subtext: '这是一个副标题',
       top: 'bottom',
       left: 'center'
@@ -160,16 +314,13 @@ onMounted(async () => {
           var name = params.data.name;
           var requirements = params.data.requirements;
           var products = params.data.products;
-          var deadline = params.data.deadline;
-          var lastTime = params.data.lastTime;
-          var numbers = params.data.numbers;
-          var lists = params.data.lists;
-          return "id: " + id + '<br/>' + "任务名称：" + name + '<br/>' + "资源需求：" + requirements + '<br/>' + "预期产量：" + products + '<br/>' + "截止时间：" + deadline + '<br/>' + "预估耗时：" + lastTime + '<br/>' + "参与企业数量：" + numbers + '<br/>' + "参与企业名单：" + lists;
+          var field = params.data.field;
+          return "id: " + id + '<br/>' + "企业名称：" + name + '<br/>' + "企业经营目的：" + requirements + '<br/>' + "企业性质：" + field + '<br/>' + "市场份额：" + products;
         } else if (params.dataType === 'edge') {
           var source = params.data.source;
           var target = params.data.target;
           var label = params.data.label.formatter;
-          return "源任务: " + source + '<br/>' + "目标任务：" + target + '<br/>' + "任务转移可能性：" + label;
+          return "企业1 id: " + source + '<br/>' + "企业2 id：" + target + '<br/>' + "合作强度：" + label;
         }
       }
     },
@@ -188,15 +339,14 @@ onMounted(async () => {
       data: graph.nodes,
       links: graph.links,
       categories: graph.categories,
-      //network: graph.network,
       roam: true,     //开启鼠标缩放和平移漫游
 
       label: {
-        show: false,     //是否显示节点标签
+        show: true,     //是否显示节点标签
         // position: 'right',  //节点标签的位置
         formatter: '{b}'  //节点标签的内容格式器，a 代表系列名，b 代表数据名，c 代表数据值。
       },
-      edgeSymbol: ['none', 'arrow'],
+      //edgeSymbol: ['none', 'arrow'],
       edgeSymbolSize: [4, 6],
       edgeLabel: {
         show: true,

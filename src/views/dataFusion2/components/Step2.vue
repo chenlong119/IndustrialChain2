@@ -1,7 +1,49 @@
 <template>
-  <div className="common-layout">
+  <div class="common-layout">
     <div id="main2" ref="chartContainer"
          style="width: 1000px;height:400px;margin-left:100px;background-color: rgba(250,247,247,0.5)"></div>
+  </div>
+  <br>
+  <div>
+    <el-row>
+      <el-form :inline="true" :model="formInline" class="demo-form-inline">
+<!--        <el-form-item label="聚类基准">-->
+<!--          <el-input v-model="formInline.user" placeholder="紧急性"/>-->
+<!--        </el-form-item>-->
+        <el-form-item label="企业群查询">
+          <el-select v-model="formInline.region" placeholder="类别查询">
+            <el-option label="团体1" value="团体1"/>
+            <el-option label="团体2" value="团体2"/>
+            <el-option label="团体3" value="团体3"/>
+            <el-option label="团体4" value="团体4"/>
+            <el-option label="团体5" value="团体5"/>
+          </el-select>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="searchTasks">查询</el-button>
+        </el-form-item>
+      </el-form>
+    </el-row>
+
+    <el-row>
+      <el-col>
+        <el-table :data="currentTaskList" style="width: 100%" class="table">
+          <el-table-column fixed prop="name" label="企业" width="150px"/>
+          <el-table-column prop="requirements" label="企业经营目的" width="150px"/>
+          <el-table-column prop="field" label="企业性质" width="150px"/>
+          <el-table-column prop="products" label="市场份额" width="150px"/>
+          <el-table-column prop="numbers" label="子企业数量" width="150px"/>
+        </el-table>
+        <el-pagination
+            background
+            layout="prev, pager, next"
+            :page-size="pageSize"
+            :total="tableData.filterData.length"
+            @current-change="handleCurrentChange"
+            class="mt-4"
+        />
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -15,12 +57,46 @@ import axios from "axios";  //引入echarts
 //const graph = ref(null);
 const chartContainer = ref(null);
 let myChart = null;
+const formInline = reactive({
+  user: '',
+  region: '',
+})
+const taskData = reactive({
+  name: "",
+  requirements: "",
+  products: "",
+  deadline: "",
+  lastTime: "",
+  numbers: "",
+  lists: "",
+})
+let tableData = reactive({
+  filterData: []
+})
+const pageSize = 5
+//当前页
+let currentPage = ref(1);
+let currentTaskList = computed(() => {
+  return tableData.filterData.slice((currentPage.value - 1) * pageSize, currentPage.value * pageSize);
+})
+const handleCurrentChange = (val) => {
+  currentPage.value = val
+}
+function searchTasks() {
+  const category = formInline.region;
+  axios.get('/src/assets/dataFusion/company.json').then(response => {
+    let data = response.data.nodes;
+    tableData.filterData = data.filter(item => item.category == category);
+    console.log(tableData.filterData)
+  })
+  currentPage.value = 1;
+}
 onMounted(async () => {
   // const chartDom = document.getElementById('main2');
   // myChart = echarts.init(chartDom);
   const chartDom = chartContainer.value;
   const myChart = echarts.init(chartDom);
-  const response = await axios.get('/src/assets/dataFusion/task.json');
+  const response = await axios.get('/src/assets/dataFusion/company.json');
   const graph = response.data;
   console.log(graph)
   // const containerWidth = document.getElementById('main2').clientWidth;// 图形容器的宽度
@@ -137,7 +213,7 @@ onMounted(async () => {
     ],
 
     title: {
-      text: '多重产业链任务关联分析模型',
+      text: '多重产业链企业团体划分模型',
       // subtext: '这是一个副标题',
       top: 'bottom',
       left: 'center'
@@ -150,27 +226,15 @@ onMounted(async () => {
       formatter: function (params) {
         // console.log(params)
         if (params.dataType === 'node') {
-          // var id = params.data.id;
-          // var name = params.name;
-          // var filed = params.data.filed;
-          // var category = params.data.category;
-          // var network = params.data.network;
-          // return "id: " + id + '<br/>' + "企业：" + name + '<br/>' + "所处领域：" + filed + '<br/>' + '所处产业链: ' + category + '<br/>' + '所处网络: ' + network;
+
           var id = params.data.id;
           var name = params.data.name;
           var requirements = params.data.requirements;
           var products = params.data.products;
-          var deadline = params.data.deadline;
-          var lastTime = params.data.lastTime;
-          var numbers = params.data.numbers;
-          var lists = params.data.lists;
-          return "id: " + id + '<br/>' + "任务名称：" + name + '<br/>' + "资源需求：" + requirements + '<br/>' + "预期产量：" + products + '<br/>' + "截止时间：" + deadline + '<br/>' + "预估耗时：" + lastTime + '<br/>' + "参与企业数量：" + numbers + '<br/>' + "参与企业名单：" + lists;
-        } else if (params.dataType === 'edge') {
-          var source = params.data.source;
-          var target = params.data.target;
-          var label = params.data.label.formatter;
-          return "源任务: " + source + '<br/>' + "目标任务：" + target + '<br/>' + "任务转移可能性：" + label;
+          var field = params.data.field;
+          return "id: " + id + '<br/>' + "企业名称：" + name + '<br/>' + "企业经营目的：" + requirements + '<br/>' + "企业性质：" + field + '<br/>' + "市场份额：" + products;
         }
+
       }
     },
     legend: [
@@ -186,26 +250,18 @@ onMounted(async () => {
       type: 'graph',
       layout: 'none',
       data: graph.nodes,
-      links: graph.links,
+      //links: graph.links,
       categories: graph.categories,
       //network: graph.network,
       roam: true,     //开启鼠标缩放和平移漫游
 
       label: {
-        show: false,     //是否显示节点标签
+        show: true,     //是否显示节点标签
         // position: 'right',  //节点标签的位置
         formatter: '{b}'  //节点标签的内容格式器，a 代表系列名，b 代表数据名，c 代表数据值。
       },
       edgeSymbol: ['none', 'arrow'],
       edgeSymbolSize: [4, 6],
-      edgeLabel: {
-        show: true,
-        formatter: function (x) {
-          return x.data.label.formatter;
-        },
-        fontSize: 12,
-        color: '#000000'
-      },
       lineStyle: {
         color: 'source',
         curveness: 0.2,

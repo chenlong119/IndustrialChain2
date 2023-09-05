@@ -20,8 +20,8 @@
 
     <el-table-column fixed type="index" :index="indexMethod" align="center" label="序号" width="100" />
     <el-table-column prop="id" label="企业id" align="center" width="100" />
-    <el-table-column prop="name" label="企业名称" align="center" width="240" />
-    <el-table-column prop="filed" label="所处领域" align="center" width="240" />
+    <el-table-column prop="name" label="企业名称" align="center" width="200" />
+    <el-table-column prop="filed" label="所处领域" align="center" width="200" />
     <el-table-column prop="category" label="所处产业链" align="center" width="240" />
     <el-table-column label="关联关系" align="center" width="240">
       <template #default="scope">
@@ -35,6 +35,7 @@
       </template>
     </el-table-column>
 
+    <el-table-column prop="strength" label="关联强度" align="center" width="200" />
     <el-table-column prop="tool" label="操作" align="center" width="400">
       <template #default="scope">
         <el-button type="primary" :icon="Edit" circle @click="editNode(scope.row)" />
