@@ -296,8 +296,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div style="padding:10px">
-    <div ref="chartRef" style="width: 100%; height: 600px;">
+  <div>
+    <div ref="chartRef" style="width: 820px; height: 600px;">
     </div>
   </div>
 </template>

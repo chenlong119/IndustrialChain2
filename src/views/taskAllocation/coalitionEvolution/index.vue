@@ -11,6 +11,61 @@ let option1 = {
   legend: {
     data: ['联盟1', '联盟2', '联盟3'],
   },
+  tooltip: {
+    formatter: (params) => {
+      return taskList[params.data.category] + "<br/>" + "属于联盟" + (params.data.category + 1);
+    }
+  },
+  graphic: [
+    {
+      type: 'polygon',
+      shape: {
+        points: [[40, 70], [850, 70], [810, 200], [0, 200]]
+      },
+      style: {
+        fill: '#eee',
+        stroke: 'red',
+        lineWidth: 3,
+        opacity: 0.3, //透明度
+        shadowBlur: 10, //边框阴影模糊程度
+        shadowColor: 'black', //边框阴影颜色
+        shadowOffsetX: 5, //边框阴影水平偏移量
+        shadowOffsetY: 5 //边框阴影垂直偏移量
+      }
+    },
+    {
+      type: 'polygon',
+      shape: {
+        points: [[0, 390], [810, 390], [850, 250], [40, 250]]  //左下、右下、右上、左上
+      },
+      style: {
+        fill: '#eee',
+        stroke: 'blue',
+        lineWidth: 3,
+        opacity: 0.3,
+        shadowBlur: 10,
+        shadowColor: 'black',
+        shadowOffsetX: 5,
+        shadowOffsetY: 5
+      }
+    },
+    {
+      type: 'polygon',
+      shape: {
+        points: [[0, 600], [810, 600], [850, 450], [40, 450]]  //左下、右下、右上、左上
+      },
+      style: {
+        fill: '#eee',
+        stroke: 'green',
+        lineWidth: 3,
+        opacity: 0.2,
+        shadowBlur: 10,
+        shadowColor: 'black',
+        shadowOffsetX: 5,
+        shadowOffsetY: 5
+      }
+    }
+  ],
   series: [
     {
       type: 'graph',
@@ -109,13 +164,13 @@ let option1 = {
         {
           name: '企业14',
           x: 700,
-          y: 350,
+          y: 400,
           category: 0,
         },
         {
           name: '企业15',
           x: 500,
-          y: 500,
+          y: 470,
           category: 1,
         },
         {
@@ -138,8 +193,8 @@ let option1 = {
         },
         {
           name: '企业19',
-          x: 900,
-          y: 300,
+          x: 600,
+          y: 250,
           category: 2,
         },
 
@@ -298,7 +353,7 @@ const data2 = [
   {
     name: '企业5',
     x: 450,
-    y: 350,
+    y: 400,
     category: 1,
   },
   {
@@ -352,7 +407,7 @@ const data2 = [
   {
     name: '企业14',
     x: 700,
-    y: 350,
+    y: 500,
     category: 0,
   },
   {
@@ -385,6 +440,7 @@ const data2 = [
     y: 300,
     category: 2,
   }];
+const taskList = ["生产电动汽车", "生产电瓶车", "生产自行车"]
 const data3 = [
   {
     name: '企业1',
@@ -415,7 +471,7 @@ const data3 = [
   {
     name: '企业5',
     x: 450,
-    y: 350,
+    y: 500,
     category: 1,
   },
   {
@@ -469,7 +525,7 @@ const data3 = [
   {
     name: '企业14',
     x: 700,
-    y: 350,
+    y: 550,
     category: 1,
   },
   {
@@ -534,7 +590,7 @@ const data4 = [
   {
     name: '企业5',
     x: 450,
-    y: 350,
+    y: 550,
     category: 1,
   },
   {
@@ -588,7 +644,7 @@ const data4 = [
   {
     name: '企业14',
     x: 700,
-    y: 350,
+    y: 450,
     category: 1,
   },
   {

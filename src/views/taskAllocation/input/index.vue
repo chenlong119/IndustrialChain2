@@ -112,22 +112,15 @@
         >导出
         </el-button>
       </el-col>
-      <!--      <el-col :span="1.5">-->
-      <!--        <el-button-->
-      <!--            type="primary"-->
-      <!--            plain-->
-      <!--            icon="Star"-->
-      <!--            @click="handleCoalition"-->
-      <!--        >联盟形成-->
-      <!--        </el-button>-->
-      <!--        &lt;!&ndash;      </el-col><el-col :span="1.5">&ndash;&gt;-->
-      <!--        &lt;!&ndash;        <el-button&ndash;&gt;-->
-      <!--        &lt;!&ndash;            type="primary"&ndash;&gt;-->
-      <!--        &lt;!&ndash;            plain&ndash;&gt;-->
-      <!--        &lt;!&ndash;            icon="Star"&ndash;&gt;-->
-      <!--        &lt;!&ndash;            @click="$router.push('/allocation/detail')"&ndash;&gt;-->
-      <!--        &lt;!&ndash;        >查看任务分配详情</el-button>&ndash;&gt;-->
-      <!--      </el-col>-->
+      <el-col :span="1.5">
+        <el-button
+            type="primary"
+            plain
+            icon="Star"
+            @click="handleSchedule"
+        >查看任务调度过程
+        </el-button>
+      </el-col>
       <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
@@ -219,6 +212,15 @@
         </div>
       </template>
     </el-dialog>
+    <el-drawer
+        v-model="drawer"
+        title="任务调度示例"
+        direction="rtl"
+        :size="850"
+    >
+      <span>任务调度发生时机：（1）优先级较高的任务抢占联盟执行（2）存在空闲联盟，触发等待队列中任务的调度</span>
+      <flow-chart/>
+    </el-drawer>
   </div>
 </template>
 
@@ -230,8 +232,8 @@ import {
   listTaskAllocation,
   updateTaskAllocation
 } from "@/api/task/taskAllocation";
-
-import {onBeforeUnmount, onMounted} from "vue";
+import FlowChart from "@/views/taskAllocation/dispatch/components/FlowChart.vue";
+import {onBeforeUnmount, onMounted, ref} from "vue";
 
 const {proxy} = getCurrentInstance();
 const {task_state, task_type, task_priority} = proxy.useDict('task_state', 'task_type', 'task_priority');
@@ -285,8 +287,9 @@ const data = reactive({
     ]
   }
 });
-let interval = null;
 
+let interval = null;
+const drawer = ref(false);
 const {queryParams, form, rules} = toRefs(data);
 
 onMounted(() => {
@@ -297,7 +300,13 @@ onMounted(() => {
         if (item.state === 0) {
           item.state = 1;
         } else if (item.state === 1) {
-          item.state = 3;
+          //获取一个0-1的随机数
+          let random = Math.random();
+          if (random < 0.33) {
+            item.state = 2;
+          } else if (random < 0.66) {
+            item.state = 3;
+          }
         }
       });
     }
@@ -318,11 +327,9 @@ function getList() {
   });
 }
 
-const handleCoalition = () => {
-  taskAllocationList.value.forEach(item => {
-    item.state = 1;
-  });
-};
+const handleSchedule = () => {
+  drawer.value = true;
+}
 
 // 取消按钮
 function cancel() {
