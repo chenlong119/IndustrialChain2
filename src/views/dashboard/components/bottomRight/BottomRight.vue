@@ -179,7 +179,7 @@ onMounted(()=>{
 </style> -->
 
 <template>
-  <Body :icon-name="'icon-layer-group'" :dec-id="1" :name="'协同模式'">
+  <Body :icon-name="'icon-laptop'" :dec-id="1" :name="'协同模式'">
   <div ref="chartContainer" class="chart-container"></div>
   </Body>
 </template>

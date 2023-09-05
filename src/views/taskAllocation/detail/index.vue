@@ -1,12 +1,12 @@
 <template>
-  <div class="text-2xl">
+  <div>
     <el-row :gutter="20">
       <el-col :span="12">
         <el-card :shadow="'hover'">
           <template #header>
-            <span >已分配任务的完成进度变化图</span>
+            <span>已分配任务的完成进度变化图</span>
           </template>
-          <div ref="taskInfo" style="width:100%; height: 350px"/>
+          <div ref="taskInfo" style="width: 600px;height: 350px"/>
         </el-card>
       </el-col>
       <el-col :span="12">
@@ -14,7 +14,7 @@
           <template #header>
             <span>当前任务间的关系图</span>
           </template>
-          <div ref="taskLinkageInfo" style="width:100%; height: 350px"/>
+          <div ref="taskLinkageInfo" style="width:600px; height: 350px"/>
         </el-card>
       </el-col>
     </el-row>
@@ -46,7 +46,7 @@
           <template #header>
             <span>任务完成情况</span>
           </template>
-          <div ref="taskFinishInfo" style="width:100%; height: 400px"/>
+          <div ref="taskFinishInfo" style="width:600px; height: 400px"/>
         </el-card>
       </el-col>
     </el-row>
@@ -54,7 +54,7 @@
 </template>
 
 <script setup>
-import {ref, onMounted, getCurrentInstance, onUnmounted} from "vue";
+import {getCurrentInstance, onMounted, onUnmounted, ref} from "vue";
 import {useCoalitionStore} from "@/store/modules/coalition";
 import {useRouter} from "vue-router";
 
@@ -66,11 +66,11 @@ const taskLinkageInfo = ref(null);
 let taskFinishInfo = ref(null);
 let taskInfoInstance;
 let year = [
- //1到40
-    1,2, 3, 4, 5, 6, 7, 8, 9, 10,
-    11,12,13,14,15,16,17,18,19,20,
-    21,22,23,24,25,26,27,28,29,30,
-    31,32,33,34,35,36,37,38,39,40
+  //1到40
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+  11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+  21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+  31, 32, 33, 34, 35, 36, 37, 38, 39, 40
 ];
 let data = [
   [431, 550, 878, 989, 351, 391, 508, 118],
@@ -119,7 +119,7 @@ const handleCoalition = (index) => {
   router.push({
     name: "coalition",
   });
-  coalitionStore.setDetail( {
+  coalitionStore.setDetail({
     cname: tableData[index].cname,
     tname: tableData[index].tname,
   })
@@ -182,8 +182,8 @@ let option2 = {
   },
   tooltip: {
     trigger: 'item',
-    formatter: (params)=>{
-      return params.data.desc?params.data.desc:params.data.name;
+    formatter: (params) => {
+      return params.data.desc ? params.data.desc : params.data.name;
     }
   },
   animationDurationUpdate: 1500,
@@ -204,107 +204,107 @@ let option2 = {
       },
       data: [
         {
-          name: '任务 1',
+          name: '企业1',
           x: 200,
           y: 200,
           desc: '生产汽车车身'
         },
         {
-          name: '任务 2',
+          name: '企业2',
           x: 350,
           y: 200,
           desc: '生产汽车轮胎'
         },
         {
-          name: '任务 3',
+          name: '企业3',
           x: 450,
           y: 100,
           desc: '销售汽车玻璃'
         },
         {
-          name: '任务 4',
+          name: '企业4',
           x: 350,
           y: 300,
           desc: '销售电动汽车'
         },
         {
-          name: '任务 5',
+          name: '企业5',
           x: 450,
           y: 350,
           desc: '任务1'
         },
         {
-          name: '任务 6',
+          name: '企业6',
           x: 500,
           y: 200,
           desc: '汽车锂电池生产'
         },
         {
-          name: '任务 7',
+          name: '企业7',
           x: 200,
           y: 300,
           desc: '购买汽车玻璃'
         },
         {
-          name: '任务 8',
+          name: '企业8',
           x: 600,
           y: 100,
           desc: '购买汽车玻璃'
         },
         {
-          name: '任务 9',
+          name: '企业9',
           x: 600,
           y: 300,
           desc: '任务1'
         },
         {
-          name: '任务 10',
+          name: '企业10',
           x: 600,
           y: 450,
           desc: '汽车发动机生产'
         },
         {
-          name: '任务 11',
+          name: '企业11',
           x: 350,
           y: 400
         },
         {
-          name: '任务 12',
+          name: '企业12',
           x: 700,
           y: 200
         },
         {
-          name: '任务 13',
+          name: '企业13',
           x: 700,
           y: 60
         },
         {
-          name: '任务 14',
+          name: '企业14',
           x: 700,
           y: 350
         },
         {
-          name: '任务 15',
+          name: '企业15',
           x: 500,
           y: 500
         },
         {
-          name: '任务 16',
+          name: '企业16',
           x: 200,
           y: 450
         },
         {
-          name: '任务 17',
+          name: '企业17',
           x: 800,
           y: 400
         },
         {
-          name: '任务 18',
+          name: '企业18',
           x: 800,
           y: 100
         },
         {
-          name: '任务 19',
+          name: '企业19',
           x: 900,
           y: 300
         },
@@ -312,114 +312,114 @@ let option2 = {
       ],
       links: [
         {
-          source: '任务 2',
-          target: '任务 1',
+          source: '企业2',
+          target: '企业1',
 
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 3',
-          target: '任务 4',
+          source: '企业3',
+          target: '企业4',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 1',
-          target: '任务 3',
+          source: '企业1',
+          target: '企业3',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 2',
-          target: '任务 3',
+          source: '企业2',
+          target: '企业3',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 2',
-          target: '任务 4',
+          source: '企业2',
+          target: '企业4',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 1',
-          target: '任务 4',
+          source: '企业1',
+          target: '企业4',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 3',
-          target: '任务 5',
+          source: '企业3',
+          target: '企业5',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 6',
-          target: '任务 4',
+          source: '企业6',
+          target: '企业4',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 5',
-          target: '任务 10',
+          source: '企业5',
+          target: '企业10',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 8',
-          target: '任务 10',
+          source: '企业8',
+          target: '企业10',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 12',
-          target: '任务 14',
+          source: '企业12',
+          target: '企业14',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 11',
-          target: '任务 15',
+          source: '企业11',
+          target: '企业15',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 13',
-          target: '任务 17',
+          source: '企业13',
+          target: '企业17',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 18',
-          target: '任务 16',
+          source: '企业18',
+          target: '企业16',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 16',
-          target: '任务 19',
+          source: '企业16',
+          target: '企业19',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 7',
-          target: '任务 16',
+          source: '企业7',
+          target: '企业16',
           lineStyle: {
             curveness: 0.2
           }
@@ -455,7 +455,7 @@ let option3 = {
       },
       label: {
         show: true,
-        formatter: '{b}'+'\n'+'{d}%',
+        formatter: '{b}' + '\n' + '{d}%',
       },
       labelLine: {
         show: true,
@@ -545,7 +545,7 @@ const intervalTask = () => {
     setTimeout(function () {
       var smalloption = {
         title: {
-          text:"前"+ year[data.length - i - 1].toString() + "小时任务完成率",
+          text: "前" + year[data.length - i - 1].toString() + "小时任务完成率",
         },
         series: [
           {
@@ -563,7 +563,7 @@ onMounted(() => {
     path: "coalition",
     name: 'coalition',
     component: () => import("@/views/taskAllocation/detail/coalition/index.vue"),
-    redirect:{name:'table'},
+    redirect: {name: 'table'},
     meta: {
       title: '联盟详情',
     },
@@ -596,8 +596,7 @@ onUnmounted(() => {
 </script>
 
 <style scoped lang="less">
-.text-2xl
-{
+.text-2xl {
   font-size: 1.5rem;
 }
 </style>
