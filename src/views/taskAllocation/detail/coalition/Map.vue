@@ -1,5 +1,5 @@
 <script setup>
-import {ref, onMounted, getCurrentInstance} from "vue";
+import {getCurrentInstance, onMounted, ref} from "vue";
 
 const {proxy} = getCurrentInstance();
 const map = ref(null);
@@ -54,8 +54,8 @@ const initChart = async () => {
         },
       },
     },
-    tooltip:{
-      trigger:'item',
+    tooltip: {
+      trigger: 'item',
     }
   }
   chartInstance.setOption(initOption)
@@ -79,8 +79,8 @@ const updateChart = () => {
           show: true, // 显示标签
           position: 'right', // 标签位置
           formatter: '{b}', // 标签内容为数据项的名称
-          fontSize:20,
-          fontWeight:'bold'
+          fontSize: 20,
+          fontWeight: 'bold'
         },
         data: enterprises,
         coordinateSystem: 'geo',
@@ -97,7 +97,7 @@ const updateChart = () => {
 </script>
 
 <template>
-  <div ref="map" style="height: 600px; width: 70%; margin:0 auto"></div>
+  <div ref="map" style="height: 600px; width:800px;"></div>
 </template>
 
 <style scoped lang="less">

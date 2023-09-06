@@ -11,9 +11,9 @@
                 class="dec-11">
               {{ title }}
             </dv-decoration-11>
-            <dv-decoration-6
-                class="dec-6"
-            />
+<!--            <dv-decoration-6-->
+<!--                class="dec-6"-->
+<!--            />-->
           </div>
           <dv-decoration-8
               class="dv-dec-8"
@@ -24,21 +24,24 @@
       </div>
       <div class="lineTwo">
         <div class="leftBox">
-          <div class="box1 skew bg">
-            <div class="rSkew bg" @click="$router.push('/dataFusion/fusion')">
+          <div class="box1 skew bg" @click="$router.push('/dataFusion/fusion')">
+            <div class="rSkew bg">
               <span>数据融合</span>
             </div>
           </div>
           <div class="box2 bg skew" @click="$router.push({name:'Input'})">
             <span class="rSkew">任务分配</span>
           </div>
+          <div class="box2 bg skew" @click="$router.push('/income/evaluation')">
+            <span class="rSkew">收益评估</span>
+          </div>
         </div>
         <div class="rightBox"  @click="$router.push('/copattern/mltipattern')">
-          <div class="box1 bg rSkew">
-            <span class="skew">协同模式</span>
+          <div class="box1 bg skew">
+            <span class="rSkew">协同模式</span>
           </div>
-          <div class="box2  rSkew bg ">
-            <div class="skew bg">
+          <div class="box2  skew bg ">
+            <div class="rSkew bg">
               <span>
                 {{ timeInfo.dateYear }} {{ timeInfo.dateWeek }}
                 {{ timeInfo.dateDay }}
@@ -176,7 +179,7 @@ const handleTime = () => {
       height: 4%;
 
       .leftBox {
-        width: 40%;
+        width: 50%;
         height: 100%;
         display: flex;
 
@@ -204,10 +207,10 @@ const handleTime = () => {
       }
 
       .rightBox {
-        width: 40%;
+        width: 50%;
         height: 100%;
         display: flex;
-
+        margin-left: 10px;
         .box1 {
           width: 40%;
           height: 100%;
