@@ -26,17 +26,17 @@
   <br>
   <div class="container">
     <div>
-      <span style="font-size: 14px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif">目标关系网络：</span>
+      <span style="font-size: 14px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; margin-right: 10px;">目标关系网络：</span>
       <el-select v-model="selectedRelation" class="m-2" placeholder="请选择关系网络" size="large" filterable >
         <el-option v-for="item in relationData" :key="item.id" :label="item.name" :value="item.id" />
       </el-select>
-      <span style="font-size: 14px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif">目标关联企业：</span>
+      <span style="font-size: 14px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; margin-right: 10px;">目标关联企业：</span>
       <el-select v-model="selectedNode" class="m-2" placeholder="请选择企业" size="large" filterable @change="handleSelectChange">
         <el-option v-for="item in nodeData" :key="item.id" :label="item.name" :value="item.id" />
       </el-select>
     </div>
     <el-main>
-      <div style="margin-bottom: 15px;"><span style="font-size: 14px">耦合关系展现：</span></div>
+      <div style="margin-bottom: 15px"><span style="font-size: 14px">耦合关系展现：</span></div>
       <el-table :data="relatedNodesWithout.value" style="width: 1050px;height:260px" highlight-current-row
                 :header-cell-style="{height: '60px',}" :row-style="{ textAlign: 'center', height: '54px', }" class="my-table">
         <el-table-column fixed type="index" :index="indexMethod" label="序号" width="100" />
@@ -578,7 +578,6 @@ const handleSelectChange = () => {
   margin-right: 10px;
   font-weight: bold
 }
-
 .my-table {
   border: 1px solid #ebeef5;
   border-radius: 4px;
