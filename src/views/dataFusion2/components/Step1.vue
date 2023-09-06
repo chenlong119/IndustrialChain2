@@ -52,6 +52,13 @@
             <el-radio label="环保公司" />
           </el-radio-group>
         </el-form-item>
+        <el-form-item label="企业所属产业链" prop="chain">
+          <el-select v-model="form.chain" placeholder="请选择所属产业链">
+            <el-option label="汽车产业链" value="option1"></el-option>
+            <el-option label="家电产业链" value="option2"></el-option>
+            <el-option label="汽车产业链 & 家电产业链" value="option3"></el-option>
+          </el-select>
+        </el-form-item>
       </el-form>
       <template #footer>
         <div class="dialog-footer">
