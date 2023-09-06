@@ -5,17 +5,17 @@
       <el-form-item label="节点含义：" :label-width="formLabelWidth">
         <span>多重产业链上的企业</span>
       </el-form-item>
-      <el-form-item label="边含义：" :label-width="formLabelWidth">
-        <span>多重产业链上的企业之间的关联程度</span>
+      <el-form-item label="网络层含义含义：" :label-width="formLabelWidth">
+        <span>多重产业链上的企业组成的不同关系网络</span>
       </el-form-item>
-      <el-form-item label="虚拟共有层含义：" :label-width="formLabelWidth">
-        <span>该平面上包含两层产业链上存在的共同企业</span>
+      <el-form-item label="垂直边含义：" :label-width="formLabelWidth">
+        <span>同一企业在不同关系网络中的映射</span>
       </el-form-item>
     </el-form>
   </el-dialog>
   <div class="common-layout">
     <div id="main"
-         style="width: 1000px;height:400px;margin-left:100px;background-color: rgba(250,247,247,0.5)"></div>
+         style="width: 1000px;height:400px;margin: 0 auto;background-color: rgba(250,247,247,0.5)"></div>
     <div style="display: flex; justify-content: flex-end;">
       <el-button
           type="primary"
@@ -32,7 +32,7 @@
           <el-input v-model="form.name" placeholder="请输入企业名称"/>
         </el-form-item>
         <el-form-item label="企业任务" prop="requirements">
-          <el-input v-model="form.products" placeholder="请输入企业经营目的"/>
+          <el-input v-model="form.products" placeholder="请输入核心业务"/>
         </el-form-item>
         <el-form-item label="企业市场份额" prop="products">
           <el-input v-model="form.products" placeholder="请输入企业市场份额"/>
@@ -52,18 +52,6 @@
             <el-radio label="环保公司" />
           </el-radio-group>
         </el-form-item>
-        <!--        <el-form-item label="企业截止天数" prop="ddl">-->
-        <!--          <el-input v-model="form.ddl" placeholder="请输入企业截止天数"/>-->
-        <!--        </el-form-item>-->
-        <!--        <el-form-item label="企业持续时长" prop="duration">-->
-        <!--          <el-input v-model="form.duration" placeholder="请输入企业持续天数"/>-->
-        <!--        </el-form-item>-->
-        <!--        <el-form-item label="企业参与企业数量" prop="number">-->
-        <!--          <el-input v-model="form.number" placeholder="企业参与企业数量"/>-->
-        <!--        </el-form-item>-->
-        <!--        <el-form-item label="企业名单" prop="lists">-->
-        <!--          <el-input v-model="form.lists" placeholder="企业参与企业名单"/>-->
-        <!--        </el-form-item>-->
       </el-form>
       <template #footer>
         <div class="dialog-footer">
@@ -213,7 +201,7 @@ onMounted(async () => {
             type: 'text',
             position: [-50, 70], // 相对于 group 左上角位置的偏移量
             style: {
-              text: '汽车产业链', // 你要显示的文字
+              text: '合作关系', // 你要显示的文字
               fill: 'black', // 文字颜色
               fontSize: 14 // 文字大小
             }
@@ -239,9 +227,9 @@ onMounted(async () => {
           },
           {
             type: 'text',
-            position: [-50, 25], // 相对于 group 左上角位置的偏移量
+            position: [-50, 40], // 相对于 group 左上角位置的偏移量
             style: {
-              text: '虚拟共有层', // 你要显示的文字
+              text: '供应关系', // 你要显示的文字
               fill: 'black', // 文字颜色
               fontSize: 14 // 文字大小
             }
@@ -273,7 +261,7 @@ onMounted(async () => {
             type: 'text',
             position: [15, 5], // 相对于 group 左上角位置的偏移量
             style: {
-              text: '家电产业链', // 你要显示的文字
+              text: '竞争关系', // 你要显示的文字
               fill: 'black', // 文字颜色
               fontSize: 14 // 文字大小
             }
@@ -302,7 +290,7 @@ onMounted(async () => {
           var requirements = params.data.requirements;
           var products = params.data.products;
           var field = params.data.field;
-          return "id: " + id + '<br/>' + "企业名称：" + name + '<br/>' + "企业经营目的：" + requirements + '<br/>' + "企业性质：" + field + '<br/>' + "市场份额：" + products;
+          return "id: " + id + '<br/>' + "企业名称：" + name + '<br/>' + "核心业务：" + requirements + '<br/>' + "企业性质：" + field + '<br/>' + "市场份额：" + products;
         }
 
       }
@@ -313,9 +301,8 @@ onMounted(async () => {
       type: 'graph',
       layout: 'none',
       data: graph.nodes,
-      //links: graph.links,
+      links: graph.links1,
       //categories: graph.categories,
-      //network: graph.network,
       roam: true,     //开启鼠标缩放和平移漫游
 
       // 设置节点样式
@@ -335,21 +322,6 @@ onMounted(async () => {
         // position: 'right',  //节点标签的位置
         formatter: '{b}'  //节点标签的内容格式器，a 代表系列名，b 代表数据名，c 代表数据值。
       },
-      edgeSymbol: ['none', 'arrow'],
-      edgeSymbolSize: [4, 6],
-      lineStyle: {
-        color: 'source',
-        curveness: 0.2,
-        width: 2,
-        type: 'solid',
-        arrow: {
-          show: true,
-          size: 6,
-          offset: 0,
-          symbol: 'arrow',
-          symbolSize: [6, 12]
-        }
-      },
 
       emphasis: {
         focus: 'adjacency', //当鼠标移动到节点上，突出显示节点以及节点的边和邻接节点，'adjacency' 表示只突出显示节点以及节点的边
@@ -365,19 +337,6 @@ onMounted(async () => {
   });
 
   myChart.on('click', params => {
-    // if (params.componentType === 'polygon') {
-    //     const nodes = myChart.getOption().series[0].data;
-    //     const nodesInPolygon = nodes.filter(node => {
-    //         const point = myChart.convertToPixel('grid', [node.x, node.y]);
-    //         return myChart.graphic.isPointInGraphic(params.componentIndex, point);
-    //     });
-    //     const selectedNodes = nodesInPolygon.map(node => node.name);
-    //     myChart.dispatchAction({
-    //         type: 'highlight',
-    //         seriesIndex: 0,
-    //         name: selectedNodes
-    //     });
-    // }
     if (params.dataType == "node") {
       taskData.name = params.data.name;
       taskData.requirements = params.data.requirements;

@@ -1,0 +1,655 @@
+{
+  "nodes": [
+    {
+      "id": "0",
+      "name": "宁德时代",
+      "chain": "汽车产业链",
+      "requirements": "电池制造",
+      "field": "供应商",
+      "products": "30%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "2",
+      "lists": "东方电气集团 33，宁德时代 34，三星 SDI35",
+      "category": "团体1",
+      "frequency":"8",
+      "symbolSize": 20,
+      "x": -174.82776,
+      "y": -223.6904
+    },
+    {
+      "id": "1",
+      "name": "中国铝业",
+      "chain": "汽车产业链 & 家电产业链",
+      "requirements": "金属采掘",
+      "field": "供应商",
+      "products": "20%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "中国铝业0，欧洲矿业1，澳洲力拓集团2",
+      "category": "团体1",
+      "frequency":"8",
+      "symbolSize": 20,
+      "x": -648.08344,
+      "y": -206.8853
+    },
+    {
+      "id": "2",
+      "name": "万山特钢股份",
+      "chain": "汽车产业链 & 家电产业链",
+      "requirements": "金属治炼",
+      "field": "制造商",
+      "products": "25%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "宝钢股份 3，万山特钢股份 4，三菱重工 5",
+      "category": "团体1",
+      "frequency":"8",
+      "symbolSize": 20,
+      "x": -465.76357,
+      "y": -196.29176
+    },
+    {
+      "id": "3",
+      "name": "南钢股份",
+      "chain": "汽车产业链",
+      "requirements": "金属加工",
+      "field": "供应商",
+      "products": "40%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "4",
+      "lists": "南钢股份6，武汉钢铁7，索迪斯 8",
+      "category": "团体1",
+      "frequency":"8",
+      "symbolSize": 20,
+      "x": -362.82404,
+      "y": -235.26283
+    },
+    {
+      "id": "4",
+      "name": "中煤能源集团",
+      "chain": "汽车产业链 & 家电产业链",
+      "requirements": "非金属采掘",
+      "field": "供应商",
+      "products": "18%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "中煤能源集团 12，中国石油化工13，北方稀士集团 14",
+      "category": "团体1",
+      "frequency":"8",
+      "symbolSize": 20,
+      "x": -588.30386,
+      "y": -149.06424
+    },
+    {
+      "id": "5",
+      "name": "中国石化化工",
+      "chain": "汽车产业链 & 家电产业链",
+      "requirements": "化工原料制造",
+      "field": "制造商",
+      "products": "44%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "中国石化化工21、湖北宜化化工22、中国盐业集团 234",
+      "category": "团体4",
+      "frequency":"7",
+      "symbolSize": 20,
+      "x": -392.6012,
+      "y": -115.16974
+    },
+    {
+      "id": "6",
+      "name": "中国中材集团",
+      "chain": "家电产业链",
+      "requirements": "化工材料合成",
+      "field": "制造商",
+      "products": "28%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "中国中材集团24、中国石油化工25、中国航空工业集团 26",
+      "category": "团体4",
+      "symbolSize": 20,
+      "frequency":"7",
+      "x": -322.6012,
+      "y": -65.16974
+    },
+    {
+      "id": "7",
+      "name": "爱康科技",
+      "chain": "汽车产业链 & 家电产业链",
+      "requirements": "化工废料处理",
+      "field": "环保公司",
+      "products": "24%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "4",
+      "lists": "环保科技 39、爱康科技 40、清远市环保科技 41",
+      "category": "团体2",
+      "frequency":"10",
+      "symbolSize": 20,
+      "x": 474.39832,
+      "y": -221.16772
+    },
+    {
+      "id": "8",
+      "name": "中国海螺集团",
+      "chain": "汽车产业链",
+      "requirements": "非金属矿物制品",
+      "field": "制造商",
+      "products": "16%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "中国建材集团 15、中国海螺集团 16、北新建材股份 17",
+      "category": "团体3",
+      "frequency":"5",
+      "symbolSize": 20,
+      "x": -559.34107,
+      "y": -84.56128
+    },
+    {
+      "id": "9",
+      "name": "瓜子二手车",
+      "chain": "汽车产业链",
+      "requirements": "二手车回收",
+      "field": "分销商",
+      "products": "25%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "1",
+      "lists": "瓜子二手车54、人人网 55、车易拍 56",
+      "category": "团体2",
+      "frequency":"10",
+      "symbolSize": 20,
+      "x": 247.93029,
+      "y": -140.8120565
+    },
+    {
+      "id": "10",
+      "name": "顺丰速运",
+      "chain": "汽车产业链 & 家电产业链",
+      "requirements": "物流运输",
+      "field": "物流公司",
+      "products": "29%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "2",
+      "lists": "顺丰速运57、中国邮政58、德邦物流59",
+      "category": "团体3",
+      "frequency":"5",
+      "symbolSize": 20,
+      "x": 9.77908,
+      "y": -124.69139
+    },
+    {
+      "id": "11",
+      "name": "阳光人力资源",
+      "chain": "汽车产业链 & 家电产业链",
+      "requirements": "人力资源服务",
+      "field": "供应商",
+      "products": "30%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "麦可思 60、阳光人力资源61、花旗集团 62",
+      "category": "团体3",
+      "frequency":"5",
+      "symbolSize": 20,
+      "x": 114.31313,
+      "y": -218.55301
+    },
+    {
+      "id": "12",
+      "name": "博世集团",
+      "chain": "汽车产业链",
+      "requirements": "汽车零部件制造",
+      "field": "制造商",
+      "products": "34%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "江淮汽车 63，武汉博泰汽车 64，博世集团 65",
+      "category": "团体3",
+      "frequency":"5",
+      "symbolSize": 20,
+      "x": -58.05168,
+      "y": -141.99768
+    },
+    {
+      "id": "13",
+      "name": "比亚迪",
+      "chain": "汽车产业链",
+      "requirements": "整车制造",
+      "field": "制造商",
+      "products": "54%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "category": "团体4",
+      "lists": "比亚迪 66，上汽集团 67，一汽集团 68",
+      "frequency":"7",
+      "symbolSize": 20,
+      "x": 78.701546,
+      "y": -141.55057
+    },
+    {
+      "id": "14",
+      "name": "宝钢再生资源",
+      "chain": "汽车产业链 & 家电产业链",
+      "requirements": "金属回收再利用",
+      "field": "环保公司",
+      "products": "36%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "安永金属回收9、宝钢再生资源 10、美利金属回收 11",
+      "category": "团体2",
+      "frequency":"10",
+      "symbolSize": 20,
+      "x": 354.79382,
+      "y": -113.57944
+    },
+    {
+      "id": "15",
+      "name": "新型建材集团",
+      "chain": "家电产业链",
+      "requirements": "非金属回收再利用",
+      "field": "环保公司",
+      "products": "14%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "4",
+      "lists": "新型建材集团18、万利达再生资源 19、马士基再生资源 20",
+      "category": "团体2",
+      "frequency":"10",
+      "symbolSize": 20,
+      "x": 424.79382,
+      "y": -163.57944
+    },
+    {
+      "id": "16",
+      "name": "京东数科",
+      "chain": "汽车产业链 & 家电产业链",
+      "requirements": "大数据分析",
+      "field": "服务商",
+      "products": "33%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "京东数科51、元征科技 52、国家信息中心 53",
+      "category": "团体5",
+      "frequency":"4",
+      "symbolSize": 20,
+      "x": -306.44113,
+      "y": -175.13303
+    },
+    {
+      "id": "17",
+      "name": "阿里巴巴集团",
+      "chain": "汽车产业链 & 家电产业链",
+      "requirements": "互联网服务",
+      "field": "服务商",
+      "products": "41%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "6",
+      "lists": "腾讯公司48、阿里巴巴集团49、字节跳动50",
+      "category": "团体5",
+      "frequency":"4",
+      "symbolSize": 20,
+      "x": -206.44113,
+      "y": -135.13303
+    },
+    {
+      "id": "18",
+      "name": "爱驰汽车科技",
+      "chain": "汽车产业链",
+      "requirements": "充电基础设施建设",
+      "field": "服务商",
+      "products": "24%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "特斯拉 36、国家电网公司 37、爱驰汽车科技 38",
+      "category": "团体3",
+      "frequency":"5",
+      "symbolSize": 20,
+      "x": 282.6012,
+      "y": -230.16974
+    },
+
+    {
+      "id": "19",
+      "name": "苏宁易购",
+      "chain": "家电产业链",
+      "requirements": "家电销售",
+      "field": "分销商",
+      "products": "38%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "京东11，阿里巴巴24，苏宁易购70",
+      "category": "团体4",
+      "frequency":"7",
+      "symbolSize": 20,
+      "x": -100.2226,
+      "y": -66.5572
+    }
+
+  ],
+  "links": [
+    {
+      "source": "1",
+      "target": "2",
+      "label": {
+        "formatter1": "0.5",
+        "formatter2": "0.6",
+        "formatter3": "0",
+        "analysis": "关联强度较强"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+
+    },
+    {
+      "source": "1",
+      "target": "4",
+      "label": {
+        "formatter1": "0",
+        "formatter2": "0.5",
+        "formatter3": "0",
+        "analysis": "关联强度适中"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+
+    },
+    {
+      "source": "2",
+      "target": "3",
+      "label": {
+        "formatter1": "0.6",
+        "formatter2": "0",
+        "formatter3": "0,5",
+        "analysis": "关联强度较强"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "3",
+      "target": "0",
+      "label": {
+        "formatter1": "0.3",
+        "formatter2": "0.6",
+        "formatter3": "0",
+        "analysis": "关联强度适中"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "4",
+      "target": "8",
+      "label": {
+        "formatter1": "0.5",
+        "formatter2": "0",
+        "formatter3": "0",
+        "analysis": "关联强度适中"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "5",
+      "target": "6",
+      "label": {
+        "formatter1": "0.6",
+        "formatter2": "0",
+        "formatter3": "0",
+        "analysis": "关联强度适中"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "5",
+      "target": "8",
+      "label": {
+        "formatter1": "0.8",
+        "formatter2": "0",
+        "formatter3": "0",
+        "analysis": "关联强度适中"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "16",
+      "target": "19",
+      "label": {
+        "formatter1": "0.3",
+        "formatter2": "0",
+        "formatter3": "0",
+        "analysis": "关联强度较弱"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "16",
+      "target": "17",
+      "label": {
+        "formatter1": "0",
+        "formatter2": "0",
+        "formatter3": "0.4",
+        "analysis": "关联强度较弱"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "19",
+      "target": "12",
+      "label": {
+        "formatter1": "0.6",
+        "formatter2": "0",
+        "formatter3": "0",
+        "analysis": "关联强度适中"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "19",
+      "target": "10",
+      "label": {
+        "formatter1": "0.3",
+        "formatter2": "0",
+        "formatter3": "0.6",
+        "analysis": "关联强度较强"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "19",
+      "target": "7",
+      "label": {
+        "formatter1": "0.6",
+        "formatter2": "0",
+        "formatter3": "0",
+        "analysis": "关联强度适中"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "12",
+      "target": "10",
+      "label": {
+        "formatter1": "0.6",
+        "formatter2": "0",
+        "formatter3": "0",
+        "analysis": "关联强度适中"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "10",
+      "target": "11",
+      "label": {
+        "formatter1": "0.6",
+        "formatter2": "0.4",
+        "formatter3": "0",
+        "analysis": "关联强度较强"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "10",
+      "target": "13",
+      "label": {
+        "formatter1": "0.5",
+        "formatter2": "0",
+        "formatter3": "0",
+        "analysis": "关联强度适中"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "13",
+      "target": "18",
+      "label": {
+        "formatter1": "0.2",
+        "formatter2": "0.4",
+        "formatter3": "0",
+        "analysis": "关联强度适中"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "13",
+      "target": "9",
+      "label": {
+        "formatter1": "0",
+        "formatter2": "0",
+        "formatter3": "0.6",
+        "analysis": "关联强度适中"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "9",
+      "target": "7",
+      "label": {
+        "formatter1": "0.5",
+        "formatter2": "0",
+        "formatter3": "0",
+        "analysis": "关联强度适中"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "9",
+      "target": "15",
+      "label": {
+        "formatter1": "0.7",
+        "formatter2": "0",
+        "formatter3": "0",
+        "analysis": "关联强度适中"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "9",
+      "target": "14",
+      "label": {
+        "formatter1": "0.4",
+        "formatter2": "0",
+        "formatter3": "0",
+        "analysis": "关联强度较弱"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+
+    {
+      "source": "15",
+      "target": "14",
+      "label": {
+        "formatter1": "0",
+        "formatter2": "0.3",
+        "formatter3": "0",
+        "analysis": "关联强度较弱"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "15",
+      "target": "7",
+      "label": {
+        "formatter1": "0.4",
+        "formatter2": "0",
+        "formatter3": "0.7",
+        "analysis": "关联强度较强"
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    }
+
+  ],
+  "categories": [
+    {
+      "name": "团体1"
+    },
+    {
+      "name": "团体2"
+    },
+    {
+      "name": "团体3"
+    },
+    {
+      "name": "团体4"
+    },
+    {
+      "name": "团体5"
+    }
+  ]
+}

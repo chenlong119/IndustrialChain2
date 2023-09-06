@@ -13,7 +13,7 @@
       "category": "团体1",
       "symbolSize": 20,
       "x": -174.82776,
-      "y": -443.6904
+      "y": -223.6904
     },
     {
       "id": "1",
@@ -57,8 +57,8 @@
       "lists": "南钢股份6，武汉钢铁7，索迪斯 8",
       "category": "团体1",
       "symbolSize": 20,
-      "x": -342.82404,
-      "y": -455.26283
+      "x": -362.82404,
+      "y": -235.26283
     },
     {
       "id": "4",
@@ -72,26 +72,11 @@
       "lists": "中煤能源集团 12，中国石油化工13，北方稀士集团 14",
       "category": "团体1",
       "symbolSize": 20,
-      "x": -628.30386,
+      "x": -588.30386,
       "y": -149.06424
     },
     {
       "id": "5",
-      "name": "华为",
-      "requirements": "车联网设备制造",
-      "field": "供应商",
-      "products": "34%",
-      "deadline": "90",
-      "lastTime": "60",
-      "numbers": "2",
-      "lists": "华为45、科达利集团 46、英特尔公司 47",
-      "category": "团体5",
-      "symbolSize": 20,
-      "x": -227.26337,
-      "y": -306.03506
-    },
-    {
-      "id": "6",
       "name": "中国石化化工",
       "requirements": "化工原料制造",
       "field": "制造商",
@@ -106,7 +91,7 @@
       "y": -115.16974
     },
     {
-      "id": "7",
+      "id": "6",
       "name": "中国中材集团",
       "requirements": "化工材料合成",
       "field": "制造商",
@@ -118,25 +103,10 @@
       "category": "团体4",
       "symbolSize": 20,
       "x": -322.6012,
-      "y": -5.16974
+      "y": -65.16974
     },
     {
-      "id": "8",
-      "name": "中国神华能源",
-      "requirements": "家电零部件组装",
-      "field": "制造商",
-      "products": "30%",
-      "deadline": "90",
-      "lastTime": "60",
-      "numbers": "3",
-      "lists": "中国五矿集团30、中国有色矿业集团 31、中国神华能源 32",
-      "category": "团体4",
-      "symbolSize": 20,
-      "x": -262.6012,
-      "y": 155.16974
-    },
-    {
-      "id": "9",
+      "id": "7",
       "name": "爱康科技",
       "requirements": "化工废料处理",
       "field": "环保公司",
@@ -151,7 +121,7 @@
       "y": -221.16772
     },
     {
-      "id": "10",
+      "id": "8",
       "name": "中国海螺集团",
       "requirements": "非金属矿物制品",
       "field": "制造商",
@@ -162,11 +132,11 @@
       "lists": "中国建材集团 15、中国海螺集团 16、北新建材股份 17",
       "category": "团体3",
       "symbolSize": 20,
-      "x": -459.34107,
-      "y": -384.56128
+      "x": -559.34107,
+      "y": -84.56128
     },
     {
-      "id": "11",
+      "id": "9",
       "name": "瓜子二手车",
       "requirements": "二手车回收",
       "field": "分销商",
@@ -177,11 +147,11 @@
       "lists": "瓜子二手车54、人人网 55、车易拍 56",
       "category": "团体2",
       "symbolSize": 20,
-      "x": 447.93029,
-      "y": -340.8120565
+      "x": 247.93029,
+      "y": -140.8120565
     },
     {
-      "id": "12",
+      "id": "10",
       "name": "顺丰速运",
       "requirements": "物流运输",
       "field": "物流公司",
@@ -196,7 +166,7 @@
       "y": -124.69139
     },
     {
-      "id": "13",
+      "id": "11",
       "name": "阳光人力资源",
       "requirements": "人力资源服务",
       "field": "供应商",
@@ -211,7 +181,7 @@
       "y": -218.55301
     },
     {
-      "id": "14",
+      "id": "12",
       "name": "博世集团",
       "requirements": "汽车零部件制造",
       "field": "制造商",
@@ -223,10 +193,10 @@
       "category": "团体3",
       "symbolSize": 20,
       "x": -58.05168,
-      "y": -341.99768
+      "y": -141.99768
     },
     {
-      "id": "15",
+      "id": "13",
       "name": "比亚迪",
       "requirements": "整车制造",
       "field": "制造商",
@@ -238,41 +208,11 @@
       "lists": "比亚迪 66，上汽集团 67，一汽集团 68",
       "cluster": "2",
       "symbolSize": 20,
-      "x": 58.701546,
-      "y": -341.55057
+      "x": 78.701546,
+      "y": -141.55057
     },
     {
-      "id": "16",
-      "name": "上汽集团",
-      "requirements": "汽车销售",
-      "field": "分销商",
-      "products": "29%",
-      "deadline": "90",
-      "lastTime": "60",
-      "numbers": "3",
-      "lists": "上汽集团，美国通用汽车69，德国大众70",
-      "category": "团体4",
-      "symbolSize": 20,
-      "x": 100.2226,
-      "y": -456.5572
-    },
-    {
-      "id": "17",
-      "name": "优信集团",
-      "requirements": "车辆维护",
-      "field": "服务商",
-      "products": "33%",
-      "deadline": "90",
-      "lastTime": "60",
-      "numbers": "3",
-      "lists": "长安汽车71，优信集团72，奥迪服务 734",
-      "category": "团体4",
-      "symbolSize": 20,
-      "x": 150.55884,
-      "y": -353.98975
-    },
-    {
-      "id": "18",
+      "id": "14",
       "name": "宝钢再生资源",
       "requirements": "金属回收再利用",
       "field": "环保公司",
@@ -287,7 +227,7 @@
       "y": -113.57944
     },
     {
-      "id": "19",
+      "id": "15",
       "name": "新型建材集团",
       "requirements": "非金属回收再利用",
       "field": "环保公司",
@@ -302,22 +242,7 @@
       "y": -163.57944
     },
     {
-      "id": "20",
-      "name": "京东环保",
-      "requirements": "家电回收",
-      "field": "环保公司",
-      "products": "26%",
-      "deadline": "90",
-      "lastTime": "60",
-      "numbers": "2",
-      "lists": "京东环保 27、爱回收 28、亿田环保 29",
-      "category": "团体2",
-      "symbolSize": 20,
-      "x": 414.79382,
-      "y": 103.57944
-    },
-    {
-      "id": "21",
+      "id": "16",
       "name": "京东数科",
       "requirements": "大数据分析",
       "field": "服务商",
@@ -329,25 +254,10 @@
       "category": "团体5",
       "symbolSize": 20,
       "x": -306.44113,
-      "y": -215.13303
+      "y": -175.13303
     },
     {
-      "id": "22",
-      "name": "奥托立夫股份",
-      "requirements": "汽车软件开发",
-      "field": "服务商",
-      "products": "17%",
-      "deadline": "90",
-      "lastTime": "60",
-      "numbers": "4",
-      "lists": "百度 42、Mobileye 公司43、奥托立夫股份 44、华为 33",
-      "category": "团体5",
-      "symbolSize": 20,
-      "x": -166.44113,
-      "y": -335.13303
-    },
-    {
-      "id": "23",
+      "id": "17",
       "name": "阿里巴巴集团",
       "requirements": "互联网服务",
       "field": "服务商",
@@ -362,7 +272,7 @@
       "y": -135.13303
     },
     {
-      "id": "24",
+      "id": "18",
       "name": "爱驰汽车科技",
       "requirements": "充电基础设施建设",
       "field": "服务商",
@@ -374,70 +284,11 @@
       "category": "团体3",
       "symbolSize": 20,
       "x": 282.6012,
-      "y": -300.16974
+      "y": -230.16974
     },
+
     {
-      "id": "25",
-      "name": "武汉钢铁",
-      "requirements": "金属加工",
-      "field": "供应商",
-      "products": "28%",
-      "deadline": "80",
-      "lastTime": "60",
-      "numbers": "3",
-      "lists": "南钢股份7，武汉钢铁8，索迪斯 80",
-      "category": "团体1",
-      "symbolSize": 20,
-      "x": -442.82404,
-      "y": -5.26283
-    },
-    {
-      "id": "26",
-      "name": "东方电气集团",
-      "requirements": "电池制造",
-      "field": "供应商",
-      "products": "36%",
-      "deadline": "90",
-      "lastTime": "60",
-      "numbers": "3",
-      "lists": "东方电气集团 13，宁德时代 24，三星 SDI36",
-      "category": "团体1",
-      "symbolSize": 20,
-      "x": -474.82776,
-      "y": 103.6904
-    },
-    {
-      "id": "27",
-      "name": "北新建材股份",
-      "requirements": "非金属矿物制品",
-      "field": "制造商",
-      "products": "37%",
-      "deadline": "90",
-      "lastTime": "60",
-      "numbers": "3",
-      "lists": "中国建材集团 16、中国海螺集团 17、北新建材股份 18",
-      "category": "团体3",
-      "symbolSize": 20,
-      "x": -559.34107,
-      "y": 104.56128
-    },
-    {
-      "id": "28",
-      "name": "小米",
-      "requirements": "智能家居",
-      "field": "制造商",
-      "products": "35%",
-      "deadline": "90",
-      "lastTime": "60",
-      "numbers": "3",
-      "lists": "华为45、三星 46、小米 47",
-      "category": "团体5",
-      "symbolSize": 20,
-      "x": -227.26337,
-      "y": 106.03506
-    },
-    {
-      "id": "29",
+      "id": "19",
       "name": "苏宁易购",
       "requirements": "家电销售",
       "field": "分销商",
@@ -448,298 +299,1919 @@
       "lists": "京东11，阿里巴巴24，苏宁易购70",
       "category": "团体4",
       "symbolSize": 20,
-      "x": -70.2226,
-      "y": 56.5572
+      "x": -100.2226,
+      "y": -66.5572
     },
     {
-      "id": "30",
-      "name": "奥迪服务",
-      "requirements": "家电维修",
-      "field": "服务商",
+      "id": "20",
+      "name": "宁德时代",
+      "requirements": "电池制造",
+      "field": "供应商",
+      "products": "30%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "2",
+      "lists": "东方电气集团 33，宁德时代 34，三星 SDI35",
+      "category": "团体1",
+      "symbolSize": 20,
+      "x": -174.82776,
+      "y": -423.6904
+    },
+    {
+      "id": "21",
+      "name": "中国铝业",
+      "requirements": "金属采掘",
+      "field": "供应商",
       "products": "20%",
       "deadline": "90",
       "lastTime": "60",
       "numbers": "3",
-      "lists": "长安汽车71，优信集团72，奥迪服务 734",
+      "lists": "中国铝业0，欧洲矿业1，澳洲力拓集团2",
+      "category": "团体1",
+      "symbolSize": 20,
+      "x": -648.08344,
+      "y": -406.8853
+    },
+    {
+      "id": "22",
+      "name": "万山特钢股份",
+      "requirements": "金属治炼",
+      "field": "制造商",
+      "products": "25%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "宝钢股份 3，万山特钢股份 4，三菱重工 5",
+      "category": "团体1",
+      "symbolSize": 20,
+      "x": -465.76357,
+      "y": -396.29176
+    },
+    {
+      "id": "23",
+      "name": "南钢股份",
+      "requirements": "金属加工",
+      "field": "供应商",
+      "products": "40%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "4",
+      "lists": "南钢股份6，武汉钢铁7，索迪斯 8",
+      "category": "团体1",
+      "symbolSize": 20,
+      "x": -362.82404,
+      "y": -435.26283
+    },
+    {
+      "id": "24",
+      "name": "中煤能源集团",
+      "requirements": "非金属采掘",
+      "field": "供应商",
+      "products": "18%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "中煤能源集团 12，中国石油化工13，北方稀士集团 14",
+      "category": "团体1",
+      "symbolSize": 20,
+      "x": -588.30386,
+      "y": -349.06424
+    },
+    {
+      "id": "25",
+      "name": "中国石化化工",
+      "requirements": "化工原料制造",
+      "field": "制造商",
+      "products": "44%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "中国石化化工21、湖北宜化化工22、中国盐业集团 234",
       "category": "团体4",
       "symbolSize": 20,
-      "x": 200.55884,
-      "y": 53.98975
+      "x": -392.6012,
+      "y": -315.16974
+    },
+    {
+      "id": "26",
+      "name": "中国中材集团",
+      "requirements": "化工材料合成",
+      "field": "制造商",
+      "products": "28%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "中国中材集团24、中国石油化工25、中国航空工业集团 26",
+      "category": "团体4",
+      "symbolSize": 20,
+      "x": -322.6012,
+      "y": -265.16974
+    },
+    {
+      "id": "27",
+      "name": "爱康科技",
+      "requirements": "化工废料处理",
+      "field": "环保公司",
+      "products": "24%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "4",
+      "lists": "环保科技 39、爱康科技 40、清远市环保科技 41",
+      "category": "团体2",
+      "symbolSize": 20,
+      "x": 474.39832,
+      "y": -421.16772
+    },
+    {
+      "id": "28",
+      "name": "中国海螺集团",
+      "requirements": "非金属矿物制品",
+      "field": "制造商",
+      "products": "16%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "中国建材集团 15、中国海螺集团 16、北新建材股份 17",
+      "category": "团体3",
+      "symbolSize": 20,
+      "x": -559.34107,
+      "y": -284.56128
+    },
+    {
+      "id": "29",
+      "name": "瓜子二手车",
+      "requirements": "二手车回收",
+      "field": "分销商",
+      "products": "25%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "1",
+      "lists": "瓜子二手车54、人人网 55、车易拍 56",
+      "category": "团体2",
+      "symbolSize": 20,
+      "x": 247.93029,
+      "y": -340.8120565
+    },
+    {
+      "id": "30",
+      "name": "顺丰速运",
+      "requirements": "物流运输",
+      "field": "物流公司",
+      "products": "29%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "2",
+      "lists": "顺丰速运57、中国邮政58、德邦物流59",
+      "category": "团体3",
+      "symbolSize": 20,
+      "x": 9.77908,
+      "y": -324.69139
+    },
+    {
+      "id": "31",
+      "name": "阳光人力资源",
+      "requirements": "人力资源服务",
+      "field": "供应商",
+      "products": "30%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "麦可思 60、阳光人力资源61、花旗集团 62",
+      "category": "团体3",
+      "symbolSize": 20,
+      "x": 114.31313,
+      "y": -418.55301
+    },
+    {
+      "id": "32",
+      "name": "博世集团",
+      "requirements": "汽车零部件制造",
+      "field": "制造商",
+      "products": "34%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "江淮汽车 63，武汉博泰汽车 64，博世集团 65",
+      "category": "团体3",
+      "symbolSize": 20,
+      "x": -58.05168,
+      "y": -341.99768
+    },
+    {
+      "id": "33",
+      "name": "比亚迪",
+      "requirements": "整车制造",
+      "field": "制造商",
+      "products": "54%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "category": "团体4",
+      "lists": "比亚迪 66，上汽集团 67，一汽集团 68",
+      "cluster": "2",
+      "symbolSize": 20,
+      "x": 78.701546,
+      "y": -341.55057
+    },
+    {
+      "id": "34",
+      "name": "宝钢再生资源",
+      "requirements": "金属回收再利用",
+      "field": "环保公司",
+      "products": "36%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "安永金属回收9、宝钢再生资源 10、美利金属回收 11",
+      "category": "团体2",
+      "symbolSize": 20,
+      "x": 354.79382,
+      "y": -313.57944
+    },
+    {
+      "id": "35",
+      "name": "新型建材集团",
+      "requirements": "非金属回收再利用",
+      "field": "环保公司",
+      "products": "14%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "4",
+      "lists": "新型建材集团18、万利达再生资源 19、马士基再生资源 20",
+      "category": "团体2",
+      "symbolSize": 20,
+      "x": 424.79382,
+      "y": -363.57944
+    },
+    {
+      "id": "36",
+      "name": "京东数科",
+      "requirements": "大数据分析",
+      "field": "服务商",
+      "products": "33%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "京东数科51、元征科技 52、国家信息中心 53",
+      "category": "团体5",
+      "symbolSize": 20,
+      "x": -306.44113,
+      "y": -375.13303
+    },
+    {
+      "id": "37",
+      "name": "阿里巴巴集团",
+      "requirements": "互联网服务",
+      "field": "服务商",
+      "products": "41%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "6",
+      "lists": "腾讯公司48、阿里巴巴集团49、字节跳动50",
+      "category": "团体5",
+      "symbolSize": 20,
+      "x": -206.44113,
+      "y": -335.13303
+    },
+    {
+      "id": "38",
+      "name": "爱驰汽车科技",
+      "requirements": "充电基础设施建设",
+      "field": "服务商",
+      "products": "24%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "特斯拉 36、国家电网公司 37、爱驰汽车科技 38",
+      "category": "团体3",
+      "symbolSize": 20,
+      "x": 282.6012,
+      "y": -430.16974
+    },
+
+    {
+      "id": "39",
+      "name": "苏宁易购",
+      "requirements": "家电销售",
+      "field": "分销商",
+      "products": "38%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "京东11，阿里巴巴24，苏宁易购70",
+      "category": "团体4",
+      "symbolSize": 20,
+      "x": -100.2226,
+      "y": -266.5572
+    },
+    {
+      "id": "40",
+      "name": "宁德时代",
+      "requirements": "电池制造",
+      "field": "供应商",
+      "products": "30%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "2",
+      "lists": "东方电气集团 33，宁德时代 34，三星 SDI35",
+      "category": "团体1",
+      "symbolSize": 20,
+      "x": -174.82776,
+      "y": -23.6904
+    },
+    {
+      "id": "41",
+      "name": "中国铝业",
+      "requirements": "金属采掘",
+      "field": "供应商",
+      "products": "20%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "中国铝业0，欧洲矿业1，澳洲力拓集团2",
+      "category": "团体1",
+      "symbolSize": 20,
+      "x": -648.08344,
+      "y": -6.8853
+    },
+    {
+      "id": "42",
+      "name": "万山特钢股份",
+      "requirements": "金属治炼",
+      "field": "制造商",
+      "products": "25%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "宝钢股份 3，万山特钢股份 4，三菱重工 5",
+      "category": "团体1",
+      "symbolSize": 20,
+      "x": -465.76357,
+      "y": 4.29176
+    },
+    {
+      "id": "43",
+      "name": "南钢股份",
+      "requirements": "金属加工",
+      "field": "供应商",
+      "products": "40%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "4",
+      "lists": "南钢股份6，武汉钢铁7，索迪斯 8",
+      "category": "团体1",
+      "symbolSize": 20,
+      "x": -362.82404,
+      "y": -35.26283
+    },
+    {
+      "id": "44",
+      "name": "中煤能源集团",
+      "requirements": "非金属采掘",
+      "field": "供应商",
+      "products": "18%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "中煤能源集团 12，中国石油化工13，北方稀士集团 14",
+      "category": "团体1",
+      "symbolSize": 20,
+      "x": -588.30386,
+      "y": 51.06424
+    },
+    {
+      "id": "45",
+      "name": "中国石化化工",
+      "requirements": "化工原料制造",
+      "field": "制造商",
+      "products": "44%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "中国石化化工21、湖北宜化化工22、中国盐业集团 234",
+      "category": "团体4",
+      "symbolSize": 20,
+      "x": -392.6012,
+      "y": 85.16974
+    },
+    {
+      "id": "46",
+      "name": "中国中材集团",
+      "requirements": "化工材料合成",
+      "field": "制造商",
+      "products": "28%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "中国中材集团24、中国石油化工25、中国航空工业集团 26",
+      "category": "团体4",
+      "symbolSize": 20,
+      "x": -322.6012,
+      "y": 135.16974
+    },
+    {
+      "id": "47",
+      "name": "爱康科技",
+      "requirements": "化工废料处理",
+      "field": "环保公司",
+      "products": "24%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "4",
+      "lists": "环保科技 39、爱康科技 40、清远市环保科技 41",
+      "category": "团体2",
+      "symbolSize": 20,
+      "x": 474.39832,
+      "y": 21.16772
+    },
+    {
+      "id": "48",
+      "name": "中国海螺集团",
+      "requirements": "非金属矿物制品",
+      "field": "制造商",
+      "products": "16%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "中国建材集团 15、中国海螺集团 16、北新建材股份 17",
+      "category": "团体3",
+      "symbolSize": 20,
+      "x": -559.34107,
+      "y": 116.56128
+    },
+    {
+      "id": "49",
+      "name": "瓜子二手车",
+      "requirements": "二手车回收",
+      "field": "分销商",
+      "products": "25%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "1",
+      "lists": "瓜子二手车54、人人网 55、车易拍 56",
+      "category": "团体2",
+      "symbolSize": 20,
+      "x": 247.93029,
+      "y": 60.8120565
+    },
+    {
+      "id": "50",
+      "name": "顺丰速运",
+      "requirements": "物流运输",
+      "field": "物流公司",
+      "products": "29%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "2",
+      "lists": "顺丰速运57、中国邮政58、德邦物流59",
+      "category": "团体3",
+      "symbolSize": 20,
+      "x": 9.77908,
+      "y": 76.69139
+    },
+    {
+      "id": "51",
+      "name": "阳光人力资源",
+      "requirements": "人力资源服务",
+      "field": "供应商",
+      "products": "30%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "麦可思 60、阳光人力资源61、花旗集团 62",
+      "category": "团体3",
+      "symbolSize": 20,
+      "x": 114.31313,
+      "y": -8.55301
+    },
+    {
+      "id": "52",
+      "name": "博世集团",
+      "requirements": "汽车零部件制造",
+      "field": "制造商",
+      "products": "34%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "江淮汽车 63，武汉博泰汽车 64，博世集团 65",
+      "category": "团体3",
+      "symbolSize": 20,
+      "x": -58.05168,
+      "y": 59.99768
+    },
+    {
+      "id": "53",
+      "name": "比亚迪",
+      "requirements": "整车制造",
+      "field": "制造商",
+      "products": "54%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "category": "团体4",
+      "lists": "比亚迪 66，上汽集团 67，一汽集团 68",
+      "cluster": "2",
+      "symbolSize": 20,
+      "x": 78.701546,
+      "y": 59.55057
+    },
+    {
+      "id": "54",
+      "name": "宝钢再生资源",
+      "requirements": "金属回收再利用",
+      "field": "环保公司",
+      "products": "36%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "安永金属回收9、宝钢再生资源 10、美利金属回收 11",
+      "category": "团体2",
+      "symbolSize": 20,
+      "x": 354.79382,
+      "y": 87.57944
+    },
+    {
+      "id": "55",
+      "name": "新型建材集团",
+      "requirements": "非金属回收再利用",
+      "field": "环保公司",
+      "products": "14%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "4",
+      "lists": "新型建材集团18、万利达再生资源 19、马士基再生资源 20",
+      "category": "团体2",
+      "symbolSize": 20,
+      "x": 424.79382,
+      "y": 37.57944
+    },
+    {
+      "id": "56",
+      "name": "京东数科",
+      "requirements": "大数据分析",
+      "field": "服务商",
+      "products": "33%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "京东数科51、元征科技 52、国家信息中心 53",
+      "category": "团体5",
+      "symbolSize": 20,
+      "x": -306.44113,
+      "y": 25.13303
+    },
+    {
+      "id": "57",
+      "name": "阿里巴巴集团",
+      "requirements": "互联网服务",
+      "field": "服务商",
+      "products": "41%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "6",
+      "lists": "腾讯公司48、阿里巴巴集团49、字节跳动50",
+      "category": "团体5",
+      "symbolSize": 20,
+      "x": -206.44113,
+      "y": 65.13303
+    },
+    {
+      "id": "58",
+      "name": "爱驰汽车科技",
+      "requirements": "充电基础设施建设",
+      "field": "服务商",
+      "products": "24%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "特斯拉 36、国家电网公司 37、爱驰汽车科技 38",
+      "category": "团体3",
+      "symbolSize": 20,
+      "x": 282.6012,
+      "y": -30.16974
+    },
+
+    {
+      "id": "59",
+      "name": "苏宁易购",
+      "requirements": "家电销售",
+      "field": "分销商",
+      "products": "38%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "lists": "京东11，阿里巴巴24，苏宁易购70",
+      "category": "团体4",
+      "symbolSize": 20,
+      "x": -100.2226,
+      "y": 134.5572
     }
+
   ],
   "links": [
-    {
-      "source": "2",
-      "target": "3",
-      "label": {
-        "formatter": "0.5",
-        "analysis": "合作强度适中"
-      }
-    },
     {
       "source": "1",
       "target": "2",
       "label": {
+        "formatter": "0.5",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "green"
+     }
+
+    },
+    {
+      "source": "2",
+      "target": "3",
+      "label": {
         "formatter": "0.6",
-        "analysis": "合作强度适中"
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "4",
+      "target": "8",
+      "label": {
+        "formatter": "0.4",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "8",
+      "target": "5",
+      "label": {
+        "formatter": "0.8",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+
+    },
+    {
+      "source": "5",
+      "target": "6",
+      "label": {
+        "formatter": "0.6",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "green"
       }
     },
     {
       "source": "3",
       "target": "0",
       "label": {
-        "formatter": "0.5",
-        "analysis": "合作强度适中"
-      }
-    },
-    {
-      "source": "2",
-      "target": "25",
-      "label": {
-        "formatter": "0.5",
-        "analysis": "合作强度适中"
-      }
-    },
-    {
-      "source": "25",
-      "target": "26",
-      "label": {
-        "formatter": "0.4",
-        "analysis": "合作强度适中"
-      }
-    },
-    {
-      "source": "4",
-      "target": "10",
-      "label": {
-        "formatter": "0.7",
-        "analysis": "合作强度较强"
-      }
-    },
-    {
-      "source": "4",
-      "target": "27",
-      "label": {
-        "formatter": "0.6",
-        "analysis": "合作强度适中"
-      }
-    },
-    {
-      "source": "23",
-      "target": "5",
-      "label": {
         "formatter": "0.3",
-        "analysis": "合作强度较弱"
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "green"
       }
     },
     {
-      "source": "23",
-      "target": "28",
+      "source": "4",
+      "target": "8",
       "label": {
-        "formatter": "0.6",
-        "analysis": "合作强度适中"
+        "formatter": "0.5",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "green"
       }
     },
     {
-      "source": "23",
-      "target": "22",
+      "source": "9",
+      "target": "7",
       "label": {
-        "formatter": "0.6",
-        "analysis": "合作强度适中"
+        "formatter": "0.5",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "green"
       }
     },
     {
-      "source": "0",
+      "source": "9",
       "target": "14",
       "label": {
         "formatter": "0.4",
-        "analysis": "合作强度适中"
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "9",
+      "target": "15",
+      "label": {
+        "formatter": "0.7",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "green"
       }
     },
     {
       "source": "10",
-      "target": "14",
+      "target": "12",
       "label": {
-        "formatter": "0.2",
-        "analysis": "合作强度较弱"
+        "formatter": "0.6",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "green"
       }
     },
     {
-      "source": "14",
-      "target": "15",
+      "source": "10",
+      "target": "13",
+      "label": {
+        "formatter": "0.5",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "10",
+      "target": "19",
       "label": {
         "formatter": "0.3",
-        "analysis": "合作强度较弱"
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "green"
       }
     },
     {
-      "source": "15",
-      "target": "16",
+      "source": "10",
+      "target": "11",
       "label": {
-        "formatter": "0.8",
-        "analysis": "合作强度较强"
+        "formatter": "0.6",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "green"
+      }
+    },
+    {
+      "source": "18",
+      "target": "13",
+      "label": {
+        "formatter": "0.2",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "green"
       }
     },
     {
       "source": "16",
-      "target": "17",
+      "target": "19",
       "label": {
-        "formatter": "0.8",
-        "analysis": "合作强度较强"
-      }
-    },
-    {
-      "source": "12",
-      "target": "16",
-      "label": {
-        "formatter": "0.4",
-        "analysis": "合作强度适中"
-      }
-    },
-    {
-      "source": "6",
-      "target": "7",
-      "label": {
-        "formatter": "0.6",
-        "analysis": "合作强度适中"
-      }
-    },
-    {
-      "source": "6",
-      "target": "15",
-      "label": {
-        "formatter": "0.8",
-        "analysis": "合作强度较强"
+        "formatter": "0.3",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "green"
       }
     },
     {
       "source": "7",
-      "target": "8",
-      "label": {
-        "formatter": "0.4",
-        "analysis": "合作强度适中"
-      }
-    },
-    {
-      "source": "26",
-      "target": "8",
-      "label": {
-        "formatter": "0.5",
-        "analysis": "合作强度适中"
-      }
-    },
-    {
-      "source": "27",
-      "target": "8",
-      "label": {
-        "formatter": "0.5",
-        "analysis": "合作强度适中"
-      }
-    },
-    {
-      "source": "8",
-      "target": "29",
-      "label": {
-        "formatter": "0.5",
-        "analysis": "合作强度适中"
-      }
-    },
-    {
-      "source": "29",
-      "target": "30",
-      "label": {
-        "formatter": "0.9",
-        "analysis": "合作强度较强"
-      }
-    },
-    {
-      "source": "12",
-      "target": "29",
+      "target": "19",
       "label": {
         "formatter": "0.6",
-        "analysis": "合作强度适中"
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "green"
       }
     },
+
     {
-      "source": "13",
-      "target": "17",
+      "source": "21",
+      "target": "22",
       "label": {
-        "formatter": "0.4",
-        "analysis": "合作强度适中"
+        "formatter": "0.6",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "blue"
       }
     },
     {
-      "source": "13",
-      "target": "30",
+      "source": "21",
+      "target": "24",
       "label": {
         "formatter": "0.5",
-        "analysis": "合作强度适中"
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "blue"
+      }
+    },
+    {
+      "source": "23",
+      "target": "20",
+      "label": {
+        "formatter": "0.6",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "blue"
       }
     },
     {
       "source": "30",
-      "target": "20",
+      "target": "31",
+      "label": {
+        "formatter": "0.4",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "blue"
+      }
+    },
+    {
+      "source": "34",
+      "target": "35",
+      "label": {
+        "formatter": "0.3",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "blue"
+      }
+    },
+    {
+      "source": "27",
+      "target": "35",
+      "label": {
+        "formatter": "0.4",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "blue"
+      }
+    },
+    {
+      "source": "32",
+      "target": "39",
+      "label": {
+        "formatter": "0.6",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "blue"
+      }
+    },
+    {
+      "source": "33",
+      "target": "38",
+      "label": {
+        "formatter": "0.4",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "blue"
+      }
+    },
+
+    {
+      "source": "56",
+      "target": "57",
+      "label": {
+        "formatter": "0.4",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "red"
+      }
+    },
+    {
+      "source": "42",
+      "target": "43",
       "label": {
         "formatter": "0.5",
-        "analysis": "合作强度适中"
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "red"
+      }
+    },
+    {
+      "source": "53",
+      "target": "49",
+      "label": {
+        "formatter": "0.6",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "red"
+      }
+    },
+    {
+      "source": "59",
+      "target": "50",
+      "label": {
+        "formatter": "0.6",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "red"
+      }
+    },
+    {
+      "source": "55",
+      "target": "47",
+      "label": {
+        "formatter": "0.7",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "color": "red"
+      }
+    },
+
+
+
+    {
+      "source": "0",
+      "target": "20",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "0",
+      "target": "40",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "1",
+      "target": "21",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "1",
+      "target": "41",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "2",
+      "target": "22",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "2",
+      "target": "42",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "3",
+      "target": "23",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "3",
+      "target": "43",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "4",
+      "target": "24",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "4",
+      "target": "44",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "5",
+      "target": "25",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "5",
+      "target": "45",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "6",
+      "target": "26",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "6",
+      "target": "46",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "7",
+      "target": "27",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "7",
+      "target": "47",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "8",
+      "target": "28",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "8",
+      "target": "48",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "9",
+      "target": "29",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "9",
+      "target": "49",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "10",
+      "target": "30",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "10",
+      "target": "50",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "11",
+      "target": "31",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "11",
+      "target": "51",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "12",
+      "target": "32",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "12",
+      "target": "52",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "13",
+      "target": "33",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "13",
+      "target": "53",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "14",
+      "target": "34",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "14",
+      "target": "54",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "15",
+      "target": "35",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "15",
+      "target": "55",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "16",
+      "target": "36",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "16",
+      "target": "56",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
       }
     },
     {
       "source": "17",
-      "target": "11",
+      "target": "37",
       "label": {
-        "formatter": "0.3",
-        "analysis": "合作强度较弱"
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
       }
     },
     {
-      "source": "11",
-      "target": "9",
+      "source": "17",
+      "target": "57",
       "label": {
-        "formatter": "0.4",
-        "analysis": "合作强度适中"
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
       }
     },
     {
-      "source": "11",
-      "target": "18",
+      "source": "18",
+      "target": "38",
       "label": {
-        "formatter": "0.4",
-        "analysis": "合作强度适中"
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
       }
     },
     {
-      "source": "11",
-      "target": "19",
+      "source": "18",
+      "target": "58",
       "label": {
-        "formatter": "0.5",
-        "analysis": "合作强度适中"
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
       }
     },
     {
-      "source": "20",
-      "target": "9",
+      "source": "19",
+      "target": "39",
       "label": {
-        "formatter": "0.5",
-        "analysis": "合作强度适中"
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
       }
     },
     {
-      "source": "20",
-      "target": "18",
+      "source": "19",
+      "target": "59",
       "label": {
-        "formatter": "0.6",
-        "analysis": "合作强度适中"
-      }
-    },
-    {
-      "source": "20",
-      "target": "19",
-      "label": {
-        "formatter": "0.7",
-        "analysis": "合作强度较强"
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
       }
     }
+
+  ],
+
+  "links1": [
+
+    {
+      "source": "0",
+      "target": "20",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "0",
+      "target": "40",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "1",
+      "target": "21",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "1",
+      "target": "41",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "2",
+      "target": "22",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "2",
+      "target": "42",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "3",
+      "target": "23",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "3",
+      "target": "43",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "4",
+      "target": "24",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "4",
+      "target": "44",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "5",
+      "target": "25",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "5",
+      "target": "45",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "6",
+      "target": "26",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "6",
+      "target": "46",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "7",
+      "target": "27",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "7",
+      "target": "47",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "8",
+      "target": "28",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "8",
+      "target": "48",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "9",
+      "target": "29",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "9",
+      "target": "49",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "10",
+      "target": "30",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "10",
+      "target": "50",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "11",
+      "target": "31",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "11",
+      "target": "51",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "12",
+      "target": "32",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "12",
+      "target": "52",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "13",
+      "target": "33",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "13",
+      "target": "53",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "14",
+      "target": "34",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "14",
+      "target": "54",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "15",
+      "target": "35",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "15",
+      "target": "55",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "16",
+      "target": "36",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "16",
+      "target": "56",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "17",
+      "target": "37",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "17",
+      "target": "57",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "18",
+      "target": "38",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "18",
+      "target": "58",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "19",
+      "target": "39",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    },
+    {
+      "source": "19",
+      "target": "59",
+      "label": {
+        "formatter": "",
+        "analysis": ""
+      },
+      "lineStyle": {
+        "type": "dotted",
+        "curveness": "0"
+      }
+    }
+
   ],
   "categories": [
     {
