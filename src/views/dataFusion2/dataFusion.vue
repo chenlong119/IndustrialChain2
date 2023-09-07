@@ -252,9 +252,6 @@ function cancel() {
 
 <template>
   <div>
-    <div class="topicText">
-      <h2>群智汇聚与关联耦合</h2>
-    </div>
     <el-card class="step-card">
       <el-steps :active="active" align-center>
         <el-step title="产业链模型" :icon="OfficeBuilding" description="Step 1" finish-status="success" />

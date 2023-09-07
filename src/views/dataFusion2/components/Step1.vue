@@ -13,7 +13,7 @@
       </el-form-item>
     </el-form>
   </el-dialog>
-  <div class="common-layout">
+  <div>
     <div id="main"
          style="width: 1000px;height:400px;margin: 0 auto;background-color: rgba(250,247,247,0.5)"></div>
     <div style="display: flex; justify-content: flex-end;">

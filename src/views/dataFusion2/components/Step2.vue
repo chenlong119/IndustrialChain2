@@ -18,60 +18,74 @@
   </el-dialog>
   <div class="common-layout">
     <div id="main2" ref="chartContainer"
-         style="width: 1000px;height:400px;margin: 0 auto;background-color: rgba(250,247,247,0.5)"></div>
+         style="width: 750px;height:400px;background-color: rgba(250,247,247,0.5)"></div>
+    <div id="pieChart" ref="pieChart"
+         style="width: 750px;height:400px;background-color: rgba(250,247,247,0.5)"></div>
   </div>
   <br>
-  <div class="container">
-    <el-row>
-      <el-col span="24">
-        <el-form :inline="true" :model="singleCompanyForm" class="demo-form-inline">
-          <el-form-item label="企业个体查询">
-<!--            <el-input v-model="singleCompanyForm.companyName" placeholder="请输入企业名称"/>-->
-            <el-autocomplete
-                v-model="singleCompanyForm.companyName"
-                placeholder="请输入企业名称"
-                :fetch-suggestions="querySearch"
-                :trigger-on-focus="false"
-                clearable
-                class="inline-input w-50"
-                @select="handleSelect"
-            ></el-autocomplete>
+  <div class="common-layout">
+    <div class="container">
+      <el-row>
+        <el-col span="24">
+          <el-form :inline="true" :model="singleCompanyForm" class="demo-form-inline">
+            <el-form-item label="企业个体查询">
+              <!--            <el-input v-model="singleCompanyForm.companyName" placeholder="请输入企业名称"/>-->
+              <el-autocomplete
+                  v-model="singleCompanyForm.companyName"
+                  placeholder="请输入企业名称"
+                  :fetch-suggestions="querySearch"
+                  :trigger-on-focus="false"
+                  clearable
+                  class="inline-input w-50"
+                  @select="handleSelect"
+              ></el-autocomplete>
+            </el-form-item>
+            <!-- 查询按钮 -->
+            <el-form-item>
+              <el-button type="primary" @click="searchSingleCompany">查询</el-button>
+            </el-form-item>
+          </el-form>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-table :data="currentTaskList2" style="width: 100%" class="table">
+          <el-table-column fixed prop="name" label="企业名称" width="150px" align="center"/>
+          <el-table-column prop="chain" label="所属产业链" width="200px" align="center"/>
+          <el-table-column prop="category" label="所属企业团体" width="120px" align="center"/>
+          <el-table-column prop="requirements" label="核心业务" width="150px" align="center"/>
+          <el-table-column prop="field" label="企业性质" width="100px" align="center"/>
+          <el-table-column prop="products" label="市场份额" width="100px" align="center"/>
+          <el-table-column prop="numbers" label="子企业数量" width="100px" align="center"/>
+        </el-table>
+      </el-row>
+    </div>
+    <div class="container">
+      <el-row>
+        <el-form :inline="true" :model="formInline" class="demo-form-inline">
+          <el-form-item label="企业团体查询">
+            <el-select v-model="formInline.region" placeholder="类别查询" @change="showGroupFeatures">
+              <el-option label="团体1" value="团体1"/>
+              <el-option label="团体2" value="团体2"/>
+              <el-option label="团体3" value="团体3"/>
+              <el-option label="团体4" value="团体4"/>
+              <el-option label="团体5" value="团体5"/>
+            </el-select>
           </el-form-item>
-          <!-- 查询按钮 -->
           <el-form-item>
-            <el-button type="primary" @click="searchSingleCompany">查询</el-button>
+            <el-button type="primary" @click="searchTasks">查询</el-button>
           </el-form-item>
         </el-form>
-      </el-col>
-    </el-row>
+      </el-row>
 
-    <el-row>
-      <el-form :inline="true" :model="formInline" class="demo-form-inline">
-        <el-form-item label="企业团体查询">
-          <el-select v-model="formInline.region" placeholder="类别查询" @change="showGroupFeatures">
-            <el-option label="团体1" value="团体1"/>
-            <el-option label="团体2" value="团体2"/>
-            <el-option label="团体3" value="团体3"/>
-            <el-option label="团体4" value="团体4"/>
-            <el-option label="团体5" value="团体5"/>
-          </el-select>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" @click="searchTasks">查询</el-button>
-        </el-form-item>
-      </el-form>
-    </el-row>
-
-    <el-row>
-      <el-col span="18">
+      <el-row>
         <el-table :data="currentTaskList" style="width: 100%" class="table">
-          <el-table-column fixed prop="name" label="企业" width="150px"/>
-          <el-table-column prop="chain" label="所属产业链" width="200px"/>
-          <el-table-column prop="requirements" label="核心业务" width="150px"/>
-          <el-table-column prop="field" label="企业性质" width="150px"/>
-          <el-table-column prop="products" label="市场份额" width="150px"/>
-          <el-table-column prop="numbers" label="子企业数量" width="150px"/>
-          <el-table-column prop="frequency" label="团体合作次数" width="150px"/>
+          <el-table-column fixed prop="name" label="企业名称" width="150px" align="center"/>
+          <el-table-column prop="chain" label="所属产业链" width="200px" align="center"/>
+          <el-table-column prop="requirements" label="核心业务" width="150px" align="center"/>
+          <el-table-column prop="field" label="企业性质" width="150px" align="center"/>
+          <el-table-column prop="products" label="市场份额" width="100px" align="center"/>
+          <el-table-column prop="numbers" label="子企业数量" width="100px" align="center"/>
+          <el-table-column prop="frequency" label="团体合作次数" width="100px" align="center"/>
         </el-table>
         <el-pagination
             background
@@ -81,14 +95,16 @@
             @current-change="handleCurrentChange"
             class="mt-4"
         />
-      </el-col>
-      <el-col v-if="selectedGroup" span="6">
-        <div class="feature-item">
-          <p>{{ selectedGroup }}特征</p>
-          <p>{{ selectedGroupFeature }}</p>
-        </div>
-      </el-col>
-    </el-row>
+      </el-row>
+<!--      <el-row>-->
+<!--        <el-col v-if="selectedGroup" span="6">-->
+<!--          <div class="feature-item">-->
+<!--            <p>{{ selectedGroup }}特征</p>-->
+<!--            <p>{{ selectedGroupFeature }}</p>-->
+<!--          </div>-->
+<!--        </el-col>-->
+<!--      </el-row>-->
+    </div>
   </div>
 </template>
 
@@ -98,11 +114,9 @@ import {ref, reactive, computed, watch, onMounted, nextTick} from 'vue'
 import * as echarts from 'echarts'
 import axios from "axios";  //引入echarts
 const formulaVisible = ref(false)
-// import companyData from "../../../assets/dataFusion/step2.json"
 const singleCompanyForm = reactive({
   companyName: ""
 })
-// const companyName = reactive([]);
 const companyName = ref([
   { value: '宁德时代' },
   { value: '中国铝业'},
@@ -119,12 +133,6 @@ const companyName = ref([
   { value: '阿里巴巴集团'},{ value: '爱驰汽车科技'},
   { value: '苏宁易购'}
 ])
-// for (const node of companyData.nodes) {
-//   companyName.push({
-//     value: node.name,
-//   });
-//   console.log(companyName)
-// }
 
 const selectedGroup = ref(null)
 const selectedGroupFeature = ref(null);
@@ -136,21 +144,17 @@ const groupFeatures = [
   {name: "团体5", feature: "IT企业，致力于信息化处理以及智能产品"}
 ]
 const chartContainer = ref(null);
+const pieChart = ref(null);
 let myChart = null;
 const formInline = reactive({
   user: '',
   region: '',
 })
-const taskData = reactive({
-  name: "",
-  requirements: "",
-  products: "",
-  deadline: "",
-  lastTime: "",
-  numbers: "",
-  lists: "",
-})
+
 let tableData = reactive({
+  filterData: []
+})
+let tableData2 = reactive({
   filterData: []
 })
 const pageSize = 5
@@ -158,6 +162,9 @@ const pageSize = 5
 let currentPage = ref(1);
 let currentTaskList = computed(() => {
   return tableData.filterData.slice((currentPage.value - 1) * pageSize, currentPage.value * pageSize);
+})
+let currentTaskList2 = computed(() => {
+  return tableData2.filterData.slice((currentPage.value - 1) * pageSize, currentPage.value * pageSize);
 })
 const handleCurrentChange = (val) => {
   currentPage.value = val
@@ -189,7 +196,7 @@ function searchSingleCompany() {
   console.log(name)
   axios.get('/src/assets/dataFusion/step2.json').then(response => {
     let data = response.data.nodes;
-    tableData.filterData = data.filter(item => item.name == name);
+    tableData2.filterData = data.filter(item => item.name == name);
     //console.log(tableData.filterData)
   })
   currentPage.value = 1;
@@ -200,12 +207,85 @@ function searchTasks() {
   axios.get('/src/assets/dataFusion/step2.json').then(response => {
     let data = response.data.nodes;
     tableData.filterData = data.filter(item => item.category == category);
-    //console.log(tableData.filterData)
   })
   currentPage.value = 1;
 }
+const groupData = [
+  { name: '团体1', info: '宁德时代，中国铝业，万山特钢股份，南钢股份，中煤能源集团', feature: "原材料供应商，均位于产业链上游", value: 5 },
+  { name: '团体2', info: '爱康科技，瓜子二手车，宝钢再生资源，新型建材集团', feature: "环保公司，主要涉及二手市场以及材料回收处理", value: 4 },
+  { name: '团体3', info: '中国海螺集团，顺丰速运，阳光人力资源，博世集团，爱驰汽车科技', feature: "提供人力物流资源", value: 4 },
+  { name: '团体4', info: '中国石化化工，中国中材集团，比亚迪，苏宁易购', feature: "产业链核心环节，产品制造以及整合", value: 5 },
+  { name: '团体5', info: '京东数科，阿里巴巴集团', feature: "IT企业，致力于信息化处理以及智能产品", value: 2 },
+];
+const pieData = [];
+for (const group of groupData) {
+  const dataItem = {
+    value: group.value,
+    name: group.name,
+  };
+  pieData.push(dataItem);
+}
 
+const createPieChart = () => {
+      const chartInstance = echarts.init(pieChart.value);
+
+      const chartOptions = {
+        title: {
+          text: '企业协作团体总览图',
+          textAlign: 'center', // 设置标题文本水平居中
+          left: '50%', // 将标题水平居中
+          bottom: 10, // 距离底部的距离
+        },
+        tooltip: {
+          trigger: 'item',
+          // formatter: '{b} :<br/>企业数量： {c} ({d}%)'
+          formatter: function(params) {
+            // 查找对应团体的企业信息
+            const groupInfo = groupData.find(group => group.name === params.name);
+            if (groupInfo) {
+              return `${params.name}企业数量: ${params.value} (${params.percent}%)<br>企业名单：${groupInfo.info}<br>团体特征：${groupInfo.feature}`;
+            } else {
+              return `${params.name}: ${params.value} (${params.percent}%)`;
+            }
+          },
+        },
+        legend: {
+          textStyle:
+              {
+                color: 'black',
+                fontSize: 10,
+              },
+          left:'center',
+        },
+        series: [
+          {
+            type: 'pie',
+            left: 'center',
+            bottom: 0,
+            radius: '70%',
+            roseType: 'area',
+            data: pieData,
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)',
+              },
+            },
+            focusNodeAdjacency: true,
+            itemStyle: {
+              borderWidth: 1,
+            },
+          },
+        ],
+
+      };
+
+      chartInstance.setOption(chartOptions);
+    }
+;
 onMounted(async () => {
+  createPieChart();
 
   const chartDom = chartContainer.value;
   const myChart = echarts.init(chartDom);
@@ -481,7 +561,7 @@ onMounted(async () => {
 
 <style>
 .container {
-  align-content: center;
+  width: 750px;
   border: 1px solid #bfbfbf; /* 添加1像素黑色边框 */
   padding: 20px; /* 可选：添加内边距，使内容区域不会贴紧边框 */
 }
@@ -501,24 +581,14 @@ onMounted(async () => {
   margin-bottom: 20px; /* 表格下方的外边距 */
 }
 
-.header-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.common-layout {
+  display: flex; /* 使用 Flexbox 布局 */
 }
 
-.flex-container {
-  display: flex;
-  align-items: center;
+.common-layout > div {
+  flex: 1; /* 平均分配容器的宽度 */
+  margin: 10px; /* 可选的外边距，用于控制 <div> 之间的间距 */
 }
 
-.header-text {
-  margin-right: 10px;
-  font-weight: bold
-}
 
-.my-table {
-  border: 1px solid #ebeef5;
-  border-radius: 4px;
-}
 </style>
