@@ -31,17 +31,17 @@
         <el-form-item label="企业名称" prop="name">
           <el-input v-model="form.name" placeholder="请输入企业名称"/>
         </el-form-item>
-        <el-form-item label="企业任务" prop="requirements">
-          <el-input v-model="form.products" placeholder="请输入核心业务"/>
+        <el-form-item label="企业核心业务" prop="requirements">
+          <el-input v-model="form.requirements" placeholder="请输入核心业务"/>
         </el-form-item>
         <el-form-item label="企业市场份额" prop="products">
           <el-input v-model="form.products" placeholder="请输入企业市场份额"/>
         </el-form-item>
-        <el-form-item label="企业资源需求" prop="aa">
-          <el-input v-model="form.requirements" placeholder="请输入企业资源需求"/>
+        <el-form-item label="企业子企业数量" prop="aa">
+          <el-input v-model="form.numbers" placeholder="请输入企业的子企业数量"/>
         </el-form-item>
-        <el-form-item label="企业预估产量" prop="bb">
-          <el-input v-model="form.products" placeholder="请输入企业预估产量"/>
+        <el-form-item label="企业预估盈利率" prop="bb">
+          <el-input v-model="form.profit" placeholder="请输入企业预估盈利率"/>
         </el-form-item>
         <el-form-item label="企业性质" prop="property">
           <el-radio-group v-model="form.property">
@@ -96,11 +96,11 @@ const data = reactive({
     name: [
       {required: true, message: "企业名称不能为空", trigger: "blur"}
     ],
-    requirements: [
-      {required: true, message: "企业资源需求不能为空", trigger: "change"}
+    property: [
+      {required: true, message: "企业性质不能为空", trigger: "change"}
     ],
-    products: [
-      {required: true, message: "企业预估产量不能为空", trigger: "change"}
+    chain: [
+      {required: true, message: "企业所属产业链不能为空", trigger: "change"}
     ]
   }
 });
@@ -297,7 +297,8 @@ onMounted(async () => {
           var requirements = params.data.requirements;
           var products = params.data.products;
           var field = params.data.field;
-          return "id: " + id + '<br/>' + "企业名称：" + name + '<br/>' + "核心业务：" + requirements + '<br/>' + "企业性质：" + field + '<br/>' + "市场份额：" + products;
+          var chain = params.data.chain;
+          return "id: " + id + '<br/>' + "企业名称：" + name + '<br/>' + "核心业务：" + requirements + '<br/>' + "企业性质：" + field + '<br/>' + "市场份额：" + products+ '<br/>' + "企业所属产业链：" + chain;
         }
 
       }

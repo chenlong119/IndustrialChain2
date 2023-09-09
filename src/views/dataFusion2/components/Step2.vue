@@ -1,6 +1,6 @@
 <template>
   <el-button type="success" plain @click="formulaVisible = true" style="margin-bottom: 10px;">模型解读</el-button>
-  <el-dialog v-model="formulaVisible" title="多重产业链企业分布模型解读">
+  <el-dialog v-model="formulaVisible" title="多重产业链团体划分模型解读">
     <el-form>
       <el-form-item label="节点含义：" :label-width="formLabelWidth">
         <span>多重产业链上的企业</span>
@@ -26,7 +26,6 @@
   <div class="common-layout">
     <div class="container">
       <el-row>
-        <el-col span="24">
           <el-form :inline="true" :model="singleCompanyForm" class="demo-form-inline">
             <el-form-item label="企业个体查询">
               <!--            <el-input v-model="singleCompanyForm.companyName" placeholder="请输入企业名称"/>-->
@@ -45,17 +44,16 @@
               <el-button type="primary" @click="searchSingleCompany">查询</el-button>
             </el-form-item>
           </el-form>
-        </el-col>
       </el-row>
       <el-row>
         <el-table :data="currentTaskList2" style="width: 100%" class="table">
-          <el-table-column fixed prop="name" label="企业名称" width="150px" align="center"/>
-          <el-table-column prop="chain" label="所属产业链" width="200px" align="center"/>
-          <el-table-column prop="category" label="所属企业团体" width="120px" align="center"/>
-          <el-table-column prop="requirements" label="核心业务" width="150px" align="center"/>
-          <el-table-column prop="field" label="企业性质" width="100px" align="center"/>
-          <el-table-column prop="products" label="市场份额" width="100px" align="center"/>
-          <el-table-column prop="numbers" label="子企业数量" width="100px" align="center"/>
+          <el-table-column fixed prop="name" label="企业名称" width="" align="center"/>
+          <el-table-column prop="chain" label="所属产业链" width="" align="center"/>
+          <el-table-column prop="category" label="所属企业团体" width="" align="center"/>
+          <el-table-column prop="requirements" label="核心业务" width="" align="center"/>
+          <el-table-column prop="field" label="企业性质" width="" align="center"/>
+          <el-table-column prop="products" label="市场份额" width="" align="center"/>
+          <el-table-column prop="numbers" label="子企业数量" width="" align="center"/>
         </el-table>
       </el-row>
     </div>
@@ -79,13 +77,13 @@
 
       <el-row>
         <el-table :data="currentTaskList" style="width: 100%" class="table">
-          <el-table-column fixed prop="name" label="企业名称" width="150px" align="center"/>
-          <el-table-column prop="chain" label="所属产业链" width="200px" align="center"/>
-          <el-table-column prop="requirements" label="核心业务" width="150px" align="center"/>
-          <el-table-column prop="field" label="企业性质" width="150px" align="center"/>
-          <el-table-column prop="products" label="市场份额" width="100px" align="center"/>
-          <el-table-column prop="numbers" label="子企业数量" width="100px" align="center"/>
-          <el-table-column prop="frequency" label="团体合作次数" width="100px" align="center"/>
+          <el-table-column fixed prop="name" label="企业名称" width="" align="center"/>
+          <el-table-column prop="chain" label="所属产业链" width="" align="center"/>
+          <el-table-column prop="requirements" label="核心业务" width="" align="center"/>
+          <el-table-column prop="field" label="企业性质" width="" align="center"/>
+          <el-table-column prop="products" label="市场份额" width="" align="center"/>
+          <el-table-column prop="numbers" label="子企业数量" width="" align="center"/>
+          <el-table-column prop="frequency" label="团体合作次数" width="" align="center"/>
         </el-table>
         <el-pagination
             background
@@ -157,7 +155,11 @@ let tableData = reactive({
 let tableData2 = reactive({
   filterData: []
 })
-const pageSize = 5
+const pageSize = 3
+
+
+
+
 //当前页
 let currentPage = ref(1);
 let currentTaskList = computed(() => {
@@ -425,7 +427,9 @@ onMounted(async () => {
           var requirements = params.data.requirements;
           var products = params.data.products;
           var field = params.data.field;
-          return "id: " + id + '<br/>' + "企业名称：" + name + '<br/>' + "核心业务：" + requirements + '<br/>' + "企业性质：" + field + '<br/>' + "市场份额：" + products;
+          var chain = params.data.chain;
+          var category = params.data.category;
+          return "id: " + id + '<br/>' + "企业名称：" + name + '<br/>' + "核心业务：" + requirements + '<br/>' + "企业性质：" + field + '<br/>' + "市场份额：" + products+ '<br/>' + "企业所属产业链：" + chain + '<br/>' + "企业所属团体：" + category;
         }
 
       }
@@ -560,11 +564,7 @@ onMounted(async () => {
 </script>
 
 <style>
-.container {
-  width: 750px;
-  border: 1px solid #bfbfbf; /* 添加1像素黑色边框 */
-  padding: 20px; /* 可选：添加内边距，使内容区域不会贴紧边框 */
-}
+
 
 .feature-item {
   border: 1px solid #ccc; /* 特征展示部分的边框样式 */
@@ -583,12 +583,26 @@ onMounted(async () => {
 
 .common-layout {
   display: flex; /* 使用 Flexbox 布局 */
+  //flex-wrap: wrap;
 }
 
 .common-layout > div {
   flex: 1; /* 平均分配容器的宽度 */
   margin: 10px; /* 可选的外边距，用于控制 <div> 之间的间距 */
+  justify-content: space-between;
 }
 
+.container {
+  //width: 750px;
+  flex: 1; /* 自动平均分配父容器的宽度 */
+  border: 1px solid #bfbfbf; /* 添加1像素黑色边框 */
+  padding: 20px; /* 可选：添加内边距，使内容区域不会贴紧边框 */
+}
+
+.el-table th, .el-table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* 可以显示省略号 (...) 来指示截断的文本 */
+}
 
 </style>

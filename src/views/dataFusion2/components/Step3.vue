@@ -1,6 +1,6 @@
 <template>
   <el-button type="success" plain @click="formulaVisible = true" style="margin-bottom: 10px;">模型解读</el-button>
-  <el-dialog v-model="formulaVisible" title="多重产业链企业分布模型解读">
+  <el-dialog v-model="formulaVisible" title="多重产业链关联耦合模型解读">
     <el-form label-position="left">
       <el-form-item label="节点含义：" :label-width="'150px'">
         <span>多重产业链上的企业</span>
@@ -31,7 +31,7 @@
     <div>
       <span
           style="font-size: 14px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; margin-right: 10px;font-weight: bold;">目标关系网络：</span>
-      <el-select v-model="selectedRelation" class="m-2" placeholder="不选默认是整体关联网络" size="large" filterable>
+      <el-select v-model="selectedRelation" class="m-2" placeholder="不选则默认是整体关联网络" size="large" filterable>
         <el-option v-for="item in relationData" :key="item.id" :label="item.name" :value="item.id"/>
       </el-select>
       <span
@@ -408,7 +408,9 @@ onMounted(async () => {
           var requirements = params.data.requirements;
           var products = params.data.products;
           var field = params.data.field;
-          return "id: " + id + '<br/>' + "企业名称：" + name + '<br/>' + "核心业务：" + requirements + '<br/>' + "企业性质：" + field + '<br/>' + "市场份额：" + products;
+          var chain = params.data.chain;
+          var category = params.data.category;
+          return "id: " + id + '<br/>' + "企业名称：" + name + '<br/>' + "核心业务：" + requirements + '<br/>' + "企业性质：" + field + '<br/>' + "市场份额：" + products+ '<br/>' + "企业所属产业链：" + chain + '<br/>' + "企业所属团体：" + category;
         } else if (params.dataType === 'edge') {
           var source = params.data.source;
           var target = params.data.target;
@@ -617,7 +619,9 @@ onMounted(async () => {
           var requirements = params.data.requirements;
           var products = params.data.products;
           var field = params.data.field;
-          return "id: " + id + '<br/>' + "企业名称：" + name + '<br/>' + "核心业务：" + requirements + '<br/>' + "企业性质：" + field + '<br/>' + "市场份额：" + products;
+          var chain = params.data.chain;
+          var category = params.data.category;
+          return "id: " + id + '<br/>' + "企业名称：" + name + '<br/>' + "核心业务：" + requirements + '<br/>' + "企业性质：" + field + '<br/>' + "市场份额：" + products+ '<br/>' + "企业所属产业链：" + chain + '<br/>' + "企业所属团体：" + category;
         } else if (params.dataType === 'edge') {
           var source = params.data.source;
           var target = params.data.target;
