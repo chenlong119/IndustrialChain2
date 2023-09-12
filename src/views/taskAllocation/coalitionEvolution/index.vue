@@ -775,7 +775,7 @@ onBeforeUnmount(() => {
       <el-col :span="12">
         <el-card :shadow="'hover'">
           <template #header>
-            <h2>后续3天企业联盟状态变化</h2>
+            <span>后续3天企业联盟状态变化</span>
           </template>
           <div ref="chart2" style="width: 100%; height:700px" @mouseenter="stopTimer" @mouseleave="startTimer"></div>
         </el-card>
