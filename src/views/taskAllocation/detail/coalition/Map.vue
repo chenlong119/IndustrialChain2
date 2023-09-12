@@ -1,12 +1,16 @@
 <script setup>
-import {getCurrentInstance, onMounted, ref} from "vue";
+import {getCurrentInstance, onMounted, ref, watch} from "vue";
 
 const {proxy} = getCurrentInstance();
 const map = ref(null);
 let chartInstance = null;
 let enterprises = null;
+let props = defineProps(['cid', 'cname']);
 onMounted(() => {
   initChart();
+  getData();
+})
+watch(() => props.cid, () => {
   getData();
 })
 const initChart = async () => {
@@ -61,8 +65,12 @@ const initChart = async () => {
   chartInstance.setOption(initOption)
 }
 const getData = async () => {
-  const {data: ret} = await proxy.$axios.get('/src/assets/taskAllocation/scatter.json');
+  let id = parseInt(props.cid) + 1;
+  console.log(id);
+  let url = '/src/assets/taskAllocation/scatter' + id + '.json';
+  const {data: ret} = await proxy.$axios.get(url);
   enterprises = ret;
+  console.log(enterprises)
   updateChart();
 }
 const updateChart = () => {
