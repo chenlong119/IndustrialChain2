@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app1">
     <h1 class="page-title">多粒度决策系统</h1>
     <hr class="divider">
     <el-row :gutter="30" class="row-container">
@@ -180,7 +180,7 @@ lineChart.setOption(lineOption);
 
 </script>
 <style scoped>
-#app {
+#app1 {
   font-family: 'Arial', sans-serif;
   margin: 40px auto; /* 添加auto使内容居中 */
   max-width: 1200px;  /* 设置最大宽度 */
