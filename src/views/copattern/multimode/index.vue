@@ -3,7 +3,7 @@
     <el-row :gutter="20">
       <el-col :span="12">
         <el-row>
-          <el-card class="card" style="width:100%; height: 400px">
+          <el-card class="card" style="width:100%; height: 450px">
             <template #header><span style="font-size: 20px; font-weight: bold;">任务运行状态展示</span></template>
             <div class="el-table el-table--enable-row-hover el-table--medium">
               <div class="rectangle">
@@ -27,7 +27,7 @@
           </el-card>
         </el-row>
         <el-row>
-          <el-card class="card" style="width:100%; height: 400px">
+          <el-card class="card" style="width:100%; height: 450px">
             <template #header><span style="font-size: 20px; font-weight: bold;">协同模式分类统计图</span></template>
             <el-form :model="form" label-width="260px">
 
@@ -35,7 +35,7 @@
             </el-form>
 
             <div class="el-table el-table--enable-row-hover el-table--medium">
-              <div ref="Info" style="width:900px; height: 350px" />
+              <div ref="Info" style="width:900px; height: 450px" />
             </div>
 
           </el-card>
@@ -64,10 +64,9 @@
       </el-drawer>
       <el-col :span="12">
         <el-row>
-          <el-card class="card" style="width:100%; height: 400px">
+          <el-card class="card" style="width:100%; height: 450px">
             <template #header><span style="font-size: 20px; font-weight: bold;">企业群详情统计表</span></template>
             <div class="el-table el-table--enable-row-hover el-table--medium">
-              <div ref="Info" style="width:900px; height: 350px" />
               <el-row justify="center" class="tab-row">
                 <el-col :span="8">
                   <span>选择查询类型：</span>
@@ -130,7 +129,7 @@
           </el-card>
         </el-row>
         <el-row>
-          <el-card class="card" style="width:100%; height: 400px">
+          <el-card class="card" style="width:100%; height: 450px">
             <template #header><span style="font-size: 20px; font-weight: bold;">多模式协同下企业关系展示</span></template>
             <div class="el-table el-table--enable-row-hover el-table--medium">
             </div>
@@ -370,7 +369,7 @@ export default {
           callback: action => {
             if (action === 'confirm') {
               // 点击了确定按钮，进行页面跳转
-              this.$router.push('./setAgent.vue');
+              this.$router.push('/test');
             }
           }
         }
