@@ -50,43 +50,12 @@ import  * as echarts from 'echarts'
 export default {
   name: "Home",
   data() {
-    return {
-      map_name:"砀山",
-      echarts_scater_name:"",
-      history_data:[],
-      city_name:"蚌埠",
-      flag_num:0,
-      scater_data:[[]],
-      year_data:["2020","2019","2018","2017","2016","2015","2014","2013","2012","2011"],
-      options: [{
-        value: '选项1',
-        label: '产业链共享信息时间表',
-        children:[]
-      },
-        {
-        value: '选项2',
-        label: '共享企业分布表'
-      }, {
-        value: '选项3',
-        label: '累计收益分布表'
-      }, 
-        ],
-      value: '',
 
-    }
   },
   created() {
 
   },
   mounted() {
-    // 获取 options 数组中的第一个对象
-    const firstOption = this.options[0];
-
-    // 循环生成 1969 年到 2019 年之间的年份数据
-    for (let year = 2020; year <= 2023; year++) {
-      // 将年份转换为字符串，并添加到 firstOption.children 数组中
-      firstOption.children.push({ value: year.toString(), label: `${year}年` });
-    }
     this.createsum()
     this.createEchartsline1()
     this.createEchartscategory1()//产业链当前累计上传文件个体排序柱状图
