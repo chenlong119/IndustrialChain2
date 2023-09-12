@@ -116,7 +116,8 @@ export default {
         <strong>得分较高：</strong>${this.goodPoints}<br/>
         <strong>得分较低：</strong>${this.badPoints}<br/></div>
     `, '企业协同效果评估系统', {
-        confirmButtonText: 'OK',
+        confirmButtonText: 'OK', 
+                                    
         dangerouslyUseHTMLString: true, // 允许HTML字符串
         callback: (action) => {
             console.log(`action: ${action}`);
