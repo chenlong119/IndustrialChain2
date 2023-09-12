@@ -271,19 +271,31 @@ function cancel() {
           <Step3></Step3>
         </div>
       </el-card>
+<!--      <div class="button-container">-->
+<!--        <el-button class="button" :icon="ArrowLeft" type="primary" plain style="margin-top: 12px" @click="back"-->
+<!--                   v-show="active !== 0">上一步-->
+<!--        </el-button>-->
+<!--        <div class="right-button-container">-->
+<!--          <el-button type="primary" plain style="margin-top: 12px" @click="next" v-show="active !== 2">-->
+<!--            {{ buttonNames[active] }}-->
+<!--            <el-icon>-->
+<!--              <ArrowRight/>-->
+<!--            </el-icon>-->
+<!--          </el-button>-->
+<!--        </div>-->
+<!--      </div>-->
       <div class="button-container">
-        <el-button :icon="ArrowLeft" type="primary" plain style="margin-top: 12px" @click="back"
-                   v-show="active !== 0">上一步
-        </el-button>
+        <el-button :icon="ArrowLeft" type="primary" plain @click="back" v-show="active !== 0">上一步</el-button>
         <div class="right-button-container">
-          <el-button type="primary" plain style="margin-top: 12px" @click="next" v-show="active !== 2">
-            {{ buttonNames[active] }}
+          <el-button type="primary" plain @click="next" v-show="active !== 2">
+            {{ active === 1 ? '企业关联分析' : buttonNames[active] }}
             <el-icon>
               <ArrowRight/>
             </el-icon>
           </el-button>
         </div>
       </div>
+
     </div>
   </div>
 </template>
@@ -336,15 +348,22 @@ grid-content {
   font-weight: bold
 }
 
-.card-header {
-  justify-content: space-between;
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  font-size: 18px;
-  text-align: center;
 }
 
-.box-card {
-  width: 480px;
+.button-container .el-button {
+  font-size: 18px; /* Increase the font size */
+  padding: 15px 30px; /* Increase the padding to enlarge the button */
+  margin: 12px 0; /* Adjust the margin for spacing */
+}
+
+.right-button-container {
+  display: flex;
+  align-items: center;
 }
 
 
