@@ -46,7 +46,7 @@
           </el-form>
       </el-row>
       <el-row>
-        <el-table :data="currentTaskList2" style="width: 100%" class="table">
+        <el-table :data="currentTaskList2" style="width: 100%" border class="table">
           <el-table-column fixed prop="name" label="企业名称" width="" align="center"/>
           <el-table-column prop="chain" label="所属产业链" width="" align="center"/>
           <el-table-column prop="category" label="所属企业团体" width="" align="center"/>
@@ -76,7 +76,7 @@
       </el-row>
 
       <el-row>
-        <el-table :data="currentTaskList" style="width: 100%" class="table">
+        <el-table :data="currentTaskList" style="width: 100%" border class="table">
           <el-table-column fixed prop="name" label="企业名称" width="" align="center"/>
           <el-table-column prop="chain" label="所属产业链" width="" align="center"/>
           <el-table-column prop="requirements" label="核心业务" width="" align="center"/>

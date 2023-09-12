@@ -1,26 +1,21 @@
 <template>
   <div class="app-container">
-    <el-row :gutter="20">
+    <el-row :gutter="21">
       <el-col :span="12">
         <el-row>
           <el-card class="card" style="width:100%; height: 400px">
             <template #header><span style="font-size: 20px; font-weight: bold;">任务运行状态展示</span></template>
             <div class="el-table el-table--enable-row-hover el-table--medium">
               <div class="rectangle">
-                <div v-for="(color, index) in circleColors" :key="index" :class="{ circle: true, flashing: index === 5 }"
-                  :style="{
-                    backgroundColor: index === 5 ? 'red' : '#ccffcc',
-                    width: circleSizes[index] + 'px',
-                    height: circleSizes[index] + 'px',
-                    left: fixedCirclePositions[index].left + 'px',
-                    top: fixedCirclePositions[index].top + 'px'
-                  }" @mouseover="(event) => showTooltip(event, index)" @mouseout="(event) => hideTooltip(event)"
-                  @click="index === 5 ? showMessage() : null">
+                <div v-for="(color, index) in circleColors" :key="index" :class="{ circle: true }" :style="{
+                  backgroundColor: index === 50 ? 'red' : '#ccffcc',
+                  width: circleSizes[index] + 'px',
+                  height: circleSizes[index] + 'px',
+                  left: fixedCirclePositions[index].left + 'px',
+                  top: fixedCirclePositions[index].top + 'px'
+                }" @mouseover="(event) => showTooltip(event, index)" @mouseout="(event) => hideTooltip(event)">
                   <span>任务{{ index + 1 }}</span>
 
-                </div>
-                <div class="custom-tooltip">
-                  当前任务出现突发情况<br />点击任务节点查看详情
                 </div>
               </div>
             </div>
@@ -52,8 +47,8 @@
             <el-table-column label="交付日期" prop="deliveryDate"></el-table-column>
             <el-table-column label="交付体验">
               <template #default="scope">
-                <el-rate v-model="scope.row.deliveryExperience" disabled> 
-                </el-rate> 
+                <el-rate v-model="scope.row.deliveryExperience" disabled>
+                </el-rate>
               </template>
             </el-table-column>
           </el-table>
@@ -139,10 +134,11 @@
         </el-row>
       </el-col>
     </el-row>
+
+
   </div>
 </template>
 <script>
-
 const showTooltip = (event, index) => {
   event.target.title = tooltips[index];
 }
@@ -370,7 +366,7 @@ export default {
           callback: action => {
             if (action === 'confirm') {
               // 点击了确定按钮，进行页面跳转
-              this.$router.push('./setAgent.vue');
+              this.$router.push('/allocate/model/setAgent');
             }
           }
         }
@@ -415,17 +411,46 @@ export default {
   },
 }
 </script>
-<script setup >
+<script setup name="Model">
 import * as echarts from "echarts";
-// import graph from "@/assets/data/all_cluster.json";
+import graph from "@/assets/data/all_cluster.json";
 import { getCache } from "@/api/monitor/cache";
 import { onMounted } from 'vue';
+// import _rawData from "@/assets/data/life-expectancy-table.json";
+
 import _ from "lodash";
 
 import { reactive } from 'vue'
 import { ref } from 'vue'
+
+//const value1 = ref(100)
+const value2 = ref(100)
+//const value3 = ref(50)
 const sit2 = ref(null);
+
 const taskLinkageInfo1 = ref(null);
+var taskLinkageInfoIntance1;
+// do not use same name with ref
+const form = reactive({
+  name: '',
+  region: '1',
+  date1: '',
+  date2: '',
+  delivery: false,
+  type: [],
+  resource: '',
+  desc: '',
+  parameter1: '200',
+  parameter2: '50',
+  parameter3: '40',
+  parameter4: '120'
+})
+
+const onSubmit = () => {
+  console.log('submit!')
+}
+const taskInfo = ref(null);
+const taskLinkageInfo = ref(null);
 let start = "";
 let end = "";
 let tableData = [];
@@ -442,22 +467,9 @@ function showDrawer(data) {
   start = data.source;
   end = data.target;
   tableData = data.history;
-
 };
-const form = reactive({
-  name: '',
-  region: '1',
-  date1: '',
-  date2: '',
-  delivery: false,
-  type: [],
-  resource: '',
-  desc: '',
-  parameter1: '200',
-  parameter2: '50',
-  parameter3: '40',
-  parameter4: '120'
-})
+
+// 指定图表的配置项和数据
 onMounted(() => {
   createPieChart(sit2.value);
 
@@ -473,17 +485,19 @@ onMounted(() => {
 });
 function createPieChart(chartContainer) {
   const chartInstance = echarts.init(chartContainer);
+
   const data = [
     { value: 5, name: '跨链跨群' },
     { value: 2, name: '跨企业' },
     { value: 15, name: '跨企业跨链' },
-    { value: 35, name: '跨企业跨链跨群' },
-    { value: 20, name: '跨企业跨群' },
+    { value: 36, name: '跨企业跨链跨群' },
+    { value: 19, name: '跨企业跨群' },
     { value: 3, name: '跨群' },
     { value: 20, name: '跨链' },
   ];
-  const taskCompletionRates = [90, 92, 94, 89, 99, 95, 98];
-  // 修改点击事件监听，调用 hideDrawer 函数
+
+  const taskCompletionRates = [90, 92, 94, 90, 100, 95, 98];
+
   const chartOptions = {
     tooltip: {
       trigger: 'item',
@@ -511,6 +525,7 @@ function createPieChart(chartContainer) {
 
   chartInstance.setOption(chartOptions);
 }
+
 var option3 = {
   tooltip: {},
   animationDurationUpdate: 50,
@@ -1295,4 +1310,3 @@ var option3 = {
   /* 修改文字颜色为黑色（可选） */
 }
 </style>
-
