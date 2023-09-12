@@ -1,12 +1,15 @@
 <template>
-  <div class="text-2xl">
+  <div>
     <el-row :gutter="20">
       <el-col :span="12">
         <el-card :shadow="'hover'">
           <template #header>
-            <span >已分配任务的完成进度变化图</span>
+            <span>已分配任务的完成进度变化图</span>
+            <el-input v-model="hours" placeholder="请输入时间间隔1-40" style="width: 200px;margin-left: 10px"/>
           </template>
-          <div ref="taskInfo" style="width:100%; height: 350px"/>
+          <div ref="taskInfo" style="width: 100%;height: 350px"
+               @mouseenter="handleHover" @mouseleave="handleLeave(40)"
+          />
         </el-card>
       </el-col>
       <el-col :span="12">
@@ -19,19 +22,19 @@
       </el-col>
     </el-row>
     <el-row :gutter="20" style="margin: 10px 0">
-      <el-col :span="16">
+      <el-col :span="14">
         <el-card :shadow="'hover'">
           <template #header>
             <span>任务分配情况</span>
           </template>
           <div style="width:100%; height: 400px">
             <el-table :data="tableData" style="width: 100%">
+              <el-table-column prop="id" label="任务编号" width="100"/>
               <el-table-column prop="tname" label="任务名称" width="180"/>
               <el-table-column prop="ttype" label="任务类型" width="180"/>
-              <el-table-column prop="duration" label="任务工作时长"/>
+              <el-table-column prop="duration" label="任务价值(万元)"/>
               <el-table-column prop="tarrival" label="任务到来时间"/>
-              <el-table-column prop="tddl" label="任务截止时间"/>
-              <el-table-column prop="cid" label="任务所属联盟编号"/>
+              <el-table-column prop="current" label="任务当前进度%"/>
               <el-table-column label="任务所属联盟名称">
                 <template #default="{row,$index}">
                   <el-link type="primary" @click="handleCoalition($index)">{{ row.cname }}</el-link>
@@ -41,7 +44,7 @@
           </div>
         </el-card>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="10">
         <el-card :shadow="'hover'">
           <template #header>
             <span>任务完成情况</span>
@@ -50,14 +53,109 @@
         </el-card>
       </el-col>
     </el-row>
+    <el-drawer direction="rtl" v-model="drawer" :size="810">
+      <Map :cid="cid" :cname="cname"/>
+    </el-drawer>
   </div>
 </template>
 
 <script setup>
-import {ref, onMounted, getCurrentInstance, onUnmounted} from "vue";
+import {getCurrentInstance, onMounted, onUnmounted, ref, watch} from "vue";
 import {useCoalitionStore} from "@/store/modules/coalition";
 import {useRouter} from "vue-router";
+import Map from "./coalition/Map.vue"
 
+const hours = ref('');
+const tableData = [
+  {
+    id: 1,
+    tname: '生产汽车车身',
+    ttype: '生产任务',
+    duration: 200,
+    tarrival: '2021-4-5',
+    tddl: '2021-5-4',
+    cid: '0',
+    cname: '0号联盟',
+    current: 50
+  },
+  {
+    id: 2,
+    tname: '汽车锂电池生产',
+    ttype: '销售任务',
+    duration: 150,
+    tarrival: '2021-4-5',
+    tddl: '2021-5-4',
+    cid: '2',
+    cname: '2号联盟',
+    current: 30
+  },
+  {
+    id: 3,
+    tname: '购买汽车玻璃',
+    ttype: '生产任务',
+    duration: 100,
+    tarrival: '2021-4-5',
+    tddl: '2021-5-4',
+    cid: '0',
+    cname: '0号联盟',
+    current: 80
+  },
+  {
+    id: 4,
+    tname: '生产汽车座椅',
+    ttype: '生产任务',
+    duration: 100,
+    tarrival: '2021-4-5',
+    tddl: '2021-5-4',
+    cid: '1',
+    cname: '1号联盟',
+    current: 90
+  },
+  {
+    id: 5,
+    tname: '销售汽车玻璃',
+    ttype: '生产任务',
+    duration: 160,
+    tarrival: '2021-4-5',
+    tddl: '2021-5-4',
+    cid: '0',
+    cname: '0号联盟',
+    current: 70
+  },
+  {
+    id: 6,
+    tname: '生产汽车轮胎',
+    ttype: '采购任务',
+    duration: 100,
+    tarrival: '2021-4-5',
+    tddl: '2021-5-4',
+    cid: '2',
+    cname: '2号联盟',
+    current: 60
+  },
+  {
+    id: 7,
+    tname: '销售电动汽车',
+    ttype: '生产任务',
+    duration: 180,
+    tarrival: '2021-4-5',
+    tddl: '2021-5-4',
+    cid: '0',
+    cname: '0号联盟',
+    current: 40
+  },
+  {
+    id: 8,
+    tname: '汽车锂电池生产',
+    ttype: '采购任务',
+    duration: 100,
+    tarrival: '2021-4-5',
+    tddl: '2021-5-4',
+    cid: '0',
+    cname: '0号联盟',
+    current: 20
+  },
+]
 const coalitionStore = useCoalitionStore();
 const router = useRouter();
 const taskInfo = ref(null);
@@ -65,12 +163,12 @@ const {proxy} = getCurrentInstance();
 const taskLinkageInfo = ref(null);
 let taskFinishInfo = ref(null);
 let taskInfoInstance;
-let year = [
- //1到40
-    1,2, 3, 4, 5, 6, 7, 8, 9, 10,
-    11,12,13,14,15,16,17,18,19,20,
-    21,22,23,24,25,26,27,28,29,30,
-    31,32,33,34,35,36,37,38,39,40
+let times = [
+  //1到40
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+  11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+  21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+  31, 32, 33, 34, 35, 36, 37, 38, 39, 40
 ];
 let data = [
   [431, 550, 878, 989, 351, 391, 508, 118],
@@ -115,14 +213,17 @@ let data = [
   [120, 206, 392, 150, 45, 60, 80, 120],
 ];
 
+const drawer = ref(false);
+let cname = ref();
+let cid = ref();
 const handleCoalition = (index) => {
-  router.push({
-    name: "coalition",
-  });
-  coalitionStore.setDetail( {
-    cname: tableData[index].cname,
-    tname: tableData[index].tname,
-  })
+  // router.push({
+  //   name: "coalition",
+  // });
+  drawer.value = true;
+  cname.value = tableData[index].cname;
+  cid.value = tableData[index].cid;
+  console.log(cname.value, cid.value);
 }
 //对data每个元素除以10
 data = data.map(function (item) {
@@ -131,18 +232,9 @@ data = data.map(function (item) {
   });
 });
 let option1 = {
-  tooltip: {formatter: "{b}<br/>{c}%"},
+  tooltip: {formatter: "联盟名称：1号联盟<br/>{b}<br/>{c}%"},
   yAxis: {
-    data: [
-      "销售汽车玻璃",
-      "生产汽车车身",
-      "生产汽车轮胎",
-      "销售汽车玻璃",
-      "销售电动汽车",
-      "任务1",
-      "汽车锂电池生产",
-      "购买汽车玻璃",
-    ],
+    data: tableData.map((item) => item.tname),
     inverse: true,
   },
   xAxis: {
@@ -182,12 +274,18 @@ let option2 = {
   },
   tooltip: {
     trigger: 'item',
-    formatter: (params)=>{
-      return params.data.desc?params.data.desc:params.data.name;
+    formatter: (params) => {
+      return params.data.desc ? params.data.desc : params.data.name;
     }
   },
   animationDurationUpdate: 1500,
   animationEasingUpdate: 'quinticInOut',
+  legend: {
+    data: ['已分配', '未分配', '已完成', '失败'],
+    left: '20',
+    orient: 'vertical',
+    top: 'center',
+  },
   series: [
     {
       type: 'graph',
@@ -204,222 +302,240 @@ let option2 = {
       },
       data: [
         {
-          name: '任务 1',
+          name: '任务1',
           x: 200,
           y: 200,
-          desc: '生产汽车车身'
+          desc: '生产汽车车身',
+          category: 0
         },
         {
-          name: '任务 2',
+          name: '任务2',
           x: 350,
           y: 200,
-          desc: '生产汽车轮胎'
+          desc: '生产汽车轮胎',
+          category: 0
         },
         {
-          name: '任务 3',
+          name: '任务3',
           x: 450,
           y: 100,
-          desc: '销售汽车玻璃'
+          desc: '销售汽车玻璃',
+          category: 0
         },
         {
-          name: '任务 4',
+          name: '任务4',
           x: 350,
           y: 300,
-          desc: '销售电动汽车'
+          desc: '销售电动汽车',
+          category: 0
         },
         {
-          name: '任务 5',
+          name: '任务5',
           x: 450,
           y: 350,
-          desc: '任务1'
+          desc: '任务1',
+          category: 0
         },
         {
-          name: '任务 6',
+          name: '任务6',
           x: 500,
           y: 200,
-          desc: '汽车锂电池生产'
+          desc: '汽车锂电池生产',
+          category: 0
         },
         {
-          name: '任务 7',
+          name: '任务7',
           x: 200,
           y: 300,
-          desc: '购买汽车玻璃'
+          desc: '购买汽车玻璃',
+          category: 0
         },
         {
-          name: '任务 8',
+          name: '任务8',
           x: 600,
           y: 100,
-          desc: '购买汽车玻璃'
+          desc: '购买汽车玻璃',
+          category: 0
         },
         {
-          name: '任务 9',
+          name: '任务9',
           x: 600,
           y: 300,
-          desc: '任务1'
+          desc: '任务1',
+          category: 1
         },
         {
-          name: '任务 10',
+          name: '任务10',
           x: 600,
           y: 450,
-          desc: '汽车发动机生产'
+          desc: '汽车发动机生产',
+          category: 1
         },
         {
-          name: '任务 11',
+          name: '任务11',
           x: 350,
-          y: 400
+          y: 400,
+          category: 2
         },
         {
-          name: '任务 12',
+          name: '任务12',
           x: 700,
-          y: 200
+          y: 200,
+          category: 1
         },
         {
-          name: '任务 13',
+          name: '任务13',
           x: 700,
-          y: 60
+          y: 60,
+          category: 2
         },
         {
-          name: '任务 14',
+          name: '任务14',
           x: 700,
-          y: 350
+          y: 350,
+          category: 1
         },
         {
-          name: '任务 15',
+          name: '任务15',
           x: 500,
-          y: 500
+          y: 500,
+          category: 1
         },
         {
-          name: '任务 16',
+          name: '任务16',
           x: 200,
-          y: 450
+          y: 450,
+          category: 1
         },
         {
-          name: '任务 17',
+          name: '任务17',
           x: 800,
-          y: 400
+          y: 400,
+          category: 3
         },
         {
-          name: '任务 18',
+          name: '任务18',
           x: 800,
-          y: 100
+          y: 100,
+          category: 1
         },
         {
-          name: '任务 19',
+          name: '任务19',
           x: 900,
-          y: 300
-        },
-
+          y: 300,
+          category: 2
+        }
       ],
+      categories: [{name: "已分配"}, {name: "未分配"}, {name: "已完成"}, {name: "失败"}],
       links: [
         {
-          source: '任务 2',
-          target: '任务 1',
-
+          source: '任务2',
+          target: '任务1',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 3',
-          target: '任务 4',
+          source: '任务3',
+          target: '任务4',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 1',
-          target: '任务 3',
+          source: '任务1',
+          target: '任务3',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 2',
-          target: '任务 3',
+          source: '任务2',
+          target: '任务3',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 2',
-          target: '任务 4',
+          source: '任务2',
+          target: '任务4',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 1',
-          target: '任务 4',
+          source: '任务1',
+          target: '任务4',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 3',
-          target: '任务 5',
+          source: '任务3',
+          target: '任务5',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 6',
-          target: '任务 4',
+          source: '任务6',
+          target: '任务4',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 5',
-          target: '任务 10',
+          source: '任务5',
+          target: '任务10',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 8',
-          target: '任务 10',
+          source: '任务8',
+          target: '任务10',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 12',
-          target: '任务 14',
+          source: '任务12',
+          target: '任务14',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 11',
-          target: '任务 15',
+          source: '任务11',
+          target: '任务15',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 13',
-          target: '任务 17',
+          source: '任务13',
+          target: '任务17',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 18',
-          target: '任务 16',
+          source: '任务18',
+          target: '任务16',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 16',
-          target: '任务 19',
+          source: '任务16',
+          target: '任务19',
           lineStyle: {
             curveness: 0.2
           }
         },
         {
-          source: '任务 7',
-          target: '任务 16',
+          source: '任务7',
+          target: '任务16',
           lineStyle: {
             curveness: 0.2
           }
@@ -455,7 +571,7 @@ let option3 = {
       },
       label: {
         show: true,
-        formatter: '{b}'+'\n'+'{d}%',
+        formatter: '{b}' + '\n' + '{d}%',
       },
       labelLine: {
         show: true,
@@ -472,132 +588,108 @@ let option3 = {
     }
   ]
 };
-//表格数据，关于任务分配情况滴
-const tableData = [
-  {
-    tname: '生产汽车车身',
-    ttype: '生产任务',
-    duration: 200,
-    tarrival: '2021-4-5',
-    tddl: '2021-5-4',
-    cid: '0',
-    cname: '0号联盟'
-  }, {
-    tname: '汽车锂电池生产',
-    ttype: '销售任务',
-    duration: 150,
-    tarrival: '2021-4-5',
-    tddl: '2021-5-4',
-    cid: '2',
-    cname: '2号联盟'
-  }, {
-    tname: '购买汽车玻璃',
-    ttype: '生产任务',
-    duration: 100,
-    tarrival: '2021-4-5',
-    tddl: '2021-5-4',
-    cid: '0',
-    cname: '0号联盟'
-  }, {
-    tname: '生产汽车座椅',
-    ttype: '生产任务',
-    duration: 100,
-    tarrival: '2021-4-5',
-    tddl: '2021-5-4',
-    cid: '1',
-    cname: '1号联盟'
-  }, {
-    tname: '销售汽车玻璃',
-    ttype: '生产任务',
-    duration: 160,
-    tarrival: '2021-4-5',
-    tddl: '2021-5-4',
-    cid: '0',
-    cname: '0号联盟'
-  }, {
-    tname: '生产汽车轮胎',
-    ttype: '采购任务',
-    duration: 100,
-    tarrival: '2021-4-5',
-    tddl: '2021-5-4',
-    cid: '3',
-    cname: '3号联盟'
-  }, {
-    tname: '销售电动汽车',
-    ttype: '生产任务',
-    duration: 180,
-    tarrival: '2021-4-5',
-    tddl: '2021-5-4',
-    cid: '0',
-    cname: '0号联盟'
-  }, {
-    tname: '汽车锂电池生产',
-    ttype: '采购任务',
-    duration: 100,
-    tarrival: '2021-4-5',
-    tddl: '2021-5-4',
-    cid: '0',
-    cname: '0号联盟'
-  },
-]
-const intervalTask = () => {
-  for (let i = 0; i < data.length; i++) {
-    setTimeout(function () {
-      var smalloption = {
-        title: {
-          text:"前"+ year[data.length - i - 1].toString() + "小时任务完成率",
-        },
-        series: [
-          {
-            data: data[data.length - i - 1],
-          },
-        ],
-      };
-      taskInfoInstance.setOption(smalloption);
-    }, 500 * i);
-  }
-}
-let timer = null;
-onMounted(() => {
-  router.addRoute('Allocation', {
-    path: "coalition",
-    name: 'coalition',
-    component: () => import("@/views/taskAllocation/detail/coalition/index.vue"),
-    redirect:{name:'table'},
-    meta: {
-      title: '联盟详情',
-    },
-    children: [
-      {
-        path: 'table',
-        name: 'table',
-        component: () => import('@/views/taskAllocation/detail/coalition/Table.vue'),
+let interval = null;
+let index2 = 0;
+const myInterval = (length) => {
+  index2 = length - 1;
+  interval = setInterval(() => {
+    let smallOption = {
+      title: {
+        text: "前" + times[index2].toString() + "小时任务完成率",
       },
-      {
-        path: 'map',
-        name: 'map',
-        component: () => import('@/views/taskAllocation/detail/coalition/Map.vue'),
-      }
-    ]
-  })
+      series: [
+        {
+          data: data[index2],
+        },
+      ],
+    };
+    taskInfoInstance.setOption(smallOption);
+    index2--;
+    if (index2 < 0) {
+      index2 = length - 1;
+    }
+  }, 1000);
+}
+
+const clearMyInterval = () => {
+  clearInterval(interval);
+}
+// let taskDynamicTimer = null;
+// let flag = true;
+// let timerList = [];
+// let index = 0
+// const intervalTask = (length) => {
+//   for (let i = index; i < length; i++) {
+//     taskDynamicTimer = setTimeout(function () {
+//       let smallOption = {
+//         title: {
+//           text: "前" + times[length - i - 1].toString() + "小时任务完成率",
+//         },
+//         series: [
+//           {
+//             data: data[length - i - 1],
+//           },
+//         ],
+//       };
+//       taskInfoInstance.setOption(smallOption);
+//       index++;
+//     }, 1000 * i);
+//     timerList.push(taskDynamicTimer);
+//     if (!flag) {
+//       break;
+//     }
+//   }
+// }
+
+watch(hours, (val) => {
+  console.log("小时变了哦", val);
+  if (!val) {
+    return;
+  }
+  if (val < 1 || val > 40) {
+    proxy.$message.error("请输入1-40的数字");
+    return;
+  }
+  clearMyInterval();
+  myInterval(val);
+})
+const handleHover = () => {
+  // flag = false;
+  // //停止timerList内的所有定时器
+  // timerList.forEach(item => clearTimeout(item));
+  clearMyInterval();
+}
+const handleLeave = (time) => {
+  // flag = true;
+  // intervalTask(time);
+  myInterval(time);
+}
+// let timer = null;
+onMounted(() => {
   taskInfoInstance = proxy.$echarts.init(taskInfo.value);
   const taskLinkageInfoInstance = proxy.$echarts.init(taskLinkageInfo.value);
   const taskFinishInstance = proxy.$echarts.init(taskFinishInfo.value);
   taskInfoInstance.setOption(option1);
   taskFinishInstance.setOption(option3);
-  intervalTask();
-  timer = setInterval(intervalTask, 30000);
+  // intervalTask(40);
+  // const fillIntervalTask = () => {
+  //   index = 0;
+  //   timerList = [];
+  //   intervalTask(40);
+  // }
+  // timer = setInterval(fillIntervalTask, 41000);
+  myInterval(40);
   taskLinkageInfoInstance.setOption(option2);
 })
+
 onUnmounted(() => {
-  clearInterval(timer);
+  clearMyInterval();
 })
 
 </script>
 
 <style scoped lang="less">
-.text-2xl
-{
+.text-2xl {
   font-size: 1.5rem;
 }
 </style>

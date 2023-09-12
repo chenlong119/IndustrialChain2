@@ -165,8 +165,7 @@ onMounted(async () => {
           var numbers = params.data.numbers;
           var lists = params.data.lists;
           return "id: " + id + '<br/>' + "任务名称：" + name + '<br/>' + "资源需求：" + requirements + '<br/>' + "预期产量：" + products + '<br/>' + "截止时间：" + deadline + '<br/>' + "预估耗时：" + lastTime + '<br/>' + "参与企业数量：" + numbers + '<br/>' + "参与企业名单：" + lists;
-        }
-        else if (params.dataType === 'edge') {
+        } else if (params.dataType === 'edge') {
           var source = params.data.source;
           var target = params.data.target;
           var label = params.data.label.formatter;

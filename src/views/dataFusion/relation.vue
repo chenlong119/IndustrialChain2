@@ -291,42 +291,42 @@ onMounted(async () => {
     <div id="main" style="width: 1000px;height:400px;margin-left:150px;background-color: rgba(250,247,247,0.5);display: flex; justify-content: center; align-items: center;"></div>
 
 
-<!--    <el-form :inline="true">-->
-<!--      <el-form-item label="源任务：">-->
-<!--        <el-input v-model="formPredict.sourceId" placeholder="金属采购"></el-input>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="任务概率阈值：">-->
-<!--        <el-input v-model="formPredict.thresholdP" placeholder="0.4"></el-input>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item>-->
-<!--        <el-button type="primary" >预测</el-button>-->
-<!--      </el-form-item>-->
-<!--    </el-form>-->
+    <el-form :inline="true">
+      <el-form-item label="源任务：">
+        <el-input v-model="formPredict.sourceId" placeholder="金属采购"></el-input>
+      </el-form-item>
+      <el-form-item label="任务概率阈值：">
+        <el-input v-model="formPredict.thresholdP" placeholder="0.4"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" >预测</el-button>
+      </el-form-item>
+    </el-form>
 
-<!--    <el-table-->
-<!--        :data="resultPredict"-->
-<!--        stripe-->
-<!--        style="width: 100%">-->
-<!--      <el-table-column-->
-<!--          prop="target"-->
-<!--          label="目标任务"-->
-<!--          sortable>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column-->
-<!--          prop="delay_time"-->
-<!--          label="发生时延"-->
-<!--          sortable>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column-->
-<!--          prop="probability"-->
-<!--          label="发生概率"-->
-<!--          sortable>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column-->
-<!--          prop="path"-->
-<!--          label="关联路径">-->
-<!--      </el-table-column>-->
-<!--    </el-table>-->
+    <el-table
+        :data="resultPredict"
+        stripe
+        style="width: 100%">
+      <el-table-column
+          prop="target"
+          label="目标任务"
+          sortable>
+      </el-table-column>
+      <el-table-column
+          prop="delay_time"
+          label="发生时延"
+          sortable>
+      </el-table-column>
+      <el-table-column
+          prop="probability"
+          label="发生概率"
+          sortable>
+      </el-table-column>
+      <el-table-column
+          prop="path"
+          label="关联路径">
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 

@@ -1,7 +1,21 @@
 <template>
-  <div class="common-layout">
+  <el-button type="success" plain @click="formulaVisible = true" style="margin-bottom: 10px;">模型解读</el-button>
+  <el-dialog v-model="formulaVisible" title="多重产业链企业分布模型解读">
+    <el-form>
+      <el-form-item label="节点含义：" :label-width="formLabelWidth">
+        <span>多重产业链上的企业</span>
+      </el-form-item>
+      <el-form-item label="网络层含义含义：" :label-width="formLabelWidth">
+        <span>多重产业链上的企业组成的不同关系网络</span>
+      </el-form-item>
+      <el-form-item label="垂直边含义：" :label-width="formLabelWidth">
+        <span>同一企业在不同关系网络中的映射</span>
+      </el-form-item>
+    </el-form>
+  </el-dialog>
+  <div>
     <div id="main"
-         style="width: 1000px;height:400px;margin-left:100px;background-color: rgba(250,247,247,0.5)"></div>
+         style="width: 1000px;height:400px;margin: 0 auto;background-color: rgba(250,247,247,0.5)"></div>
     <div style="display: flex; justify-content: flex-end;">
       <el-button
           type="primary"
@@ -9,31 +23,41 @@
           icon="Plus"
           @click="handleAdd"
           v-hasPermi="['task:taskAllocation:add']"
-      >新任务输入
+      >新企业加入
       </el-button>
     </div>
     <el-dialog :title="title" v-model="open" width="500px" append-to-body>
       <el-form ref="taskAllocationRef" :model="form" :rules="rules" label-width="150px">
-        <el-form-item label="任务名称" prop="name">
-          <el-input v-model="form.name" placeholder="请输入任务名称"/>
+        <el-form-item label="企业名称" prop="name">
+          <el-input v-model="form.name" placeholder="请输入企业名称"/>
         </el-form-item>
-        <el-form-item label="任务资源需求" prop="requirements">
-          <el-input v-model="form.requirements" placeholder="请输入任务资源需求"/>
+        <el-form-item label="企业核心业务" prop="requirements">
+          <el-input v-model="form.requirements" placeholder="请输入核心业务"/>
         </el-form-item>
-        <el-form-item label="任务预估产量" prop="products">
-          <el-input v-model="form.products" placeholder="请输入任务预估产量"/>
+        <el-form-item label="企业市场份额" prop="products">
+          <el-input v-model="form.products" placeholder="请输入企业市场份额"/>
         </el-form-item>
-        <el-form-item label="任务截止天数" prop="ddl">
-          <el-input v-model="form.ddl" placeholder="请输入任务截止天数"/>
+        <el-form-item label="企业子企业数量" prop="aa">
+          <el-input v-model="form.numbers" placeholder="请输入企业的子企业数量"/>
         </el-form-item>
-        <el-form-item label="任务持续时长" prop="duration">
-          <el-input v-model="form.duration" placeholder="请输入任务持续天数"/>
+        <el-form-item label="企业预估盈利率" prop="bb">
+          <el-input v-model="form.profit" placeholder="请输入企业预估盈利率"/>
         </el-form-item>
-        <el-form-item label="任务参与企业数量" prop="number">
-          <el-input v-model="form.number" placeholder="任务参与企业数量"/>
+        <el-form-item label="企业性质" prop="property">
+          <el-radio-group v-model="form.property">
+            <el-radio label="供应商" />
+            <el-radio label="制造商" />
+            <el-radio label="分销商" />
+            <el-radio label="服务商" />
+            <el-radio label="环保公司" />
+          </el-radio-group>
         </el-form-item>
-        <el-form-item label="任务参与企业名单" prop="lists">
-          <el-input v-model="form.lists" placeholder="任务参与企业名单"/>
+        <el-form-item label="企业所属产业链" prop="chain">
+          <el-select v-model="form.chain" placeholder="请选择所属产业链">
+            <el-option label="汽车产业链" value="option1"></el-option>
+            <el-option label="家电产业链" value="option2"></el-option>
+            <el-option label="汽车产业链 & 家电产业链" value="option3"></el-option>
+          </el-select>
         </el-form-item>
       </el-form>
       <template #footer>
@@ -49,9 +73,9 @@
 
 <script setup>
 import {ref, reactive, computed, watch, onMounted, nextTick} from 'vue'
-import jsonData from "@/assets/income/networkRelation.json"
 import * as echarts from 'echarts'
 import axios from "axios";  //引入echarts
+const formulaVisible = ref(false)
 const open = ref(false);
 const title = ref("");
 const {proxy} = getCurrentInstance();
@@ -70,25 +94,13 @@ const data = reactive({
   },
   rules: {
     name: [
-      {required: true, message: "任务名称不能为空", trigger: "blur"}
+      {required: true, message: "企业名称不能为空", trigger: "blur"}
     ],
-    requirements: [
-      {required: true, message: "任务资源需求不能为空", trigger: "change"}
+    property: [
+      {required: true, message: "企业性质不能为空", trigger: "change"}
     ],
-    products: [
-      {required: true, message: "任务预估产量不能为空", trigger: "change"}
-    ],
-    ddl: [
-      {required: true, message: "任务截止时间不能为空", trigger: "blur"}
-    ],
-    duration: [
-      {required: true, message: "任务持续时长不能为空", trigger: "blur"}
-    ],
-    number: [
-      {required: true, message: "任务参与企业数量不能为空", trigger: "blur"}
-    ],
-    lists: [
-      {required: true, message: "任务参与企业名单不能为空", trigger: "change"}
+    chain: [
+      {required: true, message: "企业所属产业链不能为空", trigger: "change"}
     ]
   }
 });
@@ -97,7 +109,7 @@ const {queryParams, form, rules} = toRefs(data);
 function handleAdd() {
   reset();
   open.value = true;
-  title.value = "添加任务表 ";
+  title.value = "添加企业表 ";
 }
 
 function reset() {
@@ -150,7 +162,7 @@ let myChart = null;
 onMounted(async () => {
   const chartDom = document.getElementById('main');
   myChart = echarts.init(chartDom);
-  const response = await axios.get('/src/assets/dataFusion/task.json');
+  const response = await axios.get('/src/assets/dataFusion/company.json');
   const graph = response.data;
   //console.log(graph)
   const containerWidth = document.getElementById('main').clientWidth;// 图形容器的宽度
@@ -196,7 +208,7 @@ onMounted(async () => {
             type: 'text',
             position: [-50, 70], // 相对于 group 左上角位置的偏移量
             style: {
-              text: '汽车产业链', // 你要显示的文字
+              text: '合作关系', // 你要显示的文字
               fill: 'black', // 文字颜色
               fontSize: 14 // 文字大小
             }
@@ -211,7 +223,7 @@ onMounted(async () => {
           {
             type: 'polygon',
             shape: {
-              points: calculatePoints([[-10, -40], [650, -40], [615, 50], [-50, 50]])  // 左上、右上、右下、左下
+              points: calculatePoints([[-10, -40], [650, -40], [615, 70], [-50, 70]])  // 左上、右上、右下、左下
             },
             style: {
               fill: '#eee',
@@ -222,9 +234,9 @@ onMounted(async () => {
           },
           {
             type: 'text',
-            position: [-50, 25], // 相对于 group 左上角位置的偏移量
+            position: [-50, 40], // 相对于 group 左上角位置的偏移量
             style: {
-              text: '虚拟共有层', // 你要显示的文字
+              text: '供应关系', // 你要显示的文字
               fill: 'black', // 文字颜色
               fontSize: 14 // 文字大小
             }
@@ -239,7 +251,7 @@ onMounted(async () => {
           {
             type: 'polygon',
             shape: {
-              points: calculatePoints([[0, 30], [650, 30], [700, -100], [55, -100]])  // 左下、右下、右上、左上
+              points: calculatePoints([[0, 30], [660, 30], [700, -80], [45, -80]])  // 左下、右下、右上、左上
             },
             style: {
               fill: '#eee',
@@ -256,7 +268,7 @@ onMounted(async () => {
             type: 'text',
             position: [15, 5], // 相对于 group 左上角位置的偏移量
             style: {
-              text: '家电产业链', // 你要显示的文字
+              text: '竞争关系', // 你要显示的文字
               fill: 'black', // 文字颜色
               fontSize: 14 // 文字大小
             }
@@ -266,7 +278,7 @@ onMounted(async () => {
     ],
 
     title: {
-      text: '多重产业链任务结构模型',
+      text: '多重产业链企业分布模型',
       // subtext: '这是一个副标题',
       top: 'bottom',
       left: 'center'
@@ -284,24 +296,21 @@ onMounted(async () => {
           var name = params.data.name;
           var requirements = params.data.requirements;
           var products = params.data.products;
-          var deadline = params.data.deadline;
-          var lastTime = params.data.lastTime;
-          var numbers = params.data.numbers;
-          var lists = params.data.lists;
-          return "id: " + id + '<br/>' + "任务名称：" + name + '<br/>' + "资源需求：" + requirements + '<br/>' + "预期产量：" + products + '<br/>' + "截止时间：" + deadline + '<br/>' + "预估耗时：" + lastTime + '<br/>' + "参与企业数量：" + numbers + '<br/>' + "参与企业名单：" + lists;
+          var field = params.data.field;
+          var chain = params.data.chain;
+          return "id: " + id + '<br/>' + "企业名称：" + name + '<br/>' + "核心业务：" + requirements + '<br/>' + "企业性质：" + field + '<br/>' + "市场份额：" + products+ '<br/>' + "企业所属产业链：" + chain;
         }
 
       }
     },
-    animationDuration: 1500, //初始动画的时长
+    animationDuration: 1000, //初始动画的时长
     animationEasingUpdate: 'quinticInOut', //节点和边的动画方式（缓动函数）
     series: [{
       type: 'graph',
       layout: 'none',
       data: graph.nodes,
-      links: graph.links,
+      links: graph.links1,
       //categories: graph.categories,
-      //network: graph.network,
       roam: true,     //开启鼠标缩放和平移漫游
 
       // 设置节点样式
@@ -317,24 +326,9 @@ onMounted(async () => {
       },
 
       label: {
-        show: false,     //是否显示节点标签
+        show: true,     //是否显示节点标签
         // position: 'right',  //节点标签的位置
         formatter: '{b}'  //节点标签的内容格式器，a 代表系列名，b 代表数据名，c 代表数据值。
-      },
-      edgeSymbol: ['none', 'arrow'],
-      edgeSymbolSize: [4, 6],
-      lineStyle: {
-        color: 'source',
-        curveness: 0.2,
-        width: 2,
-        type: 'solid',
-        arrow: {
-          show: true,
-          size: 6,
-          offset: 0,
-          symbol: 'arrow',
-          symbolSize: [6, 12]
-        }
       },
 
       emphasis: {
@@ -351,19 +345,6 @@ onMounted(async () => {
   });
 
   myChart.on('click', params => {
-    // if (params.componentType === 'polygon') {
-    //     const nodes = myChart.getOption().series[0].data;
-    //     const nodesInPolygon = nodes.filter(node => {
-    //         const point = myChart.convertToPixel('grid', [node.x, node.y]);
-    //         return myChart.graphic.isPointInGraphic(params.componentIndex, point);
-    //     });
-    //     const selectedNodes = nodesInPolygon.map(node => node.name);
-    //     myChart.dispatchAction({
-    //         type: 'highlight',
-    //         seriesIndex: 0,
-    //         name: selectedNodes
-    //     });
-    // }
     if (params.dataType == "node") {
       taskData.name = params.data.name;
       taskData.requirements = params.data.requirements;

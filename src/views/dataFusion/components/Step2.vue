@@ -1,13 +1,13 @@
 <template>
-    <div class="common-layout">
-      <div id="main2" ref="chartContainer"
-           style="width: 1000px;height:400px;margin-left:100px;background-color: rgba(250,247,247,0.5)"></div>
-    </div>
+  <div class="common-layout">
+    <div id="main2" ref="chartContainer"
+         style="width: 1000px;height:400px;margin-left:100px;background-color: rgba(250,247,247,0.5)"></div>
+  </div>
 </template>
-  
-  
+
+
 <script setup>
-import { ref, reactive, computed, watch, onMounted, nextTick } from 'vue'
+import {ref, reactive, computed, watch, onMounted, nextTick} from 'vue'
 import * as echarts from 'echarts'
 import axios from "axios";  //引入echarts
 
@@ -28,6 +28,7 @@ onMounted(async () => {
 
   const containerWidth = chartContainer.value.clientWidth;
   const containerHeight = chartContainer.value.clientHeight;
+
 //计算polygon的相对坐标点
   function calculatePoints(points) {
     const widthRatio = containerWidth / 800; // 宽度比例
@@ -306,28 +307,27 @@ onMounted(async () => {
 });
 
 
-
 </script>
 
 <style>
 .header-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .flex-container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .header-text {
-    margin-right: 10px;
-    font-weight: bold
+  margin-right: 10px;
+  font-weight: bold
 }
 
 .my-table {
-    border: 1px solid #ebeef5;
-    border-radius: 4px;
+  border: 1px solid #ebeef5;
+  border-radius: 4px;
 }
 </style>

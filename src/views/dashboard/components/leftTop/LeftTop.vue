@@ -17,7 +17,7 @@
         </div>
         <p class="text">
           <span> {{ item.text }} </span>
-          <span>(件)</span>
+          <span>(个)</span>
         </p>
       </div>
     </div>
