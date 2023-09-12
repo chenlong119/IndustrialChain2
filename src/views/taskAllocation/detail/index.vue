@@ -2,11 +2,14 @@
   <div>
     <el-row :gutter="20">
       <el-col :span="12">
-        <el-card :shadow="'hover'" @mouseenter="handleHover" @mouseleave="handleLeave">
+        <el-card :shadow="'hover'">
           <template #header>
             <span>已分配任务的完成进度变化图</span>
+            <el-input v-model="hours" placeholder="请输入时间间隔1-40" style="width: 200px;margin-left: 10px"/>
           </template>
-          <div ref="taskInfo" style="width: 100%;height: 350px"/>
+          <div ref="taskInfo" style="width: 100%;height: 350px"
+               @mouseenter="handleHover" @mouseleave="handleLeave(40)"
+          />
         </el-card>
       </el-col>
       <el-col :span="12">
@@ -29,7 +32,7 @@
               <el-table-column prop="id" label="任务编号" width="100"/>
               <el-table-column prop="tname" label="任务名称" width="180"/>
               <el-table-column prop="ttype" label="任务类型" width="180"/>
-              <el-table-column prop="duration" label="任务价值"/>
+              <el-table-column prop="duration" label="任务价值(万元)"/>
               <el-table-column prop="tarrival" label="任务到来时间"/>
               <el-table-column prop="current" label="任务当前进度%"/>
               <el-table-column label="任务所属联盟名称">
@@ -51,17 +54,18 @@
       </el-col>
     </el-row>
     <el-drawer direction="rtl" v-model="drawer" :size="810">
-      <Map/>
+      <Map :cid="cid" :cname="cname"/>
     </el-drawer>
   </div>
 </template>
 
 <script setup>
-import {getCurrentInstance, onMounted, onUnmounted, ref} from "vue";
+import {getCurrentInstance, onMounted, onUnmounted, ref, watch} from "vue";
 import {useCoalitionStore} from "@/store/modules/coalition";
 import {useRouter} from "vue-router";
 import Map from "./coalition/Map.vue"
 
+const hours = ref('');
 const tableData = [
   {
     id: 1,
@@ -125,8 +129,8 @@ const tableData = [
     duration: 100,
     tarrival: '2021-4-5',
     tddl: '2021-5-4',
-    cid: '3',
-    cname: '3号联盟',
+    cid: '2',
+    cname: '2号联盟',
     current: 60
   },
   {
@@ -159,7 +163,7 @@ const {proxy} = getCurrentInstance();
 const taskLinkageInfo = ref(null);
 let taskFinishInfo = ref(null);
 let taskInfoInstance;
-let year = [
+let times = [
   //1到40
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
   11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
@@ -210,15 +214,16 @@ let data = [
 ];
 
 const drawer = ref(false);
+let cname = ref();
+let cid = ref();
 const handleCoalition = (index) => {
   // router.push({
   //   name: "coalition",
   // });
   drawer.value = true;
-  coalitionStore.setDetail({
-    cname: tableData[index].cname,
-    tname: tableData[index].tname,
-  })
+  cname.value = tableData[index].cname;
+  cid.value = tableData[index].cid;
+  console.log(cname.value, cid.value);
 }
 //对data每个元素除以10
 data = data.map(function (item) {
@@ -583,80 +588,102 @@ let option3 = {
     }
   ]
 };
-let taskDynamicTimer = null;
-let flag = true;
-let timerList = [];
-let index = 0
-const intervalTask = () => {
-  for (let i = index; i < data.length; i++) {
-    taskDynamicTimer = setTimeout(function () {
-      let smallOption = {
-        title: {
-          text: "前" + year[data.length - i - 1].toString() + "小时任务完成率",
-        },
-        series: [
-          {
-            data: data[data.length - i - 1],
-          },
-        ],
-      };
-      taskInfoInstance.setOption(smallOption);
-      index++;
-    }, 1000 * i);
-    timerList.push(taskDynamicTimer);
-    if (!flag) {
-      break;
-    }
-  }
-}
-const handleHover = () => {
-  flag = false;
-  //停止timerList内的所有定时器
-  timerList.forEach(item => clearTimeout(item));
-}
-const handleLeave = () => {
-  flag = true;
-  intervalTask();
-}
-let timer = null;
-onMounted(() => {
-  router.addRoute('Allocation', {
-    path: "coalition",
-    name: 'coalition',
-    component: () => import("@/views/taskAllocation/detail/coalition/index.vue"),
-    redirect: {name: 'table'},
-    meta: {
-      title: '联盟详情',
-    },
-    children: [
-      {
-        path: 'table',
-        name: 'table',
-        component: () => import('@/views/taskAllocation/detail/coalition/Table.vue'),
+let interval = null;
+let index2 = 0;
+const myInterval = (length) => {
+  index2 = length - 1;
+  interval = setInterval(() => {
+    let smallOption = {
+      title: {
+        text: "前" + times[index2].toString() + "小时任务完成率",
       },
-      {
-        path: 'map',
-        name: 'map',
-        component: () => import('@/views/taskAllocation/detail/coalition/Map.vue'),
-      }
-    ]
-  })
+      series: [
+        {
+          data: data[index2],
+        },
+      ],
+    };
+    taskInfoInstance.setOption(smallOption);
+    index2--;
+    if (index2 < 0) {
+      index2 = length - 1;
+    }
+  }, 1000);
+}
+
+const clearMyInterval = () => {
+  clearInterval(interval);
+}
+// let taskDynamicTimer = null;
+// let flag = true;
+// let timerList = [];
+// let index = 0
+// const intervalTask = (length) => {
+//   for (let i = index; i < length; i++) {
+//     taskDynamicTimer = setTimeout(function () {
+//       let smallOption = {
+//         title: {
+//           text: "前" + times[length - i - 1].toString() + "小时任务完成率",
+//         },
+//         series: [
+//           {
+//             data: data[length - i - 1],
+//           },
+//         ],
+//       };
+//       taskInfoInstance.setOption(smallOption);
+//       index++;
+//     }, 1000 * i);
+//     timerList.push(taskDynamicTimer);
+//     if (!flag) {
+//       break;
+//     }
+//   }
+// }
+
+watch(hours, (val) => {
+  console.log("小时变了哦", val);
+  if (!val) {
+    return;
+  }
+  if (val < 1 || val > 40) {
+    proxy.$message.error("请输入1-40的数字");
+    return;
+  }
+  clearMyInterval();
+  myInterval(val);
+})
+const handleHover = () => {
+  // flag = false;
+  // //停止timerList内的所有定时器
+  // timerList.forEach(item => clearTimeout(item));
+  clearMyInterval();
+}
+const handleLeave = (time) => {
+  // flag = true;
+  // intervalTask(time);
+  myInterval(time);
+}
+// let timer = null;
+onMounted(() => {
   taskInfoInstance = proxy.$echarts.init(taskInfo.value);
   const taskLinkageInfoInstance = proxy.$echarts.init(taskLinkageInfo.value);
   const taskFinishInstance = proxy.$echarts.init(taskFinishInfo.value);
   taskInfoInstance.setOption(option1);
   taskFinishInstance.setOption(option3);
-  intervalTask();
-  const fillIntervalTask = () => {
-    index = 0;
-    timerList = [];
-    intervalTask();
-  }
-  timer = setInterval(fillIntervalTask, 41000);
+  // intervalTask(40);
+  // const fillIntervalTask = () => {
+  //   index = 0;
+  //   timerList = [];
+  //   intervalTask(40);
+  // }
+  // timer = setInterval(fillIntervalTask, 41000);
+  myInterval(40);
   taskLinkageInfoInstance.setOption(option2);
 })
+
 onUnmounted(() => {
-  clearInterval(timer);
+  clearMyInterval();
 })
 
 </script>

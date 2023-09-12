@@ -1,5 +1,5 @@
 <script setup>
-import {getCurrentInstance, onBeforeUnmount, onMounted, ref} from 'vue'
+import {getCurrentInstance, onBeforeUnmount, onMounted, ref, watch} from 'vue'
 
 const {proxy} = getCurrentInstance();
 const chart1 = ref(null);
@@ -705,6 +705,21 @@ const option4 = {
 let interval = null;
 let index = 1;
 let myChart2 = null;
+let myChart1 = null;
+const date = ref(null);
+watch(date, () => {
+  let random = Math.random();
+  if (random < 0.33) {
+    myChart1.setOption(option2);
+    myChart2.setOption(option2);
+  } else if (random < 0.66) {
+    myChart1.setOption(option3);
+    myChart2.setOption(option3);
+  } else {
+    myChart1.setOption(option4);
+    myChart2.setOption(option4);
+  }
+})
 
 const startTimer = () => {
   console.log("leave")
@@ -725,7 +740,7 @@ const startTimer = () => {
   }, 2000)
 }
 onMounted(() => {
-  const myChart1 = echarts.init(chart1.value);
+  myChart1 = echarts.init(chart1.value);
   myChart2 = echarts.init(chart2.value);
   myChart1.setOption(option1);
   myChart2.setOption(option1);
@@ -746,7 +761,13 @@ onBeforeUnmount(() => {
       <el-col :span="12">
         <el-card :shadow="'hover'">
           <template #header>
-            <h2>初始企业联盟状态</h2>
+            <span style="margin-right: 10px">初始企业联盟状态</span>
+            <el-date-picker
+                v-model="date"
+                type="date"
+                placeholder="请选择日期"
+                size="default"
+            />
           </template>
           <div ref="chart1" style="width: 100%; height:700px"></div>
         </el-card>
@@ -754,7 +775,7 @@ onBeforeUnmount(() => {
       <el-col :span="12">
         <el-card :shadow="'hover'">
           <template #header>
-            <h2>后续时刻企业联盟状态</h2>
+            <h2>后续3天企业联盟状态变化</h2>
           </template>
           <div ref="chart2" style="width: 100%; height:700px" @mouseenter="stopTimer" @mouseleave="startTimer"></div>
         </el-card>

@@ -1,5 +1,3 @@
-
-
 <template>
   <div>
     <div style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
@@ -7,81 +5,25 @@
         时间粒度推荐
       </div>
       <h style="width: 100%; margin-top: 10px; margin-bottom: 10px;"></h>
-
       <div>
         <el-input v-model="search" style="width: 300px;margin-bottom: 5px;" placeholder="请输入搜索关键词"></el-input>
-    <el-button class="btn1" type="primary" @click="searchTasks" style="margin-bottom: 5px;"><el-icon><Search /></el-icon>搜索</el-button>
+    <el-button class="btn1" type="primary" @click="searchTasks" style="margin-bottom: 5px;">搜索</el-button>
 
       </div>
     </div>
-    <h></h>
-    <div class="app-container">
-      <el-row :gutter="10" class="mb8">
-      <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          size="mini"
-          @click="handleAdd"
-          v-hasPermi="['system:data:add']"
-        ><el-icon><Plus /></el-icon>   新增</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="success"
-          plain
-          size="mini"
-          :disabled="single"
-          @click="handleUpdate"
-          v-hasPermi="['system:data:edit']"
-        > <el-icon> <Setting /> </el-icon> 修改 </el-button>
-      </el-col> 
-      <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-    
-          size="mini"
-          :disabled="multiple"
-          @click="handleDelete"
-          v-hasPermi="['system:data:remove']"
-        ><el-icon><SemiSelect /></el-icon>删除</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="warning"
-          plain
-          
-          size="mini"
-          @click="handleExport"
-          v-hasPermi="['system:data:export']"
-        ><el-icon><FolderAdd /></el-icon>导出</el-button>
-      </el-col>
-      <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
-    </el-row>
- 
-  </div>
 
 <hr style="width: 100%; margin-top: 10px; margin-bottom: 10px;">
 
 
-
+ 
   
     <el-table :data="currentTaskList" style="width: 100%">
-    
-    <el-table-column type="selection" width="55" align="center" />
-    <el-table-column prop="number" align="center" label="企业编号" width="100"></el-table-column>
-    <el-table-column prop="name" align="center" label="企业名称"></el-table-column>
-    <el-table-column label="开关" width="100">
-    <template #default="{ row }">
-      <el-switch v-model="row.switchValue"></el-switch>
-    </template>
-  </el-table-column>
-
-    <el-table-column prop="amount" align="center" label="推荐时间粒度"></el-table-column>
-   
-        <el-table-column  label="操作" width="350">
-          <el-button class="btn1" type="primary"  @click="toggleWindow">
+      <el-table-column prop="number" label="企业编号"></el-table-column>
+    <el-table-column prop="name" label="企业名称"></el-table-column>
+    <el-table-column prop="amount" label="推荐时间粒度"></el-table-column>
+        
+        <el-table-column  label="操作">
+          <el-button class="btn1" type="primary" style="margin-left: 10px; margin-right: 10px" @click="toggleWindow">
   查看详情
 </el-button>
 <div v-if="show" class="floating-window" :style="{top: top + 'px', left: left + 'px'}">
@@ -89,7 +31,6 @@
   <div class="chart-container" ref="chartContainer"></div>
 </div>
       </el-table-column>
-      
     </el-table>
 
     <el-pagination
@@ -108,87 +49,11 @@ import { computed, ref, onMounted } from "vue";
 import * as echarts from "echarts";
 const chartContainer = ref(null);
 export default {
-  methods: {
-   handleAdd ()  {
-  // 示例：提示用户输入新项目的名称
-  const newItemName = prompt('请输入新项目的名称：');
-  if (newItemName) {
-    // 在 tasklist 中添加新项目
-    tasklist.value.push({
-      name: newItemName,
-      // ... 其他属性 ...
-    });
-    console.log(tasklist.value); // 检查 tasklist.value 是否已更新
-  }
-},
-    
-handleUpdate() {
-  // 示例：提示用户选择要更新的项目
-  const itemToUpdate = prompt('请输入要更新的项目名称：');
-  if (itemToUpdate) {
-    // 在 tasklist 中查找要更新的项目
-    const item = tasklist.value.find(item => item.name === itemToUpdate);
-    if (item) {
-      // 示例：提示用户输入新名称
-      const newName = prompt('请输入新名称：');
-      if (newName) {
-        // 更新项目的名称
-        item.name = newName;
-      }
-    } else {
-      alert('未找到指定的项目！');
-    }
-  }
-},
-
-
-handleDelete(){
-  // Example: Prompt the user to select which item to delete
-  const itemToDelete = prompt("Enter the name of the item to delete:");
-  if (itemToDelete) {
-    // Find the index of the item in the dataList
-    const index = dataList.value.findIndex(item => item.name === itemToDelete);
-    if (index !== -1) {
-      // Remove the item from the dataList
-      dataList.value.splice(index, 1);
-    } else {
-      alert("Item not found!");
-    }
-  }
-},
-
-    handleExport() {
-      // 使用 this.tasklist 来访问响应式引用
-      const header = Object.keys(this.tasklist.value[0]).join(",");
-      const rows = this.tasklist.value.map(task =>
-        Object.values(task)
-          .map(value => (typeof value === "string" ? `"${value}"` : value))
-          .join(",")
-      );
-      const csv = [header, ...rows].join("\n");
-
-      // 下载 CSV 文件
-      const blob = new Blob([csv], { type: "text/csv" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = "tasklist.csv";
-      link.click();
-      URL.revokeObjectURL(url);
-    },
-    // ...
-  },
-
-
-
-
   setup() {
-
     const search = ref("");
     const show = ref(false);
     const top = ref(0);
     const left = ref(0);
-    
     const tasklist = ref([
    
       {
@@ -292,10 +157,6 @@ handleDelete(){
         'number': 9
     },
     ]);
-    tasklist.value.forEach(item => {
-  item.switchValue = false;
-});
-
     const pageSize = ref(8);
     const currentPage = ref(1);
     const chartInstance = ref(null);
@@ -377,9 +238,6 @@ handleDelete(){
 
       chartInstance.value.setOption(options);
     };
-    
-
-
 
     return {
       search,

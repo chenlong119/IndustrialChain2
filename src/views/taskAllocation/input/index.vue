@@ -1,6 +1,13 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryRef" :inline="true" v-show="showSearch" label-width="100px">
+    <span>提示：此处支持模糊查询，输入条件可以为一个或多个</span>
+    <el-form :model="queryParams"
+             ref="queryRef"
+             :inline="true"
+             v-show="showSearch"
+             label-width="100px"
+             style="margin-top:10px"
+    >
       <el-form-item label="任务名称" prop="name">
         <el-input
             v-model="queryParams.name"
@@ -19,22 +26,6 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="任务截止日期" prop="ddl">
-        <el-date-picker clearable
-                        v-model="queryParams.ddl"
-                        type="date"
-                        value-format="YYYY-MM-DD"
-                        placeholder="请选择任务截止日期">
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item label="任务持续时长" prop="duration">
-        <el-input
-            v-model="queryParams.duration"
-            placeholder="请输入任务持续时长"
-            clearable
-            @keyup.enter="handleQuery"
-        />
-      </el-form-item>
       <el-form-item label="任务状态 " prop="state">
         <el-select v-model="queryParams.state" placeholder="请选择任务状态 " clearable>
           <el-option
@@ -44,14 +35,6 @@
               :value="dict.value"
           />
         </el-select>
-      </el-form-item>
-      <el-form-item label="任务价值" prop="value">
-        <el-input
-            v-model="queryParams.value"
-            placeholder="请输入任务价值"
-            clearable
-            @keyup.enter="handleQuery"
-        />
       </el-form-item>
       <el-form-item label="任务优先级 " prop="priority">
         <el-select v-model="queryParams.priority" placeholder="请选择任务优先级 " clearable>
@@ -148,9 +131,6 @@
       </el-table-column>
       <el-table-column label="任务价值" align="center" prop="value"/>
       <el-table-column label="任务优先级 " align="center" prop="priority">
-        <template #default="scope">
-          <dict-tag :options="task_priority" :value="scope.row.priority"/>
-        </template>
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
@@ -302,9 +282,9 @@ onMounted(() => {
         } else if (item.state === 1) {
           //获取一个0-1的随机数
           let random = Math.random();
-          if (random < 0.33) {
+          if (random < 0.1) {
             item.state = 2;
-          } else if (random < 0.66) {
+          } else if (random < 0.3) {
             item.state = 3;
           }
         }
