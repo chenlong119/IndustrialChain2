@@ -7,16 +7,15 @@
             <template #header><span style="font-size: 20px; font-weight: bold;">任务运行状态展示</span></template>
             <div class="el-table el-table--enable-row-hover el-table--medium">
               <div class="rectangle">
-                <div v-for="(color, index) in circleColors" :key="index" :class="{ circle: true }" :style="{
-                  backgroundColor: index === 50 ? 'red' : '#ccffcc',
+                <div v-for="(color, index) in circleColors" :key="index" :class="{ circle: true, flashing: isFlashing && index === 4 }" :style="{
+                  backgroundColor: index === 4 && isFlashing ? 'red' : '#ccffcc',
                   width: circleSizes[index] + 'px',
                   height: circleSizes[index] + 'px',
                   left: fixedCirclePositions[index].left + 'px',
                   top: fixedCirclePositions[index].top + 'px'
                 }" @mouseover="(event) => showTooltip(event, index)" @mouseout="(event) => hideTooltip(event)">
                   <span>任务{{ index + 1 }}</span>
-
-                </div>
+  </div>
               </div>
             </div>
           </el-card>
@@ -155,8 +154,8 @@ const tooltips = [
   '任务2:无锡汽车组装   状态：正常',
   '任务3:昆山汽车组装   状态：正常',
   '任务4:常州汽车组装   状态：正常',
-  '任务5:苏州汽车原材料   状态：正常',
-  '任务6:无锡汽车原材料   状态：异常\n 点击查看异常',
+  '任务5:苏州汽车原材料   状态：异常\n 点击查看异常',
+  '任务6:无锡汽车原材料   状态：正常',
   '任务7:昆山汽车原材料   状态：正常',
   '任务8:常州汽车原材料   状态：正常',
   '任务9:南京汽车组装    状态：正常',
@@ -169,6 +168,7 @@ export default {
   name: "YourComponent",
   data() {
     return {
+      isFlashing: false,
       circleColors: ["#FFCDD2", "#F8BBD0", "#E1BEE7", "#D1C4E9", "#C5CAE9", "#BBDEFB", "#B3E0E3", "#C8E6C9", "#F0F4C3", "#B3E0E3", "#C8E6C9", "#F0F4C3", "#F0F4C3"],
       circleSizes: [50, 70, 60, 80, 100, 110, 75, 85, 65, 65, 80, 65, 90],
       fixedCirclePositions: [
@@ -335,6 +335,17 @@ export default {
       }
     },
   },
+  mounted() {
+    setTimeout(() => {
+      this.isFlashing = true; // 开始闪烁
+      setTimeout(() => {
+        this.circleColors[4] = 'red'; // 将颜色设置为红色
+        setTimeout(() => {
+          this.isFlashing = false; // 停止闪烁
+        }, 1000000);
+      }, 1000000);
+    }, 10000);
+  },
   methods: {
     showMessage() {
       this.$nextTick(() => {
@@ -357,7 +368,7 @@ export default {
 
     showRecommendedSolution() {
       this.$alert(
-        '推荐企业：企业31--江阴汽车原材料公司<br/>替换后效果：任务可以正常完成、协同效率高提升5%<br/>替换后协同模式：跨企业跨链跨群',
+        '推荐企业：企业31--江阴汽车原材料公司<br/>替换后效果：任务可以正常完成、协同效率提升5%<br/>替换后协同模式：跨企业跨链跨群',
         '推荐解决方案',
         {
           confirmButtonText: '确定',
@@ -551,7 +562,7 @@ var option3 = {
             color: '#e6ccff',
           },
           tooltip: {
-            formatter: '节点信息：企业 1---小鸭家电 <br/> 企业群：山东矿业'
+            formatter: '节点信息：<br/> 企业 1---小鸭家电 <br/> 企业群：山东矿业'
           }
           // 红色
         },
@@ -563,7 +574,7 @@ var option3 = {
             color: '#e6ccff',
           },
           tooltip: {
-            formatter: '节点信息：企业 2---比亚迪汽车 <br/> 企业群：山东矿业'
+            formatter: '节点信息：<br/> 企业 2---比亚迪汽车 <br/> 企业群：山东矿业'
           }
           // 红色
         },
@@ -575,7 +586,7 @@ var option3 = {
             color: '#e6ccff',
           },
           tooltip: {
-            formatter: '节点信息：企业 3---江淮汽车 <br/> 企业群：山东矿业'
+            formatter: '节点信息：<br/>企业 3---江淮汽车 <br/> 企业群：山东矿业'
           }
           // 红色
         },
@@ -587,7 +598,7 @@ var option3 = {
             color: '#e6ccff',
           },
           tooltip: {
-            formatter: '节点信息：企业 4---武汉博泰汽 <br/> 企业群：山东矿业'
+            formatter: '节点信息：<br/>企业 4---武汉博泰汽 <br/> 企业群：山东矿业'
           }
           // 红色
         },
@@ -599,7 +610,7 @@ var option3 = {
             color: '#e6ccff',
           },
           tooltip: {
-            formatter: '节点信息：企业 5---博世集团 <br/> 企业群：山东矿业'
+            formatter: '节点信息：<br/>企业 5---博世集团 <br/> 企业群：山东矿业'
           }
           // 红色
         },
@@ -611,7 +622,7 @@ var option3 = {
             color: '#ccffcc',
           },
           tooltip: {
-            formatter: '节点信息：企业 6---上汽集团 <br/> 企业群：江苏金融'
+            formatter: '节点信息：<br/>企业 6---上汽集团 <br/> 企业群：江苏金融'
           }
           // 绿色
         },
@@ -623,7 +634,7 @@ var option3 = {
             color: '#ccffcc',
           },
           tooltip: {
-            formatter: '节点信息：企业 7---一汽集团 <br/> 企业群：江苏金融'
+            formatter: '节点信息：<br/>企业 7---一汽集团 <br/> 企业群：江苏金融'
           }
           // 绿色
         },
@@ -635,7 +646,7 @@ var option3 = {
             color: '#ccffcc',
           },
           tooltip: {
-            formatter: '节点信息：企业 8---国美电器 <br/> 企业群：江苏金融'
+            formatter: '节点信息：<br/>企业 8---国美电器 <br/> 企业群：江苏金融'
           }
           // 绿色
         },
@@ -647,7 +658,7 @@ var option3 = {
             color: '#ccffcc',
           },
           tooltip: {
-            formatter: '节点信息：企业 9---美国通用汽车 <br/> 企业群：江苏金融'
+            formatter: '节点信息：<br/>企业 9---美国通用汽车 <br/> 企业群：江苏金融'
           }
           // 绿色
         },
@@ -659,7 +670,7 @@ var option3 = {
             color: '#ccffcc',
           },
           tooltip: {
-            formatter: '节点信息：企业 10---德国大众 <br/> 企业群：江苏金融'
+            formatter: '节点信息：<br/>企业 10---德国大众 <br/> 企业群：江苏金融'
           }
           // 绿色
         },
@@ -671,7 +682,7 @@ var option3 = {
             color: '#ffffcc',
           },
           tooltip: {
-            formatter: '节点信息：企业 11---长安汽车 <br/> 企业群：河北工业'
+            formatter: '节点信息：<br/>企业 11---长安汽车 <br/> 企业群：河北工业'
           }
           // 黄色
         },
@@ -683,7 +694,7 @@ var option3 = {
             color: '#ffffcc',
           },
           tooltip: {
-            formatter: '节点信息：企业 12---优信集团 <br/> 企业群：河北工业'
+            formatter: '节点信息：<br/>企业 12---优信集团 <br/> 企业群：河北工业'
           }
           // 黄色
         },
@@ -698,7 +709,7 @@ var option3 = {
             color: '#e6ccff',
           },
           tooltip: {
-            formatter: '节点信息：企业 13---奥迪服务 <br/> 企业群：河北工业'
+            formatter: '节点信息：<br/>企业 13---奥迪服务 <br/> 企业群：河北工业'
           }
           // 黄色
         },
@@ -710,7 +721,7 @@ var option3 = {
             color: '#ffffcc',
           },
           tooltip: {
-            formatter: '节点信息：企业 14---爱普生集团 <br/> 企业群：河北工业'
+            formatter: '节点信息：<br/>企业 14---爱普生集团 <br/> 企业群：河北工业'
           }
           // 黄色
         },
@@ -722,7 +733,7 @@ var option3 = {
             color: '#ffffcc',
           },
           tooltip: {
-            formatter: '节点信息：企业 15---美的集团 <br/> 企业群：河北工业'
+            formatter: '节点信息：<br/>企业 15---美的集团 <br/> 企业群：河北工业'
           }
           // 黄色
         },
@@ -734,7 +745,7 @@ var option3 = {
             color: '#ccf5ff',
           },
           tooltip: {
-            formatter: '节点信息：企业 16---欧司朗公司 <br/> 企业群：浙江加工'
+            formatter: '节点信息：<br/>企业 16---欧司朗公司 <br/> 企业群：浙江加工'
           }
         },
         {
@@ -745,7 +756,7 @@ var option3 = {
             color: '#ccf5ff',
           },
           tooltip: {
-            formatter: '节点信息：企业 17---格力电器 <br/> 企业群：浙江加工'
+            formatter: '节点信息：<br/>企业 17---格力电器 <br/> 企业群：浙江加工'
           }
         },
         {
@@ -756,7 +767,7 @@ var option3 = {
             color: '#ccf5ff',
           },
           tooltip: {
-            formatter: '节点信息：企业 18---海尔智家 <br/> 企业群：浙江加工'
+            formatter: '节点信息：<br/>企业 18---海尔智家 <br/> 企业群：浙江加工'
           }
         },
         {
@@ -767,7 +778,7 @@ var option3 = {
             color: '#ccf5ff',
           },
           tooltip: {
-            formatter: '节点信息：企业 19---苏宁易购 <br/> 企业群：浙江加工'
+            formatter: '节点信息：<br/>企业 19---苏宁易购 <br/> 企业群：浙江加工'
           }
         },
 
