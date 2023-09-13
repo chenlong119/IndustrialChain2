@@ -44,7 +44,7 @@
     <el-main>
       <div style="margin-bottom: 15px"><span style="font-size: 14px; font-weight: bold;">耦合关系展现：</span></div>
       <div class="container-t">
-        <el-table :data="relatedNodesWithout.value" style="height:260px" highlight-current-row
+        <el-table :data="relatedNodesWithout.value" style="height:260px" border highlight-current-row
                   :header-cell-style="{height: '60px',}" :row-style="{ textAlign: 'center', height: '54px', }"
                   class="my-table">
           <el-table-column fixed type="index" :index="indexMethod" label="序号" width="100"/>

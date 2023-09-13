@@ -1,6 +1,6 @@
 <template>
   
-
+<div>
 
   <div class="container">
       <h1 class="page-title">企业协同效果评估系统</h1>
@@ -59,7 +59,7 @@
 
   <footer style="margin-left: 20px;">
       <p>© 2023 东南大学 仅供测试</p>
-  </footer>
+  </footer></div>
 </template>
 
 <script>
@@ -116,7 +116,8 @@ export default {
         <strong>得分较高：</strong>${this.goodPoints}<br/>
         <strong>得分较低：</strong>${this.badPoints}<br/></div>
     `, '企业协同效果评估系统', {
-        confirmButtonText: 'OK',
+        confirmButtonText: 'OK', 
+                                    
         dangerouslyUseHTMLString: true, // 允许HTML字符串
         callback: (action) => {
             console.log(`action: ${action}`);
