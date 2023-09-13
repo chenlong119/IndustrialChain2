@@ -135,10 +135,6 @@ onMounted(() => {
 
   createEchartsline1();
   createEchartscategory1();
-
-  // createEchartsline1();
-  // createEchartsAccess1();
-  // createEchartsscater1();
   load();
 });
 function negativeRecommendation(row){
