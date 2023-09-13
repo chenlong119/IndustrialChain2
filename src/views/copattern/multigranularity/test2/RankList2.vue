@@ -40,7 +40,7 @@
   };
   </script>
   <style scoped>
-  ::v-deep .el-table .el-table__body tr {
+  :deep(.el-table .el-table__body tr){
       height: 80px;
       min-height: 80px;
   }

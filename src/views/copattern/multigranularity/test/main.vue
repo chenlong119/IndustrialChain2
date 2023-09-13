@@ -1,6 +1,6 @@
 <template>
   
-
+<div>
 
   <div class="container">
       <h1 class="page-title">企业协同效果评估系统</h1>
@@ -59,7 +59,7 @@
 
   <footer style="margin-left: 20px;">
       <p>© 2023 东南大学 仅供测试</p>
-  </footer>
+  </footer></div>
 </template>
 
 <script>

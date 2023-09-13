@@ -17,12 +17,12 @@
      
     </div>
 
-    <el-table :data="filteredData" style="width: 100% " height="400px" padding="10px">
+    <el-table :data="filteredData" style="width: 100% " height="498px" padding="10px">
       <el-table-column prop="id" label="企业编号" width="100" align="center"></el-table-column>
-      <el-table-column prop="name" label="企业名称" width="180" align="center"></el-table-column>
+      <el-table-column prop="name" label="企业名称" width="200" align="center"></el-table-column>
       <el-table-column prop="type" label="企业种类" width="180" align="center"></el-table-column>
       <el-table-column prop="cooperation_count" label="企业合作次数" width="180" align="center"></el-table-column>
-      <el-table-column prop="score" label="企业评分" width="180" align="center"></el-table-column>
+      <el-table-column prop="score" label="企业评分" width="200" align="center"></el-table-column>
       <el-table-column 
         label="查看详情" 
         width="180" align="center"
@@ -59,7 +59,7 @@ export default {
         { id: '007', name: '元首集团', type: '服装', cooperation_count: 2, score: 96 },
         { id: '008', name: '澳利集团', type: '农业', cooperation_count: 1, score: 87 },
         { id: '009', name: '中国化工', type: '化工', cooperation_count: 9, score: 91 },
-        { id: '010', name: '国投聚力', type: '金融', cooperation_count: 5, score: 87 },
+        
       ],
       searchTerm: '',
       filterType: '',
