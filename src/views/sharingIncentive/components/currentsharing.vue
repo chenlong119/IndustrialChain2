@@ -24,10 +24,10 @@
             <el-table-column label="操作" align="center"  class-name="small-padding fixed-width">
                 <template #default="scope">
                     <el-tooltip content="接受" placement="top" v-if="scope.row.userId !== 1">
-                    <el-button link type="primary" icon="Edit" @click="openFileUploadDialog(scope.row)" v-hasPermi="['system:user:edit']"></el-button>
+                    <el-button link type="primary" icon="Edit" @click="openFileUploadDialog(scope.row)" ></el-button>
                     </el-tooltip>
                     <el-tooltip content="不再推荐" placement="top" v-if="scope.row.userId !== 1">
-                    <el-button link type="primary" icon="Delete" @click="negativeRecommendation(scope.row)" v-hasPermi="['system:user:remove']"></el-button>
+                    <el-button link type="primary" icon="Delete" @click="negativeRecommendation(scope.row)"></el-button>
                     </el-tooltip>
                 </template>
             </el-table-column>
@@ -35,18 +35,19 @@
       </el-main>
     </div>
     <!-- 上传文件弹窗 -->
-    <el-dialog title="上传文件" v-model="uploadDialogVisible" @close="closeFileUploadDialog">
-      <!-- 文件上传组件 -->
-      <el-upload
+    <el-dialog title="上传文件" v-model="uploadDialogVisible" @close="closeFileUploadDialog" :width="dialogWidthSmall">
+      <div class="button-container">
+        <el-upload
         class="upload-demo"
         action="#"
         :show-file-list="false"
         :on-change="handleFileChange"
         :before-upload="beforeUpload"
       >
-        <el-button type="primary" size="small" icon="upload">点击上传</el-button>
+        <el-button type="primary" size="medium" round icon="upload">点击上传</el-button>
       </el-upload>
-      <el-button type="primary" size="small" @click="uploadFile">确认上传</el-button>
+        <el-button type="primary" size="medium" round @click="uploadFile">确认上传</el-button>
+      </div>
     </el-dialog>
     <div>
       <el-button type="info" icon="el-icon-search" @click="showRecommendation">查看今日推荐</el-button>
@@ -74,10 +75,10 @@
             <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
             <template #default="scope">
                 <el-tooltip content="接受" placement="top" v-if="scope.row.userId !== 1">
-                <el-button link type="primary" icon="Edit" @click="openFileUploadDialog(scope.row)" v-hasPermi="['system:user:edit']"></el-button>
+                <el-button link type="primary" icon="Edit" @click="openFileUploadDialog(scope.row)" ></el-button>
                 </el-tooltip>
                 <el-tooltip content="推荐有误" placement="top" v-if="scope.row.userId !== 1">
-                <el-button link type="primary" icon="Delete" @click="negativeRecommendation(scope.row)" v-hasPermi="['system:user:remove']"></el-button>
+                <el-button link type="primary" icon="Delete" @click="negativeRecommendation(scope.row)" ></el-button>
                 </el-tooltip>
             </template>
             </el-table-column>
@@ -115,6 +116,7 @@ const uploadDialogVisible = ref(false);
   const isPopupVisible = ref(false);
   const isRecommendationVisible = ref(false);
 
+  const dialogWidthSmall = ref('20%');
   const dialogWidth = ref('90%'); // Set the width as a string (e.g., '500px', '50%')
   const dialogHeight = ref('500vh');
   const openFileUploadDialog = () => {
@@ -704,6 +706,10 @@ body,
   height: 35vh;
   width: 100%;
 }
-
-
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1px; /* 调整按钮之间的间距 */
+}
 </style>
