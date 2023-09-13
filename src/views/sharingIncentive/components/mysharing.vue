@@ -28,7 +28,7 @@
         >
           <el-button type="danger" slot="reference" >批量删除 <i class="el-icon-remove-outline"></i> </el-button>
         </el-popconfirm>
-        <el-upload action="http://localhost:9090/evaporation-merge/import"
+        <!-- <el-upload action="http://localhost:9090/evaporation-merge/import"
                   :show-file-list="false"
                   accept=".xlsx"
                   :on-success="importSuccess"
@@ -36,7 +36,7 @@
           <el-button type="primary" class="ml-5">发布 <i class="el-icon-bottom"></i> </el-button>
         </el-upload>
 
-        <el-button type="primary"  @click="exp">接收<i class="el-icon-top"></i> </el-button>
+        <el-button type="primary"  @click="exp">接收<i class="el-icon-top"></i> </el-button> -->
       </div>
       <el-table :data="tableData" border stripe :header-cell-class-name="headerBg"  max-height="500" :fit="true">
           <el-table-column type="selection" width="65"> <!--多选框-->
@@ -83,17 +83,48 @@
               </el-tooltip>
             </template> 
           </el-table-column>
-          <el-table-column label="操作" align="center"  class-name="small-padding fixed-width">
-            <template #default="scope">
+          <el-table-column label="查看数据" align="center"  class-name="small-padding fixed-width">
+            <el-button link type="primary" icon="Edit" @click="showDataDetails" ></el-button>
+            <!-- <template #default="scope">
                 <el-tooltip content="修改" placement="top" v-if="scope.row.userId !== 1">
                 <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)" v-hasPermi="['system:user:edit']"></el-button>
                 </el-tooltip>
                 <el-tooltip content="删除" placement="top" v-if="scope.row.userId !== 1">
                 <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)" v-hasPermi="['system:user:remove']"></el-button>
                 </el-tooltip>
-            </template>
+            </template> -->
           </el-table-column>
         </el-table> 
+
+      <!-- <el-dialog title="数据上传情况" v-model="isDatadetailVisible" @close="hideDataDetails" class="custom-dialog">
+        <div>
+          <h4>已上传的数据：</h4>
+          <ul>
+            <li v-for="(dataItem, index) in dataList" :key="index">
+              {{ dataItem.dataName }} - 上传企业: {{ dataItem.uploadedCompany }}
+              <el-button type="text" icon="el-icon-download" @click="downloadData(dataItem)">下载</el-button>
+            </li>
+          </ul>
+        </div>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="hideDataDetails">关闭</el-button>
+        </span>
+      </el-dialog> -->
+      <el-dialog title="数据上传情况" v-model="isDatadetailVisible" @close="hideDataDetails" class="custom-dialog">
+      <div>
+        <h4>已上传的数据：</h4>
+        <ul>
+          <li v-for="(dataItem, index) in dataList" :key="index" class="data-item">
+            <div class="data-name">{{ dataItem.dataName }}</div>
+            <div class="uploaded-company">上传企业: {{ dataItem.uploadedCompany }}</div>
+            <el-button type="text" icon="el-icon-download" @click="downloadData(dataItem)">下载</el-button>
+          </li>
+        </ul>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="hideDataDetails">关闭</el-button>
+      </span>
+    </el-dialog>
       <el-dialog title="详细信息" v-model="isProfitVisible" @close="hideProfitDetails" class="custom-dialog">
         <div v-if="selectedRow">
           <p>参与企业：</p>
@@ -180,6 +211,12 @@ let form = ref({
     y: -1,
     deleted: false
 });
+const dataList= reactive([  // 写死的数据示例
+        { dataName: '比亚迪4月电池销量', uploadedCompany: '比亚迪' },
+        { dataName: '南孚电池4月电池销量', uploadedCompany: '南孚电池' },
+        { dataName: '超威电池4月电池销量', uploadedCompany: '超威电池' },
+        // 添加更多数据项
+      ]);
 const tablename = ref(null);
 const tableData = ref([]);
 const isPopupVisible = ref(false);
@@ -276,9 +313,18 @@ const dialogHeight = ref('500vh');
   load();
   });
 
-
-
-
+const isDatadetailVisible = ref(null);
+const showDataDetails = () =>{
+  isDatadetailVisible.value = true;
+    };
+  const hideDataDetails = () => {
+    isDatadetailVisible.value = false;
+  };
+  function downloadData(dataItem) {
+      // 处理下载数据的逻辑
+      console.log('下载数据:', dataItem.dataName);
+      ElMessage.success('下载成功！');
+    };
   function delBatch(){
     //批量删除
     let ids=this.multipleSelection.map(v =>v.id)   //[{} ,{} ,{}] =>[1,2,3]
@@ -769,5 +815,21 @@ const dialogHeight = ref('500vh');
 #echarts-pressure{
   height: 35vh;
   width: 100%;
+}
+
+.data-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.data-name {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.uploaded-company {
+  flex: 1;
 }
 </style>
