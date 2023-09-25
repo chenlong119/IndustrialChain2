@@ -14,7 +14,8 @@
 
 <!-- 合格率 -->
 <div style="margin-left: 5px;">合格率:</div>
-  <div class="rating-display"> {{ calculatePassRate() }}
+  <div class="rating-display"> 
+    {{ calculatePassRate() }}
   </div>
 </el-form-item>
 
@@ -24,7 +25,9 @@
     <div
       v-for="(box, index) in 3"
       :key="'quality-evaluation-' + index"
-      :class="['rating-box', { active: index < hoveredQualityEvaluationIndex, filled: index < feedbackForm.qualityEvaluation }]"
+      :class="['rating-box', 
+      { active: index < hoveredQualityEvaluationIndex, 
+        filled: index < feedbackForm.qualityEvaluation }]"
       @mouseover="hoverOverQualityEvaluation(index)"
       @mouseout="hoverOutQualityEvaluation"
       @click="setQualityEvaluationRating(index + 1)"
@@ -50,7 +53,9 @@
     <div
       v-for="(box, index) in 3"
       :key="'data-accuracy-' + index"
-      :class="['rating-box', { active: index < hoveredDataAccuracyIndex, filled: index < feedbackForm.dataAccuracy }]"
+      :class="['rating-box',
+       { active: index < hoveredDataAccuracyIndex, 
+       filled: index < feedbackForm.dataAccuracy }]"
       @mouseover="hoverOverDataAccuracy(index)"
       @mouseout="hoverOutDataAccuracy"
   
@@ -62,7 +67,9 @@
     </div>
   </div>
   <span class="rating-text">
-    <span v-if="selectedDataAccuracyText !== null">{{ selectedDataAccuracyText }}</span>
+    <span v-if="selectedDataAccuracyText !== null">
+      {{ selectedDataAccuracyText }}
+    </span>
     <span v-else-if="hoveredDataAccuracyIndex === 0">不满意</span>
     <span v-else-if="hoveredDataAccuracyIndex === 1">基本满意</span>
     <span v-else-if="hoveredDataAccuracyIndex === 2">非常满意</span>
@@ -78,9 +85,12 @@
     <div
       v-for="(box, index) in 3"
       :key="'product-packaging-' + index"
-      :class="['rating-box', { active: index < hoveredPackagingIndex, filled: index < feedbackForm.productPackaging }]"
+      :class="['rating-box', 
+      { active: index < hoveredPackagingIndex, 
+      filled: index < feedbackForm.productPackaging }]"
       
       @mouseover="hoverOverPackaging(index)"
+
       @mouseout="hoverOutPackaging"
       @click="setPackagingRating(index + 1)"
       :style="{
@@ -90,7 +100,9 @@
     </div>
   </div>
   <span class="rating-text">
-    <span v-if="selectedPackagingText !== null">{{ selectedPackagingText }}</span>
+    <span v-if="selectedPackagingText !== null">
+      {{ selectedPackagingText }}
+    </span>
     <span v-else-if="hoveredPackagingIndex === 0">不满意</span>
     <span v-else-if="hoveredPackagingIndex === 1">基本满意</span>
     <span v-else-if="hoveredPackagingIndex === 2">非常满意</span>

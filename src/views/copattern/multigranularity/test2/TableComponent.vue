@@ -18,11 +18,37 @@
     </div>
 
     <el-table :data="filteredData" style="width: 100% " height="498px" padding="10px">
-      <el-table-column prop="id" label="企业编号" width="100" align="center"></el-table-column>
-      <el-table-column prop="name" label="企业名称" width="200" align="center"></el-table-column>
-      <el-table-column prop="type" label="企业种类" width="160" align="center"></el-table-column>
-      <el-table-column prop="cooperation_count" label="企业合作次数" width="160" align="center"></el-table-column>
-      <el-table-column prop="score" label="企业评分" width="160" align="center"></el-table-column>
+      <el-table-column 
+      prop="id" 
+      label="企业编号"  
+      width=100 
+      align="center">
+    </el-table-column>
+
+      <el-table-column 
+      prop="name" 
+      label="企业名称"  
+      align="center">
+    </el-table-column>
+
+      <el-table-column 
+      prop="type" 
+      label="企业种类"  
+      align="center">
+    </el-table-column>
+
+      <el-table-column 
+      prop="cooperation_count" 
+      label="企业合作次数"  
+      align="center">
+    </el-table-column>
+
+      <el-table-column 
+      prop="score" 
+      label="企业评分"  
+      align="center">
+    </el-table-column>
+
       <!-- <el-table-column 
       label="查看详情" 
       width="180" align="center">
@@ -34,7 +60,8 @@
       label="查看详情" 
       width="180" align="center">
       <template #default="{ row }">
-        <el-button @click="viewDetails(row)">详情</el-button>
+        <el-button 
+        @click="viewDetails(row)">详情</el-button>
         <el-dialog 
         v-model="dialogVisible"
         title="企业详情"
@@ -82,23 +109,97 @@ export default {
      
       data: [
         
-        { id: '001', name: '比亚迪汽车', type: '汽车', cooperation_count: 5, score: 92 ,recentScores: [92,90,96,95,97],
+        { 
+          id: '001', 
+          name: '比亚迪汽车', 
+          type: '汽车', 
+          cooperation_count: 5, 
+          score: 92 ,
+          recentScores: [92,90,96,95,97],
           highScores: '质量评分，售后服务',
-          lowScores: '，交易便捷性',},
-        { id: '002', name: '小鸭家电', type: '技术', cooperation_count: 3, score: 85 ,recentScores: [92,90,96,95,97],
+          lowScores: '交易便捷性'
+        },
+        { 
+          id: '002', 
+          name: '小鸭家电', 
+          type: '技术', 
+          cooperation_count: 3, 
+          score: 85 ,
+          recentScores: [92,90,96,95,97],
           highScores: '质量评分，售后服务',
-          lowScores: '交易便捷性',},
-        { id: '003', name: '济南粮食集团', type: '食物', cooperation_count: 8, score: 88 ,recentScores: [92,90,96,95,97],
+          lowScores: '交易便捷性',
+        },
+        { 
+          id: '003', 
+          name: '济南粮食集团', 
+          type: '食物', 
+          cooperation_count: 8, 
+          score: 88 ,
+          recentScores: [92,90,96,95,97],
           highScores: '质量评分，售后服务',
-          lowScores: '交易便捷性',},
-        { id: '004', name: '金德利集团', type: '餐饮', cooperation_count: 6, score: 92 ,recentScores: [92,90,96,95,97],
+          lowScores: '交易便捷性',
+        },
+
+        { 
+          id: '004', 
+          name: '金德利集团', 
+          type: '餐饮', 
+          cooperation_count: 6, 
+          score: 92 ,
+          recentScores: [92,90,96,95,97],
           highScores: '质量评分，售后服务',
-          lowScores: '交易便捷性',},
-        { id: '005', name: '金钟科技', type: '科技', cooperation_count: 4, score: 83 },
-        { id: '006', name: '齐鲁化纤', type: '化纤', cooperation_count: 7, score: 89 },
-        { id: '007', name: '元首集团', type: '服装', cooperation_count: 2, score: 96 },
-        { id: '008', name: '澳利集团', type: '农业', cooperation_count: 1, score: 87 },
-        { id: '009', name: '中国化工', type: '化工', cooperation_count: 9, score: 91 },
+          lowScores: '交易便捷性',
+        },
+        { 
+          id: '005', 
+          name: '金钟科技', 
+          type: '科技', 
+          cooperation_count: 4, 
+          score: 83,
+          recentScores: [92,90,96,95,97],
+          highScores: '质量评分，售后服务',
+          lowScores: '交易便捷性',
+         },
+        { 
+          id: '006', 
+          name: '齐鲁化纤', 
+          type: '化纤', 
+          cooperation_count: 7, 
+          score: 89 ,
+          recentScores: [92,90,96,95,97],
+          highScores: '质量评分，售后服务',
+          lowScores: '交易便捷性',
+        },
+        { 
+          id: '007', 
+          name: '元首集团', 
+          type: '服装', 
+          cooperation_count: 2, 
+          score: 96 ,
+          recentScores: [92,90,96,95,97],
+          highScores: '质量评分，售后服务',
+          lowScores: '交易便捷性',
+        },
+        { 
+          id: '008', 
+          name: '澳利集团', 
+          type: '农业', 
+          cooperation_count: 1, 
+          score: 87 ,
+          recentScores: [92,90,96,95,97],
+          highScores: '质量评分，售后服务',
+          lowScores: '交易便捷性',
+        },
+        { 
+          id: '009', 
+          name: '中国化工', 
+          type: '化工', 
+          cooperation_count: 9, 
+          score: 91 ,
+          recentScores: [92,90,96,95,97],
+          highScores: '质量评分，售后服务',
+          lowScores: '交易便捷性',
+        },
        
       ],
       searchTerm: '',

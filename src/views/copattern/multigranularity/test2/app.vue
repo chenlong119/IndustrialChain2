@@ -1,7 +1,9 @@
 <template>
     <div id="app">
       <div class="side-panel">
-        <rank-list-1 :data="rankData1"></rank-list-1>
+        <rank-list-1 
+        :data="rankData1">
+      </rank-list-1>
       </div>
   
       <div class="main-panel">

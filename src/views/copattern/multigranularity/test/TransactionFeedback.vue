@@ -11,7 +11,12 @@
           <div
             v-for="(box, index) in 3"
             :key="'price-rating-' + index"
-            :class="['rating-box', { active: index < hoveredPriceRatingIndex, filled: index < feedbackForm.priceRating }]"
+            :class="['rating-box', 
+            { 
+            active: index < hoveredPriceRatingIndex, 
+            filled: index < feedbackForm.priceRating 
+            }]"
+            
             @mouseover="hoverOverPriceRating(index)"
             @mouseout="hoverOutPriceRating"
             @click="setPriceRating(index + 1)"
@@ -21,7 +26,9 @@
           ></div>
         </div>
         <span class="rating-text">
-          <span v-if="selectedPriceRatingText !== null">{{ selectedPriceRatingText }}</span>
+          <span v-if="selectedPriceRatingText !== null">
+            {{ selectedPriceRatingText }}
+          </span>
           <span v-else-if="hoveredPriceRatingIndex === 0">不满意</span>
           <span v-else-if="hoveredPriceRatingIndex === 1">基本满意</span>
           <span v-else-if="hoveredPriceRatingIndex === 2">非常满意</span>
@@ -34,7 +41,11 @@
           <div
             v-for="(box, index) in 3"
             :key="'document-completeness-' + index"
-            :class="['rating-box', { active: index < hoveredDocumentCompletenessIndex, filled: index < feedbackForm.documentCompleteness }]"
+            :class="['rating-box', 
+            { 
+              active: index < hoveredDocumentCompletenessIndex, 
+            filled: index < feedbackForm.documentCompleteness 
+            }]"
             @mouseover="hoverOverDocumentCompleteness(index)"
             @mouseout="hoverOutDocumentCompleteness"
             @click="setDocumentCompletenessRating(index + 1)"
@@ -44,7 +55,9 @@
           ></div>
         </div>
         <span class="rating-text">
-          <span v-if="selectedDocumentCompletenessText !== null">{{ selectedDocumentCompletenessText }}</span>
+          <span v-if="selectedDocumentCompletenessText !== null">
+            {{ selectedDocumentCompletenessText }}
+          </span>
           <span v-else-if="hoveredDocumentCompletenessIndex === 0">不满意</span>
           <span v-else-if="hoveredDocumentCompletenessIndex === 1">基本满意</span>
           <span v-else-if="hoveredDocumentCompletenessIndex === 2">非常满意</span>
@@ -57,7 +70,11 @@
           <div
             v-for="(box, index) in 3"
             :key="'transaction-convenience-' + index"
-            :class="['rating-box', { active: index < hoveredTransactionConvenienceIndex, filled: index < feedbackForm.transactionConvenience }]"
+            :class="['rating-box', 
+            { 
+            active: index < hoveredTransactionConvenienceIndex, 
+            filled: index < feedbackForm.transactionConvenience 
+            }]"
             @mouseover="hoverOverTransactionConvenience(index)"
             @mouseout="hoverOutTransactionConvenience"
             @click="setTransactionConvenienceRating(index + 1)"
@@ -67,7 +84,9 @@
           ></div>
         </div>
         <span class="rating-text">
-          <span v-if="selectedTransactionConvenienceText !== null">{{ selectedTransactionConvenienceText }}</span>
+          <span v-if="selectedTransactionConvenienceText !== null">
+            {{ selectedTransactionConvenienceText }}
+          </span>
           <span v-else-if="hoveredTransactionConvenienceIndex === 0">不满意</span>
           <span v-else-if="hoveredTransactionConvenienceIndex === 1">基本满意</span>
           <span v-else-if="hoveredTransactionConvenienceIndex === 2">非常满意</span>
@@ -80,7 +99,9 @@
           <div
             v-for="(box, index) in 3"
             :key="'transaction-security-' + index"
-            :class="['rating-box', { active: index < hoveredTransactionSecurityIndex, filled: index < feedbackForm.transactionSecurity }]"
+            :class="['rating-box', { 
+              active: index < hoveredTransactionSecurityIndex, 
+              filled: index < feedbackForm.transactionSecurity }]"
             @mouseover="hoverOverTransactionSecurity(index)"
             @mouseout="hoverOutTransactionSecurity"
             @click="setTransactionSecurityRating(index + 1)"
@@ -90,7 +111,9 @@
           ></div>
         </div>
         <span class="rating-text">
-          <span v-if="selectedTransactionSecurityText !== null">{{ selectedTransactionSecurityText }}</span>
+          <span v-if="selectedTransactionSecurityText !== null">
+            {{ selectedTransactionSecurityText }}
+          </span>
           <span v-else-if="hoveredTransactionSecurityIndex === 0">不满意</span>
           <span v-else-if="hoveredTransactionSecurityIndex === 1">基本满意</span>
           <span v-else-if="hoveredTransactionSecurityIndex === 2">非常满意</span>

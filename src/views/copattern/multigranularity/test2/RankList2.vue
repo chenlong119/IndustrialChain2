@@ -23,16 +23,46 @@
     data() {
       return {
         rankData: [
-          { name: '小鸭家电', score: 98.5},
-          { name: '比亚迪汽车', score: 97.0},
-          { name: '金德利集团', score: 96.8 },
-          { name: '金钟科技', score: 96.7 },
-          { name: '济南粮食集团', score: 95.8},
-          { name: '金德利集团', score: 95.4 },
-          { name: '国投聚力', score: 95.2 },
-          { name: '中国化工', score: 94.8 },
-          { name: '澳利集团', score: 94.5 },
-          { name: '齐鲁化纤', score: 94.2 },
+          { 
+            name: '小鸭家电', 
+            score: 98.5
+          },
+          { 
+            name: '比亚迪汽车', 
+            score: 97.0
+          },
+          { 
+            name: '金德利集团', 
+            score: 96.8 
+          },
+          { 
+            name: '金钟科技', 
+            score: 96.7 
+          },
+          { 
+            name: '济南粮食集团', 
+            score: 95.8
+          },
+          { 
+            name: '金德利集团', 
+            score: 95.4 
+          },
+          { 
+            name: '国投聚力', 
+            score: 95.2 
+          },
+          { 
+            name: '中国化工', 
+            score: 94.8 
+          },
+          { 
+            name: '澳利集团', 
+            score: 94.5 
+          },
+          { 
+            name: '齐鲁化纤', 
+            score: 94.2 
+          },
         ],
    
       };

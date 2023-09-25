@@ -5,28 +5,53 @@
   <div class="container">
       <h1 class="page-title">企业协同效果评估系统</h1>
       <hr class="divider">
-      <el-form :model="feedbackForm" label-width="100px" class="demo-form">
+      <el-form 
+      :model="feedbackForm" 
+      label-width="100px" 
+      class="demo-form">
           <div class="select-container">
               <label for="search">选择待评估任务：</label>
-              <el-select v-model="selectedTask" placeholder="请选择一个任务进行评价">
-                  <el-option v-for="task in tasks" :key="task.value" :label="task.label" :value="task.value"></el-option>
+              <el-select 
+              v-model="selectedTask" 
+              placeholder="请选择一个任务进行评价">
+                  <el-option 
+                  v-for="task in tasks" 
+                  :key="task.value" 
+                  :label="task.label" 
+                  :value="task.value">
+                </el-option>
               </el-select>
-              <el-select v-model="selectedTask" placeholder="请选择要评价的公司">
-                  <el-option v-for="task in tasks" :key="task.value" :label="task.name" :value="task.value" :name="task.name"></el-option>
+              <el-select 
+              v-model="selectedTask" 
+              placeholder="请选择要评价的公司">
+                  <el-option 
+                  v-for="task in tasks" 
+                  :key="task.value" 
+                  :label="task.name" 
+                  :value="task.value" 
+                  :name="task.name">
+                </el-option>
               </el-select>
           </div>
 
           <!-- 上半部分 -->
-          <el-row :gutter="20" class="row-container">
+          <el-row 
+          :gutter="20" 
+          class="row-container">
               <!-- 第一部分 -->
-              <el-col :span="12" class="chart-container">
+              <el-col 
+              :span="12" 
+              class="chart-container">
                   <div class="box-card">
-                      <DeliveryFeedback :feedbackForm="feedbackForm" />
+                      <DeliveryFeedback 
+                      :feedbackForm="feedbackForm" />
                   </div>
               </el-col>
 
               <!-- 第二部分 -->
-              <el-col :span="12" class="chart-container">
+              <el-col 
+              :span="12" 
+              class="chart-container">
                   <div class="box-card">
                       <ProductQualityFeedback :feedbackForm="feedbackForm" />
                   </div>
@@ -34,16 +59,22 @@
           </el-row>
 
           <!-- 下半部分 -->
-          <el-row :gutter="20" class="row-container">
+          <el-row 
+          :gutter="20" 
+          class="row-container">
               <!-- 第三部分 -->
-              <el-col :span="12" class="chart-container">
+              <el-col 
+              :span="12" 
+              class="chart-container">
                   <div class="box-card">
                       <ServiceFeedback :feedbackForm="feedbackForm" />
                   </div>
               </el-col>
 
               <!-- 第四部分 -->
-              <el-col :span="12" class="chart-container">
+              <el-col 
+              :span="12" 
+              class="chart-container">
                   <div class="box-card">
                       <TransactionFeedback :feedbackForm="feedbackForm" />
                   </div>
@@ -52,14 +83,19 @@
 
           <!-- 提交按钮 -->
           <div class="submit-button">
-            <el-button type="primary" @click.prevent="submitForm">提交</el-button>
+            <el-button 
+            type="primary" 
+            @click.prevent="submitForm">
+            提交
+          </el-button>
 </div>
       </el-form>
   </div>
 
   <footer style="margin-left: 20px;">
       <p>© 2023 东南大学 仅供测试</p>
-  </footer></div>
+  </footer>
+  </div>
 </template>
 
 <script>
@@ -85,12 +121,24 @@ export default {
           },
           selectedTask: '',
           tasks: [
-              { value: 'task1', label: '任务 1', name: "比亚迪"},
-              { value: 'task2', label: '任务 2', name: "小鸭家电"},
-              { value: 'task3', label: '任务 3', name: "固特异轮胎"},
-              { value: 'task4', label: '任务 4', name: "永恒电机"},
-              { value: 'task5', label: '任务 5', name:""},
-              { value: 'task6', label: '任务 6' },
+              { value: 'task1',
+               label: '任务 1', 
+               name: "比亚迪"},
+              { value: 'task2',
+               label: '任务 2', 
+               name: "小鸭家电"},
+              { value: 'task3', 
+              label: '任务 3', 
+              name: "固特异轮胎"},
+              { value: 'task4', 
+              label: '任务 4',
+               name: "永恒电机"},
+              { value: 'task5',
+               label: '任务 5', 
+               name:"齐鲁化纤"},
+              { value: 'task6', 
+              label: '任务 6' ,
+              name:"金钟科技"},
           ],
       };
   },
@@ -129,11 +177,8 @@ export default {
 };
 </script>
 
-<style>
-/* 在这里添加您的CSS样式 */
-</style>
 
-  
+
   <style>
   
 

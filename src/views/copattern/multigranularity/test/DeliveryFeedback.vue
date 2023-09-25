@@ -5,17 +5,28 @@
       <div class="feedback-content">
         <!-- 应交货数量 -->
         <el-form-item label="应交数量">
-          <span style="margin-left: 5px;">{{ deliveryData.scheduledQuantity }}</span><div style="margin-left: 15px;">件</div>
+          <span style="margin-left: 5px;">
+            {{ deliveryData.scheduledQuantity }}
+          </span>
+          <div style="margin-left: 15px;">件</div>
         </el-form-item>
     
         <!-- 实收数量 -->
         <el-form-item label="实收数量">
-          <el-input v-model="feedbackForm.receivedQuantity" placeholder="请输入实收数量" style="width: 150px;margin-left: 5px;"></el-input><div style="margin-left: 10px;">件</div>
+          <el-input 
+          v-model="feedbackForm.receivedQuantity" 
+          placeholder="请输入实收数量" 
+          style="width: 150px;
+          margin-left: 5px;">
+          </el-input>
+          <div style="margin-left: 10px;">件</div>
         </el-form-item>
     
         <!-- 约定时间 -->
         <el-form-item label="约定时间">
-          <span style="margin-left: 10px;">{{ deliveryData.scheduledTime }}</span>
+          <span style="margin-left: 10px;">
+            {{ deliveryData.scheduledTime }}
+          </span>
         </el-form-item>
     
         <!-- 实际收货时间 -->
@@ -28,14 +39,7 @@
           ></el-date-picker>
         </el-form-item>
       </div>
-<!-- 价格评价 -->
-
-
-  <!-- 将评价文本移出循环，并根据hoveredPriceEvaluationIndex变量显示文本 -->
  
-
-
-  
     </div>
   </template>
   
@@ -74,11 +78,13 @@ methods: {
   },
   setPriceEvaluationRating(rating) {
     this.feedbackForm.priceEvaluation = rating;
-    if (this.selectedRatingText !== null && this.feedbackForm.priceEvaluation === rating) { 
+    if (this.selectedRatingText !== null && 
+    this.feedbackForm.priceEvaluation === rating) { 
       // 如果用户点击的是当前选定的评价，则取消选定
       this.selectedRatingText = null;  
     } else {
-      this.selectedRatingText = ["不满意", "基本满意", "非常满意"][rating - 1];  // 设置选定的评价文本
+      this.selectedRatingText = 
+      ["不满意", "基本满意", "非常满意"][rating - 1];  // 设置选定的评价文本
     }
   },
 },
@@ -99,14 +105,19 @@ methods: {
  max-width: max-content;
 }
 .rating-container {
-  font-family: 'Arial', sans-serif; /* 使用Arial字体 */
-  font-size: 14px; /* 字体大小为14px */
+  font-family: 'Arial', sans-serif; 
+  /* 使用Arial字体 */
+
+  font-size: 14px; 
+  /* 字体大小为14px */
 }
 .section-title {
-  text-align: center; /* 确保标题居中 */
+  text-align: center;
+   /* 确保标题居中 */
 }
 .box-card:hover + .divider {
-  border-color: #409eff; /* 修改分隔线的颜色为蓝色 */
+  border-color: #409eff; 
+  /* 修改分隔线的颜色为蓝色 */
 }
 /* 添加一个新的CSS类来设置悬停文本的样式 */
 .hover-text {
@@ -118,17 +129,21 @@ methods: {
 }
 /* 添加一个新的CSS类来设置评价文本的样式 */
 .rating-text {
-  margin-left: 10px; /* 根据需要调整位置 */
-  font-size: 14px; /* 设置字体大小 */
-  color: #333; /* 设置字体颜色 */
-  font-weight: 500; /* 设置字体权重 */
-  transition: color 0.3s ease; /* 添加颜色过渡效果 */
+  margin-left: 10px; 
+  /* 根据需要调整位置 */
+  font-size: 14px; 
+  /* 设置字体大小 */
+  color: #333; 
+  /* 设置字体颜色 */
+  font-weight: 500; 
+  /* 设置字体权重 */
+  transition: color 0.3s ease; 
+  /* 添加颜色过渡效果 */
 }
 
 .rating-container:hover .rating-text {
-  color: #ff6600; /* 设置悬停时的字体颜色 */
+  color: #ff6600; 
+  /* 设置悬停时的字体颜色 */
 }
-
-
   </style>
   

@@ -5,16 +5,31 @@
         <h3 class="productStatusTitle">企业关系评估</h3>
         <el-table :data="productData" class="el-table">
           <!-- Selection Column -->
-          <el-table-column type="selection" width="55" align="center"></el-table-column>
+          <el-table-column 
+          type="selection" 
+          width="55" 
+          align="center">
+        </el-table-column>
 
           <!-- Task ID Column -->
-          <el-table-column prop="id" label="任务ID" width="100" align="center"></el-table-column>
+          <el-table-column 
+          prop="id" 
+          label="任务ID" 
+          width="100" 
+          align="center">
+        </el-table-column>
 
           <!-- Task Name Column -->
-          <el-table-column prop="name" label="任务名称" align="center"></el-table-column>
+          <el-table-column 
+          prop="name" 
+          label="任务名称" 
+          align="center">
+        </el-table-column>
 
           <!-- Enterprise Relationship Strength Column -->
-          <el-table-column label="企业关系强度" align="center">
+          <el-table-column 
+          label="企业关系强度" 
+          align="center">
             <template #default="{ row }">
               <el-tag v-if="row.status === '强'" type="success">强</el-tag>
               <el-tag v-else-if="row.status === '弱'" type="danger">弱</el-tag>
@@ -31,20 +46,48 @@
         open-delay="200"
       >
         <template #content>
-          <div :ref="el => { chartRefs[row.id] = el }" style="width: 400px;height:300px;"></div>
+          <div 
+          :ref="el => 
+          { chartRefs[row.id] = el }" 
+          style="width: 400px;
+          height:300px;">
+          </div>
         </template>
-        <el-button type="text" @click="togglePopover(row.id)">详细</el-button>
+
+        <el-button 
+        type="text" 
+        @click="togglePopover(row.id)">
+        详细
+      </el-button>
       </el-tooltip>
-      <el-dialog :visible.sync="showPopoverMap[row.id]" width="20%" @open="initChart(row.id)" @close="destroyChart(row.id)">
-  <div :ref="el => { chartRefs[row.id] = el }" style="width: 400px;height:300px;" v-if="showPopoverMap[row.id]"></div>
+
+      <el-dialog 
+      :visible.sync="showPopoverMap[row.id]" 
+      width="20%" 
+      @open="initChart(row.id)" 
+      @close="destroyChart(row.id)">
+
+      <div 
+      :ref="el => 
+      { chartRefs[row.id] = el }" 
+      style="width: 400px;
+      height:300px;" 
+      v-if="showPopoverMap[row.id]">
+    </div>
+
 </el-dialog>
     </template>
   </el-table-column>
 
           <!-- Operations Column -->
-          <el-table-column label="操作" align="center">
+          <el-table-column 
+            label="操作" 
+             align="center">
             <template #default="{ row }">
-              <el-button type="link" @click="viewDetails(row.id)">查看详情</el-button>
+              <el-button type="link" 
+              @click="viewDetails(row.id)">
+              查看详情
+            </el-button>
             </template>
           </el-table-column>
 
@@ -52,7 +95,13 @@
 
         <!-- Pagination -->
         
-          <el-pagination background layout="prev, pager, next" :page-size="10" :total="productData.length" @current-change="handleCurrentChange" class="mt-4"></el-pagination>
+          <el-pagination 
+          background layout="prev, pager, next" 
+          :page-size="10" 
+          :total="productData.length" 
+          @current-change="handleCurrentChange" 
+          class="mt-4">
+        </el-pagination>
         </div>
       </el-col>
     </el-row>
@@ -65,15 +114,51 @@ import { ElTable, ElTableColumn, ElDialog, ElButton, ElTag, ElTooltip, ElPaginat
 import * as echarts from 'echarts';
 
 const productData = ref([
-  { id: 1, name: '任务1', status: '强' },
-  { id: 2, name: '任务2', status: '弱' },
-  { id: 3, name: '任务3', status: '强' },
-  { id: 4, name: '任务1', status: '强' },
-  { id: 5, name: '任务2', status: '弱' },
-  { id: 6, name: '任务3', status: '中等' },
-  { id: 7, name: '任务1', status: '强' },
-  { id: 8, name: '任务2', status: '弱' },
-  { id: 9, name: '任务3', status: '中等' },
+  { 
+    id: 1, 
+    name: '任务1', 
+    status: '强' 
+  },
+  { 
+    id: 2, 
+    name: '任务2', 
+    status: '弱' 
+  },
+  { 
+    id: 3, 
+    name: '任务3', 
+    status: '强' 
+  },
+  { 
+    id: 4, 
+    name: '任务1', 
+    status: '强' 
+  },
+  { 
+    id: 5, 
+    name: '任务2', 
+    status: '弱' 
+  },
+  { 
+    id: 6, 
+    name: '任务3', 
+    status: '中等' 
+  },
+  { 
+    id: 7, 
+    name: '任务1', 
+    status: '强' 
+  },
+  { 
+    id: 8, 
+    name: '任务2', 
+    status: '弱' 
+  },
+  { 
+    id: 9, 
+    name: '任务3', 
+    status: '中等' 
+  },
 ]);
 
 const showPopoverMap = ref({});

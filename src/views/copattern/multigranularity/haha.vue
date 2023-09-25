@@ -2,16 +2,28 @@
   <div id="app1">
     <h1 class="page-title">多粒度决策系统</h1>
     <hr class="divider">
-    <el-row :gutter="30" class="row-container">
+    <el-row 
+    :gutter="30" 
+    class="row-container">
       <!-- Left Column for Charts -->
-      <el-col :span="12" class="chart-container">
+      <el-col 
+      :span="12" 
+      class="chart-container">
         <div class="box-card">
           
-          <div ref="pieChartRef" class="chart"></div>
+          <div 
+          ref="pieChartRef" 
+          class="chart">
+        </div>
+
         </div>
         <div class="box-card">
           
-          <div ref="lineChartRef" class="chart"></div>
+          <div 
+          ref="lineChartRef" 
+          class="chart">
+        </div>
+
         </div>
       </el-col>
 
@@ -22,16 +34,31 @@
           <el-table :data="productData" class="el-table">
 
             <!-- Selection Column -->
-            <el-table-column type="selection" width="55" align="center"></el-table-column>
+            <el-table-column 
+            type="selection" 
+            width="55" 
+            align="center">
+          </el-table-column>
 
             <!-- Product ID Column -->
-            <el-table-column prop="id" label="产品ID" width="100" align="center"></el-table-column>
+            <el-table-column 
+            prop="id" 
+            label="产品ID" 
+            width="100" 
+            align="center">
+          </el-table-column>
 
             <!-- Product Name Column -->
-            <el-table-column prop="name" label="产品名称" align="center"></el-table-column>
+            <el-table-column 
+            prop="name" 
+            label="产品名称" 
+            align="center">
+          </el-table-column>
 
             <!-- Status Column -->
-            <el-table-column label="是否合格" width="120">
+            <el-table-column 
+            label="是否合格" 
+            width="120">
               <template #default="{ row }">
                 <el-tag v-if="row.status === '合格'" type="success">合格</el-tag>
                 <el-tag v-else-if="row.status === '不合格'" type="danger">不合格</el-tag>
@@ -42,7 +69,12 @@
             <!-- Additional Columns and Actions -->
             <el-table-column label="操作" width="150">
               <template #default="{ row }">
-                <el-button type="primary" style="padding: 8px 16px; font-size: 12px;" @click="viewDetails(row.id)">查看详情</el-button>
+                <el-button type="primary" 
+                style="padding: 8px 16px; 
+                font-size: 12px;" 
+                @click="viewDetails(row.id)">
+                查看详情
+              </el-button>
 
               </template>
             </el-table-column>
@@ -82,16 +114,57 @@ export default {
     const lineChartRef = ref(null);
 
     const productData = ref([
-      { id: 1, name: '产品1', status: '合格' },
-      { id: 2, name: '产品2', status: '不合格' },
-      { id: 3, name: '产品3', status: '待定' },
-      { id: 4, name: '产品4', status: '合格' },
-      { id: 5, name: '产品5', status: '不合格' },
-      { id: 6, name: '产品6', status: '合格' },
-      { id: 7, name: '产品7', status: '待定' },
-      { id: 8, name: '产品8', status: '合格' },
-      { id: 9, name: '产品9', status: '不合格' },
-      { id: 10, name: '产品10', status: '待定' }
+      { 
+        id: 1, 
+        name: '产品1', 
+        status: '合格' 
+      },
+      { 
+        id: 2, 
+        name: '产品2', 
+        status: '不合格' 
+      },
+      { 
+        id: 3, 
+        name: '产品3', 
+        status: '待定' 
+      },
+      { 
+        id: 4, 
+        name: '产品4', 
+        status: '合格' 
+      },
+      { 
+        id: 5, 
+        name: '产品5', 
+        status: '不合格' 
+      },
+      { 
+        id: 6, 
+        name: '产品6', 
+        status: '合格' 
+      },
+
+      { 
+        id: 7, 
+        name: '产品7', 
+        status: '待定' 
+      },
+      { 
+        id: 8, 
+        name: '产品8', 
+        status: '合格' 
+      },
+      { 
+        id: 9, 
+        name: '产品9', 
+        status: '不合格'
+      },
+      { 
+        id: 10,
+        name: '产品10', 
+        status: '待定' 
+      }
     ]);
 
     onMounted(() => {
@@ -147,7 +220,14 @@ const lineOption = {
   xAxis: {
     type: 'category',
     boundaryGap: false,
-    data: ['1月', '2月', '3月', '4月', '5月'],
+    data: 
+    [
+      '1月', 
+      '2月', 
+      '3月', 
+      '4月', 
+      '5月'
+    ],
   },
   yAxis: {
     type: 'value',

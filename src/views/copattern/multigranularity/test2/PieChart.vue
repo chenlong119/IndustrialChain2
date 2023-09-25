@@ -28,16 +28,57 @@
      
   
       const productData = ref([
-        { id: 1, name: '产品1', status: '合格' },
-        { id: 2, name: '产品2', status: '不合格' },
-        { id: 3, name: '产品3', status: '待定' },
-        { id: 4, name: '产品4', status: '合格' },
-        { id: 5, name: '产品5', status: '不合格' },
-        { id: 6, name: '产品6', status: '合格' },
-        { id: 7, name: '产品7', status: '待定' },
-        { id: 8, name: '产品8', status: '合格' },
-        { id: 9, name: '产品9', status: '不合格' },
-        { id: 10, name: '产品10', status: '待定' }
+        { 
+          id: 1, 
+          name: '产品1', 
+          status: '合格' 
+        },
+        { 
+          id: 2, 
+          name: '产品2', 
+          status: '不合格' 
+        },
+        { 
+          id: 3, 
+          name: '产品3', 
+          status: '待定' 
+        },
+
+        { 
+          id: 4, 
+          name: '产品4', 
+          status: '合格' 
+        },
+        { 
+          id: 5, 
+          name: '产品5', 
+          status: '不合格' 
+        },
+        { 
+          id: 6, 
+          name: '产品6', 
+          status: '合格' 
+        },
+        { 
+          id: 7, 
+          name: '产品7', 
+          status: '待定' 
+        },
+        { 
+          id: 8, 
+          name: '产品8', 
+          status: '合格' 
+        },
+        { 
+          id: 9, 
+          name: '产品9', 
+          status: '不合格' 
+        },
+        { 
+          id: 10, 
+          name: '产品10', 
+          status: '待定' 
+        }
       ]);
   
       onMounted(() => {
@@ -60,11 +101,26 @@
         type: 'pie',
         radius: '70%',
         data: [
-          { name: '<60', value: 46 },
-          { name: '60-70', value: 67 },
-          { name: '70-80', value: 72 },
-          { name: '80-90', value: 90 },
-          { name: '90-100', value: 107 },
+          { 
+            name: '<60', 
+            value: 46 
+          },
+          { 
+            name: '60-70', 
+            value: 67 
+          },
+          { 
+            name: '70-80', 
+            value: 72 
+          },
+          { 
+            name: '80-90', 
+            value: 90 
+          },
+          { 
+            name: '90-100', 
+            value: 107 
+          },
         ],
         itemStyle: {
           borderRadius: 10,
@@ -87,13 +143,8 @@
       };
     },
   };
-  
-  
   </script>
 <style scoped>
-
-
-
 .box-card {
   margin-top:20px;
   

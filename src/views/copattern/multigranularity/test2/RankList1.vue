@@ -23,16 +23,46 @@ export default {
   data() {
     return {
       rankData: [
-        { name: '汽车企业群', score: 98.5},
-        { name: '冰箱企业群', score: 97.0},
-        { name: '洗衣机企业群', score: 96.8 },
-        { name: '钢铁企业群', score: 96.7 },
-        { name: '数码企业群', score: 95.8},
-        { name: '电机企业群', score: 95.4 },
-        { name: '电子企业群', score: 95.2 },
-        { name: '手机企业群', score: 94.8 },
-        { name: '电脑企业群', score: 94.5 },
-        { name: '家具企业群', score: 94.2 },
+        { 
+          name: '汽车企业群', 
+          score: 98.5
+        },
+        { 
+          name: '冰箱企业群', 
+          score: 97.0
+        },
+        { 
+          name: '洗衣机企业群', 
+          score: 96.8 
+        },
+        { 
+          name: '钢铁企业群', 
+          score: 96.7 
+        },
+        { 
+          name: '数码企业群', 
+          score: 95.8
+        },
+        { 
+          name: '电机企业群', 
+          score: 95.4 
+        },
+        { 
+          name: '电子企业群', 
+          score: 95.2 
+        },
+        { 
+          name: '手机企业群', 
+          score: 94.8 
+        },
+        { 
+          name: '电脑企业群', 
+          score: 94.5 
+        },
+        { 
+          name: '家具企业群', 
+          score: 94.2 
+        },
       ],
     };
   },
