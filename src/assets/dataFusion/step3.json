@@ -1,6 +1,23 @@
 {
   "nodes": [
     {
+      "id": "13",
+      "name": "比亚迪",
+      "chain": "汽车产业链",
+      "requirements": "整车制造",
+      "field": "制造商",
+      "products": "54%",
+      "deadline": "90",
+      "lastTime": "60",
+      "numbers": "3",
+      "category": "团体4",
+      "lists": "比亚迪 66，上汽集团 67，一汽集团 68",
+      "frequency":"7",
+      "symbolSize": 30,
+      "x": 108.701546,
+      "y": -121.55057
+    },
+    {
       "id": "0",
       "name": "宁德时代",
       "chain": "汽车产业链",
@@ -221,23 +238,7 @@
       "x": -78.05168,
       "y": -181.99768
     },
-    {
-      "id": "13",
-      "name": "比亚迪",
-      "chain": "汽车产业链",
-      "requirements": "整车制造",
-      "field": "制造商",
-      "products": "54%",
-      "deadline": "90",
-      "lastTime": "60",
-      "numbers": "3",
-      "category": "团体4",
-      "lists": "比亚迪 66，上汽集团 67，一汽集团 68",
-      "frequency":"7",
-      "symbolSize": 30,
-      "x": 108.701546,
-      "y": -121.55057
-    },
+
     {
       "id": "14",
       "name": "宝钢再生资源",

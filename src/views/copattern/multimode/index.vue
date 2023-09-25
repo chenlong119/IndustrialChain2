@@ -7,20 +7,18 @@
             <template #header><span style="font-size: 20px; font-weight: bold;">任务运行状态展示</span></template>
             <div class="el-table el-table--enable-row-hover el-table--medium">
               <div class="rectangle">
-                <div v-for="(color, index) in circleColors" :key="index"
-         :class="{ circle: true, flashing: index === 5 }"
-         :style="{
-           backgroundColor: index === 5 ? circleBackground : '#ccffcc',
-           width: circleSizes[index] + 'px',
-           height: circleSizes[index] + 'px',
-           left: fixedCirclePositions[index].left + 'px',
-           top: fixedCirclePositions[index].top + 'px'
-         }"
-         @mouseover="(event) => showTooltip(event, index)"
-         @mouseout="(event) => hideTooltip(event)"
-         @click="index === 5 ? showMessage() : null">
-      <span>任务{{ index + 1 }}</span>
-    </div>
+                <div v-for="(color, index) in circleColors" :key="index" :class="{ circle: true, flashing: index === 5 }"
+                  :style="{
+                    backgroundColor: index === 5 ? 'red' : '#ccffcc',
+                    width: circleSizes[index] + 'px',
+                    height: circleSizes[index] + 'px',
+                    left: fixedCirclePositions[index].left + 'px',
+                    top: fixedCirclePositions[index].top + 'px'
+                  }" @mouseover="(event) => showTooltip(event, index)" @mouseout="(event) => hideTooltip(event)"
+                  @click="index === 5 ? showMessage() : null">
+                  <span>任务{{ index + 1 }}</span>
+
+                </div>
                 <div class="custom-tooltip">
                   当前任务出现突发情况<br />点击任务节点查看详情
                 </div>
@@ -381,7 +379,6 @@ export default {
 
       );
     },
- 
     handleSearch() {
       // 获取查询条件
       const queryType = this.queryType;
